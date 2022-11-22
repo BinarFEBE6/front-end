@@ -2,14 +2,9 @@ import React from "react";
 
 import "./Main.css";
 
+import { BsFacebook, BsLinkedin, BsTwitter, BsYoutube } from "react-icons/bs";
+
 import { Carousel } from "antd";
-const contentStyle = {
-  height: "100vh",
-  color: "#fff",
-  lineHeight: "50rem",
-  textAlign: "center",
-  background: "#364d79",
-};
 
 function main() {
   return (
@@ -17,31 +12,42 @@ function main() {
       {/* HERO SECTION */}
 
       <div className="relative">
-        <Carousel autoplay>
+        <Carousel autoplay effect="fade">
           <div>
-            <h3 style={contentStyle}>1</h3>
+            <img
+              src="https://fegatravel.com/images/bali.jpg"
+              alt="hero"
+              className="object-cover h-screen w-full"
+            />
           </div>
           <div>
-            <h3 style={contentStyle}>2</h3>
+            <img
+              src="https://wallpaperaccess.com/full/1952507.jpg"
+              alt="hero"
+              className="object-cover h-screen w-full"
+            />
           </div>
           <div>
-            <h3 style={contentStyle}>3</h3>
-          </div>
-          <div>
-            <h3 style={contentStyle}>4</h3>
+            <img
+              src="https://wallpaperaccess.com/full/1564199.jpg"
+              alt="hero"
+              className="object-cover h-screen w-full"
+            />
           </div>
         </Carousel>
-        <div className="wrapper flex justify-center items-center">
-          <div className="bg-slate-500/50 lg:w-3/4 absolute bottom-10 h-32 lg:mx-52 rounded-xl p-7 w-[80%]  ">
-            <div className="bg-black w-full h-16 "></div>
-          </div>
+        <div className="bg-slate-500/50 absolute w-4/5 bottom-10 h-max-md mx-12 md:mx-40 rounded-xl p-5 md:p-7 grid gap-2 md:flex">
+          <div className="bg-slate-200 w-full h-10 md:h-12 rounded-full"></div>
+          <button
+            className="bg-transparent hover:bg-white text-white font-semibold hover:text-slate-500 py-2 px-6 border border-white hover:border-transparent rounded-full ml-2"
+          >
+            Button
+          </button>
         </div>
-
-        <div className="absolute top-[35%] flex flex-col left-8">
-          <p>1</p>
-          <p>1</p>
-          <p>1</p>
-          <p>1</p>
+        <div className="absolute top-[30%] flex flex-col left-10 md:left-14">
+          <BsFacebook className="text-white mb-10 cursor-pointer" />
+          <BsTwitter className="text-white mb-10 cursor-pointer" />
+          <BsLinkedin className="text-white mb-10 cursor-pointer" />
+          <BsYoutube className="text-white cursor-pointer" />
         </div>
       </div>
 
