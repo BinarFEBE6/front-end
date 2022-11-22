@@ -32,15 +32,13 @@ function main() {
           </div>
         </Carousel>
         <div className="bg-slate-500/50 w-3/4 absolute bottom-10 h-32 mx-52 rounded-xl p-7">
-          <div className="bg-black w-full h-16">
-
-          </div>
+          <div className="bg-black w-full h-16"></div>
         </div>
         <div className="absolute top-[35%] flex flex-col left-8">
-            <p>1</p>
-            <p>1</p>
-            <p>1</p>
-            <p>1</p>
+          <p>1</p>
+          <p>1</p>
+          <p>1</p>
+          <p>1</p>
         </div>
       </div>
 
