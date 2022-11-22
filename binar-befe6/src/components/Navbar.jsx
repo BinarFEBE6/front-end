@@ -3,8 +3,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { VscListFlat } from "react-icons/vsc";
 import { Modal, Form } from "antd";
 import { LockOutlined, UserOutlined, MailOutlined } from "@ant-design/icons";
-import { Button, Checkbox, Input } from "antd";
-import "./Navbar.css";
+import { Button, Input } from "antd";
 
 function Navbar() {
   const [show, setShow] = useState(false);
@@ -30,12 +29,12 @@ function Navbar() {
 
   return (
     <div>
-      <div className="bg-teal-400 h-14 flex justify-between ">
-        <div className=" ml-7 lg:ml-32 mb-3 bg-red-400 mt-3 w-20 "></div>
+      <div className="bg-transparent flex justify-between absolute w-full z-10 mt-10 ">
+        <div className=" ml-7 lg:ml-32 mb-3 bg-red-400 mt-3 w-20 h-9"></div>
 
         <div
           className={
-            " lg:items-center gap-10 lg:flex" +
+            "lg:items-center lg:pt-4 gap-10 lg:flex" +
             (navbarOpen ? " flex" : " hidden")
           }
         >
