@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
+import { VscListFlat } from "react-icons/vsc";
 import { Modal, Form } from "antd";
 import { LockOutlined, UserOutlined, MailOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Input } from "antd";
@@ -7,6 +8,7 @@ import "./Navbar.css";
 
 function Navbar() {
   const [show, setShow] = useState(false);
+  const [navbarOpen, setNavbarOpen] = useState(false);
   const [showRegist, setShowRegist] = useState(false);
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
@@ -29,20 +31,32 @@ function Navbar() {
   return (
     <div>
       <div className="bg-teal-400 h-14 flex justify-between ">
-        <div className="  ml-32 mb-3 bg-red-400 mt-3 w-20 "></div>
-        <div className=" items-center gap-10 hidden lg:flex">
+        <div className=" ml-7 lg:ml-32 mb-3 bg-red-400 mt-3 w-20 "></div>
+
+        <div
+          className={
+            " lg:items-center gap-10 lg:flex" +
+            (navbarOpen ? " flex" : " hidden")
+          }
+        >
           <p className="font-bold text-neutral-50">Book</p>
           <p className="font-bold text-neutral-50">Manage</p>
           <p className="font-bold text-neutral-50">Travel Info</p>
           <p className="font-bold text-neutral-50">Explore</p>
           <p className="font-bold text-neutral-50">About</p>
         </div>
-        <div className="flex items-center gap-2 mr-12">
+        <div className="flex items-center gap-2 lg:mr-12">
           <div className="flex items-center gap-2">
             <FaUserCircle className=" text-neutral-50 w-7 h-7" />
             <button className="font-bold text-neutral-50" onClick={isShow}>
               Login
             </button>
+          </div>
+          <div
+            className="navbar-Collapse lg:hidden text-white text-2xl"
+            onClick={() => setNavbarOpen(!navbarOpen)}
+          >
+            <VscListFlat />
           </div>
           {/* Modal Login */}
           <div className="modal-login">
