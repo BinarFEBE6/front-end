@@ -9,9 +9,7 @@ import { Carousel } from "antd";
 function main() {
   return (
     <>
-      {/* HERO SECTION */}
-
-      <div className="relative">
+      <div className="hero relative">
         <Carousel autoplay effect="fade">
           <div>
             <img
@@ -35,12 +33,12 @@ function main() {
             />
           </div>
         </Carousel>
-        <div className="bg-slate-500/50 absolute w-4/5 bottom-10 h-max-md mx-12 md:mx-40 rounded-xl p-5 md:p-7 grid gap-2 md:flex">
+        <div className="bg-slate-500/75 absolute w-3/4 bottom-14 h-max-md mx-12 md:mx-48 rounded-xl p-5 md:p-7 grid gap-2 md:flex">
           <div className="bg-slate-200 w-full h-10 md:h-12 rounded-full"></div>
           <button
-            className="bg-transparent hover:bg-white text-white font-semibold hover:text-slate-500 py-2 px-6 border border-white hover:border-transparent rounded-full ml-2"
+            className="w-1/5 bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl ml-2"
           >
-            Button
+            Search Flights
           </button>
         </div>
         <div className="absolute top-[30%] flex flex-col left-10 md:left-14">
@@ -50,8 +48,6 @@ function main() {
           <BsYoutube className="text-white cursor-pointer" />
         </div>
       </div>
-
-      {/* END HERO SECTION */}
     </>
   );
 }
