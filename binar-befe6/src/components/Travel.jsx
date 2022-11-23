@@ -1,6 +1,8 @@
 import React from "react";
 import travel from "../assets/travel.png";
 
+import { BsFillBookmarkCheckFill } from "react-icons/bs"
+
 function Travel() {
   return (
     <>
@@ -23,11 +25,23 @@ function Travel() {
         </div>
       </div>
       <div className="border border-1 border-slate-400 w-3/4 mx-auto h-36 my-12 rounded-3xl">
-        <div className="flex w-full justify-between p-16">
-          <h1>Button</h1>
-          <h1>Button</h1>
-          <h1>Button</h1>
-          <h1>Button</h1>
+        <div className="flex w-full justify-between py-9 px-36">
+          <div className="hover:scale-125 duration-500 cursor-pointer">
+            <BsFillBookmarkCheckFill className="w-full h-8 text-gray-500"/>
+            <p className="text-lg font-semibold text-gray-400 mt-2">Check In</p>
+          </div>
+          <div className="hover:scale-125 duration-500 cursor-pointer">
+            <BsFillBookmarkCheckFill className="w-full h-8 text-gray-500"/>
+            <p className="text-lg font-semibold text-gray-400 mt-2">Check In</p>
+          </div>
+          <div className="hover:scale-125 duration-500 cursor-pointer">
+            <BsFillBookmarkCheckFill className="w-full h-8 text-gray-500"/>
+            <p className="text-lg font-semibold text-gray-400 mt-2">Check In</p>
+          </div>
+          <div className="hover:scale-125 duration-500 cursor-pointer">
+            <BsFillBookmarkCheckFill className="w-full h-8 text-gray-500"/>
+            <p className="text-lg font-semibold text-gray-400 mt-2">Check In</p>
+          </div>
         </div>
       </div>
     </>
