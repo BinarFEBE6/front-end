@@ -148,7 +148,7 @@ function main() {
               </div>
             </div>
           </div>
-          <button className="lg:w-32 h-8 lg:h-12 mt-2 lg:mt-13 w-full lg:my-auto bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl hover:scale-110 lg:ml-16">
+          <button className="lg:w-32 h-8 lg:h-12 mt-2 lg:mt-13 w-full lg:my-auto bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl lg:ml-16">
             Search Flights
           </button>
         </div>
