@@ -38,10 +38,8 @@ function Navbar() {
             (navbarOpen ? " flex" : " hidden")
           }
         >
-          <p className="font-bold text-neutral-50">Book</p>
-          <p className="font-bold text-neutral-50">Manage</p>
-          <p className="font-bold text-neutral-50">Travel Info</p>
-          <p className="font-bold text-neutral-50">Explore</p>
+          <p className="font-bold text-neutral-50">Home</p>
+          <p className="font-bold text-neutral-50">Booking</p>
           <p className="font-bold text-neutral-50">About</p>
         </div>
         <div className="flex items-center gap-2 lg:mr-12">
