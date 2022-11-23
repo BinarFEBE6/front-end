@@ -22,14 +22,14 @@ function main() {
           </div>
           <div>
             <img
-              src="https://wallpaperaccess.com/full/1952507.jpg"
+              src="https://digitalbisa.id/uploads/articles/konten-digital-alat-penunjang-pesona-indonesia-l1kZehcslL.jpg"
               alt="hero"
               className="object-cover h-screen w-full"
             />
           </div>
           <div>
             <img
-              src="https://wallpaperaccess.com/full/1564199.jpg"
+              src="https://wallpapercave.com/wp/wp4190912.jpg"
               alt="hero"
               className="object-cover h-screen w-full"
             />
