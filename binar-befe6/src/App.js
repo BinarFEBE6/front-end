@@ -1,6 +1,7 @@
 import React from "react";
 import Main from "./components/Main";
 import Navbar from "./components/Navbar";
+import PriceList from "./components/PriceList";
 import Travel from "./components/Travel";
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <Navbar />
       <Main />
       <Travel />
+      <PriceList />
     </div>
   );
 }
