@@ -5,7 +5,7 @@ import "./Main.css";
 import { BsFacebook, BsLinkedin, BsTwitter, BsYoutube } from "react-icons/bs";
 import { CgArrowsExchange } from "react-icons/cg";
 import { TbCalendarTime } from "react-icons/tb";
-import { FaPlane } from "react-icons/fa";
+import { MdAirplanemodeActive } from "react-icons/md";
 
 import { Carousel, DatePicker, Select } from "antd";
 
@@ -28,6 +28,11 @@ function main() {
               alt="hero"
               className="object-cover h-[95vh] lg:h-screen w-full"
             />
+            <div className="absolute w-full top-[53%] text-center">
+              <h1 className="text-6xl font-bold text-white drop-shadow-lg shadow-black tracking-[15px] uppercase">
+                Bali
+              </h1>
+            </div>
           </div>
           <div>
             <img
@@ -35,6 +40,11 @@ function main() {
               alt="hero"
               className="object-cover h-[95vh] lg:h-screen w-full"
             />
+            <div className="absolute w-full top-[53%] text-center">
+              <h1 className="text-6xl font-bold text-white drop-shadow-lg shadow-black tracking-[15px] uppercase">
+                Papua
+              </h1>
+            </div>
           </div>
           <div>
             <img
@@ -42,14 +52,21 @@ function main() {
               alt="hero"
               className="object-cover h-[95vh] lg:h-screen w-full"
             />
+            <div className="absolute w-full top-[53%] text-center">
+              <h1 className="text-6xl font-bold text-white drop-shadow-lg shadow-black tracking-[15px] uppercase">
+                Jawa
+              </h1>
+            </div>
           </div>
         </Carousel>
-        <div className=" bg-slate-500/75 absolute w-[75%] lg:w-[90%] bottom-4 lg:bottom-12 h-max-md rounded-xl p-5 lg:p-7 lg:flex mx-12 lg:mx-20">
+        <div className=" bg-slate-500/75 absolute lg:w-[90%] bottom-4 lg:bottom-12 h-max-md rounded-xl p-5 lg:p-7 lg:flex mx-12 lg:mx-20">
           <div className="flex">
             <div className="lg:mr-5">
-              <div className="flex justify-center lg:justify-start hover:scale-75 duration-500">
-                <FaPlane className="text-white mr-2 lg:text-3xl lg:mb-5" />
-                <p className="text-xs lg:text-xl lg:font-bold text-white">Flight</p>
+              <div className="flex justify-center lg:justify-start ">
+                <MdAirplanemodeActive className="text-white mr-2 lg:text-3xl lg:mb-5 lg:hover:-translate-y-4 lg:duration-300" />
+                <p className="text-xs lg:text-xl lg:font-bold text-white">
+                  Flight
+                </p>
               </div>
               <div className="lg:flex lg:items-center grid gap-2">
                 <Select
@@ -121,8 +138,8 @@ function main() {
               </div>
             </div>
             <div className="lg:block hidden">
-              <div className="flex hover:scale-75 duration-500">
-                <TbCalendarTime className="text-white mr-2 lg:text-3xl lg:mb-5" />
+              <div className="flex">
+                <TbCalendarTime className="text-white mr-2 lg:text-3xl lg:mb-5 hover:scale-125 duration-500" />
                 <p className="text-xl font-bold text-white">Date & Time</p>
               </div>
               <div className="flex items-center">
@@ -148,7 +165,7 @@ function main() {
               </div>
             </div>
           </div>
-          <button className="lg:w-32 h-8 lg:h-12 mt-2 lg:mt-13 w-full lg:my-auto bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl lg:ml-16">
+          <button className="lg:w-32 h-8 lg:h-12 mt-2 lg:mt-13 w-[250px] lg:my-auto bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl lg:ml-16">
             Search Flights
           </button>
         </div>
