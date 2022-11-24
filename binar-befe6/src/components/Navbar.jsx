@@ -33,14 +33,14 @@ function Navbar() {
   };
 
   const [sidebar, setsidebar] = useState(false);
-  console.log(sidebar);
+  console.log(scrollY);
 
   return (
     <div>
       <div
         className={`${
           scrollY < 200 ? "bg-transparen" : "bg-sky-500"
-        } bg-transparent  w-full h-9 z-10 flex justify-center items-center fixed duration-300`}
+        }  w-full h-9 z-10 flex justify-center items-center fixed duration-300`}
       >
         <p
           className={`${
@@ -62,9 +62,7 @@ function Navbar() {
           <div className="flex gap-x-2 justify-center ml-6">
             <FaUserCircle className="text-sky-500 h-6 w-6" />
             <button
-              className={`${
-                scrollY < 200 ? "text-neutral-50" : "text-sky-500"
-              } font-bold duration-300`}
+              className={"text-sky-500 font-bold duration-300"}
               onClick={isShow}
             >
               Login
@@ -83,7 +81,7 @@ function Navbar() {
       <div
         className={`${
           scrollY < 200 ? "bg-transparen" : "bg-white"
-        } bg-transparent flex justify-between items-center h-12 fixed w-full z-10 mt-8 duration-300`}
+        }  flex justify-between items-center h-12 fixed w-full z-10 mt-8 duration-300`}
       >
         <button className=" ml-7  mb-3 bg-sky-500 mt-3 w-20 h-9"></button>
 
