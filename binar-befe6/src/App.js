@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "./components/footer";
 import Main from "./components/Main";
 import Navbar from "./components/Navbar";
 import PriceList from "./components/PriceList";
@@ -11,6 +12,7 @@ function App() {
       <Main />
       <Travel />
       <PriceList />
+      <Footer />
     </div>
   );
 }
