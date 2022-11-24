@@ -59,7 +59,8 @@ function main() {
             </div>
           </div>
         </Carousel>
-        <div className=" bg-slate-500/75 absolute lg:w-[90%] bottom-4 lg:bottom-12 h-max-md rounded-xl p-5 lg:p-7 lg:flex mx-12 lg:mx-20">
+
+        <div className=" bg-slate-500/75 absolute lg:w-[90%] bottom-4 lg:bottom-12 h-max-md rounded-xl p-5 lg:p-7 lg:flex  lg:mx-20">
           <div className="flex">
             <div className="lg:mr-5">
               <div className="flex justify-center lg:justify-start ">
