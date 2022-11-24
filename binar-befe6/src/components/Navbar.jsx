@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { VscListFlat } from "react-icons/vsc";
+import { AiOutlineClose } from "react-icons/ai";
+
 import { Modal, Form } from "antd";
 import { LockOutlined, UserOutlined, MailOutlined } from "@ant-design/icons";
 import { Button, Input } from "antd";
+import useScroll from "../hooks/useScroll";
 
 function Navbar() {
   const [show, setShow] = useState(false);
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [showRegist, setShowRegist] = useState(false);
+  const { scrollY } = useScroll();
+
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
   };
@@ -27,33 +32,118 @@ function Navbar() {
     setShowRegist();
   };
 
+  const [sidebar, setsidebar] = useState(false);
+  console.log(sidebar);
+
   return (
     <div>
-      <div className="bg-transparent flex justify-between absolute w-full z-10 mt-10 ">
-        <div className=" ml-7 lg:ml-32 mb-3 bg-red-400 mt-3 w-20 h-9"></div>
+      <div
+        className={`${
+          scrollY < 200 ? "bg-transparen" : "bg-sky-500"
+        } bg-transparent  w-full h-9 z-10 flex justify-center items-center fixed duration-300`}
+      >
+        <p
+          className={`${
+            scrollY < 200 ? "text-neutral-50" : "text-neutral-50"
+          } text-neutral-50  mt-2 duration-300 text-center`}
+        >
+          Travel Gak Pakek Ribet
+        </p>
+      </div>
+
+      <div
+        onClick={() => setsidebar(false)}
+        className={`${
+          sidebar ? "translate-x-0" : "translate-x-[100vw]"
+        } bg-white h-72 w-64 fixed top-10 z-20 right-0 rounded-l-lg  duration-500 lg:hidden`}
+      >
+        <div className="flex justify-between  mt-6 mr-7">
+          <div></div>
+          <div className="flex gap-x-2 justify-center ml-6">
+            <FaUserCircle className="text-sky-500 h-6 w-6" />
+            <button
+              className={`${
+                scrollY < 200 ? "text-neutral-50" : "text-sky-500"
+              } font-bold duration-300`}
+              onClick={isShow}
+            >
+              Login
+            </button>
+          </div>
+
+          <AiOutlineClose className="font-bold h-6 w-6" />
+        </div>
+        <div className="text-center mt-12 grid gap-8">
+          <p className="font-bold text-sky-500">Home</p>
+          <p className="font-bold text-sky-500">Booking</p>
+          <p className="font-bold text-sky-500">About</p>
+        </div>
+      </div>
+
+      <div
+        className={`${
+          scrollY < 200 ? "bg-transparen" : "bg-white"
+        } bg-transparent flex justify-between items-center h-12 fixed w-full z-10 mt-8 duration-300`}
+      >
+        <button className=" ml-7  mb-3 bg-sky-500 mt-3 w-20 h-9"></button>
 
         <div
           className={
-            "lg:items-center lg:pt-4 gap-10 lg:flex" +
+            "lg:items-center lg:pt-4 gap-10 hidden lg:flex lg:justify-center" +
             (navbarOpen ? " flex" : " hidden")
           }
         >
-          <p className="font-bold text-neutral-50">Home</p>
-          <p className="font-bold text-neutral-50">Booking</p>
-          <p className="font-bold text-neutral-50">About</p>
+          <p
+            className={`${
+              scrollY < 200 ? "text-neutral-50" : "text-sky-500"
+            } text-neutral-50 font-bold ml-8 duration-300`}
+          >
+            Home
+          </p>
+          <p
+            className={`${
+              scrollY < 200 ? "text-neutral-50" : "text-sky-500"
+            }  font-bold ml-8 duration-300`}
+          >
+            Booking
+          </p>
+          <p
+            className={`${
+              scrollY < 200 ? "text-neutral-50" : "text-sky-500"
+            } text-neutral-50 font-bold ml-8 duration-300`}
+          >
+            About
+          </p>
         </div>
+
         <div className="flex items-center gap-2 lg:mr-12">
-          <div className="flex items-center gap-2">
-            <FaUserCircle className=" text-neutral-50 w-7 h-7" />
-            <button className="font-bold text-neutral-50" onClick={isShow}>
+          <div className="lg:flex items-center gap-2 hidden">
+            <FaUserCircle
+              className={`${
+                scrollY < 200 ? "text-neutral-50" : "text-sky-500"
+              } text-neutral-50 w-7 h-7 duration-300`}
+            />
+            <button
+              className={`${
+                scrollY < 200 ? "text-neutral-50" : "text-sky-500"
+              } font-bold duration-300`}
+              onClick={isShow}
+            >
               Login
             </button>
           </div>
           <div
             className="navbar-Collapse lg:hidden text-white text-2xl"
-            onClick={() => setNavbarOpen(!navbarOpen)}
+            onClick={() => {
+              setNavbarOpen(!navbarOpen);
+              setsidebar(true);
+            }}
           >
-            <VscListFlat />
+            <VscListFlat
+              className={`${
+                scrollY < 200 ? "text-neutral-50" : "text-sky-500"
+              } text-neutral-50 w-7 h-7 duration-300`}
+            />
           </div>
           {/* Modal Login */}
           <div className="modal-login">
