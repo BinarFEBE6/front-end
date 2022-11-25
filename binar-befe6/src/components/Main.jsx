@@ -8,8 +8,10 @@ import { TbCalendarTime } from "react-icons/tb";
 import { MdAirplanemodeActive } from "react-icons/md";
 
 import { Carousel, DatePicker, Select } from "antd";
+import { useNavigate } from "react-router-dom";
 
-function main() {
+function Main() {
+  const navigate = useNavigate();
   const onChange = (date, dateString) => {
     console.log(date, dateString);
   };
@@ -143,7 +145,12 @@ function main() {
                 <div className="lg:block hidden">
                   <div className="flex">
                     <TbCalendarTime className="text-white mr-2 lg:text-3xl lg:mb-5 hover:scale-125 duration-500" />
-                    <p className="text-xl font-bold text-white">Date & Time</p>
+                    <p
+                      className="text-xl font-bold text-white "
+                      onClick={() => navigate("/Schedule")}
+                    >
+                      Date & Time
+                    </p>
                   </div>
                   <div className="flex items-center">
                     <DatePicker
@@ -187,4 +194,4 @@ function main() {
   );
 }
 
-export default main;
+export default Main;
