@@ -1,12 +1,12 @@
 import React from "react";
 import travel from "../assets/travel.png";
 
-import { BsFillBookmarkCheckFill } from "react-icons/bs"
+import { BsFillBookmarkCheckFill } from "react-icons/bs";
 
 function Travel() {
   return (
     <>
-      <div className="travel-section grid grid-rows-2 mx-14 lg:flex lg:px-56 lg:justify-items-center lg:items-center text-gray-700 mt-12">
+      <div className="travel-section grid grid-rows-2 mx-14 lg:flex lg:px-36 lg:justify-items-center lg:items-center text-gray-700 mt-12">
         <div className="description lg:mr-12">
           <h1 className="text-2xl font-bold text-center lg:text-left ">
             Why Everyone Flies
@@ -21,26 +21,34 @@ function Travel() {
           </p>
         </div>
         <div className="image flex justify-center items-center">
-          <img src={travel} alt=""/>
+          <img src={travel} alt="" />
         </div>
       </div>
       <div className="bg-white shadow-xl border border-slate-200/50 lg:mx-60 mx-8 my-12 rounded-3xl">
         <div className="lg:flex w-full lg:justify-between p-9 lg:px-24 grid grid-cols-2 gap-6">
           <div className="hover:scale-125 duration-500 cursor-pointer">
-            <BsFillBookmarkCheckFill className="w-full h-8 text-gray-500"/>
-            <p className="text-lg font-semibold text-gray-400 mt-2 text-center">Check In</p>
+            <BsFillBookmarkCheckFill className="w-full h-8 text-gray-500" />
+            <p className="text-lg font-semibold text-gray-400 mt-2 text-center">
+              Check In
+            </p>
           </div>
           <div className="hover:scale-125 duration-500 cursor-pointer">
-            <BsFillBookmarkCheckFill className="w-full h-8 text-gray-500"/>
-            <p className="text-lg font-semibold text-gray-400 mt-2 text-center">Check In</p>
+            <BsFillBookmarkCheckFill className="w-full h-8 text-gray-500" />
+            <p className="text-lg font-semibold text-gray-400 mt-2 text-center">
+              Check In
+            </p>
           </div>
           <div className="hover:scale-125 duration-500 cursor-pointer">
-            <BsFillBookmarkCheckFill className="w-full h-8 text-gray-500"/>
-            <p className="text-lg font-semibold text-gray-400 mt-2 text-center">Check In</p>
+            <BsFillBookmarkCheckFill className="w-full h-8 text-gray-500" />
+            <p className="text-lg font-semibold text-gray-400 mt-2 text-center">
+              Check In
+            </p>
           </div>
           <div className="hover:scale-125 duration-500 cursor-pointer">
-            <BsFillBookmarkCheckFill className="w-full h-8 text-gray-500"/>
-            <p className="text-lg font-semibold text-gray-400 mt-2 text-center">Check In</p>
+            <BsFillBookmarkCheckFill className="w-full h-8 text-gray-500" />
+            <p className="text-lg font-semibold text-gray-400 mt-2 text-center">
+              Check In
+            </p>
           </div>
         </div>
       </div>

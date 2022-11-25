@@ -40,7 +40,7 @@ function PriceList() {
           Bali
         </h5>
       </div>
-      <div className="mt-6 text-center lg:mx-72 mx-5">
+      <div className="mt-6 text-center lg:px-44 mx-5">
         <div className={openTab === 1 ? "block" : "hidden"}>
           {/* JAWA SECTION */}
 
