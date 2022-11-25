@@ -1,21 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { VscListFlat } from "react-icons/vsc";
 import { AiOutlineClose } from "react-icons/ai";
-
+import { IoIosNotificationsOutline } from "react-icons/io";
+import { useDispatch } from "react-redux";
 import { Modal, Form } from "antd";
 import { LockOutlined, UserOutlined, MailOutlined } from "@ant-design/icons";
+import { BiUserCircle } from "react-icons/bi";
 import { Button, Input } from "antd";
 import useScroll from "../hooks/useScroll";
-
+import { logIn } from "../features/LoginRegister/loginSlice";
+import { Avatar } from "flowbite-react";
+import { Dropdown } from "flowbite-react";
 function Navbar() {
   const [show, setShow] = useState(false);
+  const dispatch = useDispatch();
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [showRegist, setShowRegist] = useState(false);
   const { scrollY } = useScroll();
 
-  const onFinish = (values) => {
-    console.log("Received values of form: ", values);
+  const [user, setUser] = useState();
+  useEffect(() => {}, []);
+
+  const onLogin = (values) => {
+    dispatch(logIn(values));
+    setShow();
   };
   const isShow = () => {
     setShow(true);
@@ -33,8 +42,21 @@ function Navbar() {
   };
 
   const [sidebar, setsidebar] = useState(false);
-  console.log(scrollY);
+  // console.log(scrollY);
+  let token = localStorage.getItem("token");
+  let profile = localStorage.getItem("user");
+  let image = localStorage.getItem("image");
+  let gmail = localStorage.getItem("email");
+  const [menu, setMenu] = useState(false);
 
+  const open = () => {
+    setMenu(true);
+  };
+
+  const handleLogout = () => {
+    window.location.reload(1);
+    localStorage.clear();
+  };
   return (
     <div>
       <div
@@ -52,26 +74,17 @@ function Navbar() {
       </div>
 
       <div
-        onClick={() => setsidebar(false)}
         className={`${
           sidebar ? "translate-x-0" : "translate-x-[100vw]"
-        } bg-white h-72 w-64 fixed top-10 z-20 right-0 rounded-l-lg  duration-500 lg:hidden`}
+        } bg-white h-40 w-48 fixed top-24 z-20 right-0 rounded-l-lg  duration-500 lg:hidden`}
       >
-        <div className="flex justify-between  mt-6 mr-7">
-          <div></div>
-          <div className="flex gap-x-2 justify-center ml-6">
-            <FaUserCircle className="text-sky-500 h-6 w-6" />
-            <button
-              className={"text-sky-500 font-bold duration-300"}
-              onClick={isShow}
-            >
-              Login
-            </button>
-          </div>
-
-          <AiOutlineClose className="font-bold h-6 w-6" />
-        </div>
-        <div className="text-center mt-12 grid gap-8">
+        {/* <div className="flex justify-between  mt-6 mr-7">
+          <AiOutlineClose
+            className="font-bold h-6 w-6"
+            onClick={() => setsidebar(false)}
+          />
+        </div> */}
+        <div className="text-center mt-4 grid gap-y-4">
           <p className="font-bold text-sky-500">Home</p>
           <p className="font-bold text-sky-500">Booking</p>
           <p className="font-bold text-sky-500">About</p>
@@ -115,33 +128,194 @@ function Navbar() {
         </div>
 
         <div className="flex items-center gap-2 lg:mr-12">
-          <div className="lg:flex items-center gap-2 hidden">
-            <FaUserCircle
-              className={`${
-                scrollY < 200 ? "text-neutral-50" : "text-sky-500"
-              } text-neutral-50 w-7 h-7 duration-300`}
-            />
-            <button
-              className={`${
-                scrollY < 200 ? "text-neutral-50" : "text-sky-500"
-              } font-bold duration-300`}
-              onClick={isShow}
-            >
-              Login
-            </button>
+          <div className="lg:flex items-center gap-2 hidden justify-center">
+            {token && token.length ? (
+              <div className="tr flex justify-center">
+                <Dropdown
+                  arrowIcon={false}
+                  inline={true}
+                  className="w-40"
+                  label={
+                    <IoIosNotificationsOutline
+                      size={35}
+                      className={`${
+                        scrollY < 200 ? "text-neutral-50" : "text-sky-500"
+                      } text-neutral-50 font-bold duration-300 mt-1 mr-2`}
+                    />
+                  }
+                >
+                  <Dropdown.Header>
+                    <span className="block text-sm">Notification</span>
+                  </Dropdown.Header>
+                  <Dropdown.Item
+                  // onClick={() =>
+                  //   navigate(`/Dashboard/${JSON.parse(profile)}`)
+                  // }
+                  >
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Officia, rem.
+                  </Dropdown.Item>
+
+                  <Dropdown.Divider />
+                  <Dropdown.Item>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Facilis, quibusdam?
+                  </Dropdown.Item>
+                </Dropdown>
+
+                <Dropdown
+                  arrowIcon={false}
+                  inline={true}
+                  label={
+                    <Avatar
+                      src={JSON.parse(image)}
+                      alt="User settings"
+                      rounded={true}
+                    />
+                  }
+                >
+                  <Dropdown.Header>
+                    <span className="block text-sm">{JSON.parse(profile)}</span>
+                    <span className="block truncate text-sm font-medium">
+                      {JSON.parse(gmail)}
+                    </span>
+                  </Dropdown.Header>
+                  <Dropdown.Item
+                  // onClick={() =>
+                  //   navigate(`/Dashboard/${JSON.parse(profile)}`)
+                  // }
+                  >
+                    Profile
+                  </Dropdown.Item>
+
+                  <Dropdown.Divider />
+                  <Dropdown.Item onClick={handleLogout}>Sign out</Dropdown.Item>
+                </Dropdown>
+                <h1
+                  className={`${
+                    scrollY < 200 ? "text-neutral-50" : "text-sky-500"
+                  } text-neutral-50 font-bold duration-300 ml-2 mt-2`}
+                >
+                  {JSON.parse(profile)}
+                </h1>
+              </div>
+            ) : (
+              <button
+                className={`${
+                  scrollY < 200 ? "text-neutral-50" : "text-sky-500"
+                } font-bold duration-300`}
+                onClick={isShow}
+              >
+                Login
+              </button>
+            )}
           </div>
-          <div
-            className="navbar-Collapse lg:hidden text-white text-2xl"
-            onClick={() => {
-              setNavbarOpen(!navbarOpen);
-              setsidebar(true);
-            }}
-          >
-            <VscListFlat
-              className={`${
-                scrollY < 200 ? "text-neutral-50" : "text-sky-500"
-              } text-neutral-50 w-7 h-7 duration-300`}
-            />
+          <div className="navbar-Collapse lg:hidden text-white flex flex-row">
+            <div className="flex gap-x-2 justify-center ml-6">
+              {token && token.length ? (
+                <div className=" flex ">
+                  <Dropdown
+                    arrowIcon={false}
+                    onClick={() => setsidebar(false)}
+                    inline={true}
+                    className="w-40"
+                    label={
+                      <IoIosNotificationsOutline
+                        size={37}
+                        className={`${
+                          scrollY < 200 ? "text-neutral-50" : "text-sky-500"
+                        } text-neutral-50 font-bold duration-300 mt-1 mr-2`}
+                      />
+                    }
+                  >
+                    <Dropdown.Header>
+                      <span className="block text-sm">Notification</span>
+                    </Dropdown.Header>
+                    <Dropdown.Item
+                    // onClick={() =>
+                    //   navigate(`/Dashboard/${JSON.parse(profile)}`)
+                    // }
+                    >
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                      Officia, rem.
+                    </Dropdown.Item>
+
+                    <Dropdown.Divider />
+                    <Dropdown.Item>
+                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                      Facilis, quibusdam?
+                    </Dropdown.Item>
+                  </Dropdown>
+
+                  <Dropdown
+                    arrowIcon={false}
+                    inline={true}
+                    label={
+                      <Avatar
+                        src={JSON.parse(image)}
+                        alt="User settings"
+                        rounded={true}
+                        size="sm"
+                        className="mt-[0.4rem]"
+                      />
+                    }
+                  >
+                    <Dropdown.Header>
+                      <span className="block text-sm">
+                        {JSON.parse(profile)}
+                      </span>
+                      <span className="block truncate text-sm font-medium">
+                        {JSON.parse(gmail)}
+                      </span>
+                    </Dropdown.Header>
+                    <Dropdown.Item
+                    // onClick={() =>
+                    //   navigate(`/Dashboard/${JSON.parse(profile)}`)
+                    // }
+                    >
+                      Profile
+                    </Dropdown.Item>
+
+                    <Dropdown.Divider />
+                    <Dropdown.Item onClick={handleLogout}>
+                      Sign out
+                    </Dropdown.Item>
+                  </Dropdown>
+                  {/* <p className="text-sky-500 text-lg ml-2 mt-3">
+                    {JSON.parse(profile)}
+                  </p> */}
+                </div>
+              ) : (
+                <div className="false flex justify-center">
+                  <button
+                    className={"text-sky-500 font-bold duration-300"}
+                    onClick={isShow}
+                  >
+                    Login
+                  </button>
+                </div>
+              )}
+              {sidebar ? (
+                <AiOutlineClose
+                  className={`${
+                    scrollY < 200 ? "text-neutral-50" : "text-sky-500"
+                  } text-neutral-50 duration-300 mt-2`}
+                  size={25}
+                  onClick={() => setsidebar(false)}
+                />
+              ) : (
+                <VscListFlat
+                  className={`${
+                    scrollY < 200 ? "text-neutral-50" : "text-sky-500"
+                  } text-neutral-50  duration-300 mt-2`}
+                  size={25}
+                  onClick={() => {
+                    setNavbarOpen(!navbarOpen);
+                    setsidebar(true);
+                  }}
+                />
+              )}
+            </div>
           </div>
           {/* Modal Login */}
           <div className="modal-login">
@@ -158,7 +332,7 @@ function Navbar() {
                 initialValues={{
                   remember: true,
                 }}
-                onFinish={onFinish}
+                onFinish={onLogin}
               >
                 <Form.Item
                   name="email"
@@ -235,7 +409,7 @@ function Navbar() {
                 initialValues={{
                   remember: true,
                 }}
-                onFinish={onFinish}
+                // onFinish={onFinish}
               >
                 <Form.Item
                   name="username"
