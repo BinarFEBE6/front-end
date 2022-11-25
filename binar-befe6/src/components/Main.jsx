@@ -60,10 +60,10 @@ function main() {
           </div>
         </Carousel>
 
-        <div className="flex justify-center">
-          <div className=" bg-slate-500/75 absolute bottom-4 lg:bottom-12 h-max-md rounded-xl p-5 lg:p-7 lg:flex">
-            <div className="flex">
-              <div className="lg:mr-5">
+        <div className="flex justify-center    ">
+          <div className=" bg-slate-500/75 absolute bottom-4 lg:bottom-12 h-max-md rounded-xl p-5  lg:p-7 lg:w-[90%]">
+            <div className="flight flex lg:flex-row lg:justify-center flex-col">
+              <div className="estimasi w-[40%]">
                 <div className="flex justify-center lg:justify-start ">
                   <MdAirplanemodeActive className="text-white mr-2 lg:text-3xl lg:mb-5 lg:hover:-translate-y-4 lg:duration-300" />
                   <p className="text-xs lg:text-xl lg:font-bold text-white">
@@ -139,37 +139,41 @@ function main() {
                   />
                 </div>
               </div>
-              <div className="lg:block hidden">
-                <div className="flex">
-                  <TbCalendarTime className="text-white mr-2 lg:text-3xl lg:mb-5 hover:scale-125 duration-500" />
-                  <p className="text-xl font-bold text-white">Date & Time</p>
-                </div>
-                <div className="flex items-center">
-                  <DatePicker
-                    onChange={onChange}
-                    placement={"topLeft"}
-                    style={{
-                      width: 250,
-                    }}
-                    size="large"
-                    className="mr-2"
-                    placeholder="Depart on"
-                  />
-                  <DatePicker
-                    onChange={onChange}
-                    style={{
-                      width: 250,
-                    }}
-                    size="large"
-                    placement={"topRight"}
-                    placeholder="Return on"
-                  />
+              <div className="date w-[50%] lg:ml-2">
+                <div className="lg:block hidden">
+                  <div className="flex">
+                    <TbCalendarTime className="text-white mr-2 lg:text-3xl lg:mb-5 hover:scale-125 duration-500" />
+                    <p className="text-xl font-bold text-white">Date & Time</p>
+                  </div>
+                  <div className="flex items-center">
+                    <DatePicker
+                      onChange={onChange}
+                      placement={"topLeft"}
+                      style={{
+                        width: 250,
+                      }}
+                      size="large"
+                      className="mr-2"
+                      placeholder="Depart on"
+                    />
+                    <DatePicker
+                      onChange={onChange}
+                      style={{
+                        width: 250,
+                      }}
+                      size="large"
+                      placement={"topRight"}
+                      placeholder="Return on"
+                    />
+                  </div>
                 </div>
               </div>
+              <div className="button flex justify-center lg:mt-2 lg:w-[20%]">
+                <button className="w-full   px-4 h-9 lg:h-12 mt-2 lg:mt-13 lg:my-auto bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl lg:ml-5">
+                  Search Flights
+                </button>
+              </div>
             </div>
-            <button className="w-full px-4 h-9 lg:h-12 mt-2 lg:mt-13 lg:my-auto bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl lg:ml-5">
-              Search Flights
-            </button>
           </div>
         </div>
         <div className="absolute hidden lg:block top-[30%] flex flex-col left-10 lg:left-12">
