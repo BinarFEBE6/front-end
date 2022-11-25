@@ -1,6 +1,8 @@
 import React from "react";
 import { TbPlaneInflight } from "react-icons/tb";
+import { useNavigate } from "react-router-dom";
 function Footer() {
+  const navigate = useNavigate();
   return (
     <div>
       <footer class="text-center lg:text-left bg-gray-100 text-gray-600">
@@ -166,7 +168,7 @@ function Footer() {
                 Useful links
               </h6>
               <p class="mb-4">
-                <a href="#!" class="text-gray-600">
+                <a class="text-gray-600" onClick={() => navigate("/")}>
                   Home
                 </a>
               </p>
