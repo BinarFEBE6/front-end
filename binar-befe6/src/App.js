@@ -8,7 +8,7 @@ import Travel from "./components/Travel";
 function App() {
   return (
     <div>
-      <Navbar />
+      <Navbar withcroll={true} />
       <Main />
       <Travel />
       <PriceList />
