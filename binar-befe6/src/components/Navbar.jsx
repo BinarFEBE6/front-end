@@ -12,6 +12,8 @@ import useScroll from "../hooks/useScroll";
 import { logIn } from "../features/LoginRegister/loginSlice";
 import { Avatar } from "flowbite-react";
 import { Dropdown } from "flowbite-react";
+import { postRegister } from "../features/LoginRegister/registerSlice";
+import { postLoginGoogle } from "../features/LoginRegister/loginGoogle";
 function Navbar() {
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
@@ -49,13 +51,18 @@ function Navbar() {
   let gmail = localStorage.getItem("email");
   const [menu, setMenu] = useState(false);
 
-  const open = () => {
-    setMenu(true);
-  };
-
   const handleLogout = () => {
     window.location.reload(1);
     localStorage.clear();
+  };
+
+  const onRegist = (values) => {
+    dispatch(postRegister(values));
+    setShowRegist();
+  };
+
+  const googleLogin = () => {
+    dispatch(postLoginGoogle());
   };
   return (
     <div>
@@ -180,13 +187,8 @@ function Navbar() {
                       {JSON.parse(gmail)}
                     </span>
                   </Dropdown.Header>
-                  <Dropdown.Item
-                  // onClick={() =>
-                  //   navigate(`/Dashboard/${JSON.parse(profile)}`)
-                  // }
-                  >
-                    Profile
-                  </Dropdown.Item>
+                  <Dropdown.Item>Profile</Dropdown.Item>
+                  <Dropdown.Item>History</Dropdown.Item>
 
                   <Dropdown.Divider />
                   <Dropdown.Item onClick={handleLogout}>Sign out</Dropdown.Item>
@@ -268,13 +270,8 @@ function Navbar() {
                         {JSON.parse(gmail)}
                       </span>
                     </Dropdown.Header>
-                    <Dropdown.Item
-                    // onClick={() =>
-                    //   navigate(`/Dashboard/${JSON.parse(profile)}`)
-                    // }
-                    >
-                      Profile
-                    </Dropdown.Item>
+                    <Dropdown.Item>Profile</Dropdown.Item>
+                    <Dropdown.Item>History</Dropdown.Item>
 
                     <Dropdown.Divider />
                     <Dropdown.Item onClick={handleLogout}>
@@ -386,6 +383,7 @@ function Navbar() {
                     <Button
                       htmlType="submit"
                       className="login-form-button bg-teal-500  w-full h-12 text-white"
+                      onClick={googleLogin}
                     >
                       Log With Google
                     </Button>
@@ -409,10 +407,10 @@ function Navbar() {
                 initialValues={{
                   remember: true,
                 }}
-                // onFinish={onFinish}
+                onFinish={onRegist}
               >
                 <Form.Item
-                  name="username"
+                  name="name"
                   rules={[
                     {
                       required: true,
@@ -470,7 +468,7 @@ function Navbar() {
                   <div className="button fflex items-center  flex justify-between mt-4 space-x-4">
                     <Button
                       htmlType="submit"
-                      className="login-form-button bg-yellow-500 w-full h-12 text-white"
+                      className=" bg-yellow-500 w-full h-12 text-white"
                     >
                       Register
                     </Button>
