@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import { store } from "./store/store";
 import "antd/dist/reset.css";
 import Schedule from "./pages/Schedule";
+import Profile from "./pages/Profile";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -17,6 +18,7 @@ root.render(
           <Route>
             <Route path="/" element={<App />} />
             <Route path="/Schedule" element={<Schedule />} />
+            <Route path="/Profile" element={<Profile />} />
           </Route>
         </Routes>
       </BrowserRouter>

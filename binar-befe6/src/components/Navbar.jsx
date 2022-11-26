@@ -12,12 +12,17 @@ import useScroll from "../hooks/useScroll";
 import { logIn } from "../features/LoginRegister/loginSlice";
 import { Avatar } from "flowbite-react";
 import { Dropdown } from "flowbite-react";
+import { useNavigate } from "react-router-dom";
+
+
 function Navbar() {
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [showRegist, setShowRegist] = useState(false);
   const { scrollY } = useScroll();
+
+  const navigate = useNavigate();
 
   const [user, setUser] = useState();
   useEffect(() => {}, []);
@@ -107,7 +112,8 @@ function Navbar() {
           <p
             className={`${
               scrollY < 200 ? "text-neutral-50" : "text-sky-500"
-            } text-neutral-50 font-bold ml-8 duration-300`}
+            } text-neutral-50 font-bold ml-8 duration-300 cursor-pointer hover:text-sky-200`}
+            onClick={() => navigate('/')}
           >
             Home
           </p>
@@ -181,9 +187,9 @@ function Navbar() {
                     </span>
                   </Dropdown.Header>
                   <Dropdown.Item
-                  // onClick={() =>
-                  //   navigate(`/Dashboard/${JSON.parse(profile)}`)
-                  // }
+                  onClick={() =>
+                    navigate(`/Profile`)
+                  }
                   >
                     Profile
                   </Dropdown.Item>
