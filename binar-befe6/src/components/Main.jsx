@@ -183,7 +183,7 @@ function Main() {
             </div>
           </div>
         </div>
-        <div className="absolute hidden lg:block top-[30%] flex flex-col left-10 lg:left-12">
+        <div className="absolute hidden lg:block top-[30%] flex-col left-10 lg:left-12">
           <BsFacebook className="text-white mb-10 cursor-pointer hover:scale-150 duration-500" />
           <BsTwitter className="text-white mb-10 cursor-pointer hover:scale-150 duration-500" />
           <BsLinkedin className="text-white mb-10 cursor-pointer hover:scale-150 duration-500" />
