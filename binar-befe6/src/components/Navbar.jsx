@@ -1,31 +1,33 @@
-import React, { useState, useEffect } from "react";
-import { FaUserCircle } from "react-icons/fa";
+import React, { useState } from "react";
 import { VscListFlat } from "react-icons/vsc";
 import { AiOutlineClose } from "react-icons/ai";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { useDispatch } from "react-redux";
 import { Modal, Form } from "antd";
 import { LockOutlined, UserOutlined, MailOutlined } from "@ant-design/icons";
-import { BiUserCircle } from "react-icons/bi";
 import { Button, Input } from "antd";
 import useScroll from "../hooks/useScroll";
 import { logIn } from "../features/LoginRegister/loginSlice";
 import { Avatar } from "flowbite-react";
 import { Dropdown } from "flowbite-react";
+
 import { useNavigate } from "react-router-dom";
 
 
-function Navbar() {
+
+import { postRegister } from "../features/LoginRegister/registerSlice";
+import { postLoginGoogle } from "../features/LoginRegister/loginGoogle";
+
+function Navbar({ withcroll }) {
+
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [showRegist, setShowRegist] = useState(false);
   const { scrollY } = useScroll();
 
-  const navigate = useNavigate();
 
-  const [user, setUser] = useState();
-  useEffect(() => {}, []);
+  const navigate = useNavigate();
 
   const onLogin = (values) => {
     dispatch(logIn(values));
@@ -52,26 +54,38 @@ function Navbar() {
   let profile = localStorage.getItem("user");
   let image = localStorage.getItem("image");
   let gmail = localStorage.getItem("email");
-  const [menu, setMenu] = useState(false);
-
-  const open = () => {
-    setMenu(true);
-  };
 
   const handleLogout = () => {
     window.location.reload(1);
     localStorage.clear();
   };
+
+  const onRegist = (values) => {
+    dispatch(postRegister(values));
+    setShowRegist();
+  };
+
+  const googleLogin = () => {
+    dispatch(postLoginGoogle());
+  };
   return (
     <div>
       <div
         className={`${
-          scrollY < 200 ? "bg-transparen" : "bg-sky-500"
+          withcroll
+            ? scrollY < 200
+              ? "bg-transparen"
+              : "bg-sky-500"
+            : "bg-sky-500"
         }  w-full h-9 z-10 flex justify-center items-center fixed duration-300`}
       >
         <p
           className={`${
-            scrollY < 200 ? "text-neutral-50" : "text-neutral-50"
+            withcroll
+              ? scrollY < 200
+                ? "text-neutral-50"
+                : "text-neutral-50"
+              : ""
           } text-neutral-50  mt-2 duration-300 text-center`}
         >
           Travel Gak Pakek Ribet
@@ -83,12 +97,6 @@ function Navbar() {
           sidebar ? "translate-x-0" : "translate-x-[100vw]"
         } bg-white h-40 w-48 fixed top-24 z-20 right-0 rounded-l-lg  duration-500 lg:hidden`}
       >
-        {/* <div className="flex justify-between  mt-6 mr-7">
-          <AiOutlineClose
-            className="font-bold h-6 w-6"
-            onClick={() => setsidebar(false)}
-          />
-        </div> */}
         <div className="text-center mt-4 grid gap-y-4">
           <p className="font-bold text-sky-500">Home</p>
           <p className="font-bold text-sky-500">Booking</p>
@@ -98,8 +106,12 @@ function Navbar() {
 
       <div
         className={`${
-          scrollY < 200 ? "bg-transparen" : "bg-white"
-        }  flex justify-between items-center h-12 fixed w-full z-10 mt-8 duration-300`}
+          withcroll
+            ? scrollY < 200
+              ? "bg-transparen"
+              : "bg-white"
+            : "bg-white"
+        }  flex justify-between items-center h-12 fixed  w-full z-10 mt-8 duration-300`}
       >
         <button className=" ml-7  mb-3 bg-sky-500 mt-3 w-20 h-9"></button>
 
@@ -111,22 +123,35 @@ function Navbar() {
         >
           <p
             className={`${
-              scrollY < 200 ? "text-neutral-50" : "text-sky-500"
-            } text-neutral-50 font-bold ml-8 duration-300 cursor-pointer hover:text-sky-200`}
-            onClick={() => navigate('/')}
+
+              withcroll
+                ? scrollY < 200
+                  ? "text-neutral-50"
+                  : "text-sky-500"
+                : "text-sky-500"
+            } text-neutral-50 font-bold ml-8 duration-300`}
+
           >
             Home
           </p>
           <p
             className={`${
-              scrollY < 200 ? "text-neutral-50" : "text-sky-500"
+              withcroll
+                ? scrollY < 200
+                  ? "text-neutral-50"
+                  : "text-sky-500"
+                : "text-sky-500"
             }  font-bold ml-8 duration-300`}
           >
             Booking
           </p>
           <p
             className={`${
-              scrollY < 200 ? "text-neutral-50" : "text-sky-500"
+              withcroll
+                ? scrollY < 200
+                  ? "text-neutral-50"
+                  : "text-sky-500"
+                : "text-sky-500"
             } text-neutral-50 font-bold ml-8 duration-300`}
           >
             About
@@ -186,6 +211,7 @@ function Navbar() {
                       {JSON.parse(gmail)}
                     </span>
                   </Dropdown.Header>
+
                   <Dropdown.Item
                   onClick={() =>
                     navigate(`/Profile`)
@@ -194,12 +220,20 @@ function Navbar() {
                     Profile
                   </Dropdown.Item>
 
+                  <Dropdown.Item>Profile</Dropdown.Item>
+                  <Dropdown.Item>History</Dropdown.Item>
+
+
                   <Dropdown.Divider />
                   <Dropdown.Item onClick={handleLogout}>Sign out</Dropdown.Item>
                 </Dropdown>
                 <h1
                   className={`${
-                    scrollY < 200 ? "text-neutral-50" : "text-sky-500"
+                    withcroll
+                      ? scrollY < 200
+                        ? "text-neutral-50"
+                        : "text-sky-500"
+                      : "text-sky-500"
                   } text-neutral-50 font-bold duration-300 ml-2 mt-2`}
                 >
                   {JSON.parse(profile)}
@@ -208,7 +242,11 @@ function Navbar() {
             ) : (
               <button
                 className={`${
-                  scrollY < 200 ? "text-neutral-50" : "text-sky-500"
+                  withcroll
+                    ? scrollY < 200
+                      ? "text-neutral-50"
+                      : "text-sky-500"
+                    : "text-sky-500"
                 } font-bold duration-300`}
                 onClick={isShow}
               >
@@ -229,7 +267,11 @@ function Navbar() {
                       <IoIosNotificationsOutline
                         size={37}
                         className={`${
-                          scrollY < 200 ? "text-neutral-50" : "text-sky-500"
+                          withcroll
+                            ? scrollY < 200
+                              ? "text-neutral-50"
+                              : "text-sky-500"
+                            : "text-neutral-50"
                         } text-neutral-50 font-bold duration-300 mt-1 mr-2`}
                       />
                     }
@@ -274,13 +316,8 @@ function Navbar() {
                         {JSON.parse(gmail)}
                       </span>
                     </Dropdown.Header>
-                    <Dropdown.Item
-                    // onClick={() =>
-                    //   navigate(`/Dashboard/${JSON.parse(profile)}`)
-                    // }
-                    >
-                      Profile
-                    </Dropdown.Item>
+                    <Dropdown.Item>Profile</Dropdown.Item>
+                    <Dropdown.Item>History</Dropdown.Item>
 
                     <Dropdown.Divider />
                     <Dropdown.Item onClick={handleLogout}>
@@ -294,7 +331,13 @@ function Navbar() {
               ) : (
                 <div className="false flex justify-center">
                   <button
-                    className={"text-sky-500 font-bold duration-300"}
+                    className={`${
+                      withcroll
+                        ? scrollY < 200
+                          ? "text-neutral-50"
+                          : "text-sky-500"
+                        : "text-sky-500"
+                    } text-neutral-50 font-bold`}
                     onClick={isShow}
                   >
                     Login
@@ -304,7 +347,11 @@ function Navbar() {
               {sidebar ? (
                 <AiOutlineClose
                   className={`${
-                    scrollY < 200 ? "text-neutral-50" : "text-sky-500"
+                    withcroll
+                      ? scrollY < 200
+                        ? "text-neutral-50"
+                        : "text-sky-500"
+                      : "text-sky-500"
                   } text-neutral-50 duration-300 mt-2`}
                   size={25}
                   onClick={() => setsidebar(false)}
@@ -312,7 +359,11 @@ function Navbar() {
               ) : (
                 <VscListFlat
                   className={`${
-                    scrollY < 200 ? "text-neutral-50" : "text-sky-500"
+                    withcroll
+                      ? scrollY < 200
+                        ? "text-neutral-50"
+                        : "text-sky-500"
+                      : "text-sky-500"
                   } text-neutral-50  duration-300 mt-2`}
                   size={25}
                   onClick={() => {
@@ -374,12 +425,12 @@ function Navbar() {
                 </Form.Item>
                 <div className="text-sm font-medium text-gray-500 mt-6">
                   Not registered?{" "}
-                  <a
+                  <p
                     className="text-blue-700 hover:underline dark:text-blue-500"
                     onClick={isShowRegist}
                   >
                     Create account
-                  </a>
+                  </p>
                 </div>
                 <Form.Item>
                   <div className="button fflex items-center  flex justify-between mt-4 space-x-4">
@@ -392,6 +443,7 @@ function Navbar() {
                     <Button
                       htmlType="submit"
                       className="login-form-button bg-teal-500  w-full h-12 text-white"
+                      onClick={googleLogin}
                     >
                       Log With Google
                     </Button>
@@ -415,10 +467,10 @@ function Navbar() {
                 initialValues={{
                   remember: true,
                 }}
-                // onFinish={onFinish}
+                onFinish={onRegist}
               >
                 <Form.Item
-                  name="username"
+                  name="name"
                   rules={[
                     {
                       required: true,
@@ -465,18 +517,18 @@ function Navbar() {
                 </Form.Item>
                 <div className="text-sm font-medium text-gray-500 mt-6">
                   Have Account?{" "}
-                  <a
+                  <p
                     className="text-blue-700 hover:underline dark:text-blue-500"
                     onClick={isShow}
                   >
                     Login
-                  </a>
+                  </p>
                 </div>
                 <Form.Item>
                   <div className="button fflex items-center  flex justify-between mt-4 space-x-4">
                     <Button
                       htmlType="submit"
-                      className="login-form-button bg-yellow-500 w-full h-12 text-white"
+                      className=" bg-yellow-500 w-full h-12 text-white"
                     >
                       Register
                     </Button>
