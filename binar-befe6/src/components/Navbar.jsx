@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { VscListFlat } from "react-icons/vsc";
 import { AiOutlineClose } from "react-icons/ai";
-import { IoIosNotificationsOutline } from "react-icons/io";
+
+import { IoIosNotifications } from "react-icons/io";
+
 import { FaPlane } from "react-icons/fa";
+
 import { useDispatch } from "react-redux";
 import { Modal, Form } from "antd";
 import { LockOutlined, UserOutlined, MailOutlined } from "@ant-design/icons";
@@ -46,7 +49,7 @@ function Navbar({ withcroll }) {
   };
 
   const [sidebar, setsidebar] = useState(false);
-  // console.log(scrollY);
+  console.log(scrollY);
   let token = localStorage.getItem("token");
   let profile = localStorage.getItem("user");
   let image = localStorage.getItem("image");
@@ -64,14 +67,17 @@ function Navbar({ withcroll }) {
 
   const googleLogin = () => {
     dispatch(postLoginGoogle());
+    setShow();
   };
   return (
     <div>
       <div
         className={`${
           withcroll
+
             ? scrollY < 100
               ? "bg-transparen"
+
               : "bg-sky-500"
             : "bg-sky-500"
         }  w-full h-9 z-20 flex justify-center items-center fixed duration-300`}
@@ -91,11 +97,13 @@ function Navbar({ withcroll }) {
 
       <div
         className={`${
+
           sidebar ? "translate-x-0" : "translate-x-[100vw]"
         } bg-white h-40 w-48 fixed top-24 z-10 right-0 rounded-l-lg  duration-500 lg:hidden`}
       >
         <div className="text-center mt-4 grid gap-y-4">
           <p className="font-bold text-sky-500" onClick={() => navigate("/")}>
+
             Home
           </p>
           <p className="font-bold text-sky-500">Booking</p>
@@ -106,16 +114,20 @@ function Navbar({ withcroll }) {
       <div
         className={`${
           withcroll
+
             ? scrollY < 100
               ? "bg-transparen"
+
               : "bg-white"
             : "bg-white"
         }  flex justify-between items-center h-12 fixed  w-full z-20 mt-8 duration-300`}
       >
+
         <FaPlane
           className=" ml-7  mb-3 text-sky-500 mt-3 w-20 h-9"
           onClick={() => navigate(`/`)}
         />
+
 
         <div
           className={
@@ -130,7 +142,9 @@ function Navbar({ withcroll }) {
                   ? "text-neutral-50"
                   : "text-sky-500"
                 : "text-sky-500"
+
             } text-neutral-50 font-bold ml-8 duration-300 cursor-pointer hover:text-sky-200`}
+
             onClick={() => navigate("/")}
           >
             Home
@@ -168,8 +182,9 @@ function Navbar({ withcroll }) {
                   inline={true}
                   className="w-40"
                   label={
-                    <IoIosNotificationsOutline
+                    <IoIosNotifications
                       size={35}
+
                       className={`${
                         withcroll
                           ? scrollY < 100
@@ -177,6 +192,7 @@ function Navbar({ withcroll }) {
                             : "text-sky-500"
                           : "text-sky-500"
                       }  font-bold duration-300 mt-1 mr-2`}
+
                     />
                   }
                 >
@@ -265,15 +281,17 @@ function Navbar({ withcroll }) {
                     inline={true}
                     className="w-40"
                     label={
-                      <IoIosNotificationsOutline
+                      <IoIosNotifications
                         size={37}
                         className={`${
                           withcroll
+
                             ? scrollY < 100
                               ? "text-neutral-50"
                               : "text-sky-500"
                             : "text-sky-500"
                         } text-neutral-50 font-bold duration-300 mt-1 mr-2`}
+
                       />
                     }
                   >
