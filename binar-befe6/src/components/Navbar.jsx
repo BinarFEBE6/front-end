@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { VscListFlat } from "react-icons/vsc";
 import { AiOutlineClose } from "react-icons/ai";
 import { IoIosNotificationsOutline } from "react-icons/io";
+import { FaPlane } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { Modal, Form } from "antd";
 import { LockOutlined, UserOutlined, MailOutlined } from "@ant-design/icons";
@@ -69,7 +70,7 @@ function Navbar({ withcroll }) {
       <div
         className={`${
           withcroll
-            ? scrollY < 200
+            ? scrollY < 100
               ? "bg-transparen"
               : "bg-sky-500"
             : "bg-sky-500"
@@ -78,7 +79,7 @@ function Navbar({ withcroll }) {
         <p
           className={`${
             withcroll
-              ? scrollY < 200
+              ? scrollY < 100
                 ? "text-neutral-50"
                 : "text-neutral-50"
               : ""
@@ -94,7 +95,9 @@ function Navbar({ withcroll }) {
         } bg-white h-40 w-48 fixed top-24 z-10 right-0 rounded-l-lg  duration-500 lg:hidden`}
       >
         <div className="text-center mt-4 grid gap-y-4">
-          <p className="font-bold text-sky-500" onClick={() => navigate('/')}>Home</p>
+          <p className="font-bold text-sky-500" onClick={() => navigate("/")}>
+            Home
+          </p>
           <p className="font-bold text-sky-500">Booking</p>
           <p className="font-bold text-sky-500">About</p>
         </div>
@@ -103,13 +106,16 @@ function Navbar({ withcroll }) {
       <div
         className={`${
           withcroll
-            ? scrollY < 200
+            ? scrollY < 100
               ? "bg-transparen"
               : "bg-white"
             : "bg-white"
         }  flex justify-between items-center h-12 fixed  w-full z-20 mt-8 duration-300`}
       >
-        <button className=" ml-7  mb-3 bg-sky-500 mt-3 w-20 h-9"></button>
+        <FaPlane
+          className=" ml-7  mb-3 text-sky-500 mt-3 w-20 h-9"
+          onClick={() => navigate(`/`)}
+        />
 
         <div
           className={
@@ -117,40 +123,40 @@ function Navbar({ withcroll }) {
             (navbarOpen ? " flex" : " hidden")
           }
         >
-          <p
+          <button
             className={`${
               withcroll
-                ? scrollY < 200
+                ? scrollY < 100
                   ? "text-neutral-50"
                   : "text-sky-500"
                 : "text-sky-500"
             } text-neutral-50 font-bold ml-8 duration-300 cursor-pointer hover:text-sky-200`}
-            onClick={() => navigate('/')}
+            onClick={() => navigate("/")}
           >
             Home
-          </p>
-          <p
+          </button>
+          <button
             className={`${
               withcroll
-                ? scrollY < 200
+                ? scrollY < 100
                   ? "text-neutral-50"
                   : "text-sky-500"
                 : "text-sky-500"
             }  font-bold ml-8 duration-300`}
           >
             Booking
-          </p>
-          <p
+          </button>
+          <button
             className={`${
               withcroll
-                ? scrollY < 200
+                ? scrollY < 100
                   ? "text-neutral-50"
                   : "text-sky-500"
                 : "text-sky-500"
             } text-neutral-50 font-bold ml-8 duration-300`}
           >
             About
-          </p>
+          </button>
         </div>
 
         <div className="flex items-center gap-2 lg:mr-12">
@@ -165,8 +171,12 @@ function Navbar({ withcroll }) {
                     <IoIosNotificationsOutline
                       size={35}
                       className={`${
-                        scrollY < 200 ? "text-neutral-50" : "text-sky-500"
-                      } text-neutral-50 font-bold duration-300 mt-1 mr-2`}
+                        withcroll
+                          ? scrollY < 100
+                            ? "text-neutral-50"
+                            : "text-sky-500"
+                          : "text-sky-500"
+                      }  font-bold duration-300 mt-1 mr-2`}
                     />
                   }
                 >
@@ -221,7 +231,7 @@ function Navbar({ withcroll }) {
                 <h1
                   className={`${
                     withcroll
-                      ? scrollY < 200
+                      ? scrollY < 100
                         ? "text-neutral-50"
                         : "text-sky-500"
                       : "text-sky-500"
@@ -234,7 +244,7 @@ function Navbar({ withcroll }) {
               <button
                 className={`${
                   withcroll
-                    ? scrollY < 200
+                    ? scrollY < 100
                       ? "text-neutral-50"
                       : "text-sky-500"
                     : "text-sky-500"
@@ -259,10 +269,10 @@ function Navbar({ withcroll }) {
                         size={37}
                         className={`${
                           withcroll
-                            ? scrollY < 200
+                            ? scrollY < 100
                               ? "text-neutral-50"
                               : "text-sky-500"
-                            : "text-neutral-50"
+                            : "text-sky-500"
                         } text-neutral-50 font-bold duration-300 mt-1 mr-2`}
                       />
                     }
@@ -329,7 +339,7 @@ function Navbar({ withcroll }) {
                   <button
                     className={`${
                       withcroll
-                        ? scrollY < 200
+                        ? scrollY < 100
                           ? "text-neutral-50"
                           : "text-sky-500"
                         : "text-sky-500"
@@ -344,7 +354,7 @@ function Navbar({ withcroll }) {
                 <AiOutlineClose
                   className={`${
                     withcroll
-                      ? scrollY < 200
+                      ? scrollY < 100
                         ? "text-neutral-50"
                         : "text-sky-500"
                       : "text-sky-500"
@@ -356,7 +366,7 @@ function Navbar({ withcroll }) {
                 <VscListFlat
                   className={`${
                     withcroll
-                      ? scrollY < 200
+                      ? scrollY < 100
                         ? "text-neutral-50"
                         : "text-sky-500"
                       : "text-sky-500"
