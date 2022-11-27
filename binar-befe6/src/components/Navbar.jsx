@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { VscListFlat } from "react-icons/vsc";
 import { AiOutlineClose } from "react-icons/ai";
-import { IoIosNotificationsOutline } from "react-icons/io";
+import { IoIosNotifications } from "react-icons/io";
 import { useDispatch } from "react-redux";
 import { Modal, Form } from "antd";
 import { LockOutlined, UserOutlined, MailOutlined } from "@ant-design/icons";
@@ -45,7 +45,7 @@ function Navbar({ withcroll }) {
   };
 
   const [sidebar, setsidebar] = useState(false);
-  // console.log(scrollY);
+  console.log(scrollY);
   let token = localStorage.getItem("token");
   let profile = localStorage.getItem("user");
   let image = localStorage.getItem("image");
@@ -63,6 +63,7 @@ function Navbar({ withcroll }) {
 
   const googleLogin = () => {
     dispatch(postLoginGoogle());
+    setShow();
   };
   return (
     <div>
@@ -70,7 +71,7 @@ function Navbar({ withcroll }) {
         className={`${
           withcroll
             ? scrollY < 200
-              ? "bg-transparen"
+              ? "bg-transparent"
               : "bg-sky-500"
             : "bg-sky-500"
         }  w-full h-9 z-10 flex justify-center items-center fixed duration-300`}
@@ -90,11 +91,16 @@ function Navbar({ withcroll }) {
 
       <div
         className={`${
-          sidebar ? "translate-x-0" : "translate-x-[100vw]"
+          sidebar ? "translate-x-0" : "translate-x-[200vw]"
         } bg-white h-40 w-48 fixed top-24 z-20 right-0 rounded-l-lg  duration-500 lg:hidden`}
       >
         <div className="text-center mt-4 grid gap-y-4">
-          <p className="font-bold text-sky-500">Home</p>
+          <p
+            className="font-bold text-sky-500 cursor-pointer"
+            onClick={() => navigate("/")}
+          >
+            Home
+          </p>
           <p className="font-bold text-sky-500">Booking</p>
           <p className="font-bold text-sky-500">About</p>
         </div>
@@ -104,12 +110,15 @@ function Navbar({ withcroll }) {
         className={`${
           withcroll
             ? scrollY < 200
-              ? "bg-transparen"
+              ? "bg-transparent"
               : "bg-white"
             : "bg-white"
         }  flex justify-between items-center h-12 fixed  w-full z-10 mt-8 duration-300`}
       >
-        <button className=" ml-7  mb-3 bg-sky-500 mt-3 w-20 h-9"></button>
+        <button
+          className=" ml-7  mb-3 bg-sky-500 mt-3 w-20 h-9"
+          onClick={() => navigate("/")}
+        ></button>
 
         <div
           className={
@@ -124,7 +133,8 @@ function Navbar({ withcroll }) {
                   ? "text-neutral-50"
                   : "text-sky-500"
                 : "text-sky-500"
-            } text-neutral-50 font-bold ml-8 duration-300`}
+            } text-neutral-50 font-bold ml-8 duration-300 cursor-pointer`}
+            onClick={() => navigate("/")}
           >
             Home
           </p>
@@ -161,11 +171,9 @@ function Navbar({ withcroll }) {
                   inline={true}
                   className="w-40"
                   label={
-                    <IoIosNotificationsOutline
+                    <IoIosNotifications
                       size={35}
-                      className={`${
-                        scrollY < 200 ? "text-neutral-50" : "text-sky-500"
-                      } text-neutral-50 font-bold duration-300 mt-1 mr-2`}
+                      className={`text-sky-500  font-bold duration-300 mt-1 mr-2`}
                     />
                   }
                 >
@@ -254,15 +262,15 @@ function Navbar({ withcroll }) {
                     inline={true}
                     className="w-40"
                     label={
-                      <IoIosNotificationsOutline
+                      <IoIosNotifications
                         size={37}
                         className={`${
                           withcroll
                             ? scrollY < 200
-                              ? "text-neutral-50"
+                              ? "text-yellow-300"
                               : "text-sky-500"
-                            : "text-neutral-50"
-                        } text-neutral-50 font-bold duration-300 mt-1 mr-2`}
+                            : "text-yellow-300"
+                        } text-yellow-300 font-bold duration-300 mt-1 mr-2`}
                       />
                     }
                   >
