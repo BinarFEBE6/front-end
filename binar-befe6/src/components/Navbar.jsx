@@ -13,19 +13,15 @@ import { Dropdown } from "flowbite-react";
 
 import { useNavigate } from "react-router-dom";
 
-
-
 import { postRegister } from "../features/LoginRegister/registerSlice";
 import { postLoginGoogle } from "../features/LoginRegister/loginGoogle";
 
 function Navbar({ withcroll }) {
-
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [showRegist, setShowRegist] = useState(false);
   const { scrollY } = useScroll();
-
 
   const navigate = useNavigate();
 
@@ -123,14 +119,12 @@ function Navbar({ withcroll }) {
         >
           <p
             className={`${
-
               withcroll
                 ? scrollY < 200
                   ? "text-neutral-50"
                   : "text-sky-500"
                 : "text-sky-500"
             } text-neutral-50 font-bold ml-8 duration-300`}
-
           >
             Home
           </p>
@@ -212,17 +206,13 @@ function Navbar({ withcroll }) {
                     </span>
                   </Dropdown.Header>
 
-                  <Dropdown.Item
-                  onClick={() =>
-                    navigate(`/Profile`)
-                  }
-                  >
+                  <Dropdown.Item onClick={() => navigate(`/Profile`)}>
                     Profile
                   </Dropdown.Item>
 
-                  <Dropdown.Item>Profile</Dropdown.Item>
-                  <Dropdown.Item>History</Dropdown.Item>
-
+                  <Dropdown.Item onClick={() => navigate(`/History`)}>
+                    History
+                  </Dropdown.Item>
 
                   <Dropdown.Divider />
                   <Dropdown.Item onClick={handleLogout}>Sign out</Dropdown.Item>
@@ -316,8 +306,13 @@ function Navbar({ withcroll }) {
                         {JSON.parse(gmail)}
                       </span>
                     </Dropdown.Header>
-                    <Dropdown.Item>Profile</Dropdown.Item>
-                    <Dropdown.Item>History</Dropdown.Item>
+
+                    <Dropdown.Item onClick={() => navigate(`/Profile`)}>
+                      Profile
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={() => navigate(`/History`)}>
+                      History
+                    </Dropdown.Item>
 
                     <Dropdown.Divider />
                     <Dropdown.Item onClick={handleLogout}>
