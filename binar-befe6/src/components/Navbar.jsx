@@ -73,7 +73,7 @@ function Navbar({ withcroll }) {
               ? "bg-transparen"
               : "bg-sky-500"
             : "bg-sky-500"
-        }  w-full h-9 z-10 flex justify-center items-center fixed duration-300`}
+        }  w-full h-9 z-20 flex justify-center items-center fixed duration-300`}
       >
         <p
           className={`${
@@ -91,10 +91,10 @@ function Navbar({ withcroll }) {
       <div
         className={`${
           sidebar ? "translate-x-0" : "translate-x-[100vw]"
-        } bg-white h-40 w-48 fixed top-24 z-20 right-0 rounded-l-lg  duration-500 lg:hidden`}
+        } bg-white h-40 w-48 fixed top-24 z-10 right-0 rounded-l-lg  duration-500 lg:hidden`}
       >
         <div className="text-center mt-4 grid gap-y-4">
-          <p className="font-bold text-sky-500">Home</p>
+          <p className="font-bold text-sky-500" onClick={() => navigate('/')}>Home</p>
           <p className="font-bold text-sky-500">Booking</p>
           <p className="font-bold text-sky-500">About</p>
         </div>
@@ -107,13 +107,13 @@ function Navbar({ withcroll }) {
               ? "bg-transparen"
               : "bg-white"
             : "bg-white"
-        }  flex justify-between items-center h-12 fixed  w-full z-10 mt-8 duration-300`}
+        }  flex justify-between items-center h-12 fixed  w-full z-20 mt-8 duration-300`}
       >
         <button className=" ml-7  mb-3 bg-sky-500 mt-3 w-20 h-9"></button>
 
         <div
           className={
-            "lg:items-center lg:pt-4 gap-10 hidden lg:flex lg:justify-center" +
+            "lg:items-center lg:pt-4 gap-10 hidden lg:flex lg:justify-center z-20" +
             (navbarOpen ? " flex" : " hidden")
           }
         >
@@ -124,7 +124,8 @@ function Navbar({ withcroll }) {
                   ? "text-neutral-50"
                   : "text-sky-500"
                 : "text-sky-500"
-            } text-neutral-50 font-bold ml-8 duration-300`}
+            } text-neutral-50 font-bold ml-8 duration-300 cursor-pointer hover:text-sky-200`}
+            onClick={() => navigate('/')}
           >
             Home
           </p>
