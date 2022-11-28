@@ -74,10 +74,8 @@ function Navbar({ withcroll }) {
       <div
         className={`${
           withcroll
-
             ? scrollY < 100
               ? "bg-transparen"
-
               : "bg-sky-500"
             : "bg-sky-500"
         }  w-full h-9 z-20 flex justify-center items-center fixed duration-300`}
@@ -97,13 +95,11 @@ function Navbar({ withcroll }) {
 
       <div
         className={`${
-
           sidebar ? "translate-x-0" : "translate-x-[100vw]"
         } bg-white h-40 w-48 fixed top-24 z-10 right-0 rounded-l-lg  duration-500 lg:hidden`}
       >
         <div className="text-center mt-4 grid gap-y-4">
           <p className="font-bold text-sky-500" onClick={() => navigate("/")}>
-
             Home
           </p>
           <p className="font-bold text-sky-500">Booking</p>
@@ -114,24 +110,20 @@ function Navbar({ withcroll }) {
       <div
         className={`${
           withcroll
-
             ? scrollY < 100
               ? "bg-transparen"
-
               : "bg-white"
             : "bg-white"
         }  flex justify-between items-center h-12 fixed  w-full z-20 mt-8 duration-300`}
       >
-
         <FaPlane
-          className=" ml-7  mb-3 text-sky-500 mt-3 w-20 h-9"
+          className=" ml-2 lg:ml-7 mb-3 text-sky-500 mt-3 w-20 h-9"
           onClick={() => navigate(`/`)}
         />
 
-
         <div
           className={
-            "lg:items-center lg:pt-4 gap-10 hidden lg:flex lg:justify-center z-20" +
+            "lg:items-center gap-10 hidden lg:flex lg:justify-center z-20" +
             (navbarOpen ? " flex" : " hidden")
           }
         >
@@ -142,9 +134,7 @@ function Navbar({ withcroll }) {
                   ? "text-neutral-50"
                   : "text-sky-500"
                 : "text-sky-500"
-
             } text-neutral-50 font-bold ml-8 duration-300 cursor-pointer hover:text-sky-200`}
-
             onClick={() => navigate("/")}
           >
             Home
@@ -184,7 +174,6 @@ function Navbar({ withcroll }) {
                   label={
                     <IoIosNotifications
                       size={35}
-
                       className={`${
                         withcroll
                           ? scrollY < 100
@@ -192,7 +181,6 @@ function Navbar({ withcroll }) {
                             : "text-sky-500"
                           : "text-sky-500"
                       }  font-bold duration-300 mt-1 mr-2`}
-
                     />
                   }
                 >
@@ -285,13 +273,11 @@ function Navbar({ withcroll }) {
                         size={37}
                         className={`${
                           withcroll
-
                             ? scrollY < 100
                               ? "text-neutral-50"
                               : "text-sky-500"
                             : "text-sky-500"
                         } text-neutral-50 font-bold duration-300 mt-1 mr-2`}
-
                       />
                     }
                   >
