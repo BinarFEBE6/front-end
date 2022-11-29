@@ -20,12 +20,18 @@ function History() {
         </div>
 
         <div className="bg-white w-full px-2   mt-5 lg:w-[800px] rounded-lg drop-shadow-2xl">
-          <div className="flex p-4 gap-2">
-            <MdAirplanemodeActive className="text-sky-500 text-[20px]" />
-            <p className="font-bold">Pesawat</p>
+          <div className="flex  p-4 gap-1">
+            <div>
+              <MdAirplanemodeActive className="text-sky-500 text-[20px]" />
+            </div>
+
+            <div className="flex justify-between w-screen">
+              <p className="font-bold">Pesawat</p>
+              <p className="font-bold">Pulang Pergi</p>
+            </div>
           </div>
           <div className="ml-5">
-            <p>Order ID : 0001</p>
+            <p className="font-bold">Order ID : 0001</p>
           </div>
           <div className="flex ml-5 gap-2">
             <p className="font-bold">Jakarta</p>
@@ -35,32 +41,54 @@ function History() {
 
           <div className=" ml-5  flex lg:ml-5 gap-2">
             <div className="grid">
-              <p className="text-[11px] lg:text-[14px]">Pulang Pergi</p>
-              <p className="text-[11px] lg:text-[14px]">2 Penumpang</p>
+              {/* <p className=" text-[13px] lg:text-[14px]">Pulang Pergi</p> */}
+              <div className="flex gap-1">
+                <p className="font-bold text-[13px] lg:text-[14px]">
+                  Quota Penumpang:
+                </p>
+                <p className=" text-[13px] lg:text-[14px]">1</p>
+              </div>
 
               <div className="flex gap-1">
-                <TbPlaneInflight className=" text-[11px] lg:text-[14px]" />
-                <p className="text-[11px] lg:text-[14px]">Sabtu, 27 Nov 2022</p>
-                <WiTime3 className="text-[11px] lg:text-[14px]" />
-                <p className="text-[11px] lg:text-[14px]">06.30 | </p>
-                <TbPlaneInflight className="text-[11px] lg:text-[14px]" />
-                <p className="text-[11px] lg:text-[14px]">
-                  Minggu, 30 Nov 2022
+                <p className="font-bold text-[13px] lg:text-[14px]">
+                  Jadwal Berangkat:
                 </p>
-                <WiTime3 className="text-[11px] lg:text-[14px]" />
-                <p className="text-[11px] lg:text-[14px]">13.00</p>
+                <TbPlaneInflight className=" text-[12px] lg:text-[14px]" />
+                <p className=" text-[13px] lg:text-[14px]">
+                  Sabtu, 27 Nov 2022,
+                </p>
+                <WiTime3 className=" text-[13px] lg:text-[14px]" />
+                <p className=" text-[13px] lg:text-[14px]">06.30 </p>
+              </div>
+
+              <div className="flex gap-1">
+                <p className="font-bold text-[13px] lg:text-[14px]">
+                  Jadwal Kembali:
+                </p>
+                <TbPlaneInflight className="text-[13px] lg:text-[14px]" />
+                <p className=" text-[13px] lg:text-[14px]">
+                  Minggu, 30 Nov 2022,
+                </p>
+                <WiTime3 className=" text-[13px] lg:text-[14px]" />
+                <p className=" text-[13px] lg:text-[14px]">13.00</p>
               </div>
             </div>
           </div>
         </div>
 
         <div className="bg-white w-full px-2   mt-2 lg:w-[800px] rounded-lg drop-shadow-2xl">
-          <div className="flex p-4 gap-2">
-            <MdAirplanemodeActive className="text-sky-500 text-[20px]" />
-            <p className="font-bold">Pesawat</p>
+          <div className="flex p-4 gap-1">
+            <div>
+              <MdAirplanemodeActive className="text-sky-500 text-[20px]" />
+            </div>
+
+            <div className="flex justify-between w-screen">
+              <p className="font-bold">Pesawat</p>
+              <p className="font-bold">Sekali Jalan</p>
+            </div>
           </div>
           <div className="ml-5">
-            <p>Order ID : 0002</p>
+            <p className="font-bold">Order ID : 0002</p>
           </div>
           <div className="flex ml-5 gap-2">
             <p className="font-bold">Aceh</p>
@@ -70,13 +98,21 @@ function History() {
 
           <div className="gap-1 flex ml-5 lg:gap-2">
             <div className="grid">
-              <p className="text-[11px] lg:text-[14px]">Sekali Jalan</p>
-              <p className="text-[11px] lg:text-[14px]">2 Penumpang</p>
               <div className="flex gap-1">
-                <TbPlaneInflight className="text-[11px] lg:text-[14px]" />
-                <p className="text-[11px] lg:text-[14px]">Kamis, 1 Des 2022</p>
-                <WiTime3 className="text-[11px] lg:text-[14px]" />
-                <p className="text-[11px] lg:text-[14px]">06.30 </p>
+                <p className="font-bold text-[13px] lg:text-[14px]">
+                  Quota Penumpang:
+                </p>
+                <p className=" text-[13px] lg:text-[14px]">2</p>
+              </div>
+
+              <div className="flex gap-1">
+                <p className="font-bold text-[13px] lg:text-[14px]">
+                  Jadwal Berangkat:
+                </p>
+                <TbPlaneInflight className=" text-[13px] lg:text-[14px]" />
+                <p className=" text-[13px] lg:text-[14px]">Kamis, 1 Des 2022</p>
+                <WiTime3 className=" text-[13px] lg:text-[14px]" />
+                <p className=" text-[13px] lg:text-[14px]">06.30 </p>
               </div>
             </div>
           </div>
