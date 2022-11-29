@@ -374,7 +374,7 @@ function Navbar({ withcroll }) {
                         ? "text-neutral-50"
                         : "text-sky-500"
                       : "text-sky-500"
-                  } text-neutral-50  duration-300 `}
+                  } text-neutral-50  duration-300 mt-2`}
                   size={25}
                   onClick={() => {
                     setNavbarOpen(!navbarOpen);
