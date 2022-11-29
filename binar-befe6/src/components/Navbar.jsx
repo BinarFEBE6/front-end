@@ -13,7 +13,9 @@ import { Button, Input } from "antd";
 import useScroll from "../hooks/useScroll";
 import { logIn } from "../features/LoginRegister/loginSlice";
 import { Avatar } from "flowbite-react";
-import { Dropdown } from "flowbite-react";
+import { Dropdown, Tooltip } from "flowbite-react";
+import { Popover } from "antd";
+import { HiSpeakerphone } from "react-icons/hi";
 
 import { useNavigate } from "react-router-dom";
 
@@ -69,6 +71,20 @@ function Navbar({ withcroll }) {
     dispatch(postLoginGoogle());
     setShow();
   };
+  const content = (
+    <div>
+      <div className="header flex justify-center flex-row">
+        <h1>Notification</h1>
+      </div>
+
+      <p className="">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad, eligendi.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad, eligendi.
+      </p>
+    </div>
+  );
   return (
     <div>
       <div
@@ -167,41 +183,27 @@ function Navbar({ withcroll }) {
           <div className="lg:flex items-center gap-2 hidden justify-center">
             {token && token.length ? (
               <div className="tr flex justify-center">
-                <Dropdown
-                  arrowIcon={false}
-                  inline={true}
+                <Tooltip
+                  content={content}
+                  placement="bottom"
+                  trigger="click"
+                  style="light"
                   className="w-40"
-                  label={
+                  animation="duration-500"
+                >
+                  <button>
                     <IoIosNotifications
-                      size={35}
+                      size={37}
                       className={`${
                         withcroll
-                          ? scrollY < 100
+                          ? scrollY < 200
                             ? "text-neutral-50"
                             : "text-sky-500"
-                          : "text-sky-500"
-                      }  font-bold duration-300 mt-1 mr-2`}
+                          : "text-neutral-50"
+                      } font-bold duration-300 mt-1 `}
                     />
-                  }
-                >
-                  <Dropdown.Header>
-                    <span className="block text-sm">Notification</span>
-                  </Dropdown.Header>
-                  <Dropdown.Item
-                  // onClick={() =>
-                  //   navigate(`/Dashboard/${JSON.parse(profile)}`)
-                  // }
-                  >
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Officia, rem.
-                  </Dropdown.Item>
-
-                  <Dropdown.Divider />
-                  <Dropdown.Item>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Facilis, quibusdam?
-                  </Dropdown.Item>
-                </Dropdown>
+                  </button>
+                </Tooltip>
 
                 <Dropdown
                   arrowIcon={false}
@@ -263,42 +265,25 @@ function Navbar({ withcroll }) {
             <div className="flex gap-x-2 justify-center ml-6">
               {token && token.length ? (
                 <div className=" flex ">
-                  <Dropdown
-                    arrowIcon={false}
-                    onClick={() => setsidebar(false)}
-                    inline={true}
-                    className="w-40"
-                    label={
-                      <IoIosNotifications
-                        size={37}
-                        className={`${
-                          withcroll
-                            ? scrollY < 100
-                              ? "text-neutral-50"
-                              : "text-sky-500"
-                            : "text-sky-500"
-                        } text-neutral-50 font-bold duration-300 mt-1 mr-2`}
-                      />
-                    }
+                  <Tooltip
+                    content={content}
+                    placement="bottom"
+                    trigger="click"
+                    style="light"
+                    animation="duration-500"
+                    className="w-40 "
                   >
-                    <Dropdown.Header>
-                      <span className="block text-sm">Notification</span>
-                    </Dropdown.Header>
-                    <Dropdown.Item
-                    // onClick={() =>
-                    //   navigate(`/Dashboard/${JSON.parse(profile)}`)
-                    // }
-                    >
-                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                      Officia, rem.
-                    </Dropdown.Item>
-
-                    <Dropdown.Divider />
-                    <Dropdown.Item>
-                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                      Facilis, quibusdam?
-                    </Dropdown.Item>
-                  </Dropdown>
+                    <IoIosNotifications
+                      size={38}
+                      className={`${
+                        withcroll
+                          ? scrollY < 200
+                            ? "text-neutral-50"
+                            : "text-sky-500"
+                          : "text-neutral-50"
+                      } font-bold duration-300 mt-1 `}
+                    />
+                  </Tooltip>
 
                   <Dropdown
                     arrowIcon={false}
