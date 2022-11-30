@@ -14,8 +14,6 @@ import useScroll from "../hooks/useScroll";
 import { logIn } from "../features/LoginRegister/loginSlice";
 import { Avatar } from "flowbite-react";
 import { Dropdown, Tooltip } from "flowbite-react";
-import { Popover } from "antd";
-import { HiSpeakerphone } from "react-icons/hi";
 
 import { useNavigate } from "react-router-dom";
 
@@ -133,7 +131,14 @@ function Navbar({ withcroll }) {
         }  flex justify-between items-center h-12 fixed  w-full z-20 mt-8 duration-300`}
       >
         <FaPlane
-          className=" ml-2 lg:ml-7 mb-3 text-sky-500 mt-3 w-20 h-9"
+          className={`${
+            withcroll
+              ? scrollY < 100
+                ? "text-neutral-50"
+                : "text-sky-500"
+              : "text-sky-500"
+          } text-neutral-50  ml-3 lg:ml-7 mb-3 mt-3 w-10 h-7 lg:w-20 lg:h-9 `}
+          // className=" ml-2 lg:ml-7 mb-3 text-sky-500 mt-3 w-20 h-9"
           onClick={() => navigate(`/`)}
         />
 
@@ -324,7 +329,7 @@ function Navbar({ withcroll }) {
                   </p> */}
                 </div>
               ) : (
-                <div className="false flex justify-center">
+                <div className="false flex items-center">
                   <button
                     className={`${
                       withcroll
@@ -347,7 +352,7 @@ function Navbar({ withcroll }) {
                         ? "text-neutral-50"
                         : "text-sky-500"
                       : "text-sky-500"
-                  } text-neutral-50 duration-300 mt-2`}
+                  } text-neutral-50 duration-300 mt-1`}
                   size={25}
                   onClick={() => setsidebar(false)}
                 />
@@ -359,7 +364,7 @@ function Navbar({ withcroll }) {
                         ? "text-neutral-50"
                         : "text-sky-500"
                       : "text-sky-500"
-                  } text-neutral-50  duration-300 mt-2`}
+                  } text-neutral-50  duration-300 mt-1`}
                   size={25}
                   onClick={() => {
                     setNavbarOpen(!navbarOpen);
