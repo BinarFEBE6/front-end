@@ -188,7 +188,7 @@ function Navbar({ withcroll }) {
                   placement="bottom"
                   trigger="click"
                   style="light"
-                  className="w-40"
+                  className="w-56"
                   animation="duration-500"
                 >
                   <button>
