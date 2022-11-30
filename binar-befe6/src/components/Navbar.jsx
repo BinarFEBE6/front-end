@@ -193,7 +193,7 @@ function Navbar({ withcroll }) {
                   placement="bottom"
                   trigger="click"
                   style="light"
-                  className="w-40"
+                  className="w-56"
                   animation="duration-500"
                 >
                   <button>
@@ -202,9 +202,9 @@ function Navbar({ withcroll }) {
                       className={`${
                         withcroll
                           ? scrollY < 200
-                            ? "text-neutral-50"
+                            ? "text-yellow-300"
                             : "text-sky-500"
-                          : "text-neutral-50"
+                          : "text-yellow-300"
                       } font-bold duration-300 mt-1 `}
                     />
                   </button>
@@ -239,17 +239,6 @@ function Navbar({ withcroll }) {
                   <Dropdown.Divider />
                   <Dropdown.Item onClick={handleLogout}>Sign out</Dropdown.Item>
                 </Dropdown>
-                <h1
-                  className={`${
-                    withcroll
-                      ? scrollY < 100
-                        ? "text-neutral-50"
-                        : "text-sky-500"
-                      : "text-sky-500"
-                  } text-neutral-50 font-bold duration-300 ml-2 mt-2`}
-                >
-                  {JSON.parse(profile)}
-                </h1>
               </div>
             ) : (
               <button
@@ -283,9 +272,9 @@ function Navbar({ withcroll }) {
                       className={`${
                         withcroll
                           ? scrollY < 200
-                            ? "text-neutral-50"
+                            ? "text-yellow-300"
                             : "text-sky-500"
-                          : "text-neutral-50"
+                          : "text-yellow-300"
                       } font-bold duration-300 mt-1 `}
                     />
                   </Tooltip>
@@ -306,9 +295,6 @@ function Navbar({ withcroll }) {
                     <Dropdown.Header>
                       <span className="block text-sm">
                         {JSON.parse(profile)}
-                      </span>
-                      <span className="block truncate text-sm font-medium">
-                        {JSON.parse(gmail)}
                       </span>
                     </Dropdown.Header>
 
@@ -352,8 +338,8 @@ function Navbar({ withcroll }) {
                         ? "text-neutral-50"
                         : "text-sky-500"
                       : "text-sky-500"
-                  } text-neutral-50 duration-300 mt-1`}
-                  size={25}
+                  } text-neutral-50 duration-300 mt-3`}
+                  size={22}
                   onClick={() => setsidebar(false)}
                 />
               ) : (
@@ -364,8 +350,8 @@ function Navbar({ withcroll }) {
                         ? "text-neutral-50"
                         : "text-sky-500"
                       : "text-sky-500"
-                  } text-neutral-50  duration-300 mt-1`}
-                  size={25}
+                  } text-neutral-50  duration-300 mt-3 `}
+                  size={22}
                   onClick={() => {
                     setNavbarOpen(!navbarOpen);
                     setsidebar(true);
