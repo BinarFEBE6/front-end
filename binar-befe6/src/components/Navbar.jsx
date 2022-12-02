@@ -194,13 +194,8 @@ function Navbar({ withcroll }) {
                   <button>
                     <IoIosNotifications
                       size={37}
-                      className={`${
-                        withcroll
-                          ? scrollY < 200
-                            ? "text-yellow-300"
-                            : "text-sky-500"
-                          : "text-yellow-300"
-                      } font-bold duration-300 mt-1 `}
+                      className={`
+                          text-yellow-300 font-bold duration-300 mt-1 `}
                     />
                   </button>
                 </Tooltip>
@@ -264,13 +259,8 @@ function Navbar({ withcroll }) {
                   >
                     <IoIosNotifications
                       size={38}
-                      className={`${
-                        withcroll
-                          ? scrollY < 200
-                            ? "text-yellow-300"
-                            : "text-sky-500"
-                          : "text-yellow-300"
-                      } font-bold duration-300 mt-1 `}
+                      className={`
+                       text-yellow-300 font-bold duration-300 mt-1 `}
                     />
                   </Tooltip>
 

@@ -21,12 +21,11 @@ function Schedule() {
       <Navbar withcroll={false} />
       <div className="schedule w-full h-full lg:w-full  flex justify-center items-center bg-slate-100 flex-col ">
         <div className="class bg bg-sky-700 w-full h-[35vh] lg:h-[40vh] rounded-b-[50px] lg:rounded-b-[100px] mb-5 flex items-center flex-col justify-center shadow-xl">
-          <h1 className=" text-2xl lg:text-4xl text-center text-white font-bold mt-5 tracking-wider uppercase">
+          <h1 className=" text-2xl lg:text-4xl text-center text-white font-bold mt-7 tracking-wider uppercase">
             Choose Your Planning Schedule
           </h1>
-          <TbPlaneInflight size={50} className="text-white" />
         </div>
-        <div className="wrapper w-[90vw] h-fit lg:w-[76vw] bg-white shadow-xl rounded-md">
+        <div className="wrapper w-[90vw] h-36 lg:w-[76vw] bg-white shadow-xl rounded-md">
           <div className="schedule-wrapping  p-2 ">
             <div className="location flex flex-row space-x-5 ">
               <p className="text-xl text-gray-900 font-semibold">Jakarta</p>
@@ -34,7 +33,7 @@ function Schedule() {
               <p className="text-xl text-gray-900 font-semibold">Jakarta</p>
             </div>
             <Swiper
-              slidesPerView={2.3}
+              slidesPerView={2.5}
               spaceBetween={10}
               breakpoints={{
                 425: {
@@ -144,6 +143,7 @@ function Schedule() {
                       <TbPlaneInflight />
                       <h1>Aeru Asia</h1>
                     </div>
+
                     <div className="tujuan flex-row flex space-x-2 mt-2">
                       <h2 className="text-sm">Jakarta</h2>
                       <AiOutlineArrowRight />
@@ -152,7 +152,7 @@ function Schedule() {
 
                     <div className="time flex flex-row items-center space-x-2 mt-2">
                       <AiOutlineClockCircle size={20} />
-                      <h2>4.20</h2>
+                      <h2>Depart 4.20</h2>
                     </div>
                   </div>
 
@@ -181,7 +181,7 @@ function Schedule() {
 
                     <div className="time flex flex-row items-center space-x-2 mt-2">
                       <AiOutlineClockCircle size={20} />
-                      <h2>4.20</h2>
+                      <h2>Depart 4.20</h2>
                     </div>
                   </div>
 
@@ -210,7 +210,7 @@ function Schedule() {
 
                     <div className="time flex flex-row items-center space-x-2 mt-2">
                       <AiOutlineClockCircle size={20} />
-                      <h2>4.20</h2>
+                      <h2>Depart 4.20</h2>
                     </div>
                   </div>
 
@@ -225,7 +225,7 @@ function Schedule() {
               </div>
             </div>
           ) : (
-            <div className="empty flex justify-center items-center flex-col">
+            <div className="empty flex justify-center items-center flex-col w-[95%] bg-white h-[70%] rounded-md shadow-lg">
               <FaPlaneSlash size={50} />
               <h1 className="text-4xl">No Schedule</h1>
             </div>
