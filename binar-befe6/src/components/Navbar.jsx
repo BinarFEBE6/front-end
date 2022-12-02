@@ -192,7 +192,6 @@ function Navbar({ withcroll }) {
                   content={content}
                   placement="bottom"
                   trigger="click"
-                  style="light"
                   className="w-56"
                   animation="duration-500"
                 >
@@ -263,7 +262,6 @@ function Navbar({ withcroll }) {
                     content={content}
                     placement="bottom"
                     trigger="click"
-                    style="light"
                     animation="duration-500"
                     className="w-40 "
                   >
