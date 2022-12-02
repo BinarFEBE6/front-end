@@ -7,11 +7,9 @@ import { Provider } from "react-redux";
 import { store } from "./store/store";
 import "antd/dist/reset.css";
 import Schedule from "./pages/Schedule";
-
 import Profile from "./pages/Profile";
-
 import History from "./pages/History";
-
+import Booking from "./pages/Booking";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -22,11 +20,9 @@ root.render(
           <Route>
             <Route path="/" element={<App />} />
             <Route path="/Schedule" element={<Schedule />} />
-
             <Route path="/Profile" element={<Profile />} />
-
             <Route path="/History" element={<History />} />
-
+            <Route path="/Booking" element={<Booking />} />
           </Route>
         </Routes>
       </BrowserRouter>
