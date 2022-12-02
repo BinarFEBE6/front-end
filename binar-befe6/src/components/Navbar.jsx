@@ -3,7 +3,7 @@ import { VscListFlat } from "react-icons/vsc";
 import { AiOutlineClose } from "react-icons/ai";
 
 import { IoIosNotifications } from "react-icons/io";
-
+import logo from "../assets/logo.png";
 import { FaPlane } from "react-icons/fa";
 
 import { useDispatch } from "react-redux";
@@ -130,7 +130,7 @@ function Navbar({ withcroll }) {
             : "bg-white"
         }  flex justify-between items-center h-12 fixed  w-full z-20 mt-8 duration-300`}
       >
-        <FaPlane
+        {/* <FaPlane
           className={`${
             withcroll
               ? scrollY < 100
@@ -140,7 +140,41 @@ function Navbar({ withcroll }) {
           } text-neutral-50  ml-3 lg:ml-7 mb-3 mt-3 w-10 h-7 lg:w-20 lg:h-9 `}
           // className=" ml-2 lg:ml-7 mb-3 text-sky-500 mt-3 w-20 h-9"
           onClick={() => navigate(`/`)}
-        />
+        /> */}
+        <div className="logo grid grid-cols-2  place-content-center">
+          <div className="image">
+            <img
+              src={logo}
+              alt=""
+              onClick={() => navigate(`/`)}
+              className={`  w-10 lg:w-10 lg:ml-12 ml-3 lg:mt-3 mt-1 `}
+            />
+          </div>
+          <div className="brand flex flex-row">
+            <p
+              className={`${
+                withcroll
+                  ? scrollY < 100
+                    ? "text-neutral-50"
+                    : "text-sky-500"
+                  : "text-sky-500"
+              } text-neutral-50 hidden lg:block ml-2  text-xl mt-4 font-semibold`}
+            >
+              Travelin
+            </p>
+            <span
+              className={`${
+                withcroll
+                  ? scrollY < 100
+                    ? "text-neutral-50"
+                    : "text-sky-500"
+                  : "text-sky-500"
+              } text-neutral-50 hidden lg:block  ml-1 text-xl mt-4 font-semibold`}
+            >
+              .
+            </span>
+          </div>
+        </div>
 
         <div
           className={
@@ -198,13 +232,8 @@ function Navbar({ withcroll }) {
                   <button>
                     <IoIosNotifications
                       size={37}
-                      className={`${
-                        withcroll
-                          ? scrollY < 200
-                            ? "text-yellow-300"
-                            : "text-sky-500"
-                          : "text-yellow-300"
-                      } font-bold duration-300 mt-1 `}
+                      className={`
+                          text-yellow-300 font-bold duration-300 mt-1 `}
                     />
                   </button>
                 </Tooltip>
@@ -267,13 +296,8 @@ function Navbar({ withcroll }) {
                   >
                     <IoIosNotifications
                       size={38}
-                      className={`${
-                        withcroll
-                          ? scrollY < 200
-                            ? "text-yellow-300"
-                            : "text-sky-500"
-                          : "text-yellow-300"
-                      } font-bold duration-300 mt-1 `}
+                      className={`
+                       text-yellow-300 font-bold duration-300 mt-1 `}
                     />
                   </Tooltip>
 

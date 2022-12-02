@@ -148,7 +148,7 @@ function Main() {
                     <TbCalendarTime className="text-white mr-2 lg:text-3xl lg:mb-5 hover:scale-125 duration-500" />
                     <p
                       className="text-xl font-bold text-white "
-                      onClick={() => navigate("/Schedule")}
+                      onClick={() => navigate(`/Schedule`)}
                     >
                       Date & Time
                     </p>

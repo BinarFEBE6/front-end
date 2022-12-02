@@ -1,5 +1,6 @@
 import React from "react";
 import { TbPlaneInflight } from "react-icons/tb";
+import logo from "../assets/logo.png";
 import { useNavigate } from "react-router-dom";
 function Footer() {
   const navigate = useNavigate();
@@ -118,9 +119,9 @@ function Footer() {
         <div class="mx-6 py-10 text-center md:text-left">
           <div class="grid grid-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div class="">
-              <h6
+              <div
                 class="
-              uppercase
+             
               font-semibold
               mb-4
               flex
@@ -129,10 +130,17 @@ function Footer() {
               md:justify-start
             "
               >
-                <TbPlaneInflight size={25} />
+                <img
+                  src={logo}
+                  alt=""
+                  onClick={() => navigate(`/`)}
+                  className={`  w-10 lg:w-10 lg:ml-12 ml-3 lg:mt-3 mt-1 `}
+                />
 
-                <div className="logo w-28 h-10 bg-gray-600 ml-6"></div>
-              </h6>
+                <h1 className="logo text-sky-500 ml-2 lg:mt-4 text-2xl mt-2">
+                  Travelin.
+                </h1>
+              </div>
               <p>
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                 Assumenda ipsam architecto exercitationem similique culpa nemo?
