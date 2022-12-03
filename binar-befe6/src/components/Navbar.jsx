@@ -115,7 +115,12 @@ function Navbar({ withcroll }) {
           <p className="font-bold text-sky-500" onClick={() => navigate("/")}>
             Home
           </p>
-          <p className="font-bold text-sky-500">Booking</p>
+          <p
+            onClick={() => navigate(`/Booking`)}
+            className="font-bold text-sky-500"
+          >
+            Booking
+          </p>
           <p className="font-bold text-sky-500">About</p>
         </div>
       </div>
@@ -146,7 +151,7 @@ function Navbar({ withcroll }) {
                     ? "text-neutral-50"
                     : "text-sky-500"
                   : "text-sky-500"
-              } text-neutral-50 hidden lg:block ml-2  text-xl mt-4 font-semibold`}
+              }  hidden lg:block ml-2  text-xl mt-4 font-semibold`}
             >
               Travelin
             </p>
@@ -158,9 +163,7 @@ function Navbar({ withcroll }) {
                     : "text-sky-500"
                   : "text-sky-500"
               } text-neutral-50 hidden lg:block  ml-1 text-xl mt-4 font-semibold`}
-            >
-              .
-            </span>
+            ></span>
           </div>
         </div>
 
@@ -183,6 +186,7 @@ function Navbar({ withcroll }) {
             Home
           </button>
           <button
+            onClick={() => navigate(`/Booking`)}
             className={`${
               withcroll
                 ? scrollY < 100
@@ -348,7 +352,7 @@ function Navbar({ withcroll }) {
                         ? "text-neutral-50"
                         : "text-sky-500"
                       : "text-sky-500"
-                  } text-neutral-50 duration-300 mt-3`}
+                  }  duration-300 mt-3`}
                   size={22}
                   onClick={() => setsidebar(false)}
                 />
@@ -360,7 +364,7 @@ function Navbar({ withcroll }) {
                         ? "text-neutral-50"
                         : "text-sky-500"
                       : "text-sky-500"
-                  } text-neutral-50  duration-300 mt-3 `}
+                  }  duration-300 mt-3 `}
                   size={22}
                   onClick={() => {
                     setNavbarOpen(!navbarOpen);
