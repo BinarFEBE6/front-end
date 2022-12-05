@@ -119,7 +119,7 @@ function Booking() {
           </p>
           <Space>
             <DatePicker
-              className="w-[350px]  lg:w-[250px]"
+              className="w-[90vw]  lg:w-[250px]"
               size="large"
               onChange={onChange}
             />
