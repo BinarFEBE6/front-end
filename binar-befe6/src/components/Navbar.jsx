@@ -5,7 +5,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { IoIosNotifications } from "react-icons/io";
 import logo from "../assets/logo.png";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Modal, Form } from "antd";
 import { LockOutlined, UserOutlined, MailOutlined } from "@ant-design/icons";
 import { Button, Input } from "antd";
@@ -57,7 +57,6 @@ function Navbar({ withcroll }) {
   const handleLogout = () => {
     window.location.reload(1);
     localStorage.clear();
-    navigate("/");
   };
 
   const onRegist = (values) => {
