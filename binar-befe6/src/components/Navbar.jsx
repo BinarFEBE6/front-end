@@ -57,6 +57,7 @@ function Navbar({ withcroll }) {
   const handleLogout = () => {
     window.location.reload(1);
     localStorage.clear();
+    navigate("/");
   };
 
   const onRegist = (values) => {
