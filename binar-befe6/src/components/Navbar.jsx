@@ -5,7 +5,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { IoIosNotifications } from "react-icons/io";
 import logo from "../assets/logo.png";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Modal, Form } from "antd";
 import { LockOutlined, UserOutlined, MailOutlined } from "@ant-design/icons";
 import { Button, Input } from "antd";
@@ -48,7 +48,7 @@ function Navbar({ withcroll }) {
   };
 
   const [sidebar, setsidebar] = useState(false);
-  console.log(scrollY);
+  // console.log(scrollY);
   let token = localStorage.getItem("token");
   let profile = localStorage.getItem("user");
   let image = localStorage.getItem("image");
