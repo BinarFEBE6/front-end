@@ -27,7 +27,7 @@ function History() {
 
             <div className="flex justify-between w-screen">
               <p className="font-bold">Pesawat</p>
-              <p className="font-bold">Pulang Pergi</p>
+              <p className="font-bold">Round-trip</p>
             </div>
           </div>
           <div className="ml-5">
@@ -84,7 +84,7 @@ function History() {
 
             <div className="flex justify-between w-screen">
               <p className="font-bold">Pesawat</p>
-              <p className="font-bold">Sekali Jalan</p>
+              <p className="font-bold">One-way</p>
             </div>
           </div>
           <div className="ml-5">

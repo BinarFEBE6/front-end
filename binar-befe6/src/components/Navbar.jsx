@@ -3,10 +3,9 @@ import { VscListFlat } from "react-icons/vsc";
 import { AiOutlineClose } from "react-icons/ai";
 
 import { IoIosNotifications } from "react-icons/io";
+import logo from "../assets/logo.png";
 
-import { FaPlane } from "react-icons/fa";
-
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Modal, Form } from "antd";
 import { LockOutlined, UserOutlined, MailOutlined } from "@ant-design/icons";
 import { Button, Input } from "antd";
@@ -14,8 +13,6 @@ import useScroll from "../hooks/useScroll";
 import { logIn } from "../features/LoginRegister/loginSlice";
 import { Avatar } from "flowbite-react";
 import { Dropdown, Tooltip } from "flowbite-react";
-import { Popover } from "antd";
-import { HiSpeakerphone } from "react-icons/hi";
 
 import { useNavigate } from "react-router-dom";
 
@@ -118,7 +115,12 @@ function Navbar({ withcroll }) {
           <p className="font-bold text-sky-500" onClick={() => navigate("/")}>
             Home
           </p>
-          <p className="font-bold text-sky-500">Booking</p>
+          <p
+            onClick={() => navigate(`/Booking`)}
+            className="font-bold text-sky-500"
+          >
+            Booking
+          </p>
           <p className="font-bold text-sky-500">About</p>
         </div>
       </div>
@@ -132,10 +134,38 @@ function Navbar({ withcroll }) {
             : "bg-white"
         }  flex justify-between items-center h-12 fixed  w-full z-20 mt-8 duration-300`}
       >
-        <FaPlane
-          className=" ml-2 lg:ml-7 mb-3 text-sky-500 mt-3 w-20 h-9"
-          onClick={() => navigate(`/`)}
-        />
+        <div className="logo grid grid-cols-2  place-content-center">
+          <div className="image">
+            <img
+              src={logo}
+              alt=""
+              onClick={() => navigate(`/`)}
+              className={`  w-10 lg:w-10 lg:ml-12 ml-3 lg:mt-3 mt-1 `}
+            />
+          </div>
+          <div className="brand flex flex-row">
+            <p
+              className={`${
+                withcroll
+                  ? scrollY < 100
+                    ? "text-neutral-50"
+                    : "text-sky-500"
+                  : "text-sky-500"
+              }  hidden lg:block ml-2  text-xl mt-4 font-semibold`}
+            >
+              Travelin
+            </p>
+            <span
+              className={`${
+                withcroll
+                  ? scrollY < 100
+                    ? "text-neutral-50"
+                    : "text-sky-500"
+                  : "text-sky-500"
+              } text-neutral-50 hidden lg:block  ml-1 text-xl mt-4 font-semibold`}
+            ></span>
+          </div>
+        </div>
 
         <div
           className={
@@ -150,12 +180,13 @@ function Navbar({ withcroll }) {
                   ? "text-neutral-50"
                   : "text-sky-500"
                 : "text-sky-500"
-            } text-neutral-50 font-bold ml-8 duration-300 cursor-pointer hover:text-sky-200`}
+            }  font-bold ml-8 duration-300 cursor-pointer hover:text-sky-200`}
             onClick={() => navigate("/")}
           >
             Home
           </button>
           <button
+            onClick={() => navigate(`/Booking`)}
             className={`${
               withcroll
                 ? scrollY < 100
@@ -173,7 +204,7 @@ function Navbar({ withcroll }) {
                   ? "text-neutral-50"
                   : "text-sky-500"
                 : "text-sky-500"
-            } text-neutral-50 font-bold ml-8 duration-300`}
+            }  font-bold ml-8 duration-300`}
           >
             About
           </button>
@@ -187,20 +218,14 @@ function Navbar({ withcroll }) {
                   content={content}
                   placement="bottom"
                   trigger="click"
-                  style="light"
                   className="w-56"
                   animation="duration-500"
                 >
                   <button>
                     <IoIosNotifications
                       size={37}
-                      className={`${
-                        withcroll
-                          ? scrollY < 200
-                            ? "text-yellow-300"
-                            : "text-sky-500"
-                          : "text-yellow-300"
-                      } font-bold duration-300 mt-1 `}
+                      className={`
+                          text-yellow-300 font-bold duration-300 mt-1 `}
                     />
                   </button>
                 </Tooltip>
@@ -258,19 +283,13 @@ function Navbar({ withcroll }) {
                     content={content}
                     placement="bottom"
                     trigger="click"
-                    style="light"
                     animation="duration-500"
                     className="w-40 "
                   >
                     <IoIosNotifications
                       size={38}
-                      className={`${
-                        withcroll
-                          ? scrollY < 200
-                            ? "text-yellow-300"
-                            : "text-sky-500"
-                          : "text-yellow-300"
-                      } font-bold duration-300 mt-1 `}
+                      className={`
+                       text-yellow-300 font-bold duration-300 mt-1 `}
                     />
                   </Tooltip>
 
@@ -310,7 +329,7 @@ function Navbar({ withcroll }) {
                   </p> */}
                 </div>
               ) : (
-                <div className="false flex justify-center">
+                <div className="false flex items-center">
                   <button
                     className={`${
                       withcroll
@@ -333,7 +352,7 @@ function Navbar({ withcroll }) {
                         ? "text-neutral-50"
                         : "text-sky-500"
                       : "text-sky-500"
-                  } text-neutral-50 duration-300 mt-3`}
+                  }  duration-300 mt-3`}
                   size={22}
                   onClick={() => setsidebar(false)}
                 />
@@ -345,7 +364,7 @@ function Navbar({ withcroll }) {
                         ? "text-neutral-50"
                         : "text-sky-500"
                       : "text-sky-500"
-                  } text-neutral-50  duration-300 mt-3 `}
+                  }  duration-300 mt-3 `}
                   size={22}
                   onClick={() => {
                     setNavbarOpen(!navbarOpen);
