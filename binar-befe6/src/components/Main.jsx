@@ -4,7 +4,7 @@ import "./Main.css";
 
 import { BsFacebook, BsLinkedin, BsTwitter, BsYoutube } from "react-icons/bs";
 import { CgArrowsExchange } from "react-icons/cg";
-import { TbCalendarTime } from "react-icons/tb";
+import { FaPlaneDeparture } from "react-icons/fa";
 import { MdAirplanemodeActive } from "react-icons/md";
 
 import { Carousel, DatePicker, Select } from "antd";
@@ -63,8 +63,8 @@ function Main() {
           </div>
         </Carousel>
 
-        <div className="flex justify-center    ">
-          <div className=" bg-slate-500/75 absolute bottom-4 lg:bottom-12 h-max-md rounded-xl p-5  lg:p-7 lg:w-[90%]">
+        <div className="flex justify-center">
+          <div className=" bg-slate-400/50 absolute bottom-4 lg:bottom-12 h-max-md rounded-xl p-5  lg:p-7 lg:w-[90%]">
             <div className="flight flex lg:flex-row lg:justify-center flex-col">
               <div className="estimasi w-[40%]">
                 <div className="flex justify-center lg:justify-start ">
@@ -142,15 +142,15 @@ function Main() {
                   />
                 </div>
               </div>
-              <div className="date w-[50%] lg:ml-2">
+              <div className="date w-[50%] lg:ml-6">
                 <div className="lg:block hidden">
                   <div className="flex">
-                    <TbCalendarTime className="text-white mr-2 lg:text-3xl lg:mb-5 hover:scale-125 duration-500" />
+                    <FaPlaneDeparture onClick={() => navigate('/guestDetails')} className="text-white mr-3 lg:text-2xl lg:mb-6 hover:scale-125 duration-500" />
                     <p
-                      className="text-xl font-bold text-white "
-                      onClick={() => navigate(`/Schedule`)}
+                      className="text-lg font-semibold text-white "
+                      onClick={() => navigate("/Schedule")}
                     >
-                      Date & Time
+                      Departure
                     </p>
                   </div>
                   <div className="flex items-center">
@@ -158,13 +158,13 @@ function Main() {
                       onChange={onChange}
                       placement={"topLeft"}
                       style={{
-                        width: 250,
+                        width: "100%",
                       }}
                       size="large"
                       className="mr-2"
-                      placeholder="Depart on"
+                      placeholder="Departure on"
                     />
-                    <DatePicker
+                    {/* <DatePicker
                       onChange={onChange}
                       style={{
                         width: 250,
@@ -172,15 +172,12 @@ function Main() {
                       size="large"
                       placement={"topRight"}
                       placeholder="Return on"
-                    />
+                    /> */}
                   </div>
                 </div>
               </div>
               <div className="button flex justify-center lg:mt-2 lg:w-[20%]">
-                <button
-                  onClick={() => navigate(`/Booking`)}
-                  className="w-full   px-4 h-9 lg:h-12 mt-2 lg:mt-13 lg:my-auto bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl lg:ml-5"
-                >
+                <button className="w-full   px-4 h-9 lg:h-12 mt-2 lg:mt-13 lg:my-auto bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl lg:ml-5">
                   Search Flights
                 </button>
               </div>
