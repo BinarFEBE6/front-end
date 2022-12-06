@@ -10,7 +10,7 @@ import Schedule from "./pages/Schedule";
 import Profile from "./pages/Profile";
 import History from "./pages/History";
 import GuestDetails from "./pages/GuestDetails";
-import Booking from "./pages/booking";
+import Booking from "./pages/Booking";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
