@@ -139,7 +139,10 @@ function Booking() {
           defaultValue={1}
           onChange={onPeople}
         />
-        <button className="font-bold text-white mr-5 lg:ml-[630px] w-[150px] h-[40px]   rounded-lg bg-gradient-to-l from-blue-600 to-blue-800">
+        <button
+          onClick={() => navigate(`/guestDetails`)}
+          className="font-bold text-white mr-5 lg:ml-[630px] w-[150px] h-[40px]   rounded-lg bg-gradient-to-l from-blue-600 to-blue-800"
+        >
           Search Filght
         </button>
       </div>
