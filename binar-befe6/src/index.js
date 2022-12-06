@@ -11,7 +11,7 @@ import Schedule from "./pages/Schedule";
 import Profile from "./pages/Profile";
 
 import History from "./pages/History";
-
+import GuestDetails from "./pages/GuestDetails";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -21,12 +21,10 @@ root.render(
         <Routes>
           <Route>
             <Route path="/" element={<App />} />
-            <Route path="/Schedule" element={<Schedule />} />
-
-            <Route path="/Profile" element={<Profile />} />
-
-            <Route path="/History" element={<History />} />
-
+            <Route path="/schedule" element={<Schedule />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/history" element={<History />} />
+            <Route path="/guestDetails" element={<GuestDetails />} />
           </Route>
         </Routes>
       </BrowserRouter>
