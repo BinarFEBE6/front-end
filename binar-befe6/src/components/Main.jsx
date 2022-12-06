@@ -145,7 +145,10 @@ function Main() {
               <div className="date w-[50%] lg:ml-6">
                 <div className="lg:block hidden">
                   <div className="flex">
-                    <FaPlaneDeparture onClick={() => navigate('/guestDetails')} className="text-white mr-3 lg:text-2xl lg:mb-6 hover:scale-125 duration-500" />
+                    <FaPlaneDeparture
+                      onClick={() => navigate("/guestDetails")}
+                      className="text-white mr-3 lg:text-2xl lg:mb-6 hover:scale-125 duration-500"
+                    />
                     <p
                       className="text-lg font-semibold text-white "
                       onClick={() => navigate("/Schedule")}
@@ -177,7 +180,10 @@ function Main() {
                 </div>
               </div>
               <div className="button flex justify-center lg:mt-2 lg:w-[20%]">
-                <button className="w-full   px-4 h-9 lg:h-12 mt-2 lg:mt-13 lg:my-auto bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl lg:ml-5">
+                <button
+                  onClick={() => navigate(`/booking`)}
+                  className="w-full   px-4 h-9 lg:h-12 mt-2 lg:mt-13 lg:my-auto bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl lg:ml-5"
+                >
                   Search Flights
                 </button>
               </div>
