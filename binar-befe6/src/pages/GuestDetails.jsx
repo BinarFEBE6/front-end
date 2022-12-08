@@ -15,6 +15,9 @@ function GuestDetails() {
     console.log("Failed:", errorInfo);
   };
 
+  const onChange = (dateString) => {
+    console.log(dateString);
+  };
   const date = [];
   for (let i = 1; i < 32; i++) {
     date.push({
@@ -62,6 +65,7 @@ function GuestDetails() {
                           }}
                           layout="vertical"
                           onFinish={onFinish}
+                          u
                           onFinishFailed={onFinishFailed}
                           autoComplete="off"
                         >
@@ -129,7 +133,7 @@ function GuestDetails() {
                             Date of Birth
                           </h1>
                           <div className="flex gap-3">
-                            <Form.Item
+                            {/* <Form.Item
                               label="Date"
                               name="dateOfBirth"
                               rules={[
@@ -203,8 +207,8 @@ function GuestDetails() {
                                   },
                                 ]}
                               />
-                            </Form.Item>
-                            <Form.Item
+                            </Form.Item> */}
+                            {/* <Form.Item
                               label="Year"
                               name="yearOfBirth"
                               rules={[
@@ -218,20 +222,21 @@ function GuestDetails() {
                                 style={{ width: 120 }}
                                 options={year}
                               />
+                            </Form.Item> */}
+                            <Form.Item
+                              label="DateOfBirth"
+                              name="DateOfBirth"
+                              rules={[
+                                {
+                                  required: true,
+                                },
+                              ]}
+                            >
+                              <DatePicker
+                                bordered={false}
+                                onChange={onChange}
+                              />
                             </Form.Item>
-                            {/* <Form.Item
-                          label="DateOfBirth"
-                          name="DateOfBirth"
-                          rules={[
-                            {
-                              required: true,
-                            },
-                          ]}
-                        >
-                          <DatePicker
-                            bordered={false}
-                          />
-                        </Form.Item> */}
                           </div>
 
                           <h1 className="text-md font-semibold">Nationality</h1>
@@ -573,7 +578,10 @@ function GuestDetails() {
                             {/* <Button htmlType="submit" className="mt-8">
                               Submit
                             </Button> */}
-                            <button htmlType="submit" className="w-1/4 px-4 h-9 lg:h-12 lg:my-auto bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl">
+                            <button
+                              htmlType="submit"
+                              className="w-1/4 px-4 h-9 lg:h-12 lg:my-auto bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl"
+                            >
                               Submit
                             </button>
                           </Form.Item>

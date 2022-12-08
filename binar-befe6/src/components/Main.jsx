@@ -13,7 +13,8 @@ import { useNavigate } from "react-router-dom";
 function Main() {
   const navigate = useNavigate();
   const onChange = (date, dateString) => {
-    console.log(date, dateString);
+    console.log(dateString);
+    console.log(typeof dateString);
   };
 
   const handleChange = (value) => {
@@ -145,7 +146,10 @@ function Main() {
               <div className="date w-[50%] lg:ml-6">
                 <div className="lg:block hidden">
                   <div className="flex">
-                    <FaPlaneDeparture onClick={() => navigate('/guestDetails')} className="text-white mr-3 lg:text-2xl lg:mb-6 hover:scale-125 duration-500" />
+                    <FaPlaneDeparture
+                      onClick={() => navigate("/guestDetails")}
+                      className="text-white mr-3 lg:text-2xl lg:mb-6 hover:scale-125 duration-500"
+                    />
                     <p
                       className="text-lg font-semibold text-white "
                       onClick={() => navigate("/Schedule")}

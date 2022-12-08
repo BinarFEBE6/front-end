@@ -50,8 +50,8 @@ export const postLoginGoogle = createAsyncThunk(
       localStorage.setItem("image", JSON.stringify(user.photoURL));
       localStorage.setItem("log", JSON.stringify(user));
 
-      // console.log(user);
-      return res.providerData;
+      console.log(user);
+      return user;
     } catch (err) {
       console.error(err);
       alert(err.message);

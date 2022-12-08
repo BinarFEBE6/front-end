@@ -48,7 +48,7 @@ function Navbar({ withcroll }) {
   };
 
   const [sidebar, setsidebar] = useState(false);
-  console.log(scrollY);
+  // console.log(scrollY);
   let token = localStorage.getItem("token");
   let profile = localStorage.getItem("user");
   let image = localStorage.getItem("image");
