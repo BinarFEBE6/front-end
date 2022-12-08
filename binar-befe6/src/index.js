@@ -24,7 +24,7 @@ root.render(
             <Route path="/profile" element={<Profile />} />
             <Route path="/history" element={<History />} />
             <Route path="/guestDetails" element={<GuestDetails />} />
-            <Route path="/Booking" element={<Booking />} />
+            <Route path="/booking" element={<Booking />} />
           </Route>
         </Routes>
       </BrowserRouter>

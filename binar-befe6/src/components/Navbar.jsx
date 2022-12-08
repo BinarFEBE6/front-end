@@ -5,7 +5,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { IoIosNotifications } from "react-icons/io";
 import logo from "../assets/logo.png";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Modal, Form } from "antd";
 import { LockOutlined, UserOutlined, MailOutlined } from "@ant-design/icons";
 import { Button, Input } from "antd";
@@ -186,7 +186,7 @@ function Navbar({ withcroll }) {
             Home
           </button>
           <button
-            onClick={() => navigate(`/Booking`)}
+            onClick={() => navigate(`/booking`)}
             className={`${
               withcroll
                 ? scrollY < 100

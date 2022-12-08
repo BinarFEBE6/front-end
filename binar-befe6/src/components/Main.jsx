@@ -181,7 +181,10 @@ function Main() {
                 </div>
               </div>
               <div className="button flex justify-center lg:mt-2 lg:w-[20%]">
-                <button className="w-full   px-4 h-9 lg:h-12 mt-2 lg:mt-13 lg:my-auto bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl lg:ml-5">
+                <button
+                  onClick={() => navigate(`/booking`)}
+                  className="w-full   px-4 h-9 lg:h-12 mt-2 lg:mt-13 lg:my-auto bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl lg:ml-5"
+                >
                   Search Flights
                 </button>
               </div>

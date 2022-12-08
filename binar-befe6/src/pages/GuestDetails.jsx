@@ -4,10 +4,15 @@ import Navbar from "../components/Navbar";
 
 import { BsPersonFill } from "react-icons/bs";
 
-import { Form, Input, Button, Select, Tabs, DatePicker } from "antd";
+import { Form, Input, Select, Tabs, DatePicker } from "antd";
 
 function GuestDetails() {
-  const onFinish = (values) => {
+  const onFinish = (fieldValue) => {
+    const values = {
+      ...fieldValue,
+      dateOfBirth: fieldValue["dateOfBirth"].format("YYYY-MM-DD"),
+      dateEndPassport: fieldValue["dateEndPassport"].format('YYYY-MM-DD')
+    };
     console.log("Success:", values);
   };
 
@@ -224,18 +229,27 @@ function GuestDetails() {
                               />
                             </Form.Item> */}
                             <Form.Item
+<<<<<<< HEAD
                               label="DateOfBirth"
                               name="DateOfBirth"
+=======
+                              label="Input date of your Birth Date !"
+                              name="dateOfBirth"
+>>>>>>> ab00f73efdfffaa24cf93e9cb25bb289778cb04b
                               rules={[
                                 {
                                   required: true,
                                 },
                               ]}
                             >
+<<<<<<< HEAD
                               <DatePicker
                                 bordered={false}
                                 onChange={onChange}
                               />
+=======
+                              <DatePicker />
+>>>>>>> ab00f73efdfffaa24cf93e9cb25bb289778cb04b
                             </Form.Item>
                           </div>
 
@@ -368,7 +382,7 @@ function GuestDetails() {
                             End Passport
                           </h1>
                           <div className="flex gap-3">
-                            <Form.Item
+                            {/* <Form.Item
                               label="Date"
                               name="dateOfEndPassport"
                               rules={[
@@ -457,20 +471,18 @@ function GuestDetails() {
                                 style={{ width: 120 }}
                                 options={year}
                               />
+                            </Form.Item> */}
+                            <Form.Item
+                              label="Input date of your End Passport !"
+                              name="dateEndPassport"
+                              rules={[
+                                {
+                                  required: true,
+                                },
+                              ]}
+                            >
+                              <DatePicker />
                             </Form.Item>
-                            {/* <Form.Item
-                          label="DateOfBirth"
-                          name="DateOfBirth"
-                          rules={[
-                            {
-                              required: true,
-                            },
-                          ]}
-                        >
-                          <DatePicker
-                            bordered={false}
-                          />
-                        </Form.Item> */}
                           </div>
 
                           <h1 className="text-2xl mt-5 mb-9 font-bold">

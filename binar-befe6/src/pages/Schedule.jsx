@@ -1,21 +1,25 @@
 import React, { useState } from "react";
 import Footer from "../components/footer";
 import Navbar from "../components/Navbar";
-import { Empty } from "antd";
+import { useNavigate } from "react-router-dom";
+
 import { TbPlaneInflight } from "react-icons/tb";
 import "swiper/css";
-import { Button } from "antd";
+
 import "swiper/css/pagination";
 import { AiOutlineArrowRight, AiOutlineClockCircle } from "react-icons/ai";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { FaPlane, FaPlaneSlash } from "react-icons/fa";
-import { Navigation } from "swiper";
+
 function Schedule() {
   const [Skejul, setSkejul] = useState(false);
   const jadwal = () => {
     setSkejul(true);
   };
+
+  const navigate = useNavigate();
+
   return (
     <>
       <Navbar withcroll={false} />
@@ -159,7 +163,10 @@ function Schedule() {
                   <div className="class flex flex-col">
                     <h1 className="text-end">Ekonomi</h1>
                     <h1>Rp. 2.000.000</h1>
-                    <button className="w-full rounded-lg p-2 text-white bg-sky-500">
+                    <button
+                      onClick={() => navigate(`/guestDetails`)}
+                      className="w-full rounded-lg p-2 text-white bg-sky-500"
+                    >
                       Pesan
                     </button>
                   </div>
