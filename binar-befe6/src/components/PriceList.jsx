@@ -1,7 +1,14 @@
 import React from "react";
 
-function PriceList() {
+// import JPG
+import Indonesia from "../assets/Indonesia.jpg";
+import Australia from "../assets/Australia.jpg";
+import China from "../assets/China.jpg";
+import Jepang from "../assets/Jepang.jpg";
+import Korea from "../assets/Korea.jpg";
+import Thailand from "../assets/Thailand.jpg";
 
+function PriceList() {
   return (
     <div className="priceList-section bg-gray-100 mx-auto py-24 text-gray-700">
       <h1 className="lg:text-2xl text-3xl font-bold text-center px-10 lg:px-0">
@@ -10,8 +17,8 @@ function PriceList() {
       <div className="grid lg:grid-cols-3 grid-cols-2 lg:grid-rows-2 gap-4 lg:mx-24 lg:mt-16">
         <div className="group w-full inline-block cursor-pointer relative rounded-lg overflow-hidden lg:row-span-2">
           <img
-            src="https://www.pesonaindo.com/wp-content/uploads/2015/12/Foto-Tempat-Wisata-di-Jawa-Tengah-Yang-Menarik-Pesona-Indonesia-fototrip-2.jpg"
-            alt="hero"
+            src={Indonesia}
+            alt="Indonesia"
             className="object-cover w-full lg:h-full h-60 rounded-lg"
           />
           <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center text-center duration-500 rounded-lg group-hover:translate-y-0 group-hover:bg-black/75">
@@ -27,8 +34,8 @@ function PriceList() {
         </div>
         <div className="group w-full inline-block cursor-pointer relative rounded-lg overflow-hidden">
           <img
-            src="https://www.pesonaindo.com/wp-content/uploads/2015/12/Foto-Tempat-Wisata-di-Jawa-Tengah-Yang-Menarik-Pesona-Indonesia-fototrip-2.jpg"
-            alt="hero"
+            src={Australia}
+            alt="Australia"
             className="object-cover w-full lg:h-full h-60 rounded-lg"
           />
           <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center text-center duration-500 rounded-lg group-hover:translate-y-0 group-hover:bg-black/75">
@@ -44,8 +51,8 @@ function PriceList() {
         </div>
         <div className="group w-full inline-block cursor-pointer relative rounded-lg overflow-hidden lg:row-span-2">
           <img
-            src="https://www.pesonaindo.com/wp-content/uploads/2015/12/Foto-Tempat-Wisata-di-Jawa-Tengah-Yang-Menarik-Pesona-Indonesia-fototrip-2.jpg"
-            alt="hero"
+            src={China}
+            alt="China"
             className="object-cover w-full lg:h-full h-60 rounded-lg "
           />
           <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center text-center duration-500 rounded-lg group-hover:translate-y-0 group-hover:bg-black/75">
@@ -61,8 +68,8 @@ function PriceList() {
         </div>
         <div className="group w-full inline-block cursor-pointer relative rounded-lg overflow-hidden lg:row-span-2">
           <img
-            src="https://www.pesonaindo.com/wp-content/uploads/2015/12/Foto-Tempat-Wisata-di-Jawa-Tengah-Yang-Menarik-Pesona-Indonesia-fototrip-2.jpg"
-            alt="hero"
+            src={Jepang}
+            alt="Jepang"
             className="object-cover w-full lg:h-full h-60 rounded-lg "
           />
           <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center text-center duration-500 rounded-lg group-hover:translate-y-0 group-hover:bg-black/75">
@@ -78,8 +85,8 @@ function PriceList() {
         </div>
         <div className="group w-full inline-block cursor-pointer relative rounded-lg overflow-hidden">
           <img
-            src="https://www.pesonaindo.com/wp-content/uploads/2015/12/Foto-Tempat-Wisata-di-Jawa-Tengah-Yang-Menarik-Pesona-Indonesia-fototrip-2.jpg"
-            alt="hero"
+            src={Korea}
+            alt="Korea"
             className="object-cover w-full lg:h-full h-60 rounded-lg"
           />
           <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center text-center duration-500 rounded-lg group-hover:translate-y-0 group-hover:bg-black/75">
@@ -95,8 +102,8 @@ function PriceList() {
         </div>
         <div className="group w-full inline-block cursor-pointer relative rounded-lg overflow-hidden">
           <img
-            src="https://www.pesonaindo.com/wp-content/uploads/2015/12/Foto-Tempat-Wisata-di-Jawa-Tengah-Yang-Menarik-Pesona-Indonesia-fototrip-2.jpg"
-            alt="hero"
+            src={Thailand}
+            alt="Thailand"
             className="object-cover w-full lg:h-full h-60 rounded-lg"
           />
           <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center text-center duration-500 rounded-lg group-hover:translate-y-0 group-hover:bg-black/75">

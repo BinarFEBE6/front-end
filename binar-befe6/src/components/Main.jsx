@@ -16,9 +16,6 @@ function Main() {
   const [countryId, setCountryId] = useState(null);
 
   const navigate = useNavigate();
-  const onChange = (date, dateString) => {
-    console.log(date, dateString);
-  };
 
   const handleChange = (value) => {
     console.log(`selected ${value}`);
