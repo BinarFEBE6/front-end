@@ -14,7 +14,7 @@ function PriceList() {
             alt="hero"
             className="object-cover w-full lg:h-full h-60 rounded-lg"
           />
-          <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center text-center duration-500 rounded-lg group-hover:translate-y-0 group-hover:bg-black/75">
+          <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center text-center duration-500 rounded-lg group-hover:translate-y-0 group-hover:bg-sky-500/75">
             <div className="flex justify-center items-end h-3/4 text-center">
               <div>
                 <p className="text-white text-xs md:text-sm font-bold">Halo</p>
@@ -31,7 +31,7 @@ function PriceList() {
             alt="hero"
             className="object-cover w-full lg:h-full h-60 rounded-lg"
           />
-          <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center text-center duration-500 rounded-lg group-hover:translate-y-0 group-hover:bg-black/75">
+          <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center text-center duration-500 rounded-lg group-hover:translate-y-0 group-hover:bg-sky-500/75">
             <div className="flex justify-center items-end h-3/4 text-center">
               <div>
                 <p className="text-white text-xs md:text-sm font-bold">Halo</p>
@@ -48,7 +48,7 @@ function PriceList() {
             alt="hero"
             className="object-cover w-full lg:h-full h-60 rounded-lg "
           />
-          <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center text-center duration-500 rounded-lg group-hover:translate-y-0 group-hover:bg-black/75">
+          <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center text-center duration-500 rounded-lg group-hover:translate-y-0 group-hover:bg-sky-500/75">
             <div className="flex justify-center items-end h-3/4 text-center">
               <div>
                 <p className="text-white text-xs md:text-sm font-bold">Halo</p>
@@ -65,7 +65,7 @@ function PriceList() {
             alt="hero"
             className="object-cover w-full lg:h-full h-60 rounded-lg "
           />
-          <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center text-center duration-500 rounded-lg group-hover:translate-y-0 group-hover:bg-black/75">
+          <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center text-center duration-500 rounded-lg group-hover:translate-y-0 group-hover:bg-sky-500/75">
             <div className="flex justify-center items-end h-3/4 text-center">
               <div>
                 <p className="text-white text-xs md:text-sm font-bold">Halo</p>
@@ -82,7 +82,7 @@ function PriceList() {
             alt="hero"
             className="object-cover w-full lg:h-full h-60 rounded-lg"
           />
-          <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center text-center duration-500 rounded-lg group-hover:translate-y-0 group-hover:bg-black/75">
+          <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center text-center duration-500 rounded-lg group-hover:translate-y-0 group-hover:bg-sky-500/75">
             <div className="flex justify-center items-end h-3/4 text-center">
               <div>
                 <p className="text-white text-xs md:text-sm font-bold">Halo</p>
@@ -99,7 +99,7 @@ function PriceList() {
             alt="hero"
             className="object-cover w-full lg:h-full h-60 rounded-lg"
           />
-          <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center text-center duration-500 rounded-lg group-hover:translate-y-0 group-hover:bg-black/75">
+          <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center text-center duration-500 rounded-lg group-hover:translate-y-0 group-hover:bg-sky-500/75">
             <div className="flex justify-center items-end h-3/4 text-center">
               <div>
                 <p className="text-white text-xs md:text-sm font-bold">Halo</p>
