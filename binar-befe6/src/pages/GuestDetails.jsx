@@ -11,7 +11,7 @@ function GuestDetails() {
     const values = {
       ...fieldValue,
       dateOfBirth: fieldValue["dateOfBirth"].format("YYYY-MM-DD"),
-      dateEndPassport: fieldValue["dateEndPassport"].format('YYYY-MM-DD')
+      dateEndPassport: fieldValue["dateEndPassport"].format("YYYY-MM-DD"),
     };
     console.log("Success:", values);
   };
@@ -20,9 +20,6 @@ function GuestDetails() {
     console.log("Failed:", errorInfo);
   };
 
-  const onChange = (dateString) => {
-    console.log(dateString);
-  };
   const date = [];
   for (let i = 1; i < 32; i++) {
     date.push({
@@ -70,7 +67,6 @@ function GuestDetails() {
                           }}
                           layout="vertical"
                           onFinish={onFinish}
-                          u
                           onFinishFailed={onFinishFailed}
                           autoComplete="off"
                         >
@@ -212,8 +208,8 @@ function GuestDetails() {
                                   },
                                 ]}
                               />
-                            </Form.Item> */}
-                            {/* <Form.Item
+                            </Form.Item>
+                            <Form.Item
                               label="Year"
                               name="yearOfBirth"
                               rules={[
@@ -229,27 +225,15 @@ function GuestDetails() {
                               />
                             </Form.Item> */}
                             <Form.Item
-<<<<<<< HEAD
-                              label="DateOfBirth"
-                              name="DateOfBirth"
-=======
                               label="Input date of your Birth Date !"
                               name="dateOfBirth"
->>>>>>> ab00f73efdfffaa24cf93e9cb25bb289778cb04b
                               rules={[
                                 {
                                   required: true,
                                 },
                               ]}
                             >
-<<<<<<< HEAD
-                              <DatePicker
-                                bordered={false}
-                                onChange={onChange}
-                              />
-=======
                               <DatePicker />
->>>>>>> ab00f73efdfffaa24cf93e9cb25bb289778cb04b
                             </Form.Item>
                           </div>
 

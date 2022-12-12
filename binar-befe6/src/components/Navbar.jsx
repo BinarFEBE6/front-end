@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { VscListFlat } from "react-icons/vsc";
 import { AiOutlineClose } from "react-icons/ai";
-
+import axios from "axios";
 import { IoIosNotifications } from "react-icons/io";
 import logo from "../assets/logo.png";
 
@@ -18,6 +18,7 @@ import { useNavigate } from "react-router-dom";
 
 import { postRegister } from "../features/LoginRegister/registerSlice";
 import { postLoginGoogle } from "../features/LoginRegister/loginGoogle";
+import { EmailAuthCredential } from "firebase/auth";
 
 function Navbar({ withcroll }) {
   const [show, setShow] = useState(false);
@@ -58,11 +59,22 @@ function Navbar({ withcroll }) {
     window.location.reload(1);
     localStorage.clear();
   };
-
-  const onRegist = (values) => {
+  const onRegist = async (values) => {
     dispatch(postRegister(values));
     setShowRegist();
   };
+  // const onRegist = asnyc (values) => {
+  //   // dispatch(postRegister(values));
+  //   // setShowRegist();
+  //   try {
+  //     const res = await axios.post("https://febe6.up.railway.app/api/signup");
+
+  //     console.log(res);
+  //     return res;
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
 
   const googleLogin = () => {
     dispatch(postLoginGoogle());
@@ -470,35 +482,36 @@ function Navbar({ withcroll }) {
                 onFinish={onRegist}
               >
                 <Form.Item
-                  name="name"
+                  name="username"
                   rules={[
                     {
                       required: true,
+
                       message: "Please input your Name!",
                     },
                   ]}
                 >
                   <Input
                     prefix={<UserOutlined className="site-form-item-icon" />}
-                    placeholder="Username"
+                    placeholder="username"
                   />
                 </Form.Item>
                 <Form.Item
                   name="email"
                   rules={[
                     {
-                      type: "email",
                       message: "The input is not valid E-mail!",
                     },
                     {
                       required: true,
+                      type: "email",
                       message: "Please input your Email!",
                     },
                   ]}
                 >
                   <Input
                     prefix={<MailOutlined className="site-form-item-icon" />}
-                    placeholder="Email"
+                    placeholder="Username"
                   />
                 </Form.Item>
                 <Form.Item

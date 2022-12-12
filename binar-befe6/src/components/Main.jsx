@@ -1,7 +1,8 @@
 import React from "react";
-
+import { useState } from "react";
 import "./Main.css";
-
+import { Cascader } from "antd";
+import axios from "axios";
 import { BsFacebook, BsLinkedin, BsTwitter, BsYoutube } from "react-icons/bs";
 import { CgArrowsExchange } from "react-icons/cg";
 import { FaPlaneDeparture } from "react-icons/fa";
@@ -21,6 +22,14 @@ function Main() {
     console.log(`selected ${value}`);
   };
 
+  const [getCity, setGetCity] = useState([]);
+  const getCountry = async () => {
+    try {
+      const res = await axios.get("http://febe6.up.railway.app/api/getCountry");
+      console.log(res);
+      setGetCity(res.data.data);
+    } catch (error) {}
+  };
   return (
     <>
       <div className="hero relative">
@@ -75,7 +84,30 @@ function Main() {
                   </p>
                 </div>
                 <div className="lg:flex lg:items-center grid gap-2">
-                  <Select
+                  {getCity.map((item) => (
+                    <>
+                      <Cascader
+                        options={[
+                          {
+                            value: `${item.countryName}`,
+                            label: `${item.countryName}`,
+                            children: [
+                              {
+                                value: `${item.countryName}`,
+                                label: `${item.countryName}`,
+                              },
+                            ],
+                          },
+                        ]}
+                        onChange={(data) => {
+                          console.log(data);
+                        }}
+                        placeholder="Select destination"
+                      />{" "}
+                    </>
+                  ))}
+
+                  {/* <Select
                     placeholder="From"
                     style={{
                       width: 250,
@@ -105,7 +137,7 @@ function Main() {
                         label: "Bandung",
                       },
                     ]}
-                  />
+                  /> */}
                   <CgArrowsExchange
                     size={20}
                     className="bg-white rounded-full hidden lg:block"
