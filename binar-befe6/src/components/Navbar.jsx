@@ -116,7 +116,7 @@ function Navbar({ withcroll }) {
             Home
           </p>
           <p
-            onClick={() => navigate(`/Booking`)}
+            // onClick={() => navigate(`/Booking`)}
             className="font-bold text-sky-500"
           >
             Booking
@@ -186,7 +186,7 @@ function Navbar({ withcroll }) {
             Home
           </button>
           <button
-            onClick={() => navigate(`/booking`)}
+            // onClick={() => navigate(`/booking`)}
             className={`${
               withcroll
                 ? scrollY < 100
