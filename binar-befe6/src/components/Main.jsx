@@ -12,73 +12,48 @@ import { useNavigate } from "react-router-dom";
 
 function Main() {
   const [country, setCountry] = useState([]);
-  // const [city, setCity] = useState([]);
-  const [countryId, setCountryId] = useState(null);
+  const [departure, setDeparture] = useState("")
+  const [arrival, setArrival] = useState("")
 
   const navigate = useNavigate();
 
-  const handleChange = (value) => {
-    console.log(`selected ${value}`);
+  const handleChangeDeparture = (value) => {
+    console.log("Departure at", value[1]);
+    setDeparture(value[1])
   };
+
+  const handleChangeArrival = (value) => {
+    console.log("Arrival at", value[1]);
+    setArrival(value[1])
+  };
+
+  // const onFinish
 
   const getCountry = async () => {
     try {
       const res = await axios.get(`http://febe6.up.railway.app/api/getCountry`);
       setCountry(res.data.data);
-      setCountryId(res.data.data.map((item) => item.id));
     } catch (error) {
       console.log(error);
     }
   };
 
-  // const getCity = async () => {
-  //   if (countryId.map(item => (item.id))) {
-  //     try {
-  //       const res = await axios.get(
-  //         `http://febe6.up.railway.app/api/getCity/${countryId}`
-  //       );
-  //       setCity(res.data.data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-  // };
 
   console.log("country", country);
-  // console.log("city", city);
-  console.log(countryId);
 
   useEffect(() => {
     getCountry();
-    // getCity();
   }, []);
-
-  // const option = country.map((item) => {
-
-  //   const data = {
-  //     value: item.countryName,
-  //     label: item.countryName,
-  //     children: {
-  //       value: item.countryName,
-  //       label: item.countryName,
-  //     },
-  //   };
-
-  //   return data;
-  // });
-
-  const data = country.map((item) => ({
-    value: `${item.countryName}`,
-    label: `${item.countryName}`,
-  }));
 
   const option = country.map((item) => ({
     value: `${item.countryName}`,
     label: `${item.countryName}`,
-    children: data,
+    children: item.city.map((data) => ({
+      value: `${data.cityName}`,
+      label: `${data.cityName}`,
+    })),
+    isLeaf: false,
   }));
-
-  console.log(option);
 
   return (
     <>
@@ -140,7 +115,7 @@ function Main() {
                       width: 250,
                     }}
                     size="large"
-                    // onChange={handleChange}
+                    onChange={handleChangeDeparture}
                     placement={"topLeft"}
                     options={option}
                   />
@@ -154,7 +129,7 @@ function Main() {
                       width: 250,
                     }}
                     size="large"
-                    onChange={handleChange}
+                    onChange={handleChangeArrival}
                     placement={"topLeft"}
                     options={option}
                   />
