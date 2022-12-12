@@ -1,4 +1,6 @@
 import React from "react";
+
+// import JPG
 import Indonesia from "../assets/Indonesia.jpg";
 import Australia from "../assets/Australia.jpg";
 import China from "../assets/China.jpg";
