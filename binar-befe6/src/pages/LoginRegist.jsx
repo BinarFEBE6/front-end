@@ -7,8 +7,28 @@ import { Button, Input } from "antd";
 import { LockOutlined, UserOutlined, MailOutlined } from "@ant-design/icons";
 import { FcGoogle } from "react-icons/fc";
 import { AiOutlineMail } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+import { postRegister } from "../features/LoginRegister/registerSlice";
+import { useNavigate } from "react-router-dom";
+import { logIn } from "../features/LoginRegister/loginSlice";
 function LoginRegist() {
+  const dispatch = useDispatch();
   const [regist, setRegist] = useState();
+  const navigate = useNavigate();
+
+  const onRegist = async (values) => {
+    try {
+      dispatch(postRegister(values));
+      setRegist(false);
+    } catch (error) {}
+  };
+
+  const onLogin = async (values) => {
+    try {
+      dispatch(logIn(values));
+      navigate("/");
+    } catch (error) {}
+  };
   const register = () => {
     setRegist(true);
   };
@@ -36,7 +56,7 @@ function LoginRegist() {
                   initialValues={{
                     remember: true,
                   }}
-                  // onFinish={onLogin}
+                  onFinish={onRegist}
                 >
                   <Form.Item
                     name="username"
@@ -114,18 +134,14 @@ function LoginRegist() {
                   initialValues={{
                     remember: true,
                   }}
-                  // onFinish={onLogin}
+                  onFinish={onLogin}
                 >
                   <Form.Item
-                    name="email"
+                    name="username"
                     rules={[
                       {
-                        type: "email",
-                        message: "The input is not valid E-mail!",
-                      },
-                      {
                         required: true,
-                        message: "Please input your Email!",
+                        message: "Please input your Username",
                       },
                     ]}
                   >

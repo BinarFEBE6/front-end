@@ -1,41 +1,27 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
-import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 const initialState = {
-  loginUser: {},
+  login: {},
   loading: false,
 };
-const firebaseConfig = {
-  apiKey: "AIzaSyDRXNuyAgrdq-xhQ2H8Ia_Ac5cNQtBkR7c",
-  authDomain: "login-c9664.firebaseapp.com",
-  projectId: "login-c9664",
-  storageBucket: "login-c9664.appspot.com",
-  messagingSenderId: " 491201687615",
-  appId: "1:491201687615:web:28044baa800ba5e3dbc88a",
-  measurementId: "G-WQ0E9WJ2H1",
-};
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
 
-export const logIn = createAsyncThunk(
-  "login/postLog",
-  async ({ email, password }) => {
-    try {
-      const res = await signInWithEmailAndPassword(auth, email, password);
-      localStorage.setItem("token", JSON.stringify(res.user.accessToken));
-      localStorage.setItem("user", JSON.stringify(res.user.displayName));
-      localStorage.setItem("image", JSON.stringify(res.user.photoURL));
-      localStorage.setItem("log", JSON.stringify(res.user));
-      localStorage.setItem("email", JSON.stringify(res.user.email));
-      //   window.location.reload(1);
-      console.log(res);
-      return res.user.providerData;
-    } catch (err) {
-      console.error(err);
-    }
+export const logIn = createAsyncThunk("login/postLog", async (values) => {
+  try {
+    const res = await axios.post(
+      "https://febe6.up.railway.app/api/auth/signin",
+      values
+    );
+    // console.log(res);
+    localStorage.setItem("token", JSON.stringify(res.data.data.token));
+    localStorage.setItem("user", JSON.stringify(res.data.data.username));
+
+    console.log(res.data.data);
+    return res.data.data;
+  } catch (error) {
+    console.error(error);
   }
-);
+});
 
 export const loginSlice = createSlice({
   name: "login",
@@ -47,7 +33,7 @@ export const loginSlice = createSlice({
     },
     [logIn.fulfilled]: (state, { payload }) => {
       state.loading = false;
-      state.loginUser = payload;
+      state.login = payload;
     },
     [logIn.rejected]: (state) => {
       state.loading = false;

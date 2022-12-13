@@ -13,7 +13,7 @@ function Profile() {
   return (
     <>
       <Navbar />
-      <div className=" bg-sky-700 w-full h-[50vh] rounded-b-[50px] lg:rounded-b-[100px] mb-44">
+      <div className=" bg-primary-100 w-full h-[50vh] rounded-b-[50px] lg:rounded-b-[100px] mb-44">
         <h1 className="lg:pt-44 pt-56 text-white text-center text-5xl uppercase tracking-widest">
           Profil Page
         </h1>
