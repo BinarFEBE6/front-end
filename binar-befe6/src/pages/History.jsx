@@ -9,7 +9,7 @@ import { WiTime3 } from "react-icons/wi";
 
 function History() {
   return (
-    <div className="bg-slate-200 ">
+    <div className="bg-gray-100 ">
       <Navbar withcroll={false} />
       <div className="h-20"></div>
       <div className="  justify-center w-full px-2  lg:grid gap-2 mb-10">

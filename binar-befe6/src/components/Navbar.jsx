@@ -5,7 +5,7 @@ import axios from "axios";
 import { IoIosNotifications } from "react-icons/io";
 import logo from "../assets/logo.png";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Modal, Form } from "antd";
 import { LockOutlined, UserOutlined, MailOutlined } from "@ant-design/icons";
 import { Button, Input } from "antd";
@@ -28,40 +28,16 @@ function Navbar({ withcroll }) {
 
   const navigate = useNavigate();
 
-  const onLogin = (values) => {
-    dispatch(logIn(values));
-    setShow();
-  };
-  const isShow = () => {
-    setShow(true);
-    setShowRegist();
-  };
-  const isShowRegist = () => {
-    setShowRegist(true);
-    setShow();
-  };
-  const isClosed = () => {
-    setShow();
-  };
-  const isClosedRegist = () => {
-    setShowRegist();
-  };
-
   const [sidebar, setsidebar] = useState(false);
   // console.log(scrollY);
   let token = localStorage.getItem("token");
   let profile = localStorage.getItem("user");
-  let image = localStorage.getItem("image");
-  let gmail = localStorage.getItem("email");
-
+  const { login } = useSelector((state) => state.login);
   const handleLogout = () => {
     window.location.reload(1);
     localStorage.clear();
   };
-  const onRegist = async (values) => {
-    dispatch(postRegister(values));
-    setShowRegist();
-  };
+
   // const onRegist = asnyc (values) => {
   //   // dispatch(postRegister(values));
   //   // setShowRegist();
@@ -100,18 +76,14 @@ function Navbar({ withcroll }) {
           withcroll
             ? scrollY < 100
               ? "bg-transparen"
-              : "bg-sky-500"
-            : "bg-sky-500"
+              : "bg-primary-100"
+            : "bg-primary-100"
         }  w-full h-9 z-20 flex justify-center items-center fixed duration-300`}
       >
         <p
           className={`${
-            withcroll
-              ? scrollY < 100
-                ? "text-neutral-50"
-                : "text-neutral-50"
-              : ""
-          } text-neutral-50  mt-2 duration-300 text-center`}
+            withcroll ? (scrollY < 100 ? "text-white" : "text-white") : ""
+          } text-white  mt-2 duration-300 text-center`}
         >
           Travel Gak Pakek Ribet
         </p>
@@ -123,16 +95,19 @@ function Navbar({ withcroll }) {
         } bg-white h-40 w-48 fixed top-24 z-10 right-0 rounded-l-lg  duration-500 lg:hidden`}
       >
         <div className="text-center mt-4 grid gap-y-4">
-          <p className="font-bold text-sky-500" onClick={() => navigate("/")}>
+          <p
+            className="font-bold text-primary-100"
+            onClick={() => navigate("/")}
+          >
             Home
           </p>
           <p
             // onClick={() => navigate(`/Booking`)}
-            className="font-bold text-sky-500"
+            className="font-bold text-primary-100"
           >
             Booking
           </p>
-          <p className="font-bold text-sky-500">About</p>
+          <p className="font-bold text-primary-100">About</p>
         </div>
       </div>
 
@@ -159,9 +134,9 @@ function Navbar({ withcroll }) {
               className={`${
                 withcroll
                   ? scrollY < 100
-                    ? "text-neutral-50"
-                    : "text-sky-500"
-                  : "text-sky-500"
+                    ? "text-white"
+                    : "text-primary-100"
+                  : "text-primary-100"
               }  hidden lg:block ml-2  text-xl mt-4 font-semibold`}
             >
               Travelin
@@ -170,10 +145,10 @@ function Navbar({ withcroll }) {
               className={`${
                 withcroll
                   ? scrollY < 100
-                    ? "text-neutral-50"
-                    : "text-sky-500"
-                  : "text-sky-500"
-              } text-neutral-50 hidden lg:block  ml-1 text-xl mt-4 font-semibold`}
+                    ? "text-white"
+                    : "text-primary-100"
+                  : "text-primary-100"
+              } text-white hidden lg:block  ml-1 text-xl mt-4 font-semibold`}
             ></span>
           </div>
         </div>
@@ -188,9 +163,9 @@ function Navbar({ withcroll }) {
             className={`${
               withcroll
                 ? scrollY < 100
-                  ? "text-neutral-50"
-                  : "text-sky-500"
-                : "text-sky-500"
+                  ? "text-white"
+                  : "text-primary-100"
+                : "text-primary-100"
             }  font-bold ml-8 duration-300 cursor-pointer hover:text-sky-200`}
             onClick={() => navigate("/")}
           >
@@ -201,9 +176,9 @@ function Navbar({ withcroll }) {
             className={`${
               withcroll
                 ? scrollY < 100
-                  ? "text-neutral-50"
-                  : "text-sky-500"
-                : "text-sky-500"
+                  ? "text-white"
+                  : "text-primary-100"
+                : "text-primary-100"
             }  font-bold ml-8 duration-300`}
           >
             Booking
@@ -212,9 +187,9 @@ function Navbar({ withcroll }) {
             className={`${
               withcroll
                 ? scrollY < 100
-                  ? "text-neutral-50"
-                  : "text-sky-500"
-                : "text-sky-500"
+                  ? "text-white"
+                  : "text-primary-100"
+                : "text-primary-100"
             }  font-bold ml-8 duration-300`}
           >
             About
@@ -244,19 +219,10 @@ function Navbar({ withcroll }) {
                 <Dropdown
                   arrowIcon={false}
                   inline={true}
-                  label={
-                    <Avatar
-                      src={JSON.parse(image)}
-                      alt="User settings"
-                      rounded={true}
-                    />
-                  }
+                  label={<Avatar alt="User settings" rounded={true} />}
                 >
                   <Dropdown.Header>
-                    <span className="block text-sm">{JSON.parse(profile)}</span>
-                    <span className="block truncate text-sm font-medium">
-                      {JSON.parse(gmail)}
-                    </span>
+                    <span className="block text-sm">{login.username}</span>
                   </Dropdown.Header>
 
                   <Dropdown.Item onClick={() => navigate(`/Profile`)}>
@@ -276,9 +242,9 @@ function Navbar({ withcroll }) {
                 className={`${
                   withcroll
                     ? scrollY < 100
-                      ? "text-neutral-50"
-                      : "text-sky-500"
-                    : "text-sky-500"
+                      ? "text-white"
+                      : "text-primary-100"
+                    : "text-primary-100"
                 } font-bold duration-300`}
                 onClick={() => navigate("/login")}
               >
@@ -309,7 +275,6 @@ function Navbar({ withcroll }) {
                     inline={true}
                     label={
                       <Avatar
-                        src={JSON.parse(image)}
                         alt="User settings"
                         rounded={true}
                         size="sm"
@@ -319,7 +284,7 @@ function Navbar({ withcroll }) {
                   >
                     <Dropdown.Header>
                       <span className="block text-sm">
-                        {JSON.parse(profile)}
+                        <span className="block text-sm">{login.username}</span>
                       </span>
                     </Dropdown.Header>
 
@@ -335,7 +300,7 @@ function Navbar({ withcroll }) {
                       Sign out
                     </Dropdown.Item>
                   </Dropdown>
-                  {/* <p className="text-sky-500 text-lg ml-2 mt-3">
+                  {/* <p className="text-primary-100 text-lg ml-2 mt-3">
                     {JSON.parse(profile)}
                   </p> */}
                 </div>
@@ -345,7 +310,7 @@ function Navbar({ withcroll }) {
                     className={`${
                       withcroll
                         ? scrollY < 100
-                          ? "text-neutral-50"
+                          ? "text-white"
                           : "text-sky-500"
                         : "text-sky-500"
                     }  font-bold`}
@@ -361,7 +326,7 @@ function Navbar({ withcroll }) {
                   className={`${
                     withcroll
                       ? scrollY < 100
-                        ? "text-neutral-50"
+                        ? "text-white"
                         : "text-sky-500"
                       : "text-sky-500"
                   }  duration-300 mt-3 mr-3`}
@@ -373,7 +338,7 @@ function Navbar({ withcroll }) {
                   className={`${
                     withcroll
                       ? scrollY < 100
-                        ? "text-neutral-50"
+                        ? "text-white"
                         : "text-sky-500"
                       : "text-sky-500"
                   }  duration-300 mt-3 mr-3 `}
