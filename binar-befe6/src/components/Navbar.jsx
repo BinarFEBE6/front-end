@@ -224,14 +224,21 @@ function Navbar({ withcroll }) {
                   <Dropdown.Header>
                     <span className="block text-sm">{login.username}</span>
                   </Dropdown.Header>
+                  {login.roles[0] !== "ROLE_ADMIN" ? (
+                    <>
+                      <Dropdown.Item onClick={() => navigate(`/Profile`)}>
+                        Profile
+                      </Dropdown.Item>
 
-                  <Dropdown.Item onClick={() => navigate(`/Profile`)}>
-                    Profile
-                  </Dropdown.Item>
-
-                  <Dropdown.Item onClick={() => navigate(`/History`)}>
-                    History
-                  </Dropdown.Item>
+                      <Dropdown.Item onClick={() => navigate(`/History`)}>
+                        History
+                      </Dropdown.Item>
+                    </>
+                  ) : (
+                    <Dropdown.Item onClick={() => navigate(`/dashboard`)}>
+                      Dashboard
+                    </Dropdown.Item>
+                  )}
 
                   <Dropdown.Divider />
                   <Dropdown.Item onClick={handleLogout}>Sign out</Dropdown.Item>
@@ -287,13 +294,21 @@ function Navbar({ withcroll }) {
                         <span className="block text-sm">{login.username}</span>
                       </span>
                     </Dropdown.Header>
+                    {login.roles[0] !== "ROLE_ADMIN" ? (
+                      <>
+                        <Dropdown.Item onClick={() => navigate(`/Profile`)}>
+                          Profile
+                        </Dropdown.Item>
 
-                    <Dropdown.Item onClick={() => navigate(`/Profile`)}>
-                      Profile
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => navigate(`/History`)}>
-                      History
-                    </Dropdown.Item>
+                        <Dropdown.Item onClick={() => navigate(`/History`)}>
+                          History
+                        </Dropdown.Item>
+                      </>
+                    ) : (
+                      <Dropdown.Item onClick={() => navigate(`/dashboard`)}>
+                        Dashboard
+                      </Dropdown.Item>
+                    )}
 
                     <Dropdown.Divider />
                     <Dropdown.Item onClick={handleLogout}>
