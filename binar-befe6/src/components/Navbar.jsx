@@ -348,7 +348,7 @@ function Navbar({ withcroll }) {
                           ? "text-neutral-50"
                           : "text-sky-500"
                         : "text-sky-500"
-                    } text-neutral-50 font-bold`}
+                    }  font-bold`}
                     // onClick={isShow}
                     onClick={() => navigate("/login")}
                   >
