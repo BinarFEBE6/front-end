@@ -11,7 +11,7 @@ function GuestDetails() {
     const values = {
       ...fieldValue,
       dateOfBirth: fieldValue["dateOfBirth"].format("YYYY-MM-DD"),
-      dateEndPassport: fieldValue["dateEndPassport"].format('YYYY-MM-DD')
+      dateEndPassport: fieldValue["dateEndPassport"].format("YYYY-MM-DD"),
     };
     console.log("Success:", values);
   };

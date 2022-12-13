@@ -12,19 +12,19 @@ import { useNavigate } from "react-router-dom";
 
 function Main() {
   const [country, setCountry] = useState([]);
-  const [departure, setDeparture] = useState("")
-  const [arrival, setArrival] = useState("")
+  const [departure, setDeparture] = useState("");
+  const [arrival, setArrival] = useState("");
 
   const navigate = useNavigate();
 
   const handleChangeDeparture = (value) => {
     console.log("Departure at", value[1]);
-    setDeparture(value[1])
+    setDeparture(value[1]);
   };
 
   const handleChangeArrival = (value) => {
     console.log("Arrival at", value[1]);
-    setArrival(value[1])
+    setArrival(value[1]);
   };
 
   // const onFinish
@@ -37,7 +37,6 @@ function Main() {
       console.log(error);
     }
   };
-
 
   console.log("country", country);
 

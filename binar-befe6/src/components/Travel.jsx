@@ -22,7 +22,7 @@ function Travel() {
           </p>
         </div>
         <div className="image flex justify-center items-center">
-          <img src={logo} alt="logo" width={600}/>
+          <img src={logo} alt="logo" className="w-56 lg:w-[40vw]" />
         </div>
       </div>
       <div className="bg-white shadow-xl border border-slate-200/50 lg:mx-60 mx-8 my-12 rounded-3xl">

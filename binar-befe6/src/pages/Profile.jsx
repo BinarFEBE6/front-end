@@ -8,6 +8,7 @@ function Profile() {
   let profile = localStorage.getItem("user");
   let image = localStorage.getItem("image");
   let gmail = localStorage.getItem("email");
+  let token = localStorage.getItem("token");
 
   return (
     <>
