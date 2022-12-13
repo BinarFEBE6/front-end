@@ -11,6 +11,7 @@ import Profile from "./pages/Profile";
 import History from "./pages/History";
 import GuestDetails from "./pages/GuestDetails";
 import SetSeat from "./pages/SetSeat";
+import LoginRegist from "./pages/LoginRegist";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -24,6 +25,7 @@ root.render(
             <Route path="/profile" element={<Profile />} />
             <Route path="/history" element={<History />} />
             <Route path="/guestDetails" element={<GuestDetails />} />
+            <Route path="/login" element={<LoginRegist />} />
             <Route path="/setSeat" element={<SetSeat />} />
           </Route>
         </Routes>

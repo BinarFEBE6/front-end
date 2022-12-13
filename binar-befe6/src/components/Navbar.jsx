@@ -18,7 +18,6 @@ import { useNavigate } from "react-router-dom";
 
 import { postRegister } from "../features/LoginRegister/registerSlice";
 import { postLoginGoogle } from "../features/LoginRegister/loginGoogle";
-import { EmailAuthCredential } from "firebase/auth";
 
 function Navbar({ withcroll }) {
   const [show, setShow] = useState(false);
@@ -281,7 +280,7 @@ function Navbar({ withcroll }) {
                       : "text-sky-500"
                     : "text-sky-500"
                 } font-bold duration-300`}
-                onClick={isShow}
+                onClick={() => navigate("/login")}
               >
                 Login
               </button>
@@ -350,7 +349,8 @@ function Navbar({ withcroll }) {
                           : "text-sky-500"
                         : "text-sky-500"
                     } text-neutral-50 font-bold`}
-                    onClick={isShow}
+                    // onClick={isShow}
+                    onClick={() => navigate("/login")}
                   >
                     Login
                   </button>
@@ -364,7 +364,7 @@ function Navbar({ withcroll }) {
                         ? "text-neutral-50"
                         : "text-sky-500"
                       : "text-sky-500"
-                  }  duration-300 mt-3`}
+                  }  duration-300 mt-3 mr-3`}
                   size={22}
                   onClick={() => setsidebar(false)}
                 />
@@ -376,7 +376,7 @@ function Navbar({ withcroll }) {
                         ? "text-neutral-50"
                         : "text-sky-500"
                       : "text-sky-500"
-                  }  duration-300 mt-3 `}
+                  }  duration-300 mt-3 mr-3 `}
                   size={22}
                   onClick={() => {
                     setNavbarOpen(!navbarOpen);
@@ -385,170 +385,6 @@ function Navbar({ withcroll }) {
                 />
               )}
             </div>
-          </div>
-          {/* Modal Login */}
-          <div className="modal-login">
-            <Modal
-              open={show}
-              title="Login"
-              onCancel={isClosed}
-              footer=""
-              width={400}
-            >
-              <Form
-                name="normal_login"
-                className="login-form"
-                initialValues={{
-                  remember: true,
-                }}
-                onFinish={onLogin}
-              >
-                <Form.Item
-                  name="email"
-                  rules={[
-                    {
-                      type: "email",
-                      message: "The input is not valid E-mail!",
-                    },
-                    {
-                      required: true,
-                      message: "Please input your Email!",
-                    },
-                  ]}
-                >
-                  <Input
-                    prefix={<UserOutlined className="site-form-item-icon" />}
-                    placeholder="Username"
-                  />
-                </Form.Item>
-                <Form.Item
-                  name="password"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please input your password!",
-                    },
-                  ]}
-                >
-                  <Input.Password
-                    prefix={<LockOutlined className="site-form-item-icon" />}
-                    placeholder="Password"
-                  />
-                </Form.Item>
-                <div className="text-sm font-medium text-gray-500 mt-6">
-                  Not registered?{" "}
-                  <p
-                    className="text-blue-700 hover:underline dark:text-blue-500"
-                    onClick={isShowRegist}
-                  >
-                    Create account
-                  </p>
-                </div>
-                <Form.Item>
-                  <div className="button fflex items-center  flex justify-between mt-4 space-x-4">
-                    <Button
-                      htmlType="submit"
-                      className="login-form-button bg-yellow-500 w-full h-12 text-white"
-                    >
-                      Log in
-                    </Button>
-                    <Button
-                      htmlType="submit"
-                      className="login-form-button bg-teal-500  w-full h-12 text-white"
-                      onClick={googleLogin}
-                    >
-                      Log With Google
-                    </Button>
-                  </div>
-                </Form.Item>
-              </Form>
-            </Modal>
-          </div>
-          {/* Modal Register */}
-          <div className="modal-login">
-            <Modal
-              open={showRegist}
-              title="Register"
-              onCancel={isClosedRegist}
-              footer=""
-              width={400}
-            >
-              <Form
-                name="normal_login"
-                className="login-form"
-                initialValues={{
-                  remember: true,
-                }}
-                onFinish={onRegist}
-              >
-                <Form.Item
-                  name="username"
-                  rules={[
-                    {
-                      required: true,
-
-                      message: "Please input your Name!",
-                    },
-                  ]}
-                >
-                  <Input
-                    prefix={<UserOutlined className="site-form-item-icon" />}
-                    placeholder="username"
-                  />
-                </Form.Item>
-                <Form.Item
-                  name="email"
-                  rules={[
-                    {
-                      message: "The input is not valid E-mail!",
-                    },
-                    {
-                      required: true,
-                      type: "email",
-                      message: "Please input your Email!",
-                    },
-                  ]}
-                >
-                  <Input
-                    prefix={<MailOutlined className="site-form-item-icon" />}
-                    placeholder="Username"
-                  />
-                </Form.Item>
-                <Form.Item
-                  name="password"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please input your password!",
-                    },
-                  ]}
-                >
-                  <Input.Password
-                    prefix={<LockOutlined className="site-form-item-icon" />}
-                    placeholder="Password"
-                  />
-                </Form.Item>
-                <div className="text-sm font-medium text-gray-500 mt-6">
-                  Have Account?{" "}
-                  <p
-                    className="text-blue-700 hover:underline dark:text-blue-500"
-                    onClick={isShow}
-                  >
-                    Login
-                  </p>
-                </div>
-                <Form.Item>
-                  <div className="button fflex items-center  flex justify-between mt-4 space-x-4">
-                    <Button
-                      htmlType="submit"
-                      className=" bg-yellow-500 w-full h-12 text-white"
-                    >
-                      Register
-                    </Button>
-                  </div>
-                </Form.Item>
-              </Form>
-            </Modal>
           </div>
         </div>
       </div>
