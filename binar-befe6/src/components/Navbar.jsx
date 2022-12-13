@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { VscListFlat } from "react-icons/vsc";
 import { AiOutlineClose } from "react-icons/ai";
-
+import axios from "axios";
 import { IoIosNotifications } from "react-icons/io";
 import logo from "../assets/logo.png";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Modal, Form } from "antd";
 import { LockOutlined, UserOutlined, MailOutlined } from "@ant-design/icons";
 import { Button, Input } from "antd";
@@ -28,40 +28,27 @@ function Navbar({ withcroll }) {
 
   const navigate = useNavigate();
 
-  const onLogin = (values) => {
-    dispatch(logIn(values));
-    setShow();
-  };
-  const isShow = () => {
-    setShow(true);
-    setShowRegist();
-  };
-  const isShowRegist = () => {
-    setShowRegist(true);
-    setShow();
-  };
-  const isClosed = () => {
-    setShow();
-  };
-  const isClosedRegist = () => {
-    setShowRegist();
-  };
-
   const [sidebar, setsidebar] = useState(false);
   let token = localStorage.getItem("token");
   let profile = localStorage.getItem("user");
-  let image = localStorage.getItem("image");
-  let gmail = localStorage.getItem("email");
-
+  const { login } = useSelector((state) => state.login);
   const handleLogout = () => {
     window.location.reload(1);
     localStorage.clear();
   };
 
-  const onRegist = (values) => {
-    dispatch(postRegister(values));
-    setShowRegist();
-  };
+  // const onRegist = asnyc (values) => {
+  //   // dispatch(postRegister(values));
+  //   // setShowRegist();
+  //   try {
+  //     const res = await axios.post("https://febe6.up.railway.app/api/signup");
+
+  //     console.log(res);
+  //     return res;
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
 
   const googleLogin = () => {
     dispatch(postLoginGoogle());
@@ -88,18 +75,14 @@ function Navbar({ withcroll }) {
           withcroll
             ? scrollY < 100
               ? "bg-transparen"
-              : "bg-sky-500"
-            : "bg-sky-500"
+              : "bg-primary-100"
+            : "bg-primary-100"
         }  w-full h-9 z-20 flex justify-center items-center fixed duration-300`}
       >
         <p
           className={`${
-            withcroll
-              ? scrollY < 100
-                ? "text-neutral-50"
-                : "text-neutral-50"
-              : ""
-          } text-neutral-50  mt-2 duration-300 text-center`}
+            withcroll ? (scrollY < 100 ? "text-white" : "text-white") : ""
+          } text-white  mt-2 duration-300 text-center`}
         >
           Travel Gak Pakek Ribet
         </p>
@@ -111,7 +94,10 @@ function Navbar({ withcroll }) {
         } bg-white h-40 w-48 fixed top-24 z-10 right-0 rounded-l-lg  duration-500 lg:hidden`}
       >
         <div className="text-center mt-4 grid gap-y-4">
-          <p className="font-bold text-sky-500" onClick={() => navigate("/")}>
+          <p
+            className="font-bold text-primary-100"
+            onClick={() => navigate("/")}
+          >
             Home
           </p>
           <p
@@ -119,7 +105,7 @@ function Navbar({ withcroll }) {
           >
             Booking
           </p>
-          <p className="font-bold text-sky-500">About</p>
+          <p className="font-bold text-primary-100">About</p>
         </div>
       </div>
 
@@ -146,9 +132,9 @@ function Navbar({ withcroll }) {
               className={`${
                 withcroll
                   ? scrollY < 100
-                    ? "text-neutral-50"
-                    : "text-sky-500"
-                  : "text-sky-500"
+                    ? "text-white"
+                    : "text-primary-100"
+                  : "text-primary-100"
               }  hidden lg:block ml-2  text-xl mt-4 font-semibold`}
             >
               Travelin
@@ -157,10 +143,10 @@ function Navbar({ withcroll }) {
               className={`${
                 withcroll
                   ? scrollY < 100
-                    ? "text-neutral-50"
-                    : "text-sky-500"
-                  : "text-sky-500"
-              } text-neutral-50 hidden lg:block  ml-1 text-xl mt-4 font-semibold`}
+                    ? "text-white"
+                    : "text-primary-100"
+                  : "text-primary-100"
+              } text-white hidden lg:block  ml-1 text-xl mt-4 font-semibold`}
             ></span>
           </div>
         </div>
@@ -175,9 +161,9 @@ function Navbar({ withcroll }) {
             className={`${
               withcroll
                 ? scrollY < 100
-                  ? "text-neutral-50"
-                  : "text-sky-500"
-                : "text-sky-500"
+                  ? "text-white"
+                  : "text-primary-100"
+                : "text-primary-100"
             }  font-bold ml-8 duration-300 cursor-pointer hover:text-sky-200`}
             onClick={() => navigate("/")}
           >
@@ -188,9 +174,9 @@ function Navbar({ withcroll }) {
             className={`${
               withcroll
                 ? scrollY < 100
-                  ? "text-neutral-50"
-                  : "text-sky-500"
-                : "text-sky-500"
+                  ? "text-white"
+                  : "text-primary-100"
+                : "text-primary-100"
             }  font-bold ml-8 duration-300`}
           >
             Booking
@@ -199,9 +185,9 @@ function Navbar({ withcroll }) {
             className={`${
               withcroll
                 ? scrollY < 100
-                  ? "text-neutral-50"
-                  : "text-sky-500"
-                : "text-sky-500"
+                  ? "text-white"
+                  : "text-primary-100"
+                : "text-primary-100"
             }  font-bold ml-8 duration-300`}
           >
             About
@@ -231,28 +217,26 @@ function Navbar({ withcroll }) {
                 <Dropdown
                   arrowIcon={false}
                   inline={true}
-                  label={
-                    <Avatar
-                      src={JSON.parse(image)}
-                      alt="User settings"
-                      rounded={true}
-                    />
-                  }
+                  label={<Avatar alt="User settings" rounded={true} />}
                 >
                   <Dropdown.Header>
-                    <span className="block text-sm">{JSON.parse(profile)}</span>
-                    <span className="block truncate text-sm font-medium">
-                      {JSON.parse(gmail)}
-                    </span>
+                    <span className="block text-sm">{login.username}</span>
                   </Dropdown.Header>
+                  {login.roles[0] !== "ROLE_ADMIN" ? (
+                    <>
+                      <Dropdown.Item onClick={() => navigate(`/Profile`)}>
+                        Profile
+                      </Dropdown.Item>
 
-                  <Dropdown.Item onClick={() => navigate(`/Profile`)}>
-                    Profile
-                  </Dropdown.Item>
-
-                  <Dropdown.Item onClick={() => navigate(`/History`)}>
-                    History
-                  </Dropdown.Item>
+                      <Dropdown.Item onClick={() => navigate(`/History`)}>
+                        History
+                      </Dropdown.Item>
+                    </>
+                  ) : (
+                    <Dropdown.Item onClick={() => navigate(`/dashboard`)}>
+                      Dashboard
+                    </Dropdown.Item>
+                  )}
 
                   <Dropdown.Divider />
                   <Dropdown.Item onClick={handleLogout}>Sign out</Dropdown.Item>
@@ -263,11 +247,11 @@ function Navbar({ withcroll }) {
                 className={`${
                   withcroll
                     ? scrollY < 100
-                      ? "text-neutral-50"
-                      : "text-sky-500"
-                    : "text-sky-500"
+                      ? "text-white"
+                      : "text-primary-100"
+                    : "text-primary-100"
                 } font-bold duration-300`}
-                onClick={isShow}
+                onClick={() => navigate("/login")}
               >
                 Login
               </button>
@@ -296,7 +280,6 @@ function Navbar({ withcroll }) {
                     inline={true}
                     label={
                       <Avatar
-                        src={JSON.parse(image)}
                         alt="User settings"
                         rounded={true}
                         size="sm"
@@ -306,23 +289,31 @@ function Navbar({ withcroll }) {
                   >
                     <Dropdown.Header>
                       <span className="block text-sm">
-                        {JSON.parse(profile)}
+                        <span className="block text-sm">{login.username}</span>
                       </span>
                     </Dropdown.Header>
+                    {login.roles[0] !== "ROLE_ADMIN" ? (
+                      <>
+                        <Dropdown.Item onClick={() => navigate(`/Profile`)}>
+                          Profile
+                        </Dropdown.Item>
 
-                    <Dropdown.Item onClick={() => navigate(`/Profile`)}>
-                      Profile
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => navigate(`/History`)}>
-                      History
-                    </Dropdown.Item>
+                        <Dropdown.Item onClick={() => navigate(`/History`)}>
+                          History
+                        </Dropdown.Item>
+                      </>
+                    ) : (
+                      <Dropdown.Item onClick={() => navigate(`/dashboard`)}>
+                        Dashboard
+                      </Dropdown.Item>
+                    )}
 
                     <Dropdown.Divider />
                     <Dropdown.Item onClick={handleLogout}>
                       Sign out
                     </Dropdown.Item>
                   </Dropdown>
-                  {/* <p className="text-sky-500 text-lg ml-2 mt-3">
+                  {/* <p className="text-primary-100 text-lg ml-2 mt-3">
                     {JSON.parse(profile)}
                   </p> */}
                 </div>
@@ -332,11 +323,12 @@ function Navbar({ withcroll }) {
                     className={`${
                       withcroll
                         ? scrollY < 100
-                          ? "text-neutral-50"
+                          ? "text-white"
                           : "text-sky-500"
                         : "text-sky-500"
-                    } text-neutral-50 font-bold`}
-                    onClick={isShow}
+                    }  font-bold`}
+                    // onClick={isShow}
+                    onClick={() => navigate("/login")}
                   >
                     Login
                   </button>
@@ -347,10 +339,10 @@ function Navbar({ withcroll }) {
                   className={`${
                     withcroll
                       ? scrollY < 100
-                        ? "text-neutral-50"
+                        ? "text-white"
                         : "text-sky-500"
                       : "text-sky-500"
-                  }  duration-300 mt-3`}
+                  }  duration-300 mt-3 mr-3`}
                   size={22}
                   onClick={() => setsidebar(false)}
                 />
@@ -359,10 +351,10 @@ function Navbar({ withcroll }) {
                   className={`${
                     withcroll
                       ? scrollY < 100
-                        ? "text-neutral-50"
+                        ? "text-white"
                         : "text-sky-500"
                       : "text-sky-500"
-                  }  duration-300 mt-3 `}
+                  }  duration-300 mt-3 mr-3 `}
                   size={22}
                   onClick={() => {
                     setNavbarOpen(!navbarOpen);
@@ -371,169 +363,6 @@ function Navbar({ withcroll }) {
                 />
               )}
             </div>
-          </div>
-          {/* Modal Login */}
-          <div className="modal-login">
-            <Modal
-              open={show}
-              title="Login"
-              onCancel={isClosed}
-              footer=""
-              width={400}
-            >
-              <Form
-                name="normal_login"
-                className="login-form"
-                initialValues={{
-                  remember: true,
-                }}
-                onFinish={onLogin}
-              >
-                <Form.Item
-                  name="email"
-                  rules={[
-                    {
-                      type: "email",
-                      message: "The input is not valid E-mail!",
-                    },
-                    {
-                      required: true,
-                      message: "Please input your Email!",
-                    },
-                  ]}
-                >
-                  <Input
-                    prefix={<UserOutlined className="site-form-item-icon" />}
-                    placeholder="Username"
-                  />
-                </Form.Item>
-                <Form.Item
-                  name="password"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please input your password!",
-                    },
-                  ]}
-                >
-                  <Input.Password
-                    prefix={<LockOutlined className="site-form-item-icon" />}
-                    placeholder="Password"
-                  />
-                </Form.Item>
-                <div className="text-sm font-medium text-gray-500 mt-6">
-                  Not registered?{" "}
-                  <p
-                    className="text-blue-700 hover:underline dark:text-blue-500"
-                    onClick={isShowRegist}
-                  >
-                    Create account
-                  </p>
-                </div>
-                <Form.Item>
-                  <div className="button fflex items-center  flex justify-between mt-4 space-x-4">
-                    <Button
-                      htmlType="submit"
-                      className="login-form-button bg-yellow-500 w-full h-12 text-white"
-                    >
-                      Log in
-                    </Button>
-                    <Button
-                      htmlType="submit"
-                      className="login-form-button bg-teal-500  w-full h-12 text-white"
-                      onClick={googleLogin}
-                    >
-                      Log With Google
-                    </Button>
-                  </div>
-                </Form.Item>
-              </Form>
-            </Modal>
-          </div>
-          {/* Modal Register */}
-          <div className="modal-login">
-            <Modal
-              open={showRegist}
-              title="Register"
-              onCancel={isClosedRegist}
-              footer=""
-              width={400}
-            >
-              <Form
-                name="normal_login"
-                className="login-form"
-                initialValues={{
-                  remember: true,
-                }}
-                onFinish={onRegist}
-              >
-                <Form.Item
-                  name="name"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please input your Name!",
-                    },
-                  ]}
-                >
-                  <Input
-                    prefix={<UserOutlined className="site-form-item-icon" />}
-                    placeholder="Username"
-                  />
-                </Form.Item>
-                <Form.Item
-                  name="email"
-                  rules={[
-                    {
-                      type: "email",
-                      message: "The input is not valid E-mail!",
-                    },
-                    {
-                      required: true,
-                      message: "Please input your Email!",
-                    },
-                  ]}
-                >
-                  <Input
-                    prefix={<MailOutlined className="site-form-item-icon" />}
-                    placeholder="Email"
-                  />
-                </Form.Item>
-                <Form.Item
-                  name="password"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please input your password!",
-                    },
-                  ]}
-                >
-                  <Input.Password
-                    prefix={<LockOutlined className="site-form-item-icon" />}
-                    placeholder="Password"
-                  />
-                </Form.Item>
-                <div className="text-sm font-medium text-gray-500 mt-6">
-                  Have Account?{" "}
-                  <p
-                    className="text-blue-700 hover:underline dark:text-blue-500"
-                    onClick={isShow}
-                  >
-                    Login
-                  </p>
-                </div>
-                <Form.Item>
-                  <div className="button fflex items-center  flex justify-between mt-4 space-x-4">
-                    <Button
-                      htmlType="submit"
-                      className=" bg-yellow-500 w-full h-12 text-white"
-                    >
-                      Register
-                    </Button>
-                  </div>
-                </Form.Item>
-              </Form>
-            </Modal>
           </div>
         </div>
       </div>

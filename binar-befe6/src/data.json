@@ -1,0 +1,44 @@
+[
+  {
+    "id": 0,
+    "Country": "Indonesia",
+    "Landmark": " Monumen Nasional (Monas), Jakarta",
+    "image": "/Indonesia.webp",
+    "Description": " landmark Indonesia satu ini sudah lama menjadi ikon kebanggaan masyarakat Indonesia. Memiliki tinggi 132 meter, monumen ini diprakarsai oleh presiden pertama Ir. Soekarno untuk mengenang perlawanan dan perjuangan rakyat Indonesia untuk merebut kemerdekaan.landmark Indonesia ini menjadi salah satu identitas dari Ibukota Jakarta. Ciri khas dari landmark ini adalah lapisan emas yang membentuk kobaran api pada puncak tugu megah ini."
+  },
+  {
+    "id": 1,
+    "Country": "Australia",
+    "Landmark": "Sydney Opera House",
+    "image": "/Australia.jpg",
+    "Description": " landmark Indonesia satu ini sudah lama menjadi ikon kebanggaan masyarakat Indonesia. Memiliki tinggi 132 meter, monumen ini diprakarsai oleh presiden pertama Ir. Soekarno untuk mengenang perlawanan dan perjuangan rakyat Indonesia untuk merebut kemerdekaan.landmark Indonesia ini menjadi salah satu identitas dari Ibukota Jakarta. Ciri khas dari landmark ini adalah lapisan emas yang membentuk kobaran api pada puncak tugu megah ini."
+  },
+  {
+    "id": 2,
+    "Country": "China",
+    "Landmark": "The Mutianyu Great Wall",
+    "image": "/China.jpg",
+    "Description": " Tembok Besar jelas merupakan salah satu landmark paling terkenal di Tiongkok. Berasal dari Dinasti Zhou Barat (1046 - 771 SM), itu adalah proyek pertahanan militer kuno yang melintasi bagian utara Tiongkok, terdiri dari tembok pertahanan, menara pengawas dan menara suar, dan jalur, dll. Saat ini, Tembok Besar Tiongkok terutama mengacu pada Tembok Besar Dinasti Ming yang membentang dari Jiayuguan di Provinsi Gansu hingga Hushan di Provinsi Liaoning. Yang paling banyak dikunjungi turis adalah bagian yang tersebar di pinggiran Beijing, di antaranya Badaling dan Mutianyu adalah yang paling populer. Mereka terpelihara dengan baik dengan struktur pertahanan lengkap dan fasilitas perjalanan. Jika Anda bepergian ke China, kunjungi salah satu dari mereka untuk meninggalkan kenangan seumur hidup."
+  },
+  {
+    "id": 3,
+    "Country": "Korea",
+    "Landmark": "N Seoul Tower",
+    "image": "/Korea.webp",
+    "Description": "Bangunan ini dulunya merupakan menara gelombang radio pertama di Korea yang menyalurkan frekuensi siaran televisi dan radio di kota metropolitan sejak tahun 1969. Sejak dibukanya dek observasi untuk publik di tahun 1980, menara ini beralih fungsi menjadi tempat wisata yang menyajikan pemandangan pegunungan Namsan serta kota Seoul dari ketinggian."
+  },
+  {
+    "id": 4,
+    "Country": "Jepang",
+    "Landmark": "Gunung Fuji",
+    "image": "/Jepang.jpg",
+    "Description": "landmark paling terkenal di Jepang, dan banyak orang akan berpikir tentang Gunung Fuji (富士山 Fuji-san). Pada ketinggian 3,776m, Gunung Fuji adalah gunung tertinggi, dan juga paling terkenal di negara ini. Gunung Fuji adalah ikon budaya Jepang, dan juga termasuk dalam Daftar Warisan Dunia UNESCO dan ditetapkan sebagai Tempat Khusus Keindahan Pemandangan."
+  },
+  {
+    "id": 5,
+    "Country": "Thailand",
+    "Landmark": "The Grand Palace",
+    "image": "/Thailand.webp",
+    "Description": "Grand Palace adalah salah satu landmark yang paling banyak dikunjungi di Asia dan Bangkok, ibu kota Thailand. Istana ini dibangun pada tahun 1782 dan menjadi rumah Raja Thailand selama 150 tahun. Itu juga menampung Pengadilan Kerajaan dan pusat administrasi pemerintahan."
+  }
+]

@@ -21,10 +21,6 @@ function Profile() {
     console.log("Failed:", errorInfo);
   };
 
-  // let profile = localStorage.getItem("user");
-  // let image = localStorage.getItem("image");
-  // let gmail = localStorage.getItem("email");
-
   return (
     <>
       <Navbar />

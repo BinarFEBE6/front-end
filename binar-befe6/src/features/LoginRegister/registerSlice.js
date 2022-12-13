@@ -1,57 +1,25 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
-import { initializeApp } from "firebase/app";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  updateProfile,
-} from "firebase/auth";
-import {
-  getFirestore,
-  query,
-  getDocs,
-  collection,
-  where,
-  addDoc,
-} from "firebase/firestore";
 const initialState = {
   regist: [],
   loading: false,
 };
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDRXNuyAgrdq-xhQ2H8Ia_Ac5cNQtBkR7c",
-  authDomain: "login-c9664.firebaseapp.com",
-  projectId: "login-c9664",
-  storageBucket: "login-c9664.appspot.com",
-  messagingSenderId: " 491201687615",
-  appId: "1:491201687615:web:28044baa800ba5e3dbc88a",
-  measurementId: "G-WQ0E9WJ2H1",
-};
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-
 export const postRegister = createAsyncThunk(
   "regist/postRegist",
-  async ({ name, email, password }) => {
+  async (values) => {
     try {
-      const res = await createUserWithEmailAndPassword(auth, email, password);
-      const user = res.user;
-      await addDoc(collection(db, "users"), {
-        uid: user.uid,
-        name,
-        authProvider: "local",
-        email,
-      });
-      await updateProfile(auth.currentUser, { displayName: name }).catch(
-        (err) => console.log(err)
+      const res = await axios.post(
+        "https://febe6.up.railway.app/api/auth/signup",
+        values
       );
+      // console.log(res);
 
-      console.log(res);
-      return res;
-    } catch (err) {
-      console.error(err);
+      console.log(res.data.data);
+      return res.data.data;
+    } catch (error) {
+      console.error(error);
     }
   }
 );
