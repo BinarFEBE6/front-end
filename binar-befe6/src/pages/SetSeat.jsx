@@ -9,7 +9,7 @@ function SetSeat() {
 
   const getSeat = async () => {
     try {
-      const res = await axios.get(`http://febe6.up.railway.app/api/getSeats`);
+      const res = await axios.get(`https://febe6.up.railway.app/api/getSeats`);
       setSeat(res.data.data);
     } catch (error) {
       console.log(error);
