@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import logo from "../assets/logo.png";
+
+import logo2 from "../assets/logo2w.png";
 import { Modal, Form } from "antd";
 import { Button, Input } from "antd";
 import { LockOutlined, UserOutlined, MailOutlined } from "@ant-design/icons";
+import { FcGoogle } from "react-icons/fc";
 import { AiOutlineMail } from "react-icons/ai";
 function LoginRegist() {
   const [regist, setRegist] = useState();
@@ -11,15 +14,22 @@ function LoginRegist() {
   };
   return (
     <div className="login-section bg-gray-100 w-screen h-screen flex justify-center items-center">
-      <div className="wrapper-box bg-white w-[90vw] h-[80vh] rounded-xl shadow-xl flex  justify-center">
-        <div className="content  flex flex-col items-center">
-          <img src={logo} alt="" className="w-20 mt-3" />
-          <h1 className="text-xl text-gray-700 font-semibold">Travelin.</h1>
+      <div className="side bg-primary-100 w-[90vw] h-[70vh] lg:w-[30vw] rounded-tl-xl rounded-bl-xl shadow-xl lg:flex hidden justify-center flex-col items-center">
+        <h1 className="text-2xl text-white font-semibold">
+          Lets Travel With Us
+        </h1>
+        <img src={logo2} alt="" className="w-40 mt-3" />
+      </div>
+      <div className="wrapper-box bg-white w-[90vw] h-[70vh] lg:w-[30vw] lg:rounded-tr-xl lg:rounded-br-xl rounded-xl drop-shadow-lg flex  justify-center">
+        <div className="content  flex flex-col items-center ">
+          <div className="logo flex flex-row justify-center items-center lg:mt-4 ">
+            <img src={logo} alt="" className="w-20 mt-3" />
+          </div>
 
-          <div className="form w-[70vw] ">
+          <div className="form w-[70vw] lg:w-[20vw] ">
             {regist ? (
               <div className="">
-                {/* <h1 className="text-center text-xl">Register</h1> */}
+                <h1 className="text-center text-xl">Register</h1>
                 <Form
                   name="normal_login"
                   className="login-form"
@@ -85,19 +95,19 @@ function LoginRegist() {
                   </div>
                   <Form.Item>
                     <div className="button fflex items-center  flex justify-between mt-4 space-x-4">
-                      <Button
+                      <button
                         htmlType="submit"
-                        className="login-form-button bg-yellow-500 w-full h-12 text-white"
+                        className="login-form-button bg-primary-100 rounded-xl w-full h-12 text-white text-sm"
                       >
                         Register
-                      </Button>
+                      </button>
                     </div>
                   </Form.Item>
                 </Form>
               </div>
             ) : (
               <div className="">
-                {/* <h1 className="text-center text-xl">Login</h1> */}
+                <h1 className="text-center text-xl">Login</h1>
                 <Form
                   name="normal_login"
                   className="login-form"
@@ -147,22 +157,22 @@ function LoginRegist() {
                       Create account
                     </p>
                   </div>
-                  <Form.Item>
-                    <div className="button fflex items-center  flex justify-between mt-4 space-x-4">
-                      <Button
-                        htmlType="submit"
-                        className="login-form-button bg-yellow-500 w-full h-12 text-white"
-                      >
-                        Log in
-                      </Button>
-                      <Button
-                        htmlType="submit"
-                        className="login-form-button bg-teal-500  w-full h-12 text-white"
-                      >
-                        Log With Google
-                      </Button>
-                    </div>
-                  </Form.Item>
+
+                  <div className="button  items-center  flex flex-col mt-4 ">
+                    <button
+                      htmlType="submit"
+                      className="login-form-button bg-primary-100 w-full h-12 rounded-xl text-white text-sm"
+                    >
+                      Log in
+                    </button>
+                    <h1>Or</h1>
+                    <button
+                      htmlType="submit"
+                      className="login-form-button bg-gray-600 w-full h-12 rounded-xl text-white flex flex-row  justify-center items-center text-sm"
+                    >
+                      <FcGoogle size={20} className="mr-2" /> Log in With Google
+                    </button>
+                  </div>
                 </Form>
               </div>
             )}
