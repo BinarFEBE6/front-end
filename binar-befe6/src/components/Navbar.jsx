@@ -48,7 +48,6 @@ function Navbar({ withcroll }) {
   };
 
   const [sidebar, setsidebar] = useState(false);
-  // console.log(scrollY);
   let token = localStorage.getItem("token");
   let profile = localStorage.getItem("user");
   let image = localStorage.getItem("image");
@@ -116,7 +115,6 @@ function Navbar({ withcroll }) {
             Home
           </p>
           <p
-            // onClick={() => navigate(`/Booking`)}
             className="font-bold text-sky-500"
           >
             Booking
@@ -186,7 +184,7 @@ function Navbar({ withcroll }) {
             Home
           </button>
           <button
-            // onClick={() => navigate(`/booking`)}
+            onClick={() => navigate("/setSeat")}
             className={`${
               withcroll
                 ? scrollY < 100
