@@ -1,23 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../components/footer";
 import Navbar from "../components/Navbar";
 
 import { BsPersonFill } from "react-icons/bs";
 
 import { Form, Input, Select, Tabs, DatePicker } from "antd";
+import axios from "axios";
 
 function GuestDetails() {
+  const [country, setCountry] = useState([]);
+  const [people, setPeople] = useState(null);
+
   const onFinish = (fieldValue) => {
     const values = {
       ...fieldValue,
       dateOfBirth: fieldValue["dateOfBirth"].format("YYYY-MM-DD"),
-      dateEndPassport: fieldValue["dateEndPassport"].format('YYYY-MM-DD')
+      dateEndPassport: fieldValue["dateEndPassport"].format("YYYY-MM-DD"),
     };
     console.log("Success:", values);
+    alert("Succes Submit !")
   };
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
+  };
+
+  const handleChange = (value) => {
+    console.log(`selected ${value}`);
+    setPeople(value);
   };
 
   const date = [];
@@ -36,6 +46,26 @@ function GuestDetails() {
     });
   }
 
+  const getCountry = async () => {
+    try {
+      const res = await axios.get(
+        `https://febe6.up.railway.app/api/getCountry`
+      );
+      setCountry(res.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getCountry();
+  }, []);
+
+  const option = country.map((item) => ({
+    value: `${item.countryName}`,
+    label: `${item.countryName}`,
+  }));
+
   return (
     <>
       <Navbar withcroll={false} />
@@ -43,20 +73,57 @@ function GuestDetails() {
         <div className=" bg-white drop-shadow-xl w-full h-[20vh] rounded-b-[50px] lg:rounded-b-[180px] flex items-center justify-center">
           <h1 className="text-3xl font-bold">Guest Details</h1>
         </div>
-        <div className="bg-white w-80% h-full my-12 mx-32 rounded-3xl border shadow-md overflow-y-auto">
+        <div className="flex justify-center">
+          <div className="bg-white w-[40%] h-full my-12 rounded-3xl border shadow-md p-10 flex justify-between items-center">
+            <h1 className="text-gray-500 font-bold">
+              How many Guest to get Ticket's ?
+            </h1>
+            <Select
+              placeholder="Select here"
+              style={{
+                width: 120,
+              }}
+              onChange={handleChange}
+              options={[
+                {
+                  value: 1,
+                  label: "1 People",
+                },
+                {
+                  value: 2,
+                  label: "2 People",
+                },
+                {
+                  value: 3,
+                  label: "3 People",
+                },
+                {
+                  value: 4,
+                  label: "4 People",
+                },
+                {
+                  value: 5,
+                  label: "5 People",
+                },
+              ]}
+            />
+          </div>
+        </div>
+        <div className="bg-white w-80% h-full mb-12 mx-32 rounded-3xl border shadow-md overflow-y-auto">
           <div className="flex px-48 py-12">
             <Tabs
-              defaultActiveKey="1"
+              type="card"
               tabPosition="left"
-              items={[
-                {
+              items={new Array(people).fill(null).map((_, i) => {
+                const id = String(i + 1);
+                return {
                   label: (
                     <span className="flex items-center">
                       <BsPersonFill className="mr-2" />
-                      Guest 1
+                      Guest {id}
                     </span>
                   ),
-                  key: "1",
+                  key: id,
                   children: (
                     <>
                       <div className="ml-8">
@@ -134,96 +201,6 @@ function GuestDetails() {
                             Date of Birth
                           </h1>
                           <div className="flex gap-3">
-                            {/* <Form.Item
-                              label="Date"
-                              name="dateOfBirth"
-                              rules={[
-                                {
-                                  required: true,
-                                },
-                              ]}
-                            >
-                              <Select
-                                placeholder="Date"
-                                style={{ width: 120 }}
-                                options={date}
-                              />
-                            </Form.Item>
-                            <Form.Item
-                              label="Month"
-                              name="monthOfBirth"
-                              rules={[
-                                {
-                                  required: true,
-                                },
-                              ]}
-                            >
-                              <Select
-                                placeholder="Month"
-                                style={{ width: 120 }}
-                                options={[
-                                  {
-                                    label: "January",
-                                    value: "January",
-                                  },
-                                  {
-                                    label: "February",
-                                    value: "February",
-                                  },
-                                  {
-                                    label: "March",
-                                    value: "March",
-                                  },
-                                  {
-                                    label: "April",
-                                    value: "April",
-                                  },
-                                  {
-                                    label: "June",
-                                    value: "June",
-                                  },
-                                  {
-                                    label: "July",
-                                    value: "July",
-                                  },
-                                  {
-                                    label: "August",
-                                    value: "August",
-                                  },
-                                  {
-                                    label: "September",
-                                    value: "September",
-                                  },
-                                  {
-                                    label: "October",
-                                    value: "October",
-                                  },
-                                  {
-                                    label: "November",
-                                    value: "November",
-                                  },
-                                  {
-                                    label: "December",
-                                    value: "December",
-                                  },
-                                ]}
-                              />
-                            </Form.Item>
-                            <Form.Item
-                              label="Year"
-                              name="yearOfBirth"
-                              rules={[
-                                {
-                                  required: true,
-                                },
-                              ]}
-                            >
-                              <Select
-                                placeholder="Year"
-                                style={{ width: 120 }}
-                                options={year}
-                              />
-                            </Form.Item> */}
                             <Form.Item
                               label="Input date of your Birth Date !"
                               name="dateOfBirth"
@@ -250,44 +227,7 @@ function GuestDetails() {
                             <Select
                               placeholder="Select Country"
                               style={{ width: 180 }}
-                              options={[
-                                {
-                                  label: "Indonesia",
-                                  value: "Indonesia",
-                                },
-                                {
-                                  label: "Malaysia",
-                                  value: "Malaysia",
-                                },
-                                {
-                                  label: "Singapore",
-                                  value: "Singapore",
-                                },
-                                {
-                                  label: "Thailand",
-                                  value: "Thailand",
-                                },
-                                {
-                                  label: "Myanmar",
-                                  value: "Myanmar",
-                                },
-                                {
-                                  label: "Cambodia",
-                                  value: "Cambodia",
-                                },
-                                {
-                                  label: "Vietnam",
-                                  value: "Vietnam",
-                                },
-                                {
-                                  label: "Laos",
-                                  value: "Laos",
-                                },
-                                {
-                                  label: "Philippines",
-                                  value: "Philippines",
-                                },
-                              ]}
+                              options={option}
                             />
                           </Form.Item>
 
@@ -304,44 +244,7 @@ function GuestDetails() {
                             <Select
                               placeholder="Select Country"
                               style={{ width: 180 }}
-                              options={[
-                                {
-                                  label: "Indonesia",
-                                  value: "Indonesia",
-                                },
-                                {
-                                  label: "Malaysia",
-                                  value: "Malaysia",
-                                },
-                                {
-                                  label: "Singapore",
-                                  value: "Singapore",
-                                },
-                                {
-                                  label: "Thailand",
-                                  value: "Thailand",
-                                },
-                                {
-                                  label: "Myanmar",
-                                  value: "Myanmar",
-                                },
-                                {
-                                  label: "Cambodia",
-                                  value: "Cambodia",
-                                },
-                                {
-                                  label: "Vietnam",
-                                  value: "Vietnam",
-                                },
-                                {
-                                  label: "Laos",
-                                  value: "Laos",
-                                },
-                                {
-                                  label: "Philippines",
-                                  value: "Philippines",
-                                },
-                              ]}
+                              options={option}
                             />
                           </Form.Item>
 
@@ -366,96 +269,6 @@ function GuestDetails() {
                             End Passport
                           </h1>
                           <div className="flex gap-3">
-                            {/* <Form.Item
-                              label="Date"
-                              name="dateOfEndPassport"
-                              rules={[
-                                {
-                                  required: true,
-                                },
-                              ]}
-                            >
-                              <Select
-                                placeholder="Date"
-                                style={{ width: 120 }}
-                                options={date}
-                              />
-                            </Form.Item>
-                            <Form.Item
-                              label="Month"
-                              name="monthOfEndPassport"
-                              rules={[
-                                {
-                                  required: true,
-                                },
-                              ]}
-                            >
-                              <Select
-                                placeholder="Month"
-                                style={{ width: 120 }}
-                                options={[
-                                  {
-                                    label: "January",
-                                    value: "January",
-                                  },
-                                  {
-                                    label: "February",
-                                    value: "February",
-                                  },
-                                  {
-                                    label: "March",
-                                    value: "March",
-                                  },
-                                  {
-                                    label: "April",
-                                    value: "April",
-                                  },
-                                  {
-                                    label: "June",
-                                    value: "June",
-                                  },
-                                  {
-                                    label: "July",
-                                    value: "July",
-                                  },
-                                  {
-                                    label: "August",
-                                    value: "August",
-                                  },
-                                  {
-                                    label: "September",
-                                    value: "September",
-                                  },
-                                  {
-                                    label: "October",
-                                    value: "October",
-                                  },
-                                  {
-                                    label: "November",
-                                    value: "November",
-                                  },
-                                  {
-                                    label: "December",
-                                    value: "December",
-                                  },
-                                ]}
-                              />
-                            </Form.Item>
-                            <Form.Item
-                              label="Year"
-                              name="yearOfEndPassport"
-                              rules={[
-                                {
-                                  required: true,
-                                },
-                              ]}
-                            >
-                              <Select
-                                placeholder="Year"
-                                style={{ width: 120 }}
-                                options={year}
-                              />
-                            </Form.Item> */}
                             <Form.Item
                               label="Input date of your End Passport !"
                               name="dateEndPassport"
@@ -571,9 +384,6 @@ function GuestDetails() {
                           </Form.Item>
 
                           <Form.Item>
-                            {/* <Button htmlType="submit" className="mt-8">
-                              Submit
-                            </Button> */}
                             <button
                               htmlType="submit"
                               className="w-1/4 px-4 h-9 lg:h-12 lg:my-auto bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl"
@@ -585,18 +395,8 @@ function GuestDetails() {
                       </div>
                     </>
                   ),
-                },
-                {
-                  label: `Tab 2`,
-                  key: "2",
-                  children: `Content of Tab Pane 2`,
-                },
-                {
-                  label: `Tab 3`,
-                  key: "3",
-                  children: `Content of Tab Pane 3`,
-                },
-              ]}
+                };
+              })}
             />
           </div>
         </div>
