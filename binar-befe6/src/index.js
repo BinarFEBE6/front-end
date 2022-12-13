@@ -12,6 +12,7 @@ import History from "./pages/History";
 import GuestDetails from "./pages/GuestDetails";
 import SetSeat from "./pages/SetSeat";
 import LoginRegist from "./pages/LoginRegist";
+import AdminPage from "./pages/adminPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -27,6 +28,7 @@ root.render(
             <Route path="/guestDetails" element={<GuestDetails />} />
             <Route path="/login" element={<LoginRegist />} />
             <Route path="/setSeat" element={<SetSeat />} />
+            <Route path="/dashboard" element={<AdminPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
