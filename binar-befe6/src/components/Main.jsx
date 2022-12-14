@@ -21,15 +21,13 @@ function Main() {
     console.log("Departure at", value[1]);
     setDeparture(value[1]);
   };
-  localStorage.setItem("depart", JSON.stringify(departure));
-  localStorage.setItem("arival", JSON.stringify(arrival));
+  localStorage.setItem("depart", departure);
+  localStorage.setItem("arival", arrival);
   const handleChangeArrival = (value) => {
     console.log("Arrival at", value[1]);
     setArrival(value[1]);
   };
 
-  // const onFinish
-  const { schedule } = useParams();
   const getCountry = async () => {
     try {
       const res = await axios.get(
@@ -40,8 +38,6 @@ function Main() {
       console.log(error);
     }
   };
-
-  console.log("country", country);
 
   useEffect(() => {
     getCountry();
