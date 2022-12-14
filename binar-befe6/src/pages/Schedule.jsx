@@ -5,12 +5,16 @@ import { useNavigate } from "react-router-dom";
 
 import { TbPlaneInflight } from "react-icons/tb";
 import "swiper/css";
-
+import { MdDateRange, MdAttachMoney } from "react-icons/md";
 import "swiper/css/pagination";
-import { AiOutlineArrowRight, AiOutlineClockCircle } from "react-icons/ai";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { IoIosAirplane } from "react-icons/io";
 
-import { FaPlane, FaPlaneSlash } from "react-icons/fa";
+import {
+  FaPlane,
+  FaPlaneSlash,
+  FaPlaneArrival,
+  FaPlaneDeparture,
+} from "react-icons/fa";
 import axios from "axios";
 
 function Schedule() {
@@ -26,7 +30,12 @@ function Schedule() {
     departureAiport: depart,
     arrivalAirport: arrival,
   };
-
+  const rupiah = (number) => {
+    return new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+    }).format(number);
+  };
   const getSchedule = async () => {
     try {
       const res = await axios.post(
@@ -45,23 +54,21 @@ function Schedule() {
   return (
     <>
       <Navbar withcroll={false} />
-      <div className="schedule w-full h-full lg:w-full  flex justify-center items-center bg-slate-100 flex-col ">
-        <div className="class bg bg-sky-700 w-full h-[35vh] lg:h-[40vh] rounded-b-[50px] lg:rounded-b-[100px] mb-5 flex items-center flex-col justify-center shadow-xl">
-          <h1 className=" text-2xl lg:text-4xl text-center text-white font-bold mt-7 tracking-wider uppercase">
+      <div className="schedule w-full h-[150vh] lg:h-[130vh] lg:w-full  flex justify-center items-center bg-slate-100 flex-col ">
+        {/* <div className="class bg bg-white w-full h-[20vh] lg:h-[40vh] rounded-b-[50px] lg:rounded-b-[100px] mb-5 flex items-center flex-col justify-center shadow-xl">
+          <h1 className=" text-2xl lg:text-4xl text-center text-gray-600 font-bold mt-7 tracking-wider uppercase">
             Choose Your Planning Schedule
           </h1>
-        </div>
-        <div className="wrapper w-[90vw] h-36 lg:w-[76vw] bg-white shadow-xl rounded-md">
-          <div className="schedule-wrapping  p-2 ">
-            <div className="location flex flex-row space-x-5 ">
-              <p className="text-xl text-gray-900 font-semibold">{depart}</p>
-              <p className="text-lg text-primary-100">To</p>
-              <p className="text-xl text-gray-900 font-semibold">{arrival}</p>
-            </div>
+        </div> */}
+        <div className="wrapper w-[90vw] p-3 lg:w-[76vw] bg-white shadow-xl rounded-md flex justify-center items-center">
+          <div className="location flex flex-row  items-center justify-center mt-3  gap-3">
+            <p className="text-xl text-gray-600 font-semibold ">{depart}</p>
+            <IoIosAirplane className="text-yellow-300  mb-3" size={20} />
+            <p className="text-xl text-gray-600 font-semibold">{arrival}</p>
           </div>
         </div>
         <div
-          className={`flight bg-transparent w-[90vw] h-[70vh]  mt-7 lg:w-[80vw] rounded-md  ${
+          className={`flight bg-transparent w-[90vw]   lg:w-[80vw] rounded-md  ${
             Skejul ? "" : " flex justify-center"
           }`}
         >
@@ -70,36 +77,78 @@ function Schedule() {
               {schedule &&
                 schedule.map((item) => {
                   return (
-                    <div className="flight w-[95%] rounded-md flex bg-white shadow-lg mt-3">
+                    <div className="flight w-[95%] rounded-md flex p-2 bg-white shadow-lg mt-3">
                       <div className="maskapai flex flex-row justify-between mx-4 mt-2">
                         <div>
                           <div className="Kapal flex flex-row space-x-3">
-                            <TbPlaneInflight />
-                            <h1>{item.pesawat.name}</h1>
+                            <IoIosAirplane />
+                            <h1 className="text-gray-600">
+                              {item.pesawat.name}
+                            </h1>
+                          </div>
+                          <h1>{item.categoryClass.name}</h1>
+                          <div className="wrapper flex justify-center  flex-col lg:flex-row lg:gap-12">
+                            <div className="tujuan flex-row flex space-x-2 mt-2 ">
+                              <h2 className="text-sm text-gray-600">
+                                {item.departureAiport}
+                              </h2>
+                              <TbPlaneInflight className="text-yellow-300" />
+                              <h2 className="text-sm text-gray-600">
+                                {item.arrivalAirport}
+                              </h2>
+                            </div>
+
+                            <div className="time flex flex-row gap-7">
+                              <div className="time flex flex-row items-center justify-center mt-2">
+                                <FaPlaneDeparture
+                                  className="text-sky-500 mr-2"
+                                  size={15}
+                                />{" "}
+                                <h2 className="text-gray-600 text-sm">
+                                  {" "}
+                                  {item.scheduleTime.depatureTime.slice(0, 5)}
+                                </h2>
+                              </div>
+                              <div className="time flex flex-row items-center justify-center mt-2">
+                                <FaPlaneArrival
+                                  className="text-sky-500 mr-2"
+                                  size={15}
+                                />{" "}
+                                <h2 className="text-gray-600 text-sm lg:mr-28 mr-6 ">
+                                  {" "}
+                                  {item.scheduleTime.arrivalTime.slice(0, 5)}
+                                </h2>
+                                <h2 className="text-sm text-gray-600 hidden lg:flex">
+                                  {rupiah(item.price)}
+                                  <span className="text-xs">/org</span>
+                                </h2>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="date flex    lg:justify-start gap-2 items-center flex-row mt-2">
+                            <MdDateRange className="mb-2" />
+                            <h2 className="text-sm text-gray-600 ">
+                              {" "}
+                              {item.date}
+                            </h2>
                           </div>
 
-                          <div className="tujuan flex-row flex space-x-2 mt-2">
-                            <h2 className="text-sm">{item.departureAiport}</h2>
-                            <AiOutlineArrowRight />
-                            <h2 className="text-sm">{item.arrivalAirport}</h2>
-                          </div>
-
-                          <div className="time flex flex-row items-center space-x-2 mt-2">
-                            <AiOutlineClockCircle size={20} />
-                            <h2>Depart {item.scheduleTime.depatureTime}</h2>
-                          </div>
-                          <div className="time flex flex-row items-center space-x-2 mt-2">
-                            <AiOutlineClockCircle size={20} />
-                            <h2>Arrival {item.scheduleTime.arrivalTime}</h2>
-                          </div>
-
-                          <div className="time flex flex-row items-center space-x-2 mt-2">
-                            <AiOutlineClockCircle size={20} />
-                            <h2> {item.date}</h2>
+                          <div className="price flex flex-row justify-between items-center">
+                            <h2 className="text-sm text-gray-600 lg:hidden flex flex-row items-center gap-1 mr-3">
+                              <MdAttachMoney
+                                size={20}
+                                className="text-emerald-700"
+                              />
+                              {rupiah(item.price)}
+                              <span className="text-xs">/org</span>
+                            </h2>
+                            <button className="bg-primary-100 w-20 py-1 mb-2 text-white rounded-lg text-sm">
+                              Pesan
+                            </button>
                           </div>
                         </div>
 
-                        <div className="class flex flex-col">
+                        {/* <div className="class flex flex-col">
                           <h1 className="text-end">
                             {item.categoryClass.name}
                           </h1>
@@ -110,9 +159,41 @@ function Schedule() {
                           >
                             Pesan
                           </button>
-                        </div>
+                        </div> */}
                       </div>
                     </div>
+                    // <div className="flight w-[95%] rounded-md flex bg-white shadow-lg mt-3">
+                    //   <Accordion alwaysOpen={true} arrowIcon={false}>
+                    //     <Accordion.Panel>
+                    //       <Accordion.Title>
+                    //         <div className="accord-head">
+                    //           <div className="time flex flex-row space-x-2">
+                    //             <p>{item.scheduleTime.depatureTime}</p>
+                    //             <p>{item.scheduleTime.arrivalTime}</p>
+                    //           </div>
+                    //         </div>
+                    //       </Accordion.Title>
+                    //       <Accordion.Content>
+                    //         <p className="mb-2 text-gray-500 dark:text-gray-400">
+                    //           Flowbite is an open-source library of interactive
+                    //           components built on top of Tailwind CSS including
+                    //           buttons, dropdowns, modals, navbars, and more.
+                    //         </p>
+                    //         <p className="text-gray-500 dark:text-gray-400">
+                    //           Check out this guide to learn how to{" "}
+                    //           <a
+                    //             href="https://flowbite.com/docs/getting-started/introduction/"
+                    //             className="text-blue-600 hover:underline dark:text-blue-500"
+                    //           >
+                    //             get started
+                    //           </a>{" "}
+                    //           and start developing websites even faster with
+                    //           components on top of Tailwind CSS.
+                    //         </p>
+                    //       </Accordion.Content>
+                    //     </Accordion.Panel>
+                    //   </Accordion>
+                    // </div>
                   );
                 })}
             </div>
