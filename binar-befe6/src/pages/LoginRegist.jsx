@@ -7,7 +7,7 @@ import { Button, Input } from "antd";
 import { LockOutlined, UserOutlined, MailOutlined } from "@ant-design/icons";
 import { FcGoogle } from "react-icons/fc";
 import { AiOutlineMail } from "react-icons/ai";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { postRegister } from "../features/LoginRegister/registerSlice";
 import { useNavigate } from "react-router-dom";
 import { logIn } from "../features/LoginRegister/loginSlice";
@@ -22,11 +22,12 @@ function LoginRegist() {
       setRegist(false);
     } catch (error) {}
   };
-
+  const { login } = useSelector((state) => state.login);
   const onLogin = async (values) => {
     try {
       dispatch(logIn(values));
-      navigate("/");
+
+      login.roles[0] !== "ROLE_USER" ? navigate("/dashboard") : navigate("/");
     } catch (error) {}
   };
   const register = () => {

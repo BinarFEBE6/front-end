@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Footer from "../components/footer";
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
@@ -11,14 +11,35 @@ import { AiOutlineArrowRight, AiOutlineClockCircle } from "react-icons/ai";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { FaPlane, FaPlaneSlash } from "react-icons/fa";
+import axios from "axios";
 
 function Schedule() {
   const [Skejul, setSkejul] = useState(false);
   const jadwal = () => {
     setSkejul(true);
   };
-
+  const [departureAiport, setdepartureAiport] = useState([]);
+  const [arrivalAirport, setarrivalAirport] = useState([]);
   const navigate = useNavigate();
+  const depart = localStorage.getItem("depart");
+  setdepartureAiport(depart);
+
+  const arrival = localStorage.getItem("arival");
+  setarrivalAirport(arrival);
+
+  const getSchedule = async () => {
+    try {
+      const res = await axios.post(
+        "https://febe6.up.railway.app/api/getSchedule",
+        departureAiport(),
+        arrivalAirport()
+      );
+      console.log(res);
+    } catch (error) {}
+  };
+  useEffect(() => {
+    getSchedule();
+  }, []);
 
   return (
     <>

@@ -8,7 +8,7 @@ import { CgArrowsExchange } from "react-icons/cg";
 import { MdAirplanemodeActive } from "react-icons/md";
 
 import { Carousel, Cascader } from "antd";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function Main() {
   const [country, setCountry] = useState([]);
@@ -21,14 +21,15 @@ function Main() {
     console.log("Departure at", value[1]);
     setDeparture(value[1]);
   };
-
+  localStorage.setItem("depart", JSON.stringify(departure));
+  localStorage.setItem("arival", JSON.stringify(arrival));
   const handleChangeArrival = (value) => {
     console.log("Arrival at", value[1]);
     setArrival(value[1]);
   };
 
   // const onFinish
-
+  const { schedule } = useParams();
   const getCountry = async () => {
     try {
       const res = await axios.get(
