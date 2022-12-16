@@ -12,9 +12,10 @@ export const logIn = createAsyncThunk("login/postLog", async (values) => {
       "https://febe6.up.railway.app/api/auth/signin",
       values
     );
-    // console.log(res);
+
     localStorage.setItem("token", JSON.stringify(res.data.data.token));
     localStorage.setItem("user", JSON.stringify(res.data.data.username));
+    localStorage.setItem("userId", JSON.stringify(res.data.data.id));
 
     console.log(res.data.data);
     return res.data.data;
