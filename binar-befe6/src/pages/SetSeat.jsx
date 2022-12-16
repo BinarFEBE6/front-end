@@ -49,12 +49,17 @@ function SetSeat() {
   };
 
   console.log(valueOrder);
-
+  let token = localStorage.getItem("token");
   const postOrder = async () => {
     try {
       const res = await axios.post(
         `https://febe6.up.railway.app/api/booking/add`,
-        valueOrder
+        valueOrder,
+        {
+          headers: {
+            Authorization: `${token}`,
+          },
+        }
       );
       console.log(res);
     } catch (error) {

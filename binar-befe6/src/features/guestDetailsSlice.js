@@ -5,7 +5,7 @@ const initialState = {
   guest: {},
   loading: false,
 };
-
+let token = localStorage.getItem("token");
 const userId = [];
 
 export const guestDetails = createAsyncThunk(
@@ -14,7 +14,12 @@ export const guestDetails = createAsyncThunk(
     try {
       const res = await axios.post(
         "https://febe6.up.railway.app/api/booking/guest",
-        values
+        values,
+        {
+          headers: {
+            Authorization: `${token}`,
+          },
+        }
       );
 
       console.log(res.data.data);
