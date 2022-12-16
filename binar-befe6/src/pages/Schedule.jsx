@@ -6,19 +6,16 @@ import { useNavigate } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import { MdDateRange, MdAttachMoney, MdAirlineSeatReclineExtra } from "react-icons/md";
 import {
-  AiFillSchedule,
-  AiFillCheckCircle,
-} from "react-icons/ai";
+  MdDateRange,
+  MdAttachMoney,
+  MdAirlineSeatReclineExtra,
+} from "react-icons/md";
+import { AiFillSchedule, AiFillCheckCircle } from "react-icons/ai";
 import { TbPlaneInflight } from "react-icons/tb";
 import { BsPersonPlusFill } from "react-icons/bs";
 import { IoIosAirplane } from "react-icons/io";
-import {
-  FaPlaneSlash,
-  FaPlaneArrival,
-  FaPlaneDeparture,
-} from "react-icons/fa";
+import { FaPlaneSlash, FaPlaneArrival, FaPlaneDeparture } from "react-icons/fa";
 
 import axios from "axios";
 
@@ -31,6 +28,9 @@ function Schedule() {
     setSkejul(true);
   };
   const depart = localStorage.getItem("depart");
+  const [SetId, setSetId] = useState([]);
+
+  console.log(SetId);
   const arrival = localStorage.getItem("arival");
   const navigate = useNavigate();
   const values = {
@@ -57,7 +57,7 @@ function Schedule() {
   useEffect(() => {
     getSchedule();
   }, []);
-
+  localStorage.setItem("scheduleId", SetId);
   return (
     <>
       <Navbar withcroll={false} />
@@ -68,17 +68,25 @@ function Schedule() {
             responsive={false}
             items={[
               {
-                title: <h1 className="text-blue-500 lg:block hidden">Schedule</h1>,
+                title: (
+                  <h1 className="text-blue-500 lg:block hidden">Schedule</h1>
+                ),
                 status: "process",
                 icon: <AiFillSchedule className="text-3xl text-blue-500" />,
               },
               {
-                title: <h1 className="text-blue-300 lg:block hidden">Guest Details</h1>,
+                title: (
+                  <h1 className="text-blue-300 lg:block hidden">
+                    Guest Details
+                  </h1>
+                ),
                 status: "wait",
                 icon: <BsPersonPlusFill className="text-3xl text-blue-300" />,
               },
               {
-                title: <h1 className="text-blue-300 lg:block hidden">Choose Seat</h1>,
+                title: (
+                  <h1 className="text-blue-300 lg:block hidden">Choose Seat</h1>
+                ),
                 status: "wait",
                 icon: (
                   <MdAirlineSeatReclineExtra className="text-3xl text-blue-300" />
@@ -94,7 +102,7 @@ function Schedule() {
         </div>
       </div>
 
-      <div className="schedule w-full h-[150vh] lg:h-[130vh] lg:w-full  flex justify-center items-center bg-slate-100 flex-col ">
+      <div className="schedule w-full h-fit lg:h-fit lg:w-full pb-11  flex items-center bg-slate-100 flex-col ">
         {/* <div className="class bg bg-white w-full h-[20vh] lg:h-[40vh] rounded-b-[50px] lg:rounded-b-[100px] mb-5 flex items-center flex-col justify-center shadow-xl">
           <h1 className=" text-2xl lg:text-4xl text-center text-gray-600 font-bold mt-7 tracking-wider uppercase">
             Choose Your Planning Schedule
@@ -112,7 +120,7 @@ function Schedule() {
             Skejul ? "" : " flex justify-center"
           }`}
         >
-          {schedule ? (
+          {schedule.length ? (
             <div className="class flex justify-center flex-col items-center">
               {schedule &&
                 schedule.map((item) => {
@@ -138,34 +146,54 @@ function Schedule() {
                               </h2>
                             </div>
 
-                            <div className="time flex flex-row gap-7">
-                              <div className="time flex flex-row items-center justify-center mt-2">
-                                <FaPlaneDeparture
-                                  className="text-sky-500 mr-2"
-                                  size={15}
-                                />{" "}
-                                <h2 className="text-gray-600 text-sm">
+                            <div className="time flex flex-row lg:justify-around lg:items-center lg:space-x-36">
+                              <div className="arr-dep flex flex-row gap-7">
+                                <div className="time flex flex-row items-center justify-center mt-2 ">
+                                  <FaPlaneDeparture
+                                    className="text-sky-500 mr-2"
+                                    size={15}
+                                  />{" "}
+                                  <h2 className="text-gray-600 text-sm">
+                                    {" "}
+                                    {item.scheduleTime.depatureTime.slice(0, 5)}
+                                  </h2>
+                                </div>
+                                <div className="time flex flex-row items-center justify-center mt-2">
+                                  <FaPlaneArrival
+                                    className="text-sky-500 mr-2"
+                                    size={15}
+                                  />{" "}
+                                  <h2 className="text-gray-600 text-sm  ">
+                                    {" "}
+                                    {item.scheduleTime.arrivalTime.slice(0, 5)}
+                                  </h2>
+                                </div>
+                              </div>
+
+                              <h2 className="text-sm text-gray-600 lg:flex hidden flex-row items-center gap-1 mr-3">
+                                <MdAttachMoney
+                                  size={20}
+                                  className="text-emerald-700"
+                                />
+                                {rupiah(item.price)}
+                                <span className="text-xs">/org</span>
+                              </h2>
+                              <div className="date lg:flex   hidden lg:justify-start gap-2 items-center flex-row mt-2">
+                                <MdDateRange className="mb-2" />
+                                <h2 className="text-sm text-gray-600 ">
                                   {" "}
-                                  {item.scheduleTime.depatureTime.slice(0, 5)}
+                                  {item.date}
                                 </h2>
                               </div>
-                              <div className="time flex flex-row items-center justify-center mt-2">
-                                <FaPlaneArrival
-                                  className="text-sky-500 mr-2"
-                                  size={15}
-                                />{" "}
-                                <h2 className="text-gray-600 text-sm lg:mr-28 mr-6 ">
-                                  {" "}
-                                  {item.scheduleTime.arrivalTime.slice(0, 5)}
-                                </h2>
-                                <h2 className="text-sm text-gray-600 hidden lg:flex">
-                                  {rupiah(item.price)}
-                                  <span className="text-xs">/org</span>
-                                </h2>
-                              </div>
+                              <button
+                                onClick={() => setSetId(item.id)}
+                                className="bg-primary-100 w-20 py-1 mb-2 hidden lg:flex text-white items-center justify-center rounded-lg text-sm"
+                              >
+                                Pesan
+                              </button>
                             </div>
                           </div>
-                          <div className="date flex    lg:justify-start gap-2 items-center flex-row mt-2">
+                          <div className="date flex   lg:hidden lg:justify-start gap-2 items-center flex-row mt-2">
                             <MdDateRange className="mb-2" />
                             <h2 className="text-sm text-gray-600 ">
                               {" "}
@@ -182,58 +210,16 @@ function Schedule() {
                               {rupiah(item.price)}
                               <span className="text-xs">/org</span>
                             </h2>
-                            <button className="bg-primary-100 w-20 py-1 mb-2 text-white rounded-lg text-sm">
+                            <button
+                              onClick={() => setSetId(item.id)}
+                              className="bg-primary-100 w-20 py-1 mb-2 lg:hidden text-white rounded-lg text-sm"
+                            >
                               Pesan
                             </button>
                           </div>
                         </div>
-
-                        {/* <div className="class flex flex-col">
-                          <h1 className="text-end">
-                            {item.categoryClass.name}
-                          </h1>
-                          <h1>Rp. {item.price}</h1>
-                          <button
-                            onClick={() => navigate(`/guestDetails`)}
-                            className="w-full rounded-lg p-2 text-white bg-sky-500"
-                          >
-                            Pesan
-                          </button>
-                        </div> */}
                       </div>
                     </div>
-                    // <div className="flight w-[95%] rounded-md flex bg-white shadow-lg mt-3">
-                    //   <Accordion alwaysOpen={true} arrowIcon={false}>
-                    //     <Accordion.Panel>
-                    //       <Accordion.Title>
-                    //         <div className="accord-head">
-                    //           <div className="time flex flex-row space-x-2">
-                    //             <p>{item.scheduleTime.depatureTime}</p>
-                    //             <p>{item.scheduleTime.arrivalTime}</p>
-                    //           </div>
-                    //         </div>
-                    //       </Accordion.Title>
-                    //       <Accordion.Content>
-                    //         <p className="mb-2 text-gray-500 dark:text-gray-400">
-                    //           Flowbite is an open-source library of interactive
-                    //           components built on top of Tailwind CSS including
-                    //           buttons, dropdowns, modals, navbars, and more.
-                    //         </p>
-                    //         <p className="text-gray-500 dark:text-gray-400">
-                    //           Check out this guide to learn how to{" "}
-                    //           <a
-                    //             href="https://flowbite.com/docs/getting-started/introduction/"
-                    //             className="text-blue-600 hover:underline dark:text-blue-500"
-                    //           >
-                    //             get started
-                    //           </a>{" "}
-                    //           and start developing websites even faster with
-                    //           components on top of Tailwind CSS.
-                    //         </p>
-                    //       </Accordion.Content>
-                    //     </Accordion.Panel>
-                    //   </Accordion>
-                    // </div>
                   );
                 })}
             </div>
