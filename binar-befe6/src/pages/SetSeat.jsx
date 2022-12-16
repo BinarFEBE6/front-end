@@ -36,6 +36,32 @@ function SetSeat() {
     }
   };
 
+  const getUserEmail = JSON.parse(localStorage.getItem("userEmail"));
+  const getGuestId = JSON.parse(localStorage.getItem("guestId"));
+  const getSeatId = JSON.parse(localStorage.getItem("seatId"));
+  const getScheduleId = JSON.parse(localStorage.getItem("scheduleId"));
+
+  const valueOrder = {
+    userEmail: getUserEmail,
+    guestId: getGuestId,
+    seatId: getSeatId,
+    scheduleId: getScheduleId,
+  };
+
+  console.log(valueOrder);
+
+  const postOrder = async () => {
+    try {
+      const res = await axios.post(
+        `https://febe6.up.railway.app/api/booking/add`,
+        valueOrder
+      );
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getSeat();
   }, []);
@@ -50,6 +76,8 @@ function SetSeat() {
     console.log(displayChoose);
 
     localStorage.setItem("seatId", JSON.stringify(displayChoose));
+
+    alert(`Succes Choose seat ${seatValue} !`);
   };
 
   return (
@@ -170,7 +198,7 @@ function SetSeat() {
           </div>
           <div className="flex justify-end lg:mr-10 mb-10 lg:mb-0 mr-4">
             <button
-              // onClick={() => navigate("/setSeat")}
+              // onClick={() => postOrder()}
               disabled={!componentDisabled}
               className={
                 !componentDisabled

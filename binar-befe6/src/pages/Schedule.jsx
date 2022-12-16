@@ -27,11 +27,11 @@ function Schedule() {
 
   const jadwal = (value) => {
     localStorage.setItem("scheduleId", value);
-    navigate("/guestDetails")
+    navigate("/guestDetails");
   };
-  
+
   const depart = localStorage.getItem("depart");
- 
+
   const arrival = localStorage.getItem("arival");
   const navigate = useNavigate();
   const values = {
@@ -58,7 +58,7 @@ function Schedule() {
   useEffect(() => {
     getSchedule();
   }, []);
-  
+
   return (
     <>
       <Navbar withcroll={false} />
@@ -104,11 +104,9 @@ function Schedule() {
       </div>
 
       <div className="schedule w-full h-fit lg:h-fit lg:w-full pb-11  flex items-center bg-slate-100 flex-col ">
-        {/* <div className="class bg bg-white w-full h-[20vh] lg:h-[40vh] rounded-b-[50px] lg:rounded-b-[100px] mb-5 flex items-center flex-col justify-center shadow-xl">
-          <h1 className=" text-2xl lg:text-4xl text-center text-gray-600 font-bold mt-7 tracking-wider uppercase">
-            Choose Your Planning Schedule
-          </h1>
-        </div> */}
+        <div className=" bg-white drop-shadow-xl w-full h-[15vh] lg:h-[20vh] rounded-b-[50px] lg:rounded-b-[180px] flex items-center justify-center mb-12">
+          <h1 className="text-3xl font-bold text-sky-700">Schedule</h1>
+        </div>
         <div className="wrapper w-[90vw] p-3 lg:w-[76vw] bg-white shadow-xl rounded-md flex justify-center items-center">
           <div className="location flex flex-row  items-center justify-center mt-3  gap-3">
             <p className="text-xl text-gray-600 font-semibold ">{depart}</p>
