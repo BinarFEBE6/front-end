@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/footer";
 import { MdAirplanemodeActive } from "react-icons/md";
@@ -9,20 +9,29 @@ import { WiTime3 } from "react-icons/wi";
 
 function History() {
   const email = JSON.parse(localStorage.getItem("userEmail"));
-  const token = localStorage.getItem("token");
+  let token = JSON.parse(localStorage.getItem("token"));
+  const [history, setHistory] = useState([]);
+  const url = "https://febe6.up.railway.app/api/getHistories";
   const getHistory = async () => {
     try {
-      const res = await axios.get(
-        `https://febe6.up.railway.app//api/getHistories/${email}`,
+      const respone = await axios.get(
+        `https://febe6.up.railway.app/api/getHistories`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
       );
-    } catch (error) {}
-  };
 
+      console.log(respone.data.data);
+      setHistory(respone.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getHistory();
+  }, []);
   return (
     <>
       <div className="bg-gray-100 ">
