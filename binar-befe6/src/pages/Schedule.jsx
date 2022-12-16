@@ -18,7 +18,7 @@ import {
 import axios from "axios";
 
 function Schedule() {
-  const [Skejul, setSkejul] = useState(true);
+  const [Skejul, setSkejul] = useState([]);
   const [schedule, setSchedule] = useState([]);
   const jadwal = () => {
     setSkejul(true);
@@ -72,7 +72,7 @@ function Schedule() {
             Skejul ? "" : " flex justify-center"
           }`}
         >
-          {Skejul ? (
+          {schedule ? (
             <div className="class flex justify-center flex-col items-center">
               {schedule &&
                 schedule.map((item) => {
