@@ -13,12 +13,10 @@ function Travel() {
             Why Everyone Flies
           </h1>
           <p className="text-md lg:text-xl text-justify font-sans w-full">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis,
-            sint aliquid est reprehenderit culpa autem nobis laboriosam soluta
-            consectetur accusantium? Hic veniam earum neque adipisci cumque, ad
-            sequi perferendis deserunt voluptatum, reprehenderit vel quia
-            tempore ex aperiam. Ullam iusto autem, suscipit veritatis officia
-            iure deleniti?
+            Traveling can be a great way to explore new places, experience
+            different cultures, and create lasting memories. There are many
+            different options for travel, and the best one for you will depend
+            on your personal preferences, budget, and destination.
           </p>
         </div>
         <div className="image flex justify-center items-center">
