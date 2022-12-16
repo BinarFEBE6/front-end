@@ -24,13 +24,14 @@ import { Steps } from "antd";
 function Schedule() {
   const [Skejul, setSkejul] = useState([]);
   const [schedule, setSchedule] = useState([]);
-  const jadwal = () => {
-    setSkejul(true);
-  };
-  const depart = localStorage.getItem("depart");
-  const [SetId, setSetId] = useState([]);
 
-  console.log(SetId);
+  const jadwal = (value) => {
+    localStorage.setItem("scheduleId", value);
+    navigate("/guestDetails")
+  };
+  
+  const depart = localStorage.getItem("depart");
+ 
   const arrival = localStorage.getItem("arival");
   const navigate = useNavigate();
   const values = {
@@ -57,7 +58,7 @@ function Schedule() {
   useEffect(() => {
     getSchedule();
   }, []);
-  localStorage.setItem("scheduleId", SetId);
+  
   return (
     <>
       <Navbar withcroll={false} />
@@ -186,7 +187,7 @@ function Schedule() {
                                 </h2>
                               </div>
                               <button
-                                onClick={() => setSetId(item.id)}
+                                onClick={() => jadwal(item.id)}
                                 className="bg-primary-100 w-20 py-1 mb-2 hidden lg:flex text-white items-center justify-center rounded-lg text-sm"
                               >
                                 Pesan
@@ -211,7 +212,7 @@ function Schedule() {
                               <span className="text-xs">/org</span>
                             </h2>
                             <button
-                              onClick={() => setSetId(item.id)}
+                              onClick={() => jadwal(item.id)}
                               className="bg-primary-100 w-20 py-1 mb-2 lg:hidden text-white rounded-lg text-sm"
                             >
                               Pesan
