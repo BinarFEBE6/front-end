@@ -9,11 +9,6 @@ const { TextArea } = Input;
 
 function Profile() {
   const onFinish = (values) => {
-    // const values = {
-    //   ...fieldValue,
-    //   dateOfBirth: fieldValue["dateOfBirth"].format("YYYY-MM-DD"),
-    //   dateEndPassport: fieldValue["dateEndPassport"].format('YYYY-MM-DD')
-    // };
     console.log("Success:", values);
   };
 
@@ -30,7 +25,7 @@ function Profile() {
         </h1>
       </div>
       <div className="flex justify-center">
-        <div className="bg-white w-[40%] h-full mt-[-5rem] mb-12 rounded-3xl border shadow-md p-20">
+        <div className="bg-white w-[90%] lg:w-[40%] h-full mt-[-5rem] mb-24 rounded-3xl border shadow-md p-16 lg:p-20">
           <Avatar alt="User settings" size="xl" />
           <div className="flex justify-center">
             <div className="mt-16">
@@ -47,7 +42,7 @@ function Profile() {
                 <h1 className="text-md font-bold text-xl mb-6 text-gray-500">
                   Gender / Name
                 </h1>
-                <div className="flex gap-2 mb-4">
+                <div className="lg:flex gap-2 mb-4">
                   <Form.Item
                     name="gender"
                     rules={[
@@ -59,7 +54,7 @@ function Profile() {
                     <Select
                       placeholder="Mr/Mrs"
                       size="large"
-                      style={{ width: 100 }}
+                      style={{ width: "100%" }}
                       options={[
                         {
                           label: "Mr.",
@@ -120,7 +115,7 @@ function Profile() {
                   <div className="flex justify-end">
                     <button
                       htmlType="submit"
-                      className="w-1/4 px-4 h-9 lg:h-12 lg:my-auto bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl"
+                      className="lg:w-1/4 px-6 lg:px-4 h-9 lg:h-12 lg:my-auto bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl"
                     >
                       Save
                     </button>
