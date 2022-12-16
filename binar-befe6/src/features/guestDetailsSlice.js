@@ -17,7 +17,7 @@ export const guestDetails = createAsyncThunk(
         values,
         {
           headers: {
-            Authorization: `${token}`,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
