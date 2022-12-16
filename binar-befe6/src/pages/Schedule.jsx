@@ -225,7 +225,7 @@ function Schedule() {
                 })}
             </div>
           ) : (
-            <div className="empty flex justify-center items-center flex-col w-[95%] bg-white h-[70%] rounded-md shadow-lg">
+            <div className="empty flex justify-center h-40 items-center flex-col w-[100%] lg:w-[95%]    mt-5">
               <FaPlaneSlash size={50} />
               <h1 className="text-4xl">No Schedule</h1>
             </div>
