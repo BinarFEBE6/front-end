@@ -170,7 +170,6 @@ function Navbar({ withcroll }) {
             Home
           </button>
           <button
-            onClick={() => navigate("/setSeat")}
             className={`${
               withcroll
                 ? scrollY < 100
