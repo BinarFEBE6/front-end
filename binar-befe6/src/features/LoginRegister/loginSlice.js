@@ -16,6 +16,7 @@ export const logIn = createAsyncThunk("login/postLog", async (values) => {
     localStorage.setItem("token", JSON.stringify(res.data.data.token));
     localStorage.setItem("user", JSON.stringify(res.data.data.username));
     localStorage.setItem("userId", JSON.stringify(res.data.data.id));
+    localStorage.setItem("userEmail", JSON.stringify(res.data.data.email));
 
     console.log(res.data.data);
     return res.data.data;

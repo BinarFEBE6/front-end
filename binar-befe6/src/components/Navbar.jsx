@@ -39,19 +39,6 @@ function Navbar({ withcroll }) {
     navigate("/");
   };
 
-  // const onRegist = asnyc (values) => {
-  //   // dispatch(postRegister(values));
-  //   // setShowRegist();
-  //   try {
-  //     const res = await axios.post("https://febe6.up.railway.app/api/signup");
-
-  //     console.log(res);
-  //     return res;
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
-
   const content = (
     <div>
       <div className="header flex justify-center flex-row">
@@ -215,7 +202,7 @@ function Navbar({ withcroll }) {
                   <Dropdown.Header>
                     <span className="block text-sm">{login.username}</span>
                   </Dropdown.Header>
-
+                  
                   <Dropdown.Item onClick={() => navigate(`/Profile`)}>
                     Profile
                   </Dropdown.Item>
