@@ -8,7 +8,7 @@ import { CgArrowsExchange } from "react-icons/cg";
 import { MdAirplanemodeActive } from "react-icons/md";
 
 import { Carousel, Cascader } from "antd";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Main() {
   const [country, setCountry] = useState([]);
