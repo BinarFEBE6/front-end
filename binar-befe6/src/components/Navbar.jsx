@@ -25,7 +25,24 @@ function Navbar({ withcroll }) {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [showRegist, setShowRegist] = useState(false);
   const { scrollY } = useScroll();
-
+  const [notif, setNotif] = useState([]);
+  const email = JSON.parse(localStorage.getItem("userEmail"));
+  const getNotif = async () => {
+    try {
+      const respone = await axios.get(
+        `https://febe6.up.railway.app/api/notification/${email}`,
+        {
+          headers: {
+            Authorization: `${token}`,
+          },
+        }
+      );
+      setNotif(respone.data);
+      console.log(notif);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const navigate = useNavigate();
 
   const [sidebar, setsidebar] = useState(false);
@@ -38,6 +55,9 @@ function Navbar({ withcroll }) {
     localStorage.clear();
     navigate("/");
   };
+  useEffect(() => {
+    getNotif();
+  }, []);
 
   const content = (
     <div>
@@ -202,7 +222,7 @@ function Navbar({ withcroll }) {
                   <Dropdown.Header>
                     <span className="block text-sm">{login.username}</span>
                   </Dropdown.Header>
-                  
+
                   <Dropdown.Item onClick={() => navigate(`/Profile`)}>
                     Profile
                   </Dropdown.Item>
