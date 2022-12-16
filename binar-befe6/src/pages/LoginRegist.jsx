@@ -7,7 +7,7 @@ import { Button, Input } from "antd";
 import { LockOutlined, UserOutlined, MailOutlined } from "@ant-design/icons";
 import { FcGoogle } from "react-icons/fc";
 import { AiOutlineMail } from "react-icons/ai";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { postRegister } from "../features/LoginRegister/registerSlice";
 import { useNavigate } from "react-router-dom";
 import { logIn } from "../features/LoginRegister/loginSlice";
@@ -22,11 +22,12 @@ function LoginRegist() {
       setRegist(false);
     } catch (error) {}
   };
-
+  const { login } = useSelector((state) => state.login);
   const onLogin = async (values) => {
     try {
       dispatch(logIn(values));
-      navigate("/");
+
+      login.roles[0] !== "ROLE_USER" ? navigate("/dashboard") : navigate("/");
     } catch (error) {}
   };
   const register = () => {
@@ -40,7 +41,7 @@ function LoginRegist() {
         </h1>
         <img src={logo2} alt="" className="w-40 mt-3" />
       </div>
-      <div className="wrapper-box bg-white w-[90vw] h-[70vh] lg:w-[30vw] lg:rounded-tr-xl lg:rounded-br-xl rounded-xl drop-shadow-lg flex  justify-center">
+      <div className="wrapper-box bg-white w-[90vw] h-[70vh] lg:w-[30vw] lg:rounded-tr-xl rounded-xl lg:rounded-br-xl  drop-shadow-lg flex  justify-center">
         <div className="content  flex flex-col items-center ">
           <div className="logo flex flex-row justify-center items-center lg:mt-4 ">
             <img src={logo} alt="" className="w-20 mt-3" />
