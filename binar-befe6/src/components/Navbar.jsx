@@ -38,7 +38,7 @@ function Navbar({ withcroll }) {
         }
       );
 
-      console.log(respone.data.data[0].content);
+      console.log(respone.data.data);
       setNotif(respone.data.data);
     } catch (error) {
       console.log(error);
@@ -66,7 +66,14 @@ function Navbar({ withcroll }) {
       </div>
       {notif &&
         notif.map((item) => {
-          return <p className="">{item.content}</p>;
+          return (
+            <div className="notif border-b border-t flex flex-row">
+              <p className="text-xs">{item.content}</p>
+              <p className=" text-xs font-thin flex items-end">
+                {item.date.slice(0, 10)}
+              </p>
+            </div>
+          );
         })}
     </div>
   );
@@ -196,6 +203,7 @@ function Navbar({ withcroll }) {
             {token && token.length ? (
               <div className="tr flex justify-center">
                 <Tooltip
+                  style="light"
                   content={content}
                   placement="bottom"
                   trigger="click"
@@ -252,6 +260,7 @@ function Navbar({ withcroll }) {
               {token && token.length ? (
                 <div className=" flex ">
                   <Tooltip
+                    style="light"
                     content={content}
                     placement="bottom"
                     trigger="click"
