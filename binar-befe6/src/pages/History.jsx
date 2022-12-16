@@ -2,12 +2,27 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/footer";
 import { MdAirplanemodeActive } from "react-icons/md";
-
+import axios from "axios";
 import { TbPlaneInflight } from "react-icons/tb";
 import { BsArrowRight } from "react-icons/bs";
 import { WiTime3 } from "react-icons/wi";
 
 function History() {
+  const email = JSON.parse(localStorage.getItem("userEmail"));
+  const token = localStorage.getItem("token");
+  const getHistory = async () => {
+    try {
+      const res = await axios.get(
+        `https://febe6.up.railway.app//api/getHistories/${email}`,
+        {
+          headers: {
+            Authorization: `${token}`,
+          },
+        }
+      );
+    } catch (error) {}
+  };
+
   return (
     <>
       <div className="bg-gray-100 ">
