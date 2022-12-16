@@ -5,21 +5,16 @@ import { useNavigate } from "react-router-dom";
 
 import "swiper/css";
 import "swiper/css/pagination";
-import { Swiper, SwiperSlide } from "swiper/react";
 
 import { MdDateRange, MdAttachMoney, MdAirlineSeatReclineExtra } from "react-icons/md";
 import {
   AiFillSchedule,
-  AiOutlineArrowRight,
-  AiOutlineClockCircle,
   AiFillCheckCircle,
 } from "react-icons/ai";
 import { TbPlaneInflight } from "react-icons/tb";
 import { BsPersonPlusFill } from "react-icons/bs";
-import { FaPlane, FaPlaneSlash } from "react-icons/fa";
 import { IoIosAirplane } from "react-icons/io";
 import {
-  FaPlane,
   FaPlaneSlash,
   FaPlaneArrival,
   FaPlaneDeparture,
