@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { VscListFlat } from "react-icons/vsc";
 import { AiOutlineClose } from "react-icons/ai";
 import axios from "axios";
@@ -31,10 +31,12 @@ function Navbar({ withcroll }) {
   const [sidebar, setsidebar] = useState(false);
   let token = localStorage.getItem("token");
   let profile = localStorage.getItem("user");
+
   const { login } = useSelector((state) => state.login);
   const handleLogout = () => {
     window.location.reload(1);
     localStorage.clear();
+    navigate("/");
   };
 
   // const onRegist = asnyc (values) => {
@@ -50,10 +52,6 @@ function Navbar({ withcroll }) {
   //   }
   // };
 
-  const googleLogin = () => {
-    dispatch(postLoginGoogle());
-    setShow();
-  };
   const content = (
     <div>
       <div className="header flex justify-center flex-row">
@@ -100,11 +98,7 @@ function Navbar({ withcroll }) {
           >
             Home
           </p>
-          <p
-            className="font-bold text-sky-500"
-          >
-            Booking
-          </p>
+          <p className="font-bold text-sky-500">Booking</p>
           <p className="font-bold text-primary-100">About</p>
         </div>
       </div>
@@ -221,21 +215,14 @@ function Navbar({ withcroll }) {
                   <Dropdown.Header>
                     <span className="block text-sm">{login.username}</span>
                   </Dropdown.Header>
-                  {login.roles[0] !== "ROLE_ADMIN" ? (
-                    <>
-                      <Dropdown.Item onClick={() => navigate(`/Profile`)}>
-                        Profile
-                      </Dropdown.Item>
 
-                      <Dropdown.Item onClick={() => navigate(`/History`)}>
-                        History
-                      </Dropdown.Item>
-                    </>
-                  ) : (
-                    <Dropdown.Item onClick={() => navigate(`/dashboard`)}>
-                      Dashboard
-                    </Dropdown.Item>
-                  )}
+                  <Dropdown.Item onClick={() => navigate(`/Profile`)}>
+                    Profile
+                  </Dropdown.Item>
+
+                  <Dropdown.Item onClick={() => navigate(`/History`)}>
+                    History
+                  </Dropdown.Item>
 
                   <Dropdown.Divider />
                   <Dropdown.Item onClick={handleLogout}>Sign out</Dropdown.Item>
@@ -291,21 +278,14 @@ function Navbar({ withcroll }) {
                         <span className="block text-sm">{login.username}</span>
                       </span>
                     </Dropdown.Header>
-                    {login.roles[0] !== "ROLE_ADMIN" ? (
-                      <>
-                        <Dropdown.Item onClick={() => navigate(`/Profile`)}>
-                          Profile
-                        </Dropdown.Item>
 
-                        <Dropdown.Item onClick={() => navigate(`/History`)}>
-                          History
-                        </Dropdown.Item>
-                      </>
-                    ) : (
-                      <Dropdown.Item onClick={() => navigate(`/dashboard`)}>
-                        Dashboard
-                      </Dropdown.Item>
-                    )}
+                    <Dropdown.Item onClick={() => navigate(`/Profile`)}>
+                      Profile
+                    </Dropdown.Item>
+
+                    <Dropdown.Item onClick={() => navigate(`/History`)}>
+                      History
+                    </Dropdown.Item>
 
                     <Dropdown.Divider />
                     <Dropdown.Item onClick={handleLogout}>

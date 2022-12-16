@@ -8,7 +8,7 @@ import { CgArrowsExchange } from "react-icons/cg";
 import { MdAirplanemodeActive } from "react-icons/md";
 
 import { Carousel, Cascader } from "antd";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function Main() {
   const [country, setCountry] = useState([]);
@@ -21,7 +21,8 @@ function Main() {
     console.log("Departure at", value[1]);
     setDeparture(value[1]);
   };
-
+  localStorage.setItem("depart", departure);
+  localStorage.setItem("arival", arrival);
   const handleChangeArrival = (value) => {
     console.log("Arrival at", value[1]);
     setArrival(value[1]);
@@ -29,13 +30,15 @@ function Main() {
 
   const getCountry = async () => {
     try {
-      const res = await axios.get(`https://febe6.up.railway.app/api/getCountry`);
+      const res = await axios.get(
+        `https://febe6.up.railway.app/api/getCountry`
+      );
       setCountry(res.data.data);
     } catch (error) {
       console.log(error);
     }
   };
-  
+
   useEffect(() => {
     getCountry();
   }, []);
