@@ -30,15 +30,16 @@ function Navbar({ withcroll }) {
   const getNotif = async () => {
     try {
       const respone = await axios.get(
-        `https://febe6.up.railway.app/api/notification/${email}`,
+        `https://febe6.up.railway.app/api/notification`,
         {
           headers: {
-            Authorization: `${token}`,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
-      setNotif(respone.data);
-      console.log(notif);
+
+      console.log(respone.data.data[0].content);
+      setNotif(respone.data.data);
     } catch (error) {
       console.log(error);
     }
@@ -46,8 +47,7 @@ function Navbar({ withcroll }) {
   const navigate = useNavigate();
 
   const [sidebar, setsidebar] = useState(false);
-  let token = localStorage.getItem("token");
-  let profile = localStorage.getItem("user");
+  let token = JSON.parse(localStorage.getItem("token"));
 
   const { login } = useSelector((state) => state.login);
   const handleLogout = () => {
@@ -64,13 +64,10 @@ function Navbar({ withcroll }) {
       <div className="header flex justify-center flex-row">
         <h1>Notification</h1>
       </div>
-
-      <p className="">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad, eligendi.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad, eligendi.
-      </p>
+      {notif &&
+        notif.map((item) => {
+          return <p className="">{item.content}</p>;
+        })}
     </div>
   );
   return (

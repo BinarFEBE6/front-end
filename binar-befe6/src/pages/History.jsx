@@ -16,7 +16,7 @@ function History() {
         `https://febe6.up.railway.app//api/getHistories/${email}`,
         {
           headers: {
-            Authorization: `${token}`,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
