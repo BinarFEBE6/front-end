@@ -3,19 +3,31 @@ import Footer from "../components/footer";
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 
-import { TbPlaneInflight } from "react-icons/tb";
 import "swiper/css";
-import { MdDateRange, MdAttachMoney } from "react-icons/md";
 import "swiper/css/pagination";
-import { IoIosAirplane } from "react-icons/io";
+import { Swiper, SwiperSlide } from "swiper/react";
 
+import { MdDateRange, MdAttachMoney, MdAirlineSeatReclineExtra } from "react-icons/md";
+import {
+  AiFillSchedule,
+  AiOutlineArrowRight,
+  AiOutlineClockCircle,
+  AiFillCheckCircle,
+} from "react-icons/ai";
+import { TbPlaneInflight } from "react-icons/tb";
+import { BsPersonPlusFill } from "react-icons/bs";
+import { FaPlane, FaPlaneSlash } from "react-icons/fa";
+import { IoIosAirplane } from "react-icons/io";
 import {
   FaPlane,
   FaPlaneSlash,
   FaPlaneArrival,
   FaPlaneDeparture,
 } from "react-icons/fa";
+
 import axios from "axios";
+
+import { Steps } from "antd";
 
 function Schedule() {
   const [Skejul, setSkejul] = useState(true);
@@ -54,6 +66,39 @@ function Schedule() {
   return (
     <>
       <Navbar withcroll={false} />
+
+      <div className="bg-gray-100 pt-28 w-full">
+        <div className="lg:px-48 px-5 pb-10">
+          <Steps
+            responsive={false}
+            items={[
+              {
+                title: <h1 className="text-blue-500 lg:block hidden">Schedule</h1>,
+                status: "process",
+                icon: <AiFillSchedule className="text-3xl text-blue-500" />,
+              },
+              {
+                title: <h1 className="text-blue-300 lg:block hidden">Guest Details</h1>,
+                status: "wait",
+                icon: <BsPersonPlusFill className="text-3xl text-blue-300" />,
+              },
+              {
+                title: <h1 className="text-blue-300 lg:block hidden">Choose Seat</h1>,
+                status: "wait",
+                icon: (
+                  <MdAirlineSeatReclineExtra className="text-3xl text-blue-300" />
+                ),
+              },
+              {
+                title: <h1 className="text-blue-300 lg:block hidden">Done</h1>,
+                status: "wait",
+                icon: <AiFillCheckCircle className="text-3xl text-blue-300" />,
+              },
+            ]}
+          />
+        </div>
+      </div>
+
       <div className="schedule w-full h-[150vh] lg:h-[130vh] lg:w-full  flex justify-center items-center bg-slate-100 flex-col ">
         {/* <div className="class bg bg-white w-full h-[20vh] lg:h-[40vh] rounded-b-[50px] lg:rounded-b-[100px] mb-5 flex items-center flex-col justify-center shadow-xl">
           <h1 className=" text-2xl lg:text-4xl text-center text-gray-600 font-bold mt-7 tracking-wider uppercase">
