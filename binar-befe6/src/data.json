@@ -4,41 +4,41 @@
     "Country": "Indonesia",
     "Landmark": " Monumen Nasional (Monas), Jakarta",
     "image": "/Indonesia.webp",
-    "Description": " landmark Indonesia satu ini sudah lama menjadi ikon kebanggaan masyarakat Indonesia. Memiliki tinggi 132 meter, monumen ini diprakarsai oleh presiden pertama Ir. Soekarno untuk mengenang perlawanan dan perjuangan rakyat Indonesia untuk merebut kemerdekaan.landmark Indonesia ini menjadi salah satu identitas dari Ibukota Jakarta. Ciri khas dari landmark ini adalah lapisan emas yang membentuk kobaran api pada puncak tugu megah ini."
+    "Description": " This Indonesian landmark has long been an icon of pride for the Indonesian people. Has a height of 132 meters, this monument was initiated by the first president Ir. Soekarno to commemorate the resistance and struggle of the Indonesian people to win independence. This Indonesian landmark has become one of the identities of the capital city of Jakarta. The hallmark of this landmark is the gold layer that forms a flame at the top of this magnificent monument."
   },
   {
     "id": 1,
     "Country": "Australia",
     "Landmark": "Sydney Opera House",
     "image": "/Australia.jpg",
-    "Description": " landmark Indonesia satu ini sudah lama menjadi ikon kebanggaan masyarakat Indonesia. Memiliki tinggi 132 meter, monumen ini diprakarsai oleh presiden pertama Ir. Soekarno untuk mengenang perlawanan dan perjuangan rakyat Indonesia untuk merebut kemerdekaan.landmark Indonesia ini menjadi salah satu identitas dari Ibukota Jakarta. Ciri khas dari landmark ini adalah lapisan emas yang membentuk kobaran api pada puncak tugu megah ini."
+    "Description": "Sydney Opera House is not only Australia's most famous landmark, this unique structure is one of the world's most instantly recognisable and iconic buildings. In 1956 an international competition to design an opera house for Sydney was held. Jørn Utzon had his extraordinary design declared the winner on January 29, 1957."
   },
   {
     "id": 2,
     "Country": "China",
     "Landmark": "The Mutianyu Great Wall",
     "image": "/China.jpg",
-    "Description": " Tembok Besar jelas merupakan salah satu landmark paling terkenal di Tiongkok. Berasal dari Dinasti Zhou Barat (1046 - 771 SM), itu adalah proyek pertahanan militer kuno yang melintasi bagian utara Tiongkok, terdiri dari tembok pertahanan, menara pengawas dan menara suar, dan jalur, dll. Saat ini, Tembok Besar Tiongkok terutama mengacu pada Tembok Besar Dinasti Ming yang membentang dari Jiayuguan di Provinsi Gansu hingga Hushan di Provinsi Liaoning. Yang paling banyak dikunjungi turis adalah bagian yang tersebar di pinggiran Beijing, di antaranya Badaling dan Mutianyu adalah yang paling populer. Mereka terpelihara dengan baik dengan struktur pertahanan lengkap dan fasilitas perjalanan. Jika Anda bepergian ke China, kunjungi salah satu dari mereka untuk meninggalkan kenangan seumur hidup."
+    "Description": "The Great Wall is definitely one of China's most famous landmarks. Originating in the Western Zhou Dynasty (1046 - 771 BC), it was an ancient military defense project that crossed the northern part of China, consisting of defensive walls, watchtowers and beacon towers, and passages, etc. Today, the Great Wall of China mainly refers to the Great Wall of the Ming Dynasty which stretches from Jiayuguan in Gansu Province to Hushan in Liaoning Province. The most visited by tourists are the scattered sections on the outskirts of Beijing, of which Badaling and Mutianyu are the most popular. They are well preserved with complete defensive structures and travel facilities. If you travel to China, visit one of them to leave memories for a lifetime."
   },
   {
     "id": 3,
     "Country": "Korea",
     "Landmark": "N Seoul Tower",
     "image": "/Korea.webp",
-    "Description": "Bangunan ini dulunya merupakan menara gelombang radio pertama di Korea yang menyalurkan frekuensi siaran televisi dan radio di kota metropolitan sejak tahun 1969. Sejak dibukanya dek observasi untuk publik di tahun 1980, menara ini beralih fungsi menjadi tempat wisata yang menyajikan pemandangan pegunungan Namsan serta kota Seoul dari ketinggian."
+    "Description": "This building was the first radio wave tower in Korea to transmit television and radio broadcast frequencies in the metropolitan city since 1969. Since the opening of the observation deck to the public in 1980, this tower has changed its function to become a tourist spot offering views of the Namsan mountains and the city of Seoul from height."
   },
   {
     "id": 4,
     "Country": "Jepang",
     "Landmark": "Gunung Fuji",
     "image": "/Jepang.jpg",
-    "Description": "landmark paling terkenal di Jepang, dan banyak orang akan berpikir tentang Gunung Fuji (富士山 Fuji-san). Pada ketinggian 3,776m, Gunung Fuji adalah gunung tertinggi, dan juga paling terkenal di negara ini. Gunung Fuji adalah ikon budaya Jepang, dan juga termasuk dalam Daftar Warisan Dunia UNESCO dan ditetapkan sebagai Tempat Khusus Keindahan Pemandangan."
+    "Description": "Japan's most famous landmark, and one many people will think of Mount Fuji (富士山 Fuji-san). At 3,776m, Mount Fuji is the tallest, and also the most famous, mountain in the country. Mount Fuji is a cultural icon of Japan, and is also included in the UNESCO World Heritage List and designated as a Special Place of Scenic Beauty."
   },
   {
     "id": 5,
     "Country": "Thailand",
     "Landmark": "The Grand Palace",
     "image": "/Thailand.webp",
-    "Description": "Grand Palace adalah salah satu landmark yang paling banyak dikunjungi di Asia dan Bangkok, ibu kota Thailand. Istana ini dibangun pada tahun 1782 dan menjadi rumah Raja Thailand selama 150 tahun. Itu juga menampung Pengadilan Kerajaan dan pusat administrasi pemerintahan."
+    "Description": "The Grand Palace is one of the most visited landmarks in Asia and Bangkok, the capital city of Thailand. This palace was built in 1782 and was the home of the Kings of Thailand for 150 years. It also housed the Royal Court and administrative center of government."
   }
 ]

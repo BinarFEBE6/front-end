@@ -16,7 +16,7 @@ function Detail() {
               <div className="flex justify-center items-center w-full h-full bg-slate-200 md:h-screen md:grid-rows-2">
                 <div>
                   <img
-                    className="w-[350px] h-full mt-[80px] shadow-2xl rounded-xl md:h-[700px] lg:h-[500px] lg:w-[600px] object-cover  "
+                    className="w-[350px] h-full mt-[80px]  rounded-xl md:h-[700px] lg:h-[500px] lg:w-[600px] object-cover  "
                     src={object.image}
                     alt=""
                   />
@@ -24,14 +24,14 @@ function Detail() {
               </div>
 
               <div className="w-full h-screen bg-slate-200 text-black md:h-screen">
-                <div className="mx-5 mr-20 md:mt-[170px] lg:mt-[130px] ">
-                  <p className="text-center font-bold text-[40px]">
+                <div className="mx-5 mr-10 md:mt-[170px] lg:mt-[130px] ">
+                  <p className="text-center  font-bold text-[40px]">
                     {object.Country}
                   </p>
                   <p className="pt-3 text-[18px] font-semibold">
                     {object.Landmark}
                   </p>
-                  <p className="pt-3 text-justify text-[16px] font-semibold">
+                  <p className="pt-3 text-justify ml-[20px] text-[16px] font-semibold">
                     {object.Description}
                   </p>
                   <p className="pt-3"> </p>
