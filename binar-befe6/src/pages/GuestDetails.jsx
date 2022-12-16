@@ -6,7 +6,7 @@ import axios from "axios";
 import Footer from "../components/footer";
 import Navbar from "../components/Navbar";
 
-import { guestDetails } from "../features/LoginRegister/guestDetailsSlice";
+import { guestDetails } from "../features/guestDetailsSlice";
 
 import { Form, Input, Select, Tabs, DatePicker, Checkbox, Steps } from "antd";
 
