@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Footer from "../components/footer";
 import Navbar from "../components/Navbar";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -30,14 +30,13 @@ function Schedule() {
     navigate("/guestDetails");
   };
 
-  const depart = localStorage.getItem("depart");
-
-  const arrival = localStorage.getItem("arival");
   const navigate = useNavigate();
-  const values = {
-    departureAiport: depart,
-    arrivalAirport: arrival,
-  };
+  // const values = {
+  //   departureAiport: departure,
+  //   arrivalAirport: `${arrival}`,
+  // };
+  const { departure } = useParams();
+  const { arrival } = useParams();
   const rupiah = (number) => {
     return new Intl.NumberFormat("id-ID", {
       style: "currency",
@@ -48,7 +47,10 @@ function Schedule() {
     try {
       const res = await axios.post(
         "https://febe6.up.railway.app/api/getSchedule",
-        values
+        {
+          departureAiport: `${departure}`,
+          arrivalAirport: `${arrival}`,
+        }
       );
       console.log(res.data.data);
       setSchedule(res.data.data);
@@ -109,7 +111,7 @@ function Schedule() {
         </div>
         <div className="wrapper w-[90vw] p-3 lg:w-[76vw] bg-white shadow-xl rounded-md flex justify-center items-center">
           <div className="location flex flex-row  items-center justify-center mt-3  gap-3">
-            <p className="text-xl text-gray-600 font-semibold ">{depart}</p>
+            <p className="text-xl text-gray-600 font-semibold ">{departure}</p>
             <IoIosAirplane className="text-yellow-300  mb-3" size={20} />
             <p className="text-xl text-gray-600 font-semibold">{arrival}</p>
           </div>
