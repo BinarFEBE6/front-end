@@ -24,7 +24,10 @@ root.render(
           <Route>
             <Route path="/" element={<App />} />
             <Route path="/Detail/:id" element={<Detail />} />
-            <Route path="/schedule" element={<Schedule />} />
+            <Route
+              path="/schedule/:departure To :arrival"
+              element={<Schedule />}
+            />
             <Route path="/profile" element={<Profile />} />
             <Route path="/history" element={<History />} />
             <Route path="/guestDetails" element={<GuestDetails />} />
