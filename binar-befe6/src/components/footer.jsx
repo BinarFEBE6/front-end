@@ -1,5 +1,4 @@
 import React from "react";
-import { TbPlaneInflight } from "react-icons/tb";
 import logo from "../assets/logo.png";
 import { useNavigate } from "react-router-dom";
 function Footer() {
