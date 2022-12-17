@@ -3,10 +3,11 @@ import { VscListFlat } from "react-icons/vsc";
 import { AiOutlineClose } from "react-icons/ai";
 import axios from "axios";
 import { IoIosNotifications } from "react-icons/io";
+import { IoNotificationsOffOutline } from "react-icons/io5";
 import logo from "../assets/logo.png";
 
 import { useDispatch, useSelector } from "react-redux";
-import { Modal, Form } from "antd";
+import { Modal, Form, Empty } from "antd";
 import { LockOutlined, UserOutlined, MailOutlined } from "@ant-design/icons";
 import { Button, Input } from "antd";
 import useScroll from "../hooks/useScroll";
@@ -38,7 +39,7 @@ function Navbar({ withcroll }) {
         }
       );
 
-      console.log(respone.data.data);
+      // console.log(respone.data.data);
       setNotif(respone.data.data);
     } catch (error) {
       console.log(error);
@@ -57,24 +58,33 @@ function Navbar({ withcroll }) {
   };
   useEffect(() => {
     getNotif();
-  }, []);
+  }, [notif]);
 
   const content = (
     <div>
       <div className="header flex justify-center flex-row">
         <h1>Notification</h1>
       </div>
-      {notif &&
-        notif.map((item) => {
-          return (
-            <div className="notif border-b border-t flex flex-row">
-              <p className="text-xs">{item.content}</p>
-              <p className=" text-xs font-thin flex items-end">
-                {item.date.slice(0, 10)}
-              </p>
-            </div>
-          );
-        })}
+      {notif.length ? (
+        <>
+          {notif &&
+            notif.map((item) => {
+              return (
+                <div className="notif border-b border-t flex flex-row">
+                  <p className="text-xs">{item.content}</p>
+                  <p className=" text-xs font-thin flex items-end">
+                    {item.date.slice(0, 10)}
+                  </p>
+                </div>
+              );
+            })}
+        </>
+      ) : (
+        <div className="none flex flex-col justify-center items-center">
+          <IoNotificationsOffOutline className="mt-3" size={15} />
+          <p className="mt-3">No Notification yet</p>
+        </div>
+      )}
     </div>
   );
   return (
