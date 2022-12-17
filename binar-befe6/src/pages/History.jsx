@@ -3,9 +3,10 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/footer";
 import { MdAirplanemodeActive } from "react-icons/md";
 import axios from "axios";
+
+import { MdDateRange, MdAttachMoney } from "react-icons/md";
+import { FaPlaneDeparture, FaPlaneArrival } from "react-icons/fa";
 import { TbPlaneInflight } from "react-icons/tb";
-import { BsArrowRight } from "react-icons/bs";
-import { WiTime3 } from "react-icons/wi";
 
 function History() {
   const email = JSON.parse(localStorage.getItem("userEmail"));
@@ -40,51 +41,69 @@ function History() {
         <div className=" bg-white drop-shadow-xl w-full h-[15vh] rounded-b-[50px] lg:rounded-b-[180px] flex items-center justify-center mb-6">
           <h1 className="text-3xl font-bold text-sky-700">History Booking</h1>
         </div>
-        <div className="  justify-center w-full px-2  lg:grid gap-2 mb-10">
-          <div className="bg-white w-full px-2   mt-2 lg:w-[800px] rounded-lg drop-shadow-2xl">
-            <div className="flex p-4 gap-1">
-              <div>
-                <MdAirplanemodeActive className="text-sky-500 text-[20px]" />
-              </div>
-
-              <div className="flex justify-between w-screen">
-                <p className="font-bold">Pesawat</p>
-                <p className="font-bold">One-way</p>
-              </div>
-            </div>
-            <div className="ml-5">
-              <p className="font-bold">Order ID : 0002</p>
-            </div>
-            <div className="flex ml-5 gap-2">
-              <p className="font-bold">Aceh</p>
-              <BsArrowRight />
-              <p className="font-bold">Bandung</p>
-            </div>
-
-            <div className="gap-1 flex ml-5 lg:gap-2">
-              <div className="grid">
-                <div className="flex gap-1">
-                  <p className="font-bold text-[13px] lg:text-[14px]">
-                    Quota Penumpang:
-                  </p>
-                  <p className=" text-[13px] lg:text-[14px]">2</p>
+        {history.map((item) => (
+          <div className="  justify-center w-full px-2  lg:grid gap-2 mb-10">
+            <div className="bg-white w-full px-2   mt-2 lg:w-[800px] rounded-lg drop-shadow-2xl">
+              <div className="flex p-4 gap-1">
+                <div>
+                  <MdAirplanemodeActive className="text-sky-500 text-[20px]" />
                 </div>
 
-                <div className="flex gap-1">
-                  <p className="font-bold text-[13px] lg:text-[14px]">
-                    Jadwal Berangkat:
+                <div className="lg:flex justify-between w-screen">
+                  <p className="font-bold">
+                    {item.schedule.pesawat.airport.name} -
+                    {item.schedule.pesawat.name}
                   </p>
-                  <TbPlaneInflight className=" text-[13px] lg:text-[14px]" />
-                  <p className=" text-[13px] lg:text-[14px]">
-                    Kamis, 1 Des 2022
+                  <p className="font-bold lg:ml-0 -ml-5 lg:mb-0 -mb-1">
+                    {item.schedule.categoryClass.name}
                   </p>
-                  <WiTime3 className=" text-[13px] lg:text-[14px]" />
-                  <p className=" text-[13px] lg:text-[14px]">06.30 </p>
                 </div>
+              </div>
+
+              <div className="ml-5">
+                <p className="font-bold">
+                  Order ID : {item.ticket.map((el) => el.orderId)}
+                </p>
+              </div>
+              <div className="flex ml-5 gap-2">
+                <p className="font-bold">{item.schedule.departureAiport}</p>
+                <TbPlaneInflight className="text-yellow-300" />
+                <p className="font-bold">{item.schedule.arrivalAirport}</p>
+              </div>
+
+              <div className="gap-1 flex ml-5 ">
+                <div className="flex gap-3">
+                  <div className="flex gap-1">
+                    <FaPlaneDeparture className="text-sky-500 mr-2" size={15} />
+                    <h2 className=" text-sm">
+                      {item.schedule.scheduleTime.depatureTime.slice(0, 5)}
+                    </h2>
+                  </div>
+
+                  <div className="flex gap-1">
+                    <FaPlaneArrival className="text-sky-500 mr-2" size={15} />
+                    <h2 className=" text-sm">
+                      {item.schedule.scheduleTime.arrivalTime.slice(0, 5)}
+                    </h2>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-2 flex gap-2 ml-5">
+                <MdDateRange size={20} />
+                <h2 className="text-sm  ">{item.schedule.date}</h2>
+              </div>
+
+              <div className="mt-2 flex gap-2 ml-5">
+                <MdAttachMoney size={20} className="mb-2 text-emerald-700" />
+                <h2 className="text-sm ">
+                  {rupiah(item.totalPrice)}
+                  <span className="text-xs">/org</span>
+                </h2>
               </div>
             </div>
           </div>
-        </div>
+        ))}
         <Footer />
       </div>
     </>
@@ -92,3 +111,10 @@ function History() {
 }
 
 export default History;
+
+const rupiah = (number) => {
+  return new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+  }).format(number);
+};
