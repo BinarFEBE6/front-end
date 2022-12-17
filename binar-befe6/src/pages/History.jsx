@@ -1,13 +1,37 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/footer";
 import { MdAirplanemodeActive } from "react-icons/md";
-
+import axios from "axios";
 import { TbPlaneInflight } from "react-icons/tb";
 import { BsArrowRight } from "react-icons/bs";
 import { WiTime3 } from "react-icons/wi";
 
 function History() {
+  const email = JSON.parse(localStorage.getItem("userEmail"));
+  let token = JSON.parse(localStorage.getItem("token"));
+  const [history, setHistory] = useState([]);
+  const url = "https://febe6.up.railway.app/api/getHistories";
+  const getHistory = async () => {
+    try {
+      const respone = await axios.get(
+        `https://febe6.up.railway.app/api/getHistories`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      console.log(respone.data.data);
+      setHistory(respone.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getHistory();
+  }, []);
   return (
     <>
       <div className="bg-gray-100 ">
