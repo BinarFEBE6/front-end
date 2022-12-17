@@ -36,20 +36,20 @@ function SetSeat() {
     }
   };
 
-  const getUserEmail = JSON.parse(localStorage.getItem("userEmail"));
   const getGuestId = JSON.parse(localStorage.getItem("guestId"));
   const getSeatId = JSON.parse(localStorage.getItem("seatId"));
   const getScheduleId = JSON.parse(localStorage.getItem("scheduleId"));
 
   const valueOrder = {
-    userEmail: getUserEmail,
     guestId: getGuestId,
     seatId: getSeatId,
     scheduleId: getScheduleId,
   };
 
   console.log(valueOrder);
-  let token = localStorage.getItem("token");
+
+  let token = JSON.parse(localStorage.getItem("token"));
+  
   const postOrder = async () => {
     try {
       const res = await axios.post(
@@ -57,7 +57,7 @@ function SetSeat() {
         valueOrder,
         {
           headers: {
-            Authorization: `${token}`,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
@@ -203,7 +203,7 @@ function SetSeat() {
           </div>
           <div className="flex justify-end lg:mr-10 mb-10 lg:mb-0 mr-4">
             <button
-              // onClick={() => postOrder()}
+              onClick={() => postOrder()}
               disabled={!componentDisabled}
               className={
                 !componentDisabled

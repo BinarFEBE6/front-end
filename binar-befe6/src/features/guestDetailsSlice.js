@@ -5,7 +5,9 @@ const initialState = {
   guest: {},
   loading: false,
 };
-let token = localStorage.getItem("token");
+
+let token = JSON.parse(localStorage.getItem("token"));
+
 const userId = [];
 
 export const guestDetails = createAsyncThunk(

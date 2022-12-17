@@ -29,7 +29,6 @@ function GuestDetails() {
       ...fieldValue,
       birthDate: fieldValue["dateOfBirth"].format("YYYY-MM-DD"),
       endPassport: fieldValue["dateEndPassport"].format("YYYY-MM-DD"),
-      userId: 12,
     };
 
     delete values.dateOfBirth;
