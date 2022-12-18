@@ -49,7 +49,7 @@ function SetSeat() {
   console.log(valueOrder);
 
   let token = JSON.parse(localStorage.getItem("token"));
-  
+
   const postOrder = async () => {
     try {
       const res = await axios.post(
@@ -61,6 +61,8 @@ function SetSeat() {
           },
         }
       );
+      localStorage.removeItem("guestId");
+      localStorage.removeItem("seatId");
       console.log(res);
     } catch (error) {
       console.log(error);

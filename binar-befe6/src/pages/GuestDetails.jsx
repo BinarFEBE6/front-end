@@ -38,7 +38,6 @@ function GuestDetails() {
 
     try {
       dispatch(guestDetails(values));
-      alert("Succes Submit !");
     } catch (error) {
       console.log(error);
     }
