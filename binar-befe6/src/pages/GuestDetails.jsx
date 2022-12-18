@@ -35,10 +35,10 @@ function GuestDetails() {
     delete values.dateEndPassport;
 
     console.log("Success:", values);
-    alert("Succes Submit !");
 
     try {
       dispatch(guestDetails(values));
+      alert("Succes Submit !");
     } catch (error) {
       console.log(error);
     }
