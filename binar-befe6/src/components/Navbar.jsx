@@ -52,7 +52,6 @@ function Navbar({ withcroll }) {
 
   const { login } = useSelector((state) => state.login);
   const handleLogout = () => {
-    window.location.reload(1);
     localStorage.clear();
     navigate("/");
   };
