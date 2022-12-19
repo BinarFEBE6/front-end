@@ -127,7 +127,7 @@ function Schedule() {
                 schedule.map((item) => {
                   return (
                     <div className="flight w-[95%] rounded-md flex p-2 bg-white shadow-lg mt-3">
-                      <div className="maskapai flex flex-row justify-between  mt-2">
+                      <div className="maskapai flex flex-row justify-between lg:ml-4 mt-2">
                         <div>
                           <div className="Kapal flex flex-row space-x-3">
                             <IoIosAirplane />
