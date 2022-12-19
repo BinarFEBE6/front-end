@@ -48,11 +48,12 @@ function Navbar({ withcroll }) {
   const navigate = useNavigate();
 
   const [sidebar, setsidebar] = useState(false);
-  let token = JSON.parse(localStorage.getItem("token"));
+  let token = JSON.parse(sessionStorage.getItem("token"));
 
   const { login } = useSelector((state) => state.login);
   const handleLogout = () => {
     localStorage.clear();
+    sessionStorage.clear();
     navigate("/");
   };
   useEffect(() => {

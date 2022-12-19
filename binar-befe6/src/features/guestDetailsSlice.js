@@ -6,7 +6,7 @@ const initialState = {
   loading: false,
 };
 
-let token = JSON.parse(localStorage.getItem("token"));
+let token = JSON.parse(sessionStorage.getItem("token"));
 
 const userId = [];
 
