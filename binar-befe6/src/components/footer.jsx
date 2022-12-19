@@ -140,7 +140,7 @@ function Footer() {
                   Travelin.
                 </h1>
               </div>
-              <p className="w-2/3 text-justify">
+              <p className="lg:w-2/3 lg:text-justify text-center">
                 Traveling can be a great way to explore new places, experience
                 different cultures, and create lasting memories.
               </p>

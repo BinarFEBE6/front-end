@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import Swal from "sweetalert2";
 import Footer from "../components/footer";
 import Navbar from "../components/Navbar";
 
@@ -48,7 +48,7 @@ function SetSeat() {
 
   console.log(valueOrder);
 
-  let token = JSON.parse(localStorage.getItem("token"));
+  let token = JSON.parse(sessionStorage.getItem("token"));
 
   const postOrder = async () => {
     try {
@@ -61,11 +61,17 @@ function SetSeat() {
           },
         }
       );
+      Swal.fire("Good job!", "Order Succes!", "success");
       localStorage.removeItem("guestId");
       localStorage.removeItem("seatId");
       console.log(res);
     } catch (error) {
       console.log(error);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Order Failed!",
+      });
     }
   };
 
