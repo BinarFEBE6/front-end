@@ -11,7 +11,7 @@ import { TbPlaneInflight } from "react-icons/tb";
 
 function History() {
   const email = JSON.parse(localStorage.getItem("userEmail"));
-  let token = JSON.parse(sessionStorage.getItem("token"));
+  let token = JSON.parse(localStorage.getItem("token"));
   const [history, setHistory] = useState([]);
   const url = "https://febe6.up.railway.app/api/getHistories";
   const getHistory = async () => {
