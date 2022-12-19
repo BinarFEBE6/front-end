@@ -53,6 +53,7 @@ function Navbar({ withcroll }) {
   const { login } = useSelector((state) => state.login);
   const handleLogout = () => {
     localStorage.clear();
+    sessionStorage.clear();
     navigate("/");
   };
   useEffect(() => {
@@ -151,7 +152,7 @@ function Navbar({ withcroll }) {
                   : "text-primary-100"
               }  hidden lg:block ml-2  text-xl mt-4 font-semibold`}
             >
-              Travelin
+              TerbangIn
             </p>
             <span
               className={`${
