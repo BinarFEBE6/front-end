@@ -48,7 +48,7 @@ function Navbar({ withcroll }) {
   const navigate = useNavigate();
 
   const [sidebar, setsidebar] = useState(false);
-  let token = JSON.parse(sessionStorage.getItem("token"));
+  let token = JSON.parse(localStorage.getItem("token"));
 
   const { login } = useSelector((state) => state.login);
   const handleLogout = () => {
@@ -152,7 +152,7 @@ function Navbar({ withcroll }) {
                   : "text-primary-100"
               }  hidden lg:block ml-2  text-xl mt-4 font-semibold`}
             >
-              Travelin
+              TerbangIn
             </p>
             <span
               className={`${

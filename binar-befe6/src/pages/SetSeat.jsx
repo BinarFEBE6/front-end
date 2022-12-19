@@ -48,7 +48,7 @@ function SetSeat() {
 
   console.log(valueOrder);
 
-  let token = JSON.parse(sessionStorage.getItem("token"));
+  let token = JSON.parse(localStorage.getItem("token"));
 
   const postOrder = async () => {
     try {
@@ -67,6 +67,7 @@ function SetSeat() {
       console.log(res);
     } catch (error) {
       console.log(error);
+
       Swal.fire({
         icon: "error",
         title: "Oops...",
