@@ -1,6 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { guestDetailsSlice } from "../features/guestDetailsSlice";
-import { loginGoogleReducer } from "../features/LoginRegister/loginGoogle";
+import { dataReducer, detailsReducer, detailsSlice } from "../features/details";
+
+import { guestDetailsReducer } from "../features/guestDetailsSlice";
+
 import { loginReducer } from "../features/LoginRegister/loginSlice";
 import { registReducer } from "../features/LoginRegister/registerSlice";
 
@@ -8,7 +10,7 @@ export const store = configureStore({
   reducer: {
     login: loginReducer,
     regist: registReducer,
-    loginGoogle: loginGoogleReducer,
-    guestDetails: guestDetailsSlice
+    guestDetails: guestDetailsReducer,
+    details: detailsSlice.reducer,
   },
 });
