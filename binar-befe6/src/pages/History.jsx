@@ -35,7 +35,6 @@ function History() {
       console.log(error);
     }
   };
-
   const getQr = async () => {
     try {
       const code = await axios.get(
@@ -172,7 +171,8 @@ function History() {
                               return (
                                 <button
                                   onClick={() =>
-                                    navigate(`/details/${id.guestId}`)
+                                    navigate(`/details/${id.guestId}`) +
+                                    localStorage.setItem("guestId", id.guestId)
                                   }
                                   className="w-16  p-3 bg-primary-100 rounded-xl text-white"
                                 >
