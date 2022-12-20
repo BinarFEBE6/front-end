@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
-
 import {
   Form,
   Layout,
@@ -103,8 +102,8 @@ const App = () => {
     getAirports();
   }, []);
 
-  console.log("schedule", scheduleTime)
-  console.log("categories", categories)
+  console.log("schedule", scheduleTime);
+  console.log("categories", categories);
   console.log("airports", airports);
 
   const option = country.map((item) => ({
