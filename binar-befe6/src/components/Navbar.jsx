@@ -58,7 +58,7 @@ function Navbar({ withcroll }) {
   };
   useEffect(() => {
     getNotif();
-  }, [notif]);
+  }, []);
 
   const content = (
     <div>
