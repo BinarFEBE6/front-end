@@ -2,15 +2,15 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
-  data: [],
-
-  loading: false,
+  details: [],
 };
 
-export const getData = createAsyncThunk("data/getData", async (guestId) => {
+export const getDetails = createAsyncThunk("details/getDetails", async () => {
   try {
     const res = await axios.get(
-      `https://febe6.up.railway.app/api/ticket/get/${guestId}`,
+      `https://febe6.up.railway.app/api/ticket/get/${localStorage.getItem(
+        "guestId"
+      )}`,
       {
         headers: {
           Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
@@ -20,26 +20,26 @@ export const getData = createAsyncThunk("data/getData", async (guestId) => {
     console.log(res);
     return res.data.data;
   } catch (error) {
-    console.log("error");
+    console.log(error);
   }
 });
 
-export const dataSlice = createSlice({
-  name: "data",
+export const detailsSlice = createSlice({
+  name: "details",
   initialState,
   reducers: {},
   extraReducers: {
-    [getData.pending]: (state) => {
+    [getDetails.pending]: (state) => {
       state.loading = true;
     },
-    [getData.fulfilled]: (state, { payload }) => {
+    [getDetails.fulfilled]: (state, { payload }) => {
       state.loading = false;
-      state.data = payload;
+      state.details = payload;
     },
-    [getData.rejected]: (state) => {
+    [getDetails.rejected]: (state) => {
       state.loading = false;
     },
   },
 });
 
-export const dataReducer = dataSlice.reducer;
+export default detailsSlice.reducer;
