@@ -27,10 +27,26 @@ function Details() {
       console.log("error");
     }
   };
+
+  const getPdf = async () => {
+    try {
+      const res = await axios.get(
+        `https://febe6.up.railway.app/api/generateOrder/${data.orderId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${JSON.parse(
+              localStorage.getItem("token")
+            )}`,
+          },
+        }
+      );
+      console.log(res);
+    } catch (error) {}
+  };
   useEffect(() => {
     dispatch(getData(guestId));
     getInfo();
-  }, []);
+  }, [guestId]);
   const navigate = useNavigate();
   return (
     <div className="">
@@ -43,9 +59,11 @@ function Details() {
         >
           Back To History
         </h1>
-        <div className="box bg-white w-[80vw] h-fit rounded-lg drop-shadow-lg ">
+        <div className="box bg-white w-[80vw] lg:w-[50vw] h-fit rounded-lg drop-shadow-lg ">
           <div className="head">
-            <h1 className="text-gray-700 font-medium p-4">Guest Information</h1>
+            <h1 className="text-gray-700 font-medium p-4 border-l-4 border-primary-100">
+              Guest Information
+            </h1>
           </div>
           <div className="content flex flex-col">
             <div className="name grid grid-cols-2 gap-x-3 ml-4">
@@ -101,7 +119,9 @@ function Details() {
           </div>
 
           <div className="head">
-            <h1 className="text-gray-700 font-medium p-4">Guest Contact</h1>
+            <h1 className="text-gray-700 font-medium p-4  border-l-4 border-primary-100">
+              Guest Contact
+            </h1>
           </div>
           <div className="content flex flex-col">
             <div className="name grid grid-cols-2 gap-x-3 ml-4">
@@ -130,6 +150,17 @@ function Details() {
                 <p className="font-thin text-gray-700 ">
                   {data.guest.contact.email}
                 </p>
+              </div>
+            </div>
+            <div className="addons">
+              <div className="qr"></div>
+              <div className="pdf">
+                <button
+                  onClick={getPdf}
+                  className=" p-3 bg-primary-100 text-white"
+                >
+                  Download
+                </button>
               </div>
             </div>
           </div>
