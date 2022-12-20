@@ -62,8 +62,10 @@ function SetSeat() {
         }
       );
       Swal.fire("Good job!", "Order Succes!", "success");
-      localStorage.removeItem("guestId");
-      localStorage.removeItem("seatId");
+      window.localStorage.removeItem("guestId");
+      window.localStorage.removeItem("seatId");
+      navigate("/");
+      window.location.reload();
       console.log(res);
     } catch (error) {
       console.log(error);
