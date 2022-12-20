@@ -51,23 +51,6 @@ function History() {
       console.log(code);
     } catch (error) {}
   };
-  const getInvoice = async () => {
-    try {
-      const req = await axios.get(
-        `https://febe6.up.railway.app/api/generateOrder/${invoice}`,
-        {
-          headers: {
-            Authorization: `Bearer ${JSON.parse(
-              localStorage.getItem("token")
-            )}`,
-          },
-        }
-      );
-      console.log(req);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   useEffect(() => {
     getHistory();

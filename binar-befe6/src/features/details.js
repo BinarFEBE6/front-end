@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
-  data: {},
+  data: [],
 
   loading: false,
 };
@@ -17,7 +17,7 @@ export const getData = createAsyncThunk("data/getData", async (guestId) => {
         },
       }
     );
-    // console.log(res);
+    console.log(res);
     return res.data.data;
   } catch (error) {
     console.log("error");
