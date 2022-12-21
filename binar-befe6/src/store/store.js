@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { dataReducer, detailsReducer, detailsSlice } from "../features/details";
+import { addScheduleReducer } from "../features/addScheduleSlice";
+import { detailsSlice } from "../features/details";
 
 import { guestDetailsReducer } from "../features/guestDetailsSlice";
 
@@ -12,5 +13,6 @@ export const store = configureStore({
     regist: registReducer,
     guestDetails: guestDetailsReducer,
     details: detailsSlice.reducer,
+    addSchedule: addScheduleReducer,
   },
 });
