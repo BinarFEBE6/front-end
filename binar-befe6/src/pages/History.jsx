@@ -35,21 +35,6 @@ function History() {
       console.log(error);
     }
   };
-  const getQr = async () => {
-    try {
-      const code = await axios.get(
-        `https://febe6.up.railway.app/api/QRcode/${invoice}`,
-        {
-          headers: {
-            Authorization: `Bearer ${JSON.parse(
-              localStorage.getItem("token")
-            )}`,
-          },
-        }
-      );
-      console.log(code);
-    } catch (error) {}
-  };
 
   useEffect(() => {
     getHistory();

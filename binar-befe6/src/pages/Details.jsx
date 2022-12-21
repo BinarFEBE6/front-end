@@ -11,7 +11,9 @@ function Details() {
   const [details, setdetails] = useState([]);
   const { guestId } = useParams();
   const dispatch = useDispatch();
+  const [qr, setQr] = useState([]);
   const Id = localStorage.getItem("guestId");
+  const order = localStorage.getItem("orderId");
   const getInfo = async (Id) => {
     try {
       const res = await axios.get(
@@ -24,6 +26,7 @@ function Details() {
           },
         }
       );
+      localStorage.setItem("orderId", res.data.data.orderId);
       setdetails(res.data.data);
       console.log(res);
     } catch (error) {
@@ -47,9 +50,26 @@ function Details() {
     } catch (error) {}
   };
 
+  const getQr = async () => {
+    try {
+      const code = await axios.get(
+        `https://febe6.up.railway.app/api/QRcode/${order}`,
+        {
+          headers: {
+            Authorization: `Bearer ${JSON.parse(
+              localStorage.getItem("token")
+            )}`,
+          },
+        }
+      );
+      setQr(code);
+      console.log(code.data);
+    } catch (error) {}
+  };
   console.log("succes", details);
   useEffect(() => {
     // dispatch(getDetails(guestId));
+    getQr(order);
     getInfo(Id);
   }, []);
   const navigate = useNavigate();
@@ -57,8 +77,8 @@ function Details() {
     <div className="">
       <Navbar withcroll={false} />
 
-      <div className="content bg-gray-100 w-full h-screen  flex justify-center flex-col items-center ">
-        <div className="box bg-white w-[80vw] lg:w-[50vw] h-fit rounded-lg drop-shadow-lg mt-16">
+      <div className="content bg-gray-100 w-full h-full  flex justify-center flex-col items-center py-24 ">
+        <div className="box bg-white w-[80vw] lg:w-[50vw] h-fit rounded-lg drop-shadow-lg">
           <div className="head flex flex-row items-center space-x-4">
             <h1 className="text-gray-700 font-medium p-4 border-l-4 border-primary-100">
               Guest Information
@@ -161,31 +181,43 @@ function Details() {
                 </p>
               </div>
             </div>
-            <div className="national   ml-4">
-              <div className="nationality">
-                <p className="mb-0 font-semibold text-gray-700">No Telp</p>
-                <p className="font-thin text-gray-700">
-                  {details &&
-                    details.length !== 0 &&
-                    details.guest.contact.noTelp}
-                </p>
+            <div className="national   ml-4 mb-4">
+              <div className="country lg:grid lg:grid-rows-2 lg:grid-flow-col ">
+                <div className="nationality">
+                  <div className="notelp">
+                    <p className="mb-0 font-semibold text-gray-700">No Telp</p>
+                    <p className="font-thin text-gray-700">
+                      {details &&
+                        details.length !== 0 &&
+                        details.guest.contact.noTelp}
+                    </p>
+                  </div>
+                  <div className="email">
+                    <p className="mb-0 font-semibold text-gray-700">Email</p>
+                    <p className="font-thin text-gray-700 ">
+                      {details &&
+                        details.length !== 0 &&
+                        details.guest.contact.email}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="pdf items-center justify-center flex lg:items-start lg:justify-start ">
+                  <button
+                    onClick={getPdf}
+                    className="p-3 bg-primary-100 text-white rounded-lg "
+                  >
+                    Download Invoice
+                  </button>
+                </div>
+                <div className="pdf lg:row-span-2 lg:justify-start lg:items-start items-center justify-center flex mr-3">
+                  <img
+                    className="lg:w-[50%] w-[100%] md:w-[40%]"
+                    src={`https://febe6.up.railway.app/api/QRcode/${order}`}
+                    alt="barcode"
+                  />
+                </div>
               </div>
-              <div className="country ">
-                <p className="mb-0 font-semibold text-gray-700">Email</p>
-                <p className="font-thin text-gray-700 ">
-                  {details &&
-                    details.length !== 0 &&
-                    details.guest.contact.email}
-                </p>
-              </div>
-            </div>
-            <div className="pdf flex justify-center p-3">
-              <button
-                onClick={getPdf}
-                className="p-3 bg-primary-100 text-white rounded-lg"
-              >
-                Download Invoice
-              </button>
             </div>
           </div>
         </div>
