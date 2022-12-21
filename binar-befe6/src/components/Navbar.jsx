@@ -27,14 +27,16 @@ function Navbar({ withcroll }) {
   const [showRegist, setShowRegist] = useState(false);
   const { scrollY } = useScroll();
   const [notif, setNotif] = useState([]);
-  const email = JSON.parse(localStorage.getItem("userEmail"));
+
   const getNotif = async () => {
     try {
       const respone = await axios.get(
         `https://febe6.up.railway.app/api/notification`,
         {
           headers: {
-            Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+            Authorization: `Bearer ${JSON.parse(
+              localStorage.getItem("token")
+            )}`,
           },
         }
       );
@@ -52,7 +54,7 @@ function Navbar({ withcroll }) {
 
   const handleLogout = () => {
     localStorage.clear();
-    sessionStorage.clear();
+
     navigate("/");
   };
   useEffect(() => {
@@ -234,7 +236,9 @@ function Navbar({ withcroll }) {
                   label={<Avatar alt="User settings" rounded={true} />}
                 >
                   <Dropdown.Header>
-                    <span className="block text-sm">{JSON.parse(localStorage.getItem("user"))}</span>
+                    <span className="block text-sm">
+                      {JSON.parse(localStorage.getItem("user"))}
+                    </span>
                   </Dropdown.Header>
 
                   <Dropdown.Item onClick={() => navigate(`/Profile`)}>
@@ -297,7 +301,9 @@ function Navbar({ withcroll }) {
                   >
                     <Dropdown.Header>
                       <span className="block text-sm">
-                        <span className="block text-sm">{JSON.parse(localStorage.getItem("user"))}</span>
+                        <span className="block text-sm">
+                          {JSON.parse(localStorage.getItem("user"))}
+                        </span>
                       </span>
                     </Dropdown.Header>
 

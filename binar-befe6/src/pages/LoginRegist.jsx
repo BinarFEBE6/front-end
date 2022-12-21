@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import logo from "../assets/logo.png";
-
+import { Redirect } from "react-router-dom";
 import logo2 from "../assets/logo2w.png";
 import { Modal, Form } from "antd";
 import { Button, Input } from "antd";
@@ -22,12 +22,14 @@ function LoginRegist() {
       setRegist(false);
     } catch (error) {}
   };
-  const { login } = useSelector((state) => state.login);
-  const onLogin = async (values) => {
-    try {
-      dispatch(logIn(values));
 
-      login.roles[0] !== "ROLE_USER" ? navigate("/dashboard") : navigate("/");
+  const onLogin = (values) => {
+    try {
+      dispatch(logIn(values)).then((data) => {
+        data.payload.roles[0] !== "ROLE_USER"
+          ? navigate("/dashboard")
+          : navigate("/");
+      });
     } catch (error) {}
   };
   const register = () => {
