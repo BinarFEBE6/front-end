@@ -220,7 +220,8 @@ function Navbar({ withcroll }) {
                   className="w-56"
                   animation="duration-500"
                 >
-                  <button>
+                  <button className="relative bg-whitw">
+                    <div className="h-3 w-3 rounded-full bg-red-500 absolute top-2 left-2"></div>
                     <IoIosNotifications
                       size={37}
                       className={`
