@@ -17,7 +17,7 @@ function History() {
   const [history, setHistory] = useState([]);
   const [ticket, setTicket] = useState([]);
   const url = "https://febe6.up.railway.app/api/getHistories";
-  console.log(invoice);
+  // console.log(invoice);
   const getHistory = async () => {
     try {
       const respone = await axios.get(
