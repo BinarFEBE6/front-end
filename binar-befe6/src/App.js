@@ -1,4 +1,6 @@
 import React from "react";
+import { useSelector } from "react-redux";
+
 import Footer from "./components/footer";
 import Main from "./components/Main";
 import Navbar from "./components/Navbar";

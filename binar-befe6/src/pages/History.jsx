@@ -4,7 +4,7 @@ import Footer from "../components/footer";
 import { MdAirplanemodeActive } from "react-icons/md";
 import { BiPaperPlane } from "react-icons/bi";
 import axios from "axios";
-
+import { FaMoneyBillWave } from "react-icons/fa";
 import { MdDateRange, MdAttachMoney } from "react-icons/md";
 import { FaPlaneDeparture, FaPlaneArrival } from "react-icons/fa";
 import { TbPlaneInflight } from "react-icons/tb";
@@ -140,7 +140,7 @@ function History() {
                         </div>
                         <div className="end lg:mr-5">
                           <div className="mt-2 flex gap-2 ml-5">
-                            <MdAttachMoney
+                            <FaMoneyBillWave
                               size={20}
                               className="mb-2 text-emerald-700"
                             />

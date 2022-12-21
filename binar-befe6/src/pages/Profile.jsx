@@ -9,8 +9,14 @@ import { useRef } from "react";
 const { TextArea } = Input;
 
 function Profile() {
-  const onFinish = (values) => {
+  const onFinish = (fieldValue) => {
+    const values = {
+      ...fieldValue,
+
+      profile: fieldValue["profile"].slice(12),
+    };
     console.log("Success:", values);
+    setEdit("");
   };
   const [edit, setEdit] = useState(false);
   const onFinishFailed = (errorInfo) => {
@@ -54,7 +60,7 @@ function Profile() {
   return (
     <>
       <Navbar />
-      <div className=" bg-sky-700 w-full h-[50vh] rounded-b-[50px] lg:rounded-b-[100px]">
+      <div className=" bg-sky-700 w-full lg:h-[50vh] h-[30vh] rounded-b-[50px] lg:rounded-b-[100px]">
         <h1 className="lg:pt-44 pt-56 text-white text-center text-5xl uppercase tracking-widest">
           Profil Page
         </h1>
