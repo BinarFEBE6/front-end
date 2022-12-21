@@ -23,7 +23,7 @@ const { Header, Content, Footer, Sider } = Layout;
 
 const token = JSON.parse(localStorage.getItem("token"));
 
-const App = () => {
+const AdminPage = () => {
   const [current, setCurrent] = useState("1");
   const [country, setCountry] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -508,4 +508,4 @@ const App = () => {
     </Layout>
   );
 };
-export default App;
+export default AdminPage;

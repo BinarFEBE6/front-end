@@ -42,7 +42,7 @@ function Navbar({ withcroll }) {
 
   const handleLogout = () => {
     localStorage.clear();
-    sessionStorage.clear();
+
     navigate("/");
   };
   useEffect(() => {
