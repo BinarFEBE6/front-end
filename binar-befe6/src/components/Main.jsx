@@ -9,7 +9,6 @@ import { MdAirplanemodeActive } from "react-icons/md";
 
 import { Carousel, Cascader } from "antd";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 function Main() {
   const [country, setCountry] = useState([]);
@@ -19,12 +18,10 @@ function Main() {
   const navigate = useNavigate();
 
   const handleChangeDeparture = (value) => {
-    console.log("Departure at", value[1]);
     setDeparture(value[1]);
   };
 
   const handleChangeArrival = (value) => {
-    console.log("Arrival at", value[1]);
     setArrival(value[1]);
   };
 

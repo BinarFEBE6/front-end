@@ -22,7 +22,7 @@ import axios from "axios";
 import { Steps } from "antd";
 
 function Schedule() {
-  const [Skejul, setSkejul] = useState([]);
+  const [Skejul] = useState([]);
   const [schedule, setSchedule] = useState([]);
 
   const jadwal = (value) => {
@@ -31,10 +31,6 @@ function Schedule() {
   };
 
   const navigate = useNavigate();
-  // const values = {
-  //   departureAiport: departure,
-  //   arrivalAirport: `${arrival}`,
-  // };
   const { departure } = useParams();
   const { arrival } = useParams();
   const rupiah = (number) => {
@@ -52,7 +48,6 @@ function Schedule() {
           arrivalAirport: `${arrival}`,
         }
       );
-      console.log(res.data.data);
       setSchedule(res.data.data);
       return res;
     } catch (error) {}
