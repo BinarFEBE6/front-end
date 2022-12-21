@@ -5,7 +5,7 @@ import { MdAirplanemodeActive } from "react-icons/md";
 import { BiPaperPlane } from "react-icons/bi";
 import axios from "axios";
 import { FaMoneyBillWave } from "react-icons/fa";
-import { MdDateRange, MdAttachMoney } from "react-icons/md";
+import { MdDateRange } from "react-icons/md";
 import { FaPlaneDeparture, FaPlaneArrival } from "react-icons/fa";
 import { TbPlaneInflight } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
@@ -24,13 +24,11 @@ function History() {
           },
         }
       );
-
       setHistory(respone.data.data);
     } catch (error) {
       console.log(error);
     }
   };
-
   useEffect(() => {
     getHistory();
   }, []);

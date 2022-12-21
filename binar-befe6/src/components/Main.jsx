@@ -9,7 +9,6 @@ import { MdAirplanemodeActive } from "react-icons/md";
 
 import { Carousel, Cascader } from "antd";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 function Main() {
   const [country, setCountry] = useState([]);

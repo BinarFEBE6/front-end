@@ -21,9 +21,7 @@ export const addSchedule = createAsyncThunk(
           },
         }
       );
-
       alert("Succes Submit !");
-
       return res.data.data;
     } catch (error) {
       console.error(error);

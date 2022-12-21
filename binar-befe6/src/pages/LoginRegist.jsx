@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import logo from "../assets/logo.png";
-import { Redirect } from "react-router-dom";
 import logo2 from "../assets/logo2w.png";
 import { Form } from "antd";
 import { Input } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { FcGoogle } from "react-icons/fc";
 import { AiOutlineMail } from "react-icons/ai";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { postRegister } from "../features/LoginRegister/registerSlice";
 import { useNavigate } from "react-router-dom";
 import { logIn } from "../features/LoginRegister/loginSlice";
