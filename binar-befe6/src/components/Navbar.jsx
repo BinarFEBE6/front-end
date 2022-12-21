@@ -34,7 +34,7 @@ function Navbar({ withcroll }) {
         `https://febe6.up.railway.app/api/notification`,
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
           },
         }
       );
@@ -50,7 +50,6 @@ function Navbar({ withcroll }) {
   const [sidebar, setsidebar] = useState(false);
   let token = JSON.parse(localStorage.getItem("token"));
 
-  const { login } = useSelector((state) => state.login);
   const handleLogout = () => {
     localStorage.clear();
     sessionStorage.clear();
@@ -236,7 +235,7 @@ function Navbar({ withcroll }) {
                   label={<Avatar alt="User settings" rounded={true} />}
                 >
                   <Dropdown.Header>
-                    <span className="block text-sm">{login.username}</span>
+                    <span className="block text-sm">{JSON.parse(localStorage.getItem("user"))}</span>
                   </Dropdown.Header>
 
                   <Dropdown.Item onClick={() => navigate(`/Profile`)}>
@@ -299,7 +298,7 @@ function Navbar({ withcroll }) {
                   >
                     <Dropdown.Header>
                       <span className="block text-sm">
-                        <span className="block text-sm">{login.username}</span>
+                        <span className="block text-sm">{JSON.parse(localStorage.getItem("user"))}</span>
                       </span>
                     </Dropdown.Header>
 
