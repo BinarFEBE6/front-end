@@ -11,13 +11,9 @@ import { TbPlaneInflight } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
 
 function History() {
-  const email = JSON.parse(localStorage.getItem("userEmail"));
   let token = JSON.parse(localStorage.getItem("token"));
-  const [invoice, setInvoice] = useState("");
   const [history, setHistory] = useState([]);
-  const [ticket, setTicket] = useState([]);
-  const url = "https://febe6.up.railway.app/api/getHistories";
-  // console.log(invoice);
+
   const getHistory = async () => {
     try {
       const respone = await axios.get(
@@ -29,7 +25,6 @@ function History() {
         }
       );
 
-      console.log(respone.data.data);
       setHistory(respone.data.data);
     } catch (error) {
       console.log(error);

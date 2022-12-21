@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import logo from "../assets/logo.png";
 
 import logo2 from "../assets/logo2w.png";
-import { Modal, Form } from "antd";
-import { Button, Input } from "antd";
-import { LockOutlined, UserOutlined, MailOutlined } from "@ant-design/icons";
+import { Form } from "antd";
+import { Input } from "antd";
+import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { FcGoogle } from "react-icons/fc";
 import { AiOutlineMail } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";

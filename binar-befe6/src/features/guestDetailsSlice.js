@@ -24,11 +24,9 @@ export const guestDetails = createAsyncThunk(
         }
       );
 
-      console.log(res.data.data);
       alert("Succes Submit !");
 
       userId.push(res.data.data.id);
-      console.log(userId);
 
       localStorage.setItem("guestId", JSON.stringify(userId));
 

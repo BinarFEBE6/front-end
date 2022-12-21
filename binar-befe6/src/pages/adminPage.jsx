@@ -128,10 +128,6 @@ const App = () => {
     getPlanes();
   }, []);
 
-  console.log("schedule", scheduleTime);
-  console.log("categories", categories);
-  console.log("planes&airports", planes);
-
   const option = country.map((item) => ({
     value: `${item.countryName}`,
     label: `${item.countryName}`,
@@ -318,7 +314,6 @@ const App = () => {
                             width: 230,
                           }}
                           size="large"
-                          // onChange={handleChangeDeparture}
                           placement={"topLeft"}
                           options={option}
                         />
@@ -339,7 +334,6 @@ const App = () => {
                             width: 230,
                           }}
                           size="large"
-                          // onChange={handleChangeArrival}
                           placement={"topLeft"}
                           options={option}
                         />
