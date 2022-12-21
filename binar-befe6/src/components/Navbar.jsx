@@ -34,7 +34,9 @@ function Navbar({ withcroll }) {
         `https://febe6.up.railway.app/api/notification`,
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${JSON.parse(
+              localStorage.getItem("token")
+            )}`,
           },
         }
       );

@@ -53,7 +53,9 @@ function Details() {
   const getQr = async () => {
     try {
       const code = await axios.get(
-        `https://febe6.up.railway.app/api/QRcode/${order}`,
+        `https://febe6.up.railway.app/api/QRcode/${localStorage.getItem(
+          "orderId"
+        )}`,
         {
           headers: {
             Authorization: `Bearer ${JSON.parse(
