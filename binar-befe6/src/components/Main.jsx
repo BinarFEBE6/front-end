@@ -55,7 +55,7 @@ function Main() {
   return (
     <>
       <div className="hero relative">
-        <div className="absolute w-full h-[20vh] bg-gradient-to-b from-sky-800 z-10"></div>
+        <div className="absolute w-full h-[14vh] lg:h-[20vh] bg-gradient-to-b from-sky-800 z-10"></div>
         <Carousel autoplay effect="fade">
           <div>
             <img
