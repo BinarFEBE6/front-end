@@ -26,7 +26,7 @@ root.render(
             <Route path="/" element={<App />} />
             <Route path="/Detail/:id" element={<Detail />} />
             <Route
-              path="/schedule/:departure To :arrival"
+              path="/schedule/:departure/:arrival"
               element={<Schedule />}
             />
             <Route path="/profile" element={<Profile />} />
