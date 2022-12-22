@@ -42,7 +42,7 @@ function Schedule() {
   const getSchedule = async () => {
     try {
       const res = await axios.post(
-        "https://febe6.up.railway.app/api/getSchedule",
+        "https://binar-academy-terbangin.herokuapp.com/api/getSchedule",
         {
           departureAiport: `${departure}`,
           arrivalAirport: `${arrival}`,

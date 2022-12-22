@@ -17,7 +17,7 @@ function History() {
   const getHistory = async () => {
     try {
       const respone = await axios.get(
-        `https://febe6.up.railway.app/api/getHistories`,
+        `https://binar-academy-terbangin.herokuapp.com/api/getHistories`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

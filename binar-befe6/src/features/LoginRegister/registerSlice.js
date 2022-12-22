@@ -11,7 +11,7 @@ export const postRegister = createAsyncThunk(
   async (values) => {
     try {
       const res = await axios.post(
-        "https://febe6.up.railway.app/api/auth/signup",
+        "https://binar-academy-terbangin.herokuapp.com/api/auth/signup",
         values
       );
 

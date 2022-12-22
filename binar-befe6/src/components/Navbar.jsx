@@ -20,7 +20,7 @@ function Navbar({ withcroll }) {
   const getNotif = async () => {
     try {
       const respone = await axios.get(
-        `https://febe6.up.railway.app/api/notification`,
+        `https://binar-academy-terbangin.herokuapp.com/api/notification`,
         {
           headers: {
             Authorization: `Bearer ${JSON.parse(

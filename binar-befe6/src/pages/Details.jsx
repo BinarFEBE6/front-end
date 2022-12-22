@@ -15,7 +15,7 @@ function Details() {
   const getInfo = async (Id) => {
     try {
       const res = await axios.get(
-        `https://febe6.up.railway.app/api/ticket/get/${Id}`,
+        `https://binar-academy-terbangin.herokuapp.com/api/ticket/get/${Id}`,
         {
           headers: {
             Authorization: `Bearer ${JSON.parse(
@@ -34,7 +34,7 @@ function Details() {
   const getPdf = async () => {
     try {
       const res = await axios.get(
-        `https://febe6.up.railway.app/api/generateOrder/${details.orderId}`,
+        `https://binar-academy-terbangin.herokuapp.com/api/generateOrder/${details.orderId}`,
         {
           headers: {
             Authorization: `Bearer ${JSON.parse(
@@ -50,7 +50,7 @@ function Details() {
   const getQr = async () => {
     try {
       const code = await axios.get(
-        `https://febe6.up.railway.app/api/QRcode/${localStorage.getItem(
+        `https://binar-academy-terbangin.herokuapp.com/api/QRcode/${localStorage.getItem(
           "orderId"
         )}`,
         {
@@ -211,7 +211,7 @@ function Details() {
                 <div className="pdf lg:row-span-2 lg:justify-start lg:items-start items-center justify-center flex mr-3">
                   <img
                     className="lg:w-[50%] w-[100%] md:w-[40%]"
-                    src={`https://febe6.up.railway.app/api/QRcode/${order}`}
+                    src={`https://binar-academy-terbangin.herokuapp.com/api/QRcode/${order}`}
                     alt="barcode"
                   />
                 </div>

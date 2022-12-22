@@ -75,7 +75,7 @@ const AdminPage = () => {
   const getCountry = async () => {
     try {
       const res = await axios.get(
-        `https://febe6.up.railway.app/api/getCountry`
+        `https://binar-academy-terbangin.herokuapp.com/api/getCountry`
       );
       setCountry(res.data.data);
     } catch (error) {
@@ -86,7 +86,7 @@ const AdminPage = () => {
   const getScheduleTime = async () => {
     try {
       const res = await axios.get(
-        `https://febe6.up.railway.app/api/getScheduleTime`
+        `https://binar-academy-terbangin.herokuapp.com/api/getScheduleTime`
       );
       setScheduleTime(res.data.data);
     } catch (error) {
@@ -97,7 +97,7 @@ const AdminPage = () => {
   const getCategories = async () => {
     try {
       const res = await axios.get(
-        `https://febe6.up.railway.app/api/getCategories`
+        `https://binar-academy-terbangin.herokuapp.com/api/getCategories`
       );
       setCategories(res.data.data);
     } catch (error) {
@@ -108,7 +108,7 @@ const AdminPage = () => {
   const getPlanes = async () => {
     try {
       const res = await axios.get(
-        `https://febe6.up.railway.app/api/getAllPesawat`,
+        `https://binar-academy-terbangin.herokuapp.com/api/getAllPesawat`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
