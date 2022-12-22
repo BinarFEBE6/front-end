@@ -256,7 +256,7 @@ function Profile() {
                   <div className="name">
                     <h1>Name</h1>
                     {data.displayName === null ? (
-                      <h1 className="text-gray-700 font-light">Kosong</h1>
+                      <h1 className="text-gray-700 font-light">Not Set</h1>
                     ) : (
                       <h1 className="text-gray-700 font-light">
                         {data.gender} {data.displayName}
@@ -267,7 +267,7 @@ function Profile() {
                   <div className="birthDate">
                     <h1>Birth Date</h1>
                     {data.birthDate === null ? (
-                      <h1 className="text-gray-700 font-light">Kosong</h1>
+                      <h1 className="text-gray-700 font-light">Not Set</h1>
                     ) : (
                       <h1 className="text-gray-700 font-light">
                         {data.birthDate}
@@ -277,7 +277,7 @@ function Profile() {
                   <div className="addres">
                     <h1>Addres</h1>
                     {data.address === null ? (
-                      <h1 className="text-gray-700 font-light">Kosong</h1>
+                      <h1 className="text-gray-700 font-light">Not Set</h1>
                     ) : (
                       <h1 className="text-gray-700 font-light">
                         {data.address}
