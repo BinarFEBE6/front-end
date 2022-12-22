@@ -10,12 +10,12 @@ function PriceList() {
   const navigate = useNavigate();
 
   return (
-    <div className="priceList-section bg-gray-100 mx-auto py-24 text-gray-700">
-      <h1 className="lg:text-2xl text-3xl font-bold text-center px-10 lg:px-0">
+    <div className="priceList-section bg-gray-100 px-4 py-24 text-gray-700">
+      <h1 className="lg:text-2xl text-3xl font-bold text-center mb-16 px-10 lg:px-0">
         Book with a Cheap Price from
       </h1>
 
-      <div className="grid lg:grid-cols-3 grid-cols-2 lg:grid-rows-2 gap-4 lg:mx-24 lg:mt-16">
+      <div className="grid lg:grid-cols-3 grid-cols-2 lg:grid-rows-2 gap-3 lg:gap-4 lg:mx-24 lg:mt-16">
         <div
           onClick={() => navigate("/Detail/" + data[0].id)}
           className="group w-full inline-block cursor-pointer relative rounded-lg overflow-hidden lg:row-span-2"
