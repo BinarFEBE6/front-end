@@ -30,7 +30,7 @@ function Main() {
   const getCountry = async () => {
     try {
       const res = await axios.get(
-        `https://febe6.up.railway.app/api/getCountry`
+        `https://binar-academy-terbangin.herokuapp.com/api/getCountry`
       );
       setCountry(res.data.data);
     } catch (error) {
