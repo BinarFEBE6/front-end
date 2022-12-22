@@ -21,6 +21,9 @@ function GuestDetails() {
 
   const [componentDisabled, setComponentDisabled] = useState(false);
 
+  const departure = JSON.parse(localStorage.getItem("departure"))
+  const arrival = JSON.parse(localStorage.getItem("arrival"))
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -71,7 +74,7 @@ function GuestDetails() {
   const getCountry = async () => {
     try {
       const res = await axios.get(
-        `https://febe6.up.railway.app/api/getCountry`
+        `https://binar-academy-terbangin.herokuapp.com/api/getCountry`
       );
       setCountry(res.data.data);
     } catch (error) {
@@ -105,7 +108,7 @@ function GuestDetails() {
                 icon: (
                   <AiFillSchedule
                     className="text-3xl text-blue-500 cursor-pointer hover:scale-110 duration-300"
-                    onClick={() => navigate("/schedule")}
+                    onClick={() => navigate(`/schedule/${departure}/${arrival}`)}
                   />
                 ),
               },

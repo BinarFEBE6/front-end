@@ -11,7 +11,7 @@ export const addSchedule = createAsyncThunk(
   async (values) => {
     try {
       const res = await axios.post(
-        "https://febe6.up.railway.app/api/add/schedule",
+        "https://binar-academy-terbangin.herokuapp.com/api/add/schedule",
         values,
         {
           headers: {

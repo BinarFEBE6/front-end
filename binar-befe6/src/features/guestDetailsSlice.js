@@ -13,7 +13,7 @@ export const guestDetails = createAsyncThunk(
   async (values) => {
     try {
       const res = await axios.post(
-        "https://febe6.up.railway.app/api/booking/guest",
+        "https://binar-academy-terbangin.herokuapp.com/api/booking/guest",
         values,
         {
           headers: {
