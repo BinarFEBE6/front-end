@@ -20,6 +20,9 @@ function SetSeat() {
 
   const navigate = useNavigate();
 
+  const departure = JSON.parse(localStorage.getItem("departure"))
+  const arrival = JSON.parse(localStorage.getItem("arrival"))
+
   const [componentDisabled, setComponentDisabled] = useState(false);
 
   const displayClick = (value1, value2) => {
@@ -29,7 +32,7 @@ function SetSeat() {
 
   const getSeat = async () => {
     try {
-      const res = await axios.get(`https://febe6.up.railway.app/api/getSeats`);
+      const res = await axios.get(`https://binar-academy-terbangin.herokuapp.com/api/getSeats`);
       setSeat(res.data.data);
     } catch (error) {
       console.log(error);
@@ -53,7 +56,7 @@ function SetSeat() {
   const postOrder = async () => {
     try {
       const res = await axios.post(
-        `https://febe6.up.railway.app/api/booking/add`,
+        `https://binar-academy-terbangin.herokuapp.com/api/booking/add`,
         valueOrder,
         {
           headers: {
@@ -64,9 +67,9 @@ function SetSeat() {
       Swal.fire("Good job!", "Order Succes!", "success");
       window.localStorage.removeItem("guestId");
       window.localStorage.removeItem("seatId");
-      navigate("/");
-      window.location.reload();
-      console.log(res);
+      window.localStorage.removeItem("scheduleId");
+      
+      return <res className="data data"></res>
     } catch (error) {
       console.log(error);
 
@@ -109,7 +112,7 @@ function SetSeat() {
                 icon: (
                   <AiFillSchedule
                     className="text-3xl text-blue-500 cursor-pointer hover:scale-110 duration-300"
-                    onClick={() => navigate("/schedule")}
+                    onClick={() => navigate(`/schedule/${departure}/${arrival}`)}
                   />
                 ),
               },
