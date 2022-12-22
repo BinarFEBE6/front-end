@@ -13,7 +13,7 @@ export const guestDetails = createAsyncThunk(
   async (values) => {
     try {
       const res = await axios.post(
-        "https://febe6.up.railway.app/api/booking/guest",
+        "https://binar-academy-terbangin.herokuapp.com/api/booking/guest",
         values,
         {
           headers: {
@@ -23,15 +23,9 @@ export const guestDetails = createAsyncThunk(
           },
         }
       );
-
-      console.log(res.data.data);
       alert("Succes Submit !");
-
       userId.push(res.data.data.id);
-      console.log(userId);
-
       localStorage.setItem("guestId", JSON.stringify(userId));
-
       return res.data.data;
     } catch (error) {
       console.error(error);

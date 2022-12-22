@@ -6,32 +6,21 @@ import { IoIosNotifications } from "react-icons/io";
 import { IoNotificationsOffOutline } from "react-icons/io5";
 import logo from "../assets/logo.png";
 
-import { useDispatch, useSelector } from "react-redux";
-import { Modal, Form, Empty } from "antd";
-import { LockOutlined, UserOutlined, MailOutlined } from "@ant-design/icons";
-import { Button, Input } from "antd";
 import useScroll from "../hooks/useScroll";
-import { logIn } from "../features/LoginRegister/loginSlice";
 import { Avatar } from "flowbite-react";
 import { Dropdown, Tooltip } from "flowbite-react";
 
 import { useNavigate } from "react-router-dom";
 
-import { postRegister } from "../features/LoginRegister/registerSlice";
-import { postLoginGoogle } from "../features/LoginRegister/loginGoogle";
-
 function Navbar({ withcroll }) {
-  const [show, setShow] = useState(false);
-  const dispatch = useDispatch();
   const [navbarOpen, setNavbarOpen] = useState(false);
-  const [showRegist, setShowRegist] = useState(false);
   const { scrollY } = useScroll();
   const [notif, setNotif] = useState([]);
 
   const getNotif = async () => {
     try {
       const respone = await axios.get(
-        `https://febe6.up.railway.app/api/notification`,
+        `https://binar-academy-terbangin.herokuapp.com/api/notification`,
         {
           headers: {
             Authorization: `Bearer ${JSON.parse(
@@ -41,7 +30,6 @@ function Navbar({ withcroll }) {
         }
       );
 
-      // console.log(respone.data.data);
       setNotif(respone.data.data);
     } catch (error) {
       console.log(error);
@@ -221,7 +209,8 @@ function Navbar({ withcroll }) {
                   className="w-56"
                   animation="duration-500"
                 >
-                  <button>
+                  <button className="relative bg-whitw">
+                    <div className="h-3 w-3 rounded-full bg-red-500 absolute top-2 left-2"></div>
                     <IoIosNotifications
                       size={37}
                       className={`
@@ -282,8 +271,7 @@ function Navbar({ withcroll }) {
                   >
                     <IoIosNotifications
                       size={38}
-                      className={`
-                       text-yellow-300 font-bold duration-300 mt-1 `}
+                      className={` text-yellow-300 font-bold duration-300 mt-1 `}
                     />
                   </Tooltip>
 
@@ -320,9 +308,6 @@ function Navbar({ withcroll }) {
                       Sign out
                     </Dropdown.Item>
                   </Dropdown>
-                  {/* <p className="text-primary-100 text-lg ml-2 mt-3">
-                    {JSON.parse(profile)}
-                  </p> */}
                 </div>
               ) : (
                 <div className="false flex items-center">
@@ -334,7 +319,6 @@ function Navbar({ withcroll }) {
                           : "text-sky-500"
                         : "text-sky-500"
                     }  font-bold`}
-                    // onClick={isShow}
                     onClick={() => navigate("/login")}
                   >
                     Login

@@ -14,9 +14,7 @@ export const postRegister = createAsyncThunk(
         "https://binar-academy-terbangin.herokuapp.com/api/auth/signup",
         values
       );
-      // console.log(res);
 
-      console.log(res.data.data);
       return res.data.data;
     } catch (error) {
       console.error(error);

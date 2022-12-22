@@ -27,25 +27,25 @@ function Travel() {
         <div className="lg:flex w-full lg:justify-between p-9 lg:px-24 grid grid-cols-2 gap-6">
           <div className="hover:scale-125 duration-500 cursor-pointer">
             <RiMoneyDollarCircleFill className="w-full h-8 text-yellow-300" />
-            <p className="text-lg font-semibold text-gray-500 mt-2 text-center">
+            <p className="text-md lg:text-lg font-semibold text-gray-500 mt-2 text-center">
               Cheap Price
             </p>
           </div>
           <div className="hover:scale-125 duration-500 cursor-pointer">
             <FaStopwatch className="w-full h-8 text-rose-600" />
-            <p className="text-lg font-semibold text-gray-500 mt-2 text-center">
+            <p className="text-md lg:text-lg font-semibold text-gray-500 mt-2 text-center">
               Fast Processing
             </p>
           </div>
           <div className="hover:scale-125 duration-500 cursor-pointer">
             <FaGifts className="w-full h-8 text-orange-500" />
-            <p className="text-lg font-semibold text-gray-500 mt-2 text-center">
+            <p className="text-md lg:text-lg font-semibold text-gray-500 mt-2 text-center">
               Many Promos
             </p>
           </div>
           <div className="hover:scale-125 duration-500 cursor-pointer">
             <RiRefund2Fill className="w-full h-8 text-green-500" />
-            <p className="text-lg font-semibold text-gray-500 mt-2 text-center">
+            <p className="text-md lg:text-lg font-semibold text-gray-500 mt-2 text-center">
               Cashback 20 %
             </p>
           </div>

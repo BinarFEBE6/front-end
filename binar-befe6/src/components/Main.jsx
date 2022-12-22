@@ -9,7 +9,6 @@ import { MdAirplanemodeActive } from "react-icons/md";
 
 import { Carousel, Cascader } from "antd";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 function Main() {
   const [country, setCountry] = useState([]);
@@ -19,19 +18,23 @@ function Main() {
   const navigate = useNavigate();
 
   const handleChangeDeparture = (value) => {
-    console.log("Departure at", value[1]);
     setDeparture(value[1]);
   };
 
   const handleChangeArrival = (value) => {
-    console.log("Arrival at", value[1]);
     setArrival(value[1]);
   };
+
+  const handleClick = () => {
+    localStorage.setItem("departure", JSON.stringify(departure))
+    localStorage.setItem("arrival", JSON.stringify(arrival))
+    navigate(`/schedule/${departure}/${arrival}`)
+  }
 
   const getCountry = async () => {
     try {
       const res = await axios.get(
-        `https://febe6.up.railway.app/api/getCountry`
+        `https://binar-academy-terbangin.herokuapp.com/api/getCountry`
       );
       setCountry(res.data.data);
     } catch (error) {
@@ -135,7 +138,7 @@ function Main() {
               </div>
               <div className="button flex justify-center lg:mt-2 lg:w-[40%]">
                 <button
-                  onClick={() => navigate(`/schedule/${departure}/${arrival}`)}
+                  onClick={handleClick}
                   className="w-full px-4 h-9 lg:h-12 mt-2 lg:mt-[32px] lg:my-auto bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl lg:ml-10"
                 >
                   Search Flights
