@@ -15,6 +15,7 @@ import LoginRegist from "./pages/LoginRegist";
 import AdminPage from "./pages/adminPage";
 import Detail from "./pages/Detail";
 import Details from "./pages/Details";
+import Confirmation from "./pages/Confirmation";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -36,6 +37,7 @@ root.render(
             <Route path="/setSeat" element={<SetSeat />} />
             <Route path="/dashboard" element={<AdminPage />} />
             <Route path="/details/:guestId" element={<Details />} />
+            <Route path="/confirmation" element={<Confirmation />} />
           </Route>
         </Routes>
       </BrowserRouter>
