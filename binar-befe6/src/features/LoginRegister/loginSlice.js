@@ -10,7 +10,7 @@ const initialState = {
 export const logIn = createAsyncThunk("login/postLog", async (values) => {
   try {
     const res = await axios.post(
-      "https://febe6.up.railway.app/api/auth/signin",
+      "https://binar-academy-terbangin.herokuapp.com/api/auth/signin",
       values
     );
     localStorage.setItem("roles", JSON.stringify(res.data.data.roles[0]));

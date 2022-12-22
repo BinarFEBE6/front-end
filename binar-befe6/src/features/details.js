@@ -8,7 +8,7 @@ const initialState = {
 export const getDetails = createAsyncThunk("details/getDetails", async () => {
   try {
     const res = await axios.get(
-      `https://febe6.up.railway.app/api/ticket/get/${localStorage.getItem(
+      `https://binar-academy-terbangin.herokuapp.com/api/ticket/get/${localStorage.getItem(
         "guestId"
       )}`,
       {

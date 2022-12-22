@@ -1,29 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
-import { Upload, message } from "antd";
-import { Avatar } from "flowbite-react";
+
 import Footer from "../components/footer";
 import { DatePicker, Form, Input, Select } from "antd";
-import { useRef } from "react";
+
+import axios from "axios";
 
 const { TextArea } = Input;
 
 function Profile() {
-  const onFinish = (fieldValue) => {
+  const [user, setUser] = useState([]);
+  const onFinish = async (fieldValue) => {
     const values = {
       ...fieldValue,
-
-      profile: fieldValue["profile"].slice(12),
+      birthDate: fieldValue["dateOfBirth"].format("YYYY-MM-DD"),
     };
-    console.log("Success:", values);
-    setEdit("");
+    delete values.dateOfBirth;
+    try {
+      const req = await axios.put(
+        "https://binar-academy-terbangin.herokuapp.com/api/user/edit_profile/update",
+        values,
+        {
+          headers: {
+            Authorization: `Bearer ${JSON.parse(
+              localStorage.getItem("token")
+            )}`,
+          },
+        }
+      );
+      console.log(req);
+      console.log("Success:", values);
+    } catch (error) {}
+
+    // setEdit();
   };
   const [edit, setEdit] = useState(false);
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
 
-  const fileInput = useRef(null);
+  // const fileInput = useRef(null);
   // const handleChange = (e) => {
   //   const file = fileInput.current.files[0];
   //   const fileName = file.name;
@@ -39,40 +55,71 @@ function Profile() {
   //   }
   // };
 
-  const handleChange = (e) => {
-    const file = e.target.files[0];
-    if (file.size > 1000000) {
-      alert("File size must be less than 1MB!");
+  // const handleChange = (e) => {
+  //   const file = e.target.files[0];
+  //   if (file.size > 1000000) {
+  //     alert("File size must be less than 1MB!");
+  //   }
+  // };
+  // const beforUpload = (file) => {
+  //   const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
+  //   if (!isJpgOrPng) {
+  //     message.error("You can only upload JPG/PNG file!");
+  //   }
+  //   const isLt2M = file.size / 1024 / 1024 < 2;
+  //   if (!isLt2M) {
+  //     message.error("Image must smaller than 2MB!");
+  //   }
+  //   return isJpgOrPng && isLt2M && true;
+  // };
+  const getProfile = async () => {
+    try {
+      const res = await axios.get(
+        "https://binar-academy-terbangin.herokuapp.com/api/get/user/edit_profile",
+        {
+          headers: {
+            Authorization: `Bearer ${JSON.parse(
+              localStorage.getItem("token")
+            )}`,
+          },
+        }
+      );
+      setUser(res.data.data);
+      console.log(res);
+    } catch (error) {}
+  };
+
+  const updateProfile = async () => {
+    try {
+      const req = await axios.put(
+        "https://binar-academy-terbangin.herokuapp.com/api/user/edit_profile/update",
+        {
+          headers: {
+            Authorization: `Bearer ${JSON.parse(
+              localStorage.getItem("token")
+            )}`,
+          },
+        }
+      );
+      console.log(req);
+    } catch (error) {
+      console.log(error);
     }
   };
-  const beforUpload = (file) => {
-    const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
-    if (!isJpgOrPng) {
-      message.error("You can only upload JPG/PNG file!");
-    }
-    const isLt2M = file.size / 1024 / 1024 < 2;
-    if (!isLt2M) {
-      message.error("Image must smaller than 2MB!");
-    }
-    return isJpgOrPng && isLt2M && true;
-  };
-  const [form] = Form.useForm();
+
+  useEffect(() => {
+    getProfile();
+  }, []);
   return (
-    <>
-      <Navbar />
-      <div className=" bg-sky-700 w-full lg:h-[50vh] h-[30vh] rounded-b-[50px] lg:rounded-b-[100px]">
-        <h1 className="lg:pt-44 pt-56 text-white text-center text-5xl uppercase tracking-widest">
-          Profil Page
-        </h1>
-      </div>
-      <div className="flex justify-center">
-        <div className="bg-white w-[90%] lg:w-[40%] h-full mt-[-5rem] mb-24 rounded-3xl border shadow-md p-16 lg:p-20">
-          <Avatar alt="User settings" size="xl" />
-          <div className="flex justify-center">
+    <div className="h-screen">
+      <Navbar withcroll={false} />
+
+      <div className="flex justify-center items-center h-full ">
+        <div className="bg-white lg:w-[60vw] w-[80vw] h-fit rounded-lg border shadow-md   ">
+          <div className="">
             {edit ? (
               <div className="mt-16">
                 <Form
-                  form={form}
                   name="basic"
                   initialValues={{
                     remember: true,
@@ -90,31 +137,7 @@ function Profile() {
                   </h1>
                   <div className="lg:flex gap-2 mb-4">
                     <Form.Item
-                      name="gender"
-                      rules={[
-                        {
-                          required: true,
-                        },
-                      ]}
-                    >
-                      <Select
-                        placeholder="Mr/Mrs"
-                        size="large"
-                        style={{ width: "100%" }}
-                        options={[
-                          {
-                            label: "Mr.",
-                            value: "male",
-                          },
-                          {
-                            label: "Mrs.",
-                            value: "female",
-                          },
-                        ]}
-                      />
-                    </Form.Item>
-                    <Form.Item
-                      name="name"
+                      name="displayName"
                       rules={[
                         {
                           required: true,
@@ -142,7 +165,30 @@ function Profile() {
                   >
                     <DatePicker size="large" className="w-full mb-4" />
                   </Form.Item>
-
+                  <Form.Item
+                    name="gender"
+                    rules={[
+                      {
+                        required: true,
+                      },
+                    ]}
+                  >
+                    <Select
+                      placeholder="Mr/Mrs"
+                      size="large"
+                      style={{ width: "100%" }}
+                      options={[
+                        {
+                          label: "Mr.",
+                          value: "male",
+                        },
+                        {
+                          label: "Mrs.",
+                          value: "female",
+                        },
+                      ]}
+                    />
+                  </Form.Item>
                   <h1 className="text-md font-bold text-xl mb-6 text-gray-500">
                     Address
                   </h1>
@@ -156,7 +202,7 @@ function Profile() {
                   >
                     <TextArea rows={4} className="mb-12" />
                   </Form.Item>
-                  <Form.Item
+                  {/* <Form.Item
                     name="profile"
                     rules={[
                       {
@@ -185,7 +231,7 @@ function Profile() {
                         onChange={handleChange}
                       />
                     </div>
-                  </Form.Item>
+                  </Form.Item> */}
                   <Form.Item>
                     <div className="flex justify-end">
                       <button
@@ -199,7 +245,56 @@ function Profile() {
                 </Form>
               </div>
             ) : (
-              <div className="profile">
+              <div className="profile ">
+                <div className="flex justify-start user border-l-4 border-primary-100 flex-row">
+                  <h1 className="text-gray-700 font-semibold">
+                    User Information
+                  </h1>
+                </div>
+                <div className="user pl-3">
+                  <div className="name">
+                    <h1>Name</h1>
+                    {user.displayName === null ? (
+                      <h1 className="text-gray-700 font-light">Kosong</h1>
+                    ) : (
+                      <h1 className="text-gray-700 font-light">
+                        {user.displayName}
+                      </h1>
+                    )}
+                  </div>
+                  <div className="gender">
+                    <h1>Gender</h1>
+                    {user.gender === null ? (
+                      <h1 className="text-gray-700 font-light">Kosong</h1>
+                    ) : (
+                      <h1 className="text-gray-700 font-light">
+                        {user.gender}
+                      </h1>
+                    )}
+
+                    <div className="birthDate">
+                      <h1>Birth Date</h1>
+                      {user.birthDate === null ? (
+                        <h1 className="text-gray-700 font-light">Kosong</h1>
+                      ) : (
+                        <h1 className="text-gray-700 font-light">
+                          {user.birthDate}
+                        </h1>
+                      )}
+                    </div>
+                    <div className="addres">
+                      <h1>Addres</h1>
+                      {user.address === null ? (
+                        <h1 className="text-gray-700 font-light">Kosong</h1>
+                      ) : (
+                        <h1 className="text-gray-700 font-light">
+                          {user.address}
+                        </h1>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
                 <button
                   onClick={() => setEdit(true)}
                   className="w-24 p-3 bg-primary-100 text-white"
@@ -212,7 +307,7 @@ function Profile() {
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 }
 
