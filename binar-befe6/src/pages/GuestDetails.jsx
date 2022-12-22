@@ -141,7 +141,7 @@ function GuestDetails() {
       </div>
 
       <div className="pt-6">
-        <div className=" bg-white drop-shadow-xl w-full h-[15vh] lg:h-[20vh] rounded-b-[50px] lg:rounded-b-[180px] flex items-center justify-center">
+        <div className=" bg-white drop-shadow-xl w-full h-[10vh] lg:h-[15vh] rounded-b-[50px] lg:rounded-b-[180px] flex items-center justify-center">
           <h1 className="text-3xl font-bold text-sky-700">Guest Details</h1>
         </div>
         <div className="flex justify-center">
@@ -437,14 +437,14 @@ function GuestDetails() {
               Checklist if you're done !
             </Checkbox>
           </div>
-          <div className="flex justify-end lg:mr-10 mb-10 lg:mb-0">
+          <div className="flex justify-center lg:justify-end lg:mr-10 mb-10 lg:mb-0">
             <button
               onClick={() => navigate("/setSeat")}
               disabled={!componentDisabled}
               className={
                 !componentDisabled
-                  ? "flex items-center p-5 lg:px-4 lg:py-2 bg-gradient-to-l from-gray-500 to-gray-300 text-white font-semibold rounded-lg duration-500 mr-24 cursor-not-allowed"
-                  : "flex items-center p-5 lg:px-4 lg:py-2 bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl mr-24 cursor-pointer"
+                  ? "flex items-center p-5 lg:px-4 lg:py-2 bg-gradient-to-l from-gray-500 to-gray-300 text-white font-semibold rounded-lg duration-500 lg:mr-24 cursor-not-allowed"
+                  : "flex items-center p-5 lg:px-4 lg:py-2 bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl lg:mr-24 cursor-pointer"
               }
             >
               Next to Choose Seat
