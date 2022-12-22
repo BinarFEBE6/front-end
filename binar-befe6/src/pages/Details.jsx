@@ -52,14 +52,7 @@ function Details() {
       const code = await axios.get(
         `https://binar-academy-terbangin.herokuapp.com/api/QRcode/${localStorage.getItem(
           "orderId"
-        )}`,
-        {
-          headers: {
-            Authorization: `Bearer ${JSON.parse(
-              localStorage.getItem("token")
-            )}`,
-          },
-        }
+        )}`
       );
       setQr(code);
       console.log(code.data);

@@ -9,7 +9,7 @@ import axios from "axios";
 const { TextArea } = Input;
 
 function Profile() {
-  const [user, setUser] = useState([]);
+  const [data, setData] = useState([]);
   const onFinish = async (fieldValue) => {
     const values = {
       ...fieldValue,
@@ -28,6 +28,7 @@ function Profile() {
           },
         }
       );
+      window.location.reload();
       console.log(req);
       console.log("Success:", values);
     } catch (error) {}
@@ -84,41 +85,46 @@ function Profile() {
           },
         }
       );
-      setUser(res.data.data);
-      console.log(res);
+      setData(res.data.data);
+      console.log(res.data.data);
     } catch (error) {}
   };
 
-  const updateProfile = async () => {
-    try {
-      const req = await axios.put(
-        "https://binar-academy-terbangin.herokuapp.com/api/user/edit_profile/update",
-        {
-          headers: {
-            Authorization: `Bearer ${JSON.parse(
-              localStorage.getItem("token")
-            )}`,
-          },
-        }
-      );
-      console.log(req);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const updateProfile = async () => {
+  //   try {
+  //     const req = await axios.put(
+  //       "https://binar-academy-terbangin.herokuapp.com/api/user/edit_profile/update",
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${JSON.parse(
+  //             localStorage.getItem("token")
+  //           )}`,
+  //         },
+  //       }
+  //     );
+  //     console.log(req);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   useEffect(() => {
     getProfile();
   }, []);
   return (
     <div className="h-screen">
-      <Navbar withcroll={false} />
+      <Navbar />
 
-      <div className="flex justify-center items-center h-full ">
-        <div className="bg-white lg:w-[60vw] w-[80vw] h-fit rounded-lg border shadow-md   ">
-          <div className="">
-            {edit ? (
-              <div className="mt-16">
+      <div className="flex justify-center items-center lg:h-full h-[100%] flex-col">
+        {/* <div className=" bg-white drop-shadow-xl w-full h-[15vh] rounded-b-[50px] lg:rounded-b-[180px] flex items-center justify-center mb-6 mt-11">
+          <h1 className="text-3xl font-medium  text-sky-700">
+            User Information
+          </h1>
+        </div> */}
+        <div className="bg-white lg:w-[30vw] w-[80vw]  rounded-lg border shadow-md mt-20 mb-12 ">
+          {edit ? (
+            <div className="slicing flex justify-center lg:py-7">
+              <div className=" ">
                 <Form
                   name="basic"
                   initialValues={{
@@ -129,13 +135,35 @@ function Profile() {
                   onFinishFailed={onFinishFailed}
                   autoComplete="off"
                 >
-                  <h1
-                    className="text-md font-bold text-xl mb-6 text-gray-500"
-                    onClick={() => setEdit()}
-                  >
+                  <h1 className="text-md font-bold text-lg mt-3 text-gray-500">
                     Gender / Name
                   </h1>
-                  <div className="lg:flex gap-2 mb-4">
+                  <div className="flex lg:flex-row flex-col lg:gap-2 ">
+                    <Form.Item
+                      name="gender"
+                      rules={[
+                        {
+                          required: true,
+                        },
+                      ]}
+                    >
+                      <Select
+                        placeholder="Mr/Mrs"
+                        // className="w-[70%] h-[70%]"
+                        // style={{ width: "100%" }}
+                        size="middle"
+                        options={[
+                          {
+                            label: "Mr.",
+                            value: "Mr.",
+                          },
+                          {
+                            label: "Mrs.",
+                            value: "Mrs.",
+                          },
+                        ]}
+                      />
+                    </Form.Item>
                     <Form.Item
                       name="displayName"
                       rules={[
@@ -146,13 +174,14 @@ function Profile() {
                       ]}
                     >
                       <Input
+                        size="middle"
                         className="border-gray-200 rounded-lg"
                         placeholder="Input your name !"
                       />
                     </Form.Item>
                   </div>
 
-                  <h1 className="text-md font-bold text-xl mb-6 text-gray-500">
+                  <h1 className="text-md font-bold text-lg  text-gray-500">
                     Date of Birth
                   </h1>
                   <Form.Item
@@ -163,33 +192,10 @@ function Profile() {
                       },
                     ]}
                   >
-                    <DatePicker size="large" className="w-full mb-4" />
+                    <DatePicker className="w-full " />
                   </Form.Item>
-                  <Form.Item
-                    name="gender"
-                    rules={[
-                      {
-                        required: true,
-                      },
-                    ]}
-                  >
-                    <Select
-                      placeholder="Mr/Mrs"
-                      size="large"
-                      style={{ width: "100%" }}
-                      options={[
-                        {
-                          label: "Mr.",
-                          value: "male",
-                        },
-                        {
-                          label: "Mrs.",
-                          value: "female",
-                        },
-                      ]}
-                    />
-                  </Form.Item>
-                  <h1 className="text-md font-bold text-xl mb-6 text-gray-500">
+
+                  <h1 className="text-md font-bold text-lg mb-2 text-gray-500">
                     Address
                   </h1>
                   <Form.Item
@@ -200,110 +206,96 @@ function Profile() {
                       },
                     ]}
                   >
-                    <TextArea rows={4} className="mb-12" />
+                    <TextArea rows={4} className="" />
                   </Form.Item>
-                  {/* <Form.Item
-                    name="profile"
-                    rules={[
-                      {
-                        required: true,
-                        message: "Please select a file!",
-                      },
-                      {
-                        validator: (rule, value, callback) => {
-                          if (
-                            value &&
-                            value.files &&
-                            value.files[0].size > 1000000
-                          ) {
-                            callback("File size must be less than 1MB!");
-                          } else {
-                            callback();
-                          }
-                        },
-                      },
-                    ]}
-                  >
-                    <div className="flex justify-end">
-                      <Input
-                        type="file"
-                        accept=".png,.jpg"
-                        onChange={handleChange}
-                      />
-                    </div>
-                  </Form.Item> */}
-                  <Form.Item>
-                    <div className="flex justify-end">
+                  <div className="save flex flex-row justify-center gap-1">
+                    <div className="cancel">
                       <button
-                        htmlType="submit"
-                        className="lg:w-1/4 px-6 lg:px-4 h-9 lg:h-12 lg:my-auto bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl"
+                        onClick={() => setEdit()}
+                        className="lg:w-32 px-6 lg:px-4 h-9 lg:h-12 lg:my-auto bg-gradient-to-l from-red-600 to-red-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl"
                       >
-                        Save
+                        Cancel
                       </button>
                     </div>
-                  </Form.Item>
+                    <Form.Item>
+                      <div className="flex">
+                        <button
+                          htmlType="submit"
+                          className="lg:w-32 px-6 lg:px-4 h-9 lg:h-12 lg:my-auto bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl"
+                        >
+                          Save
+                        </button>
+                      </div>
+                    </Form.Item>
+                  </div>
                 </Form>
               </div>
-            ) : (
-              <div className="profile ">
-                <div className="flex justify-start user border-l-4 border-primary-100 flex-row">
-                  <h1 className="text-gray-700 font-semibold">
-                    User Information
-                  </h1>
-                </div>
+            </div>
+          ) : (
+            <>
+              <div className="flex justify-start user border-l-4 border-primary-100 flex-row">
+                <h1 className="text-gray-700 font-semibold text-xl pl-2">
+                  User Information
+                </h1>
+              </div>
+              <div className="profile pl-4 pb-4 ">
                 <div className="user pl-3">
+                  <div className="username">
+                    <h1>Username</h1>
+                    <h1 className="text-gray-700 font-light">
+                      {" "}
+                      {data && data.length !== 0 && data.user.username}
+                    </h1>
+                  </div>
+                  <div className="email">
+                    <h1>Email</h1>
+                    <h1 className="text-gray-700 font-light">
+                      {data && data.length !== 0 && data.user.email}
+                    </h1>
+                  </div>
                   <div className="name">
                     <h1>Name</h1>
-                    {user.displayName === null ? (
+                    {data.displayName === null ? (
                       <h1 className="text-gray-700 font-light">Kosong</h1>
                     ) : (
                       <h1 className="text-gray-700 font-light">
-                        {user.displayName}
+                        {data.gender} {data.displayName}
                       </h1>
                     )}
                   </div>
-                  <div className="gender">
-                    <h1>Gender</h1>
-                    {user.gender === null ? (
+
+                  <div className="birthDate">
+                    <h1>Birth Date</h1>
+                    {data.birthDate === null ? (
                       <h1 className="text-gray-700 font-light">Kosong</h1>
                     ) : (
                       <h1 className="text-gray-700 font-light">
-                        {user.gender}
+                        {data.birthDate}
                       </h1>
                     )}
-
-                    <div className="birthDate">
-                      <h1>Birth Date</h1>
-                      {user.birthDate === null ? (
-                        <h1 className="text-gray-700 font-light">Kosong</h1>
-                      ) : (
-                        <h1 className="text-gray-700 font-light">
-                          {user.birthDate}
-                        </h1>
-                      )}
-                    </div>
-                    <div className="addres">
-                      <h1>Addres</h1>
-                      {user.address === null ? (
-                        <h1 className="text-gray-700 font-light">Kosong</h1>
-                      ) : (
-                        <h1 className="text-gray-700 font-light">
-                          {user.address}
-                        </h1>
-                      )}
-                    </div>
+                  </div>
+                  <div className="addres">
+                    <h1>Addres</h1>
+                    {data.address === null ? (
+                      <h1 className="text-gray-700 font-light">Kosong</h1>
+                    ) : (
+                      <h1 className="text-gray-700 font-light">
+                        {data.address}
+                      </h1>
+                    )}
                   </div>
                 </div>
-
-                <button
-                  onClick={() => setEdit(true)}
-                  className="w-24 p-3 bg-primary-100 text-white"
-                >
-                  Edit
-                </button>
+                <div className="edit flex justify-end lg:mr-20 mr-7">
+                  <button
+                    onClick={() => setEdit(true)}
+                    className="lg:w-1/4 px-6 lg:px-4 h-9 lg:h-12 lg:my-auto bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl"
+                  >
+                    Edit
+                  </button>
+                </div>
               </div>
-            )}
-          </div>
+            </>
+          )}
         </div>
       </div>
       <Footer />

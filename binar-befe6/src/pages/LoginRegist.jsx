@@ -10,6 +10,8 @@ import { useDispatch } from "react-redux";
 import { postRegister } from "../features/LoginRegister/registerSlice";
 import { useNavigate } from "react-router-dom";
 import { logIn } from "../features/LoginRegister/loginSlice";
+import { logInGoogle } from "../features/LoginRegister/loginGoogle";
+import axios from "axios";
 function LoginRegist() {
   const dispatch = useDispatch();
   const [regist, setRegist] = useState();
@@ -21,7 +23,24 @@ function LoginRegist() {
       setRegist(false);
     } catch (error) {}
   };
-
+  const onLoginGoogle = () => {
+    try {
+      // axios
+      //   .get("https://binar-academy-terbangin.herokuapp.com/oauth/token")
+      //   .then((google) => {
+      //     console.log(google);
+      //     localStorage.setItem("token", JSON.stringify(google.data.data.token));
+      //   });
+      axios
+        .get("https://binar-academy-terbangin.herokuapp.com/oauth/token", {
+          followRedirect: true,
+        })
+        .then((response) => console.log(response.data))
+        .catch((error) => console.error(error));
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const onLogin = (values) => {
     try {
       dispatch(logIn(values)).then((data) => {
@@ -185,8 +204,9 @@ function LoginRegist() {
                     </button>
                     <h1>Or</h1>
                     <button
-                      htmlType="submit"
-                      className="login-form-button bg-gray-600 w-full h-12 rounded-xl text-white flex flex-row  justify-center items-center text-sm"
+                      onClick={onLoginGoogle}
+                      href="https://binar-academy-terbangin.herokuapp.com/oauth/token"
+                      className=" bg-gray-600 w-full h-12 rounded-xl text-white flex flex-row  justify-center items-center text-sm"
                     >
                       <FcGoogle size={20} className="mr-2" /> Log in With Google
                     </button>
