@@ -101,8 +101,8 @@ function Schedule() {
       </div>
 
       <div className="schedule w-full h-fit lg:h-fit lg:w-full pb-11  flex items-center bg-slate-100 flex-col ">
-        <div className=" bg-white drop-shadow-xl w-full h-[15vh] lg:h-[20vh] rounded-b-[50px] lg:rounded-b-[180px] flex items-center justify-center mb-12">
-          <h1 className="text-3xl font-bold text-sky-700">Schedule</h1>
+        <div className=" bg-white drop-shadow-xl w-full h-[12vh] lg:h-[15vh] rounded-b-[50px] lg:rounded-b-[180px] flex items-center justify-center mb-10">
+          <h1 className="text-3xl font-bold text-sky-700 pt-3">Schedule</h1>
         </div>
         <div className="wrapper w-[90vw] p-3 lg:w-[76vw] bg-white shadow-xl rounded-md flex justify-center items-center">
           <div className="location flex flex-row  items-center justify-center mt-3  gap-3">
