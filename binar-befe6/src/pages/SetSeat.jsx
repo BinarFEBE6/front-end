@@ -82,14 +82,10 @@ function SetSeat() {
     getSeat();
   }, []);
 
-  console.log(seat);
-  console.log(seatId);
-
   const people = JSON.parse(localStorage.getItem("people"));
 
   const choosenSeat = () => {
     displayChoose.push(seatId);
-    console.log(displayChoose);
 
     localStorage.setItem("seatId", JSON.stringify(displayChoose));
 

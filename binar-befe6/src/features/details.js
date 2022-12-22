@@ -17,7 +17,7 @@ export const getDetails = createAsyncThunk("details/getDetails", async () => {
         },
       }
     );
-    console.log(res);
+
     return res.data.data;
   } catch (error) {
     console.log(error);

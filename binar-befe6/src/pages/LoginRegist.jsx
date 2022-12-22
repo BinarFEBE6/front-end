@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import logo from "../assets/logo.png";
-
 import logo2 from "../assets/logo2w.png";
-import { Modal, Form } from "antd";
-import { Button, Input } from "antd";
-import { LockOutlined, UserOutlined, MailOutlined } from "@ant-design/icons";
+import { Form } from "antd";
+import { Input } from "antd";
+import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { FcGoogle } from "react-icons/fc";
 import { AiOutlineMail } from "react-icons/ai";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { postRegister } from "../features/LoginRegister/registerSlice";
 import { useNavigate } from "react-router-dom";
 import { logIn } from "../features/LoginRegister/loginSlice";
@@ -22,12 +21,14 @@ function LoginRegist() {
       setRegist(false);
     } catch (error) {}
   };
-  const { login } = useSelector((state) => state.login);
-  const onLogin = async (values) => {
-    try {
-      dispatch(logIn(values));
 
-      login.roles[0] !== "ROLE_USER" ? navigate("/dashboard") : navigate("/");
+  const onLogin = (values) => {
+    try {
+      dispatch(logIn(values)).then((data) => {
+        data.payload.roles[0] !== "ROLE_USER"
+          ? navigate("/dashboard")
+          : navigate("/");
+      });
     } catch (error) {}
   };
   const register = () => {

@@ -18,12 +18,10 @@ function Main() {
   const navigate = useNavigate();
 
   const handleChangeDeparture = (value) => {
-    console.log("Departure at", value[1]);
     setDeparture(value[1]);
   };
 
   const handleChangeArrival = (value) => {
-    console.log("Arrival at", value[1]);
     setArrival(value[1]);
   };
 

@@ -14,9 +14,7 @@ export const postRegister = createAsyncThunk(
         "https://febe6.up.railway.app/api/auth/signup",
         values
       );
-      // console.log(res);
 
-      console.log(res.data.data);
       return res.data.data;
     } catch (error) {
       console.error(error);

@@ -23,7 +23,7 @@ const { Header, Content, Footer, Sider } = Layout;
 
 const token = JSON.parse(localStorage.getItem("token"));
 
-const App = () => {
+const AdminPage = () => {
   const [current, setCurrent] = useState("1");
   const [country, setCountry] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -127,10 +127,6 @@ const App = () => {
     getCategories();
     getPlanes();
   }, []);
-
-  console.log("schedule", scheduleTime);
-  console.log("categories", categories);
-  console.log("planes&airports", planes);
 
   const option = country.map((item) => ({
     value: `${item.countryName}`,
@@ -318,7 +314,6 @@ const App = () => {
                             width: 230,
                           }}
                           size="large"
-                          // onChange={handleChangeDeparture}
                           placement={"topLeft"}
                           options={option}
                         />
@@ -339,7 +334,6 @@ const App = () => {
                             width: 230,
                           }}
                           size="large"
-                          // onChange={handleChangeArrival}
                           placement={"topLeft"}
                           options={option}
                         />
@@ -514,4 +508,4 @@ const App = () => {
     </Layout>
   );
 };
-export default App;
+export default AdminPage;

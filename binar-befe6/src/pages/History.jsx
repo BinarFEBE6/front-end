@@ -4,20 +4,16 @@ import Footer from "../components/footer";
 import { MdAirplanemodeActive } from "react-icons/md";
 import { BiPaperPlane } from "react-icons/bi";
 import axios from "axios";
-
-import { MdDateRange, MdAttachMoney } from "react-icons/md";
+import { FaMoneyBillWave } from "react-icons/fa";
+import { MdDateRange } from "react-icons/md";
 import { FaPlaneDeparture, FaPlaneArrival } from "react-icons/fa";
 import { TbPlaneInflight } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
 
 function History() {
-  const email = JSON.parse(localStorage.getItem("userEmail"));
   let token = JSON.parse(localStorage.getItem("token"));
-  const [invoice, setInvoice] = useState("");
   const [history, setHistory] = useState([]);
-  const [ticket, setTicket] = useState([]);
-  const url = "https://febe6.up.railway.app/api/getHistories";
-  // console.log(invoice);
+
   const getHistory = async () => {
     try {
       const respone = await axios.get(
@@ -28,14 +24,11 @@ function History() {
           },
         }
       );
-
-      console.log(respone.data.data);
       setHistory(respone.data.data);
     } catch (error) {
       console.log(error);
     }
   };
-
   useEffect(() => {
     getHistory();
   }, []);
@@ -140,7 +133,7 @@ function History() {
                         </div>
                         <div className="end lg:mr-5">
                           <div className="mt-2 flex gap-2 ml-5">
-                            <MdAttachMoney
+                            <FaMoneyBillWave
                               size={20}
                               className="mb-2 text-emerald-700"
                             />

@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import Footer from "../components/footer";
-import { useDispatch, useSelector } from "react-redux";
+
 import { IoArrowBackCircleOutline } from "react-icons/io5";
-import { getDetails } from "../features/details";
 
 function Details() {
   const [details, setdetails] = useState([]);
-  const { guestId } = useParams();
-  const dispatch = useDispatch();
-  const [qr, setQr] = useState([]);
+
+  const [setQr] = useState([]);
   const Id = localStorage.getItem("guestId");
   const order = localStorage.getItem("orderId");
   const getInfo = async (Id) => {
@@ -28,7 +26,6 @@ function Details() {
       );
       localStorage.setItem("orderId", res.data.data.orderId);
       setdetails(res.data.data);
-      console.log(res);
     } catch (error) {
       console.log(error);
     }
@@ -53,7 +50,9 @@ function Details() {
   const getQr = async () => {
     try {
       const code = await axios.get(
-        `https://febe6.up.railway.app/api/QRcode/${order}`,
+        `https://febe6.up.railway.app/api/QRcode/${localStorage.getItem(
+          "orderId"
+        )}`,
         {
           headers: {
             Authorization: `Bearer ${JSON.parse(
@@ -68,7 +67,6 @@ function Details() {
   };
   console.log("succes", details);
   useEffect(() => {
-    // dispatch(getDetails(guestId));
     getQr(order);
     getInfo(Id);
   }, []);
