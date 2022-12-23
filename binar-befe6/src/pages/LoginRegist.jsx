@@ -11,6 +11,7 @@ import { postRegister } from "../features/LoginRegister/registerSlice";
 import { useNavigate } from "react-router-dom";
 import { logIn } from "../features/LoginRegister/loginSlice";
 import { logInGoogle } from "../features/LoginRegister/loginGoogle";
+import Swal from "sweetalert2";
 import axios from "axios";
 function LoginRegist() {
   const dispatch = useDispatch();
@@ -48,7 +49,13 @@ function LoginRegist() {
           ? navigate("/dashboard")
           : navigate("/");
       });
-    } catch (error) {}
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "sorry username or password is wrong ",
+      });
+    }
   };
   const register = () => {
     setRegist(true);
@@ -147,7 +154,7 @@ function LoginRegist() {
                 </Form>
               </div>
             ) : (
-              <div className="">
+              <div className="lg:space-y-14">
                 <h1 className="text-center text-xl">Login</h1>
                 <Form
                   name="normal_login"
