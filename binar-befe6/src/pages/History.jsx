@@ -154,7 +154,7 @@ function History() {
                                   }
                                   className="w-16  p-3 bg-primary-100 rounded-xl text-white"
                                 >
-                                  {id.guestId}
+                                  view
                                 </button>
                               );
                             })}

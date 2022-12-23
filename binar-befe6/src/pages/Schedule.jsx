@@ -130,7 +130,7 @@ function Schedule() {
                             </h1>
                           </div>
                           <h1>{item.categoryClass.name}</h1>
-                          <div className="wrapper flex justify-center  flex-col lg:flex-row lg:gap-12">
+                          <div className="wrapper flex justify-center  flex-col lg:flex-row lg:gap-10">
                             <div className="tujuan flex-row flex space-x-2 mt-2 ">
                               <h2 className="text-sm text-gray-600">
                                 {item.departureAiport}
@@ -141,11 +141,11 @@ function Schedule() {
                               </h2>
                             </div>
 
-                            <div className="time flex flex-row lg:justify-around lg:items-center lg:space-x-36">
+                            <div className="time flex flex-row lg:justify-around  lg:space-x-5 xl:space-x-36">
                               <div className="arr-dep flex flex-row gap-7">
-                                <div className="time flex flex-row items-center justify-center mt-2 ">
+                                <div className="time flex flex-row  justify-center mt-2 ">
                                   <FaPlaneDeparture
-                                    className="text-sky-500 mr-2"
+                                    className="text-sky-500 mr-2 mt-1"
                                     size={15}
                                   />{" "}
                                   <h2 className="text-gray-600 text-sm">
@@ -153,9 +153,9 @@ function Schedule() {
                                     {item.scheduleTime.depatureTime.slice(0, 5)}
                                   </h2>
                                 </div>
-                                <div className="time flex flex-row items-center justify-center mt-2">
+                                <div className="time flex flex-row  justify-center mt-2">
                                   <FaPlaneArrival
-                                    className="text-sky-500 mr-2"
+                                    className="text-sky-500 mr-2 mt-1"
                                     size={15}
                                   />{" "}
                                   <h2 className="text-gray-600 text-sm  ">

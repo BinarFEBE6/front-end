@@ -121,7 +121,7 @@ function Profile() {
             User Information
           </h1>
         </div> */}
-        <div className="bg-white lg:w-[30vw] w-[80vw]  rounded-lg border shadow-md mt-20 mb-12 ">
+        <div className="bg-white lg:w-[40vw] w-[80vw]  rounded-lg border shadow-md mt-20 mb-12 ">
           {edit ? (
             <div className="slicing flex justify-center lg:py-7">
               <div className=" ">
@@ -184,6 +184,7 @@ function Profile() {
                   <h1 className="text-md font-bold text-lg  text-gray-500">
                     Date of Birth
                   </h1>
+                  {/* <input type="date" className="rounded-md" /> */}
                   <Form.Item
                     name="dateOfBirth"
                     rules={[
@@ -242,23 +243,25 @@ function Profile() {
                 <div className="user pl-3">
                   <div className="username">
                     <h1>Username</h1>
-                    <h1 className="text-gray-700 font-light">
+                    <h1 className="text-gray-700 font-light lg:text-xl ">
                       {" "}
                       {data && data.length !== 0 && data.user.username}
                     </h1>
                   </div>
                   <div className="email">
                     <h1>Email</h1>
-                    <h1 className="text-gray-700 font-light">
+                    <h1 className="text-gray-700 font-light lg:text-xl">
                       {data && data.length !== 0 && data.user.email}
                     </h1>
                   </div>
                   <div className="name">
                     <h1>Name</h1>
                     {data.displayName === null ? (
-                      <h1 className="text-gray-700 font-light">Not Set</h1>
+                      <h1 className="text-gray-700 font-light lg:text-xl">
+                        Not Set
+                      </h1>
                     ) : (
-                      <h1 className="text-gray-700 font-light">
+                      <h1 className="text-gray-700 font-light lg:text-xl">
                         {data.gender} {data.displayName}
                       </h1>
                     )}
@@ -267,9 +270,11 @@ function Profile() {
                   <div className="birthDate">
                     <h1>Birth Date</h1>
                     {data.birthDate === null ? (
-                      <h1 className="text-gray-700 font-light">Not Set</h1>
+                      <h1 className="text-gray-700 font-light lg:text-xl">
+                        Not Set
+                      </h1>
                     ) : (
-                      <h1 className="text-gray-700 font-light">
+                      <h1 className="text-gray-700 font-light lg:text-xl">
                         {data.birthDate}
                       </h1>
                     )}
@@ -277,9 +282,11 @@ function Profile() {
                   <div className="addres">
                     <h1>Addres</h1>
                     {data.address === null ? (
-                      <h1 className="text-gray-700 font-light">Not Set</h1>
+                      <h1 className="text-gray-700 font-light lg:text-xl">
+                        Not Set
+                      </h1>
                     ) : (
-                      <h1 className="text-gray-700 font-light">
+                      <h1 className="text-gray-700 font-light lg:text-xl">
                         {data.address}
                       </h1>
                     )}
