@@ -59,7 +59,7 @@ function Navbar({ withcroll }) {
   );
 
   const content = (
-    <div className="h-[300px] overflow-auto px-2">
+    <div className="max-h-[300px] overflow-auto px-2">
       <div className="header flex justify-center flex-row">
         <h1>Notification</h1>
       </div>

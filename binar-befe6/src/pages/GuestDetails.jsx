@@ -478,16 +478,16 @@ function GuestDetails() {
           <Footer />
         </>
       ) : (
-        (Swal.fire({
+        Swal.fire({
           icon: "error",
           title: "Oopps..!",
           text: "If you are not logged in, you can login first !",
           confirmButtonText: "Login",
         }).then((result) => {
           if (result.isConfirmed) {
-            navigate("/login");
+            window.location.href = "/login";
           }
-        }))
+        })
       )}
     </>
   );

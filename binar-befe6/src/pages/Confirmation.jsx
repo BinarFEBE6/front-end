@@ -69,8 +69,7 @@ const Confirmation = () => {
         confirmButtonText: "Back to Home",
       }).then((result) => {
         if (result.isConfirmed) {
-          navigate("/");
-          window.location.reload();
+          window.location.href = "/";
         }
       });
 
