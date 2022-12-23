@@ -60,6 +60,8 @@ const Confirmation = () => {
       window.localStorage.removeItem("departure");
       window.localStorage.removeItem("arrival");
 
+      localStorage.setItem("notif", JSON.stringify(res.data.data.notification));
+
       Swal.fire({
         icon: "success",
         title: "Good Job!",

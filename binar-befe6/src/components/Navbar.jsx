@@ -18,6 +18,8 @@ function Navbar({ withcroll }) {
   const { scrollY } = useScroll();
   const [notif, setNotif] = useState([]);
 
+  const notification = localStorage.getItem("notif");
+
   const getNotif = async () => {
     try {
       const respone = await axios.get(
@@ -36,6 +38,7 @@ function Navbar({ withcroll }) {
       console.log(error);
     }
   };
+
   const navigate = useNavigate();
 
   const [sidebar, setsidebar] = useState(false);
@@ -46,12 +49,17 @@ function Navbar({ withcroll }) {
 
     navigate("/");
   };
+  
   useEffect(() => {
     getNotif();
   }, []);
 
+  const popUp = (
+    <div className="h-3 w-3 rounded-full bg-red-500 absolute top-2 left-2"></div>
+  );
+
   const content = (
-    <div>
+    <div className="h-[300px] overflow-auto px-2">
       <div className="header flex justify-center flex-row">
         <h1>Notification</h1>
       </div>
@@ -202,11 +210,14 @@ function Navbar({ withcroll }) {
                   animation="duration-500"
                 >
                   <button className="relative bg-whitw">
-                    <div className="h-3 w-3 rounded-full bg-red-500 absolute top-2 left-2"></div>
+                    {notification ? (
+                      popUp
+                    ) : null}
                     <IoIosNotifications
                       size={37}
                       className={`
                           text-yellow-300 font-bold duration-300 mt-1 lg:mr-2`}
+                      onClick={() => window.localStorage.removeItem("notif")}
                     />
                   </button>
                 </Tooltip>
