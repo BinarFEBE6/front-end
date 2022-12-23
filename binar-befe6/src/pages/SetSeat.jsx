@@ -21,6 +21,7 @@ function SetSeat() {
 
   const departure = JSON.parse(localStorage.getItem("departure"))
   const arrival = JSON.parse(localStorage.getItem("arrival"))
+  const scheduleId = JSON.parse(localStorage.getItem("scheduleId"))
 
   const [componentDisabled, setComponentDisabled] = useState(false);
 
@@ -31,7 +32,7 @@ function SetSeat() {
 
   const getSeat = async () => {
     try {
-      const res = await axios.get(`https://binar-academy-terbangin.herokuapp.com/api/getSeats`);
+      const res = await axios.get(`https://binar-academy-terbangin.herokuapp.com/api/getSeats/${scheduleId}`);
       setSeat(res.data.data);
     } catch (error) {
       console.log(error);
