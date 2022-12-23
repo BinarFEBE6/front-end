@@ -38,9 +38,9 @@ function History() {
     <>
       <div className="bg-gray-100 ">
         <Navbar withcroll={false} />
-        <div className="h-20"></div>
-        <div className=" bg-white drop-shadow-xl w-full h-[15vh] rounded-b-[50px] lg:rounded-b-[180px] flex items-center justify-center mb-6">
-          <h1 className="text-3xl font-medium  text-sky-700">
+        <div className="pt-16"></div>
+        <div className="pt-3 bg-white drop-shadow-xl w-full h-[15vh] rounded-b-[50px] lg:rounded-b-[180px] flex items-center justify-center mb-6">
+          <h1 className="text-3xl font-bold text-sky-700">
             History Booking
           </h1>
         </div>
