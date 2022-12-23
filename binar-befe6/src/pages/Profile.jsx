@@ -9,6 +9,54 @@ import axios from "axios";
 const { TextArea } = Input;
 
 function Profile() {
+  const [displayName, setdisplayName] = useState("");
+  const [address, setAddress] = useState("");
+  const [birthDate, setbirthDate] = useState("");
+  const [picture, setPicture] = useState(null);
+  const [gender, setgender] = useState();
+
+  const handleChange = (event) => {
+    if (event.target.name === "displayName") {
+      setdisplayName(event.target.value);
+    } else if (event.target.name === "address") {
+      setAddress(event.target.value);
+    } else if (event.target.name === "birthDate") {
+      setbirthDate(event.target.value);
+    } else if (event.target.name === "picture") {
+      setPicture(event.target.files[0]);
+    } else if (event.target.name === "gender") {
+      setgender(event.target.value);
+    }
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const formData = new FormData();
+    formData.append("displayName", displayName);
+    formData.append("address", address);
+    formData.append("birthDate", birthDate);
+    formData.append("picture", picture);
+    formData.append("gender", gender);
+
+    axios
+      .put(
+        "https://binar-academy-terbangin.herokuapp.com/api/user/edit_profile/update",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${JSON.parse(
+              localStorage.getItem("token")
+            )}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response.data);
+      });
+  };
+
   const [data, setData] = useState([]);
   const onFinish = async (fieldValue) => {
     const values = {
@@ -123,8 +171,8 @@ function Profile() {
         </div> */}
         <div className="bg-white lg:w-[40vw] w-[80vw]  rounded-lg border shadow-md mt-20 mb-12 ">
           {edit ? (
-            <div className="slicing flex justify-center lg:py-7">
-              <div className=" ">
+            <div className="slicing flex justify-center lg:py-7 flex-col items-center">
+              {/* <div className=" ">
                 <Form
                   name="basic"
                   initialValues={{
@@ -149,8 +197,7 @@ function Profile() {
                     >
                       <Select
                         placeholder="Mr/Mrs"
-                        // className="w-[70%] h-[70%]"
-                        // style={{ width: "100%" }}
+              
                         size="middle"
                         options={[
                           {
@@ -184,7 +231,7 @@ function Profile() {
                   <h1 className="text-md font-bold text-lg  text-gray-500">
                     Date of Birth
                   </h1>
-                  {/* <input type="date" className="rounded-md" /> */}
+      
                   <Form.Item
                     name="dateOfBirth"
                     rules={[
@@ -230,7 +277,49 @@ function Profile() {
                     </Form.Item>
                   </div>
                 </Form>
+              </div> */}
+              <div className="head">
+                <h1>Update Profile</h1>
               </div>
+              <form onSubmit={handleSubmit}>
+                <div className="picture">
+                  <h1>Select Pictures</h1>
+                  <input type="file" name="picture" onChange={handleChange} />
+                </div>
+                <div className="displayName">
+                  <h1>Name</h1>
+                  <select name="gender" onChange={handleChange}>
+                    <option value="Mr. ">Mr. </option>
+                    <option value="Mrs. ">Mrs. </option>
+                  </select>
+                  <input
+                    type="text"
+                    name="displayName"
+                    value={displayName}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="birthDate">
+                  <h1>BirthDate</h1>
+                  <input
+                    type="date"
+                    name="birthDate"
+                    value={birthDate}
+                    max="2020-12-31"
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="addres">
+                  <h1>Address</h1>
+                  <input
+                    type="text"
+                    value={address}
+                    name="address"
+                    onChange={handleChange}
+                  />
+                </div>
+                <button type="submit">Kirim</button>
+              </form>
             </div>
           ) : (
             <>
