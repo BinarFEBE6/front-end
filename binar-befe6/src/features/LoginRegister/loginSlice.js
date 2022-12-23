@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-
+import Swal from "sweetalert2";
 const initialState = {
   login: {},
   loading: false,
@@ -20,7 +20,11 @@ export const logIn = createAsyncThunk("login/postLog", async (values) => {
 
     return res.data.data;
   } catch (error) {
-    console.error(error);
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Sorry Username Or Password Is Wrong ",
+    });
   }
 });
 
@@ -36,7 +40,6 @@ export const loginSlice = createSlice({
       console.log(payload);
       state.loading = false;
       state.login = payload;
-      console.log(state.login, "afterupdatea");
     },
     [logIn.rejected]: (state) => {
       state.loading = false;
