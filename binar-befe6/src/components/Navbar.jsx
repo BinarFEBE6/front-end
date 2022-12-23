@@ -121,7 +121,7 @@ function Navbar({ withcroll }) {
               ? "bg-transparen"
               : "bg-white"
             : "bg-white"
-        }  flex justify-between items-center h-11 fixed  w-full z-20 mt-8 duration-300 lg:px-10`}
+        }  flex justify-between items-center h-14 fixed  w-full z-20 mt-8 duration-300 lg:px-10`}
       >
         <div className="logo flex items-center">
           <div className="image mr-3">
