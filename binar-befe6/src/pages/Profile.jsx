@@ -9,11 +9,15 @@ import axios from "axios";
 const { TextArea } = Input;
 
 function Profile() {
+  const options = [
+    { value: "Mr. ", text: "Mr ." },
+    { value: "Mrs. ", text: "Mrs ." },
+  ];
   const [displayName, setdisplayName] = useState("");
   const [address, setAddress] = useState("");
   const [birthDate, setbirthDate] = useState("");
   const [picture, setPicture] = useState(null);
-  const [gender, setgender] = useState();
+  const [gender, setgender] = useState(options[0].value);
 
   const handleChange = (event) => {
     if (event.target.name === "displayName") {
@@ -288,16 +292,25 @@ function Profile() {
                 </div>
                 <div className="displayName">
                   <h1>Name</h1>
-                  <select name="gender" onChange={handleChange}>
-                    <option value="Mr. ">Mr. </option>
-                    <option value="Mrs. ">Mrs. </option>
-                  </select>
-                  <input
-                    type="text"
-                    name="displayName"
-                    value={displayName}
-                    onChange={handleChange}
-                  />
+                  <div className="flex flex-row">
+                    <select
+                      name="gender"
+                      value={gender}
+                      onChange={handleChange}
+                    >
+                      {options.map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.text}
+                        </option>
+                      ))}
+                    </select>
+                    <input
+                      type="text"
+                      name="displayName"
+                      value={displayName}
+                      onChange={handleChange}
+                    />
+                  </div>
                 </div>
                 <div className="birthDate">
                   <h1>BirthDate</h1>
