@@ -11,6 +11,7 @@ import { Avatar } from "flowbite-react";
 import { Dropdown, Tooltip } from "flowbite-react";
 
 import { useNavigate } from "react-router-dom";
+import { BiLogIn } from "react-icons/bi";
 
 function Navbar({ withcroll }) {
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -120,15 +121,15 @@ function Navbar({ withcroll }) {
               ? "bg-transparen"
               : "bg-white"
             : "bg-white"
-        }  flex justify-between items-center h-12 fixed  w-full z-20 mt-8 duration-300`}
+        }  flex justify-between items-center h-11 fixed  w-full z-20 mt-8 duration-300 lg:px-10`}
       >
-        <div className="logo grid grid-cols-2  place-content-center">
-          <div className="image">
+        <div className="logo flex items-center">
+          <div className="image mr-3">
             <img
               src={logo}
               alt=""
               onClick={() => navigate(`/`)}
-              className={`  w-10 lg:w-10 lg:ml-12 ml-3 lg:mt-3 mt-1 `}
+              className={`w-10 ml-3 mt-1`}
             />
           </div>
           <div className="brand flex flex-row">
@@ -139,26 +140,17 @@ function Navbar({ withcroll }) {
                     ? "text-white"
                     : "text-primary-100"
                   : "text-primary-100"
-              }  hidden lg:block ml-2  text-xl mt-4 font-semibold`}
+              }  hidden lg:block text-xl mt-4 font-semibold`}
             >
-              TerbangIn
+              TerbangIn.
             </p>
-            <span
-              className={`${
-                withcroll
-                  ? scrollY < 100
-                    ? "text-white"
-                    : "text-primary-100"
-                  : "text-primary-100"
-              } text-white hidden lg:block  ml-1 text-xl mt-4 font-semibold`}
-            ></span>
           </div>
         </div>
 
         <div
           className={
             "lg:items-center gap-10 hidden lg:flex lg:justify-center z-20" +
-            (navbarOpen ? " flex" : " hidden")
+            (navbarOpen ? "flex" : " hidden")
           }
         >
           <button
@@ -168,7 +160,7 @@ function Navbar({ withcroll }) {
                   ? "text-white"
                   : "text-primary-100"
                 : "text-primary-100"
-            }  font-bold ml-8 duration-300 cursor-pointer hover:text-sky-200`}
+            }  font-bold mx-[30px] duration-300 cursor-pointer hover:text-sky-200`}
             onClick={() => navigate("/")}
           >
             Home
@@ -180,7 +172,7 @@ function Navbar({ withcroll }) {
                   ? "text-white"
                   : "text-primary-100"
                 : "text-primary-100"
-            }  font-bold ml-8 duration-300`}
+            }  font-bold mx-[30px] duration-300`}
           >
             Booking
           </button>
@@ -191,7 +183,7 @@ function Navbar({ withcroll }) {
                   ? "text-white"
                   : "text-primary-100"
                 : "text-primary-100"
-            }  font-bold ml-8 duration-300`}
+            }  font-bold mx-[30px] duration-300`}
           >
             About
           </button>
@@ -200,7 +192,7 @@ function Navbar({ withcroll }) {
         <div className="flex items-center gap-2 lg:mr-12">
           <div className="lg:flex items-center gap-2 hidden justify-center">
             {token && token.length ? (
-              <div className="tr flex justify-center">
+              <div className="tr flex justify-center items-center">
                 <Tooltip
                   style="light"
                   content={content}
@@ -214,7 +206,7 @@ function Navbar({ withcroll }) {
                     <IoIosNotifications
                       size={37}
                       className={`
-                          text-yellow-300 font-bold duration-300 mt-1 `}
+                          text-yellow-300 font-bold duration-300 mt-1 lg:mr-2`}
                     />
                   </button>
                 </Tooltip>
@@ -222,7 +214,9 @@ function Navbar({ withcroll }) {
                 <Dropdown
                   arrowIcon={false}
                   inline={true}
-                  label={<Avatar alt="User settings" rounded={true} />}
+                  label={
+                    <Avatar alt="User settings" rounded={true} className="" />
+                  }
                 >
                   <Dropdown.Header>
                     <span className="block text-sm">
@@ -243,24 +237,27 @@ function Navbar({ withcroll }) {
                 </Dropdown>
               </div>
             ) : (
-              <button
-                className={`${
-                  withcroll
-                    ? scrollY < 100
-                      ? "text-white"
+              <div className="false flex items-center">
+                <button
+                  className={`${
+                    withcroll
+                      ? scrollY < 100
+                        ? "text-white hover:text-sky-300"
+                        : "text-primary-100 hover:text-sky-300"
                       : "text-primary-100"
-                    : "text-primary-100"
-                } font-bold duration-300`}
-                onClick={() => navigate("/login")}
-              >
-                Login
-              </button>
+                  } font-bold duration-300 flex`}
+                  onClick={() => navigate("/login")}
+                >
+                  <BiLogIn className="mr-1" size={22} />
+                  Login
+                </button>
+              </div>
             )}
           </div>
           <div className="navbar-Collapse lg:hidden text-white flex flex-row">
             <div className="flex gap-x-2 justify-center ml-6">
               {token && token.length ? (
-                <div className=" flex ">
+                <div className=" flex">
                   <Tooltip
                     style="light"
                     content={content}
@@ -310,48 +307,53 @@ function Navbar({ withcroll }) {
                   </Dropdown>
                 </div>
               ) : (
-                <div className="false flex items-center">
+                <div className="false flex items-center pl-2">
                   <button
+                    className={`${
+                      withcroll
+                        ? scrollY < 100
+                          ? "text-white hover:text-sky-300"
+                          : "text-sky-500 hover:text-sky-300"
+                        : "text-sky-500"
+                    }  font-bold pt-0.5 flex`}
+                    onClick={() => navigate("/login")}
+                  >
+                    <BiLogIn className="mr-1" size={22} />
+                    Login
+                  </button>
+                </div>
+              )}
+              {sidebar ? (
+                <div className="flex items-center">
+                  <AiOutlineClose
                     className={`${
                       withcroll
                         ? scrollY < 100
                           ? "text-white"
                           : "text-sky-500"
                         : "text-sky-500"
-                    }  font-bold`}
-                    onClick={() => navigate("/login")}
-                  >
-                    Login
-                  </button>
+                    }  duration-300 mr-3`}
+                    size={22}
+                    onClick={() => setsidebar(false)}
+                  />
                 </div>
-              )}
-              {sidebar ? (
-                <AiOutlineClose
-                  className={`${
-                    withcroll
-                      ? scrollY < 100
-                        ? "text-white"
-                        : "text-sky-500"
-                      : "text-sky-500"
-                  }  duration-300 mt-3 mr-3`}
-                  size={22}
-                  onClick={() => setsidebar(false)}
-                />
               ) : (
-                <VscListFlat
-                  className={`${
-                    withcroll
-                      ? scrollY < 100
-                        ? "text-white"
+                <div className="flex items-center">
+                  <VscListFlat
+                    className={`${
+                      withcroll
+                        ? scrollY < 100
+                          ? "text-white"
+                          : "text-sky-500"
                         : "text-sky-500"
-                      : "text-sky-500"
-                  }  duration-300 mt-3 mr-3 `}
-                  size={22}
-                  onClick={() => {
-                    setNavbarOpen(!navbarOpen);
-                    setsidebar(true);
-                  }}
-                />
+                    }  duration-300 mr-3 `}
+                    size={22}
+                    onClick={() => {
+                      setNavbarOpen(!navbarOpen);
+                      setsidebar(true);
+                    }}
+                  />
+                </div>
               )}
             </div>
           </div>
