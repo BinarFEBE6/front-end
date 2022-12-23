@@ -74,7 +74,7 @@ function LoginRegist() {
             <img src={logo} alt="" className="w-20 mt-3" />
           </div>
 
-          <div className="form w-[70vw] lg:w-[20vw] ">
+          <div className="form w-[70vw] lg:w-[20vw]">
             {regist ? (
               <div className="">
                 <h1 className="text-center text-xl">Register</h1>
@@ -154,11 +154,11 @@ function LoginRegist() {
                 </Form>
               </div>
             ) : (
-              <div className="lg:space-y-14">
+              <div className="lg:space-x">
                 <h1 className="text-center text-xl">Login</h1>
                 <Form
                   name="normal_login"
-                  className="login-form"
+                  className="login-form pt-3"
                   initialValues={{
                     remember: true,
                   }}
