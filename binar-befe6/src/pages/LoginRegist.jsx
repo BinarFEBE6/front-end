@@ -49,13 +49,7 @@ function LoginRegist() {
           ? navigate("/dashboard")
           : navigate("/");
       });
-    } catch (error) {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "sorry username or password is wrong ",
-      });
-    }
+    } catch (error) {}
   };
   const register = () => {
     setRegist(true);
