@@ -36,8 +36,8 @@ const Confirmation = () => {
     window.localStorage.removeItem("guestId");
     window.localStorage.removeItem("seatId");
     window.localStorage.removeItem("scheduleId");
-    navigate(`/schedule/${departure}/${arrival}`);
-    window.location.reload();
+    window.localStorage.removeItem("people");
+    window.location.href = `/schedule/${departure}/${arrival}`;
   };
 
   let token = JSON.parse(localStorage.getItem("token"));
@@ -59,6 +59,7 @@ const Confirmation = () => {
       window.localStorage.removeItem("scheduleId");
       window.localStorage.removeItem("departure");
       window.localStorage.removeItem("arrival");
+      window.localStorage.removeItem("people");
 
       localStorage.setItem("notif", JSON.stringify(res.data.data.notification));
 

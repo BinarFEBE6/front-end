@@ -49,14 +49,10 @@ function Navbar({ withcroll }) {
 
     navigate("/");
   };
-  
+
   useEffect(() => {
     getNotif();
   }, []);
-
-  const popUp = (
-    <div className="h-3 w-3 rounded-full bg-red-500 absolute top-2 left-2"></div>
-  );
 
   const content = (
     <div className="max-h-[300px] overflow-auto px-2">
@@ -79,8 +75,13 @@ function Navbar({ withcroll }) {
         </>
       ) : (
         <div className="none flex flex-col justify-center items-center">
-          <IoNotificationsOffOutline className="mt-3" size={15} />
-          <p className="mt-3">No Notification yet</p>
+          <IoNotificationsOffOutline
+            className="mt-3 text-gray-700/50"
+            size={15}
+          />
+          <p className="mt-3 text-gray-700/50 text-xs lg:text-md">
+            No Notification yet
+          </p>
         </div>
       )}
     </div>
@@ -209,9 +210,9 @@ function Navbar({ withcroll }) {
                   className="w-56"
                   animation="duration-500"
                 >
-                  <button className="relative bg-whitw">
+                  <button className="relative">
                     {notification ? (
-                      popUp
+                      <div className="h-3 w-3 rounded-full bg-red-500 absolute top-2 left-2"></div>
                     ) : null}
                     <IoIosNotifications
                       size={37}
@@ -277,10 +278,17 @@ function Navbar({ withcroll }) {
                     animation="duration-500"
                     className="w-40 "
                   >
-                    <IoIosNotifications
-                      size={38}
-                      className={` text-yellow-300 font-bold duration-300 mt-1 `}
-                    />
+                    <button className="relative">
+                      {notification ? (
+                        <div className="h-3 w-3 rounded-full bg-red-500 absolute top-2 left-2"></div>
+                      ) : null}
+                      <IoIosNotifications
+                        size={37}
+                        className={`
+                          text-yellow-300 font-bold duration-300 mt-1 lg:mr-2`}
+                        onClick={() => window.localStorage.removeItem("notif")}
+                      />
+                    </button>
                   </Tooltip>
 
                   <Dropdown
