@@ -327,7 +327,7 @@ function Profile() {
                     )}
                   </div>
                 </div>
-                <div className="foto hidden lg:flex">
+                <div className="foto hidden lg:flex lg:items-start">
                   {foto == null ? (
                     <Avatar
                       alt="User settings"
