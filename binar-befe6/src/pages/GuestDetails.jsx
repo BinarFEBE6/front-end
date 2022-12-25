@@ -8,7 +8,15 @@ import Navbar from "../components/Navbar";
 
 import { guestDetails } from "../features/guestDetailsSlice";
 
-import { Form, Input, Select, Tabs, DatePicker, Checkbox, Steps } from "antd";
+import {
+  Form,
+  Input,
+  Select,
+  Tabs,
+  DatePicker,
+  Steps,
+  notification,
+} from "antd";
 
 import { BsPersonFill, BsPersonPlusFill } from "react-icons/bs";
 import { HiArrowSmRight } from "react-icons/hi";
@@ -19,8 +27,6 @@ import Swal from "sweetalert2";
 function GuestDetails() {
   const [country, setCountry] = useState([]);
   const [people, setPeople] = useState(null);
-
-  const [componentDisabled, setComponentDisabled] = useState(false);
 
   const departure = JSON.parse(localStorage.getItem("departure"));
   const arrival = JSON.parse(localStorage.getItem("arrival"));
@@ -93,6 +99,30 @@ function GuestDetails() {
     value: `${item.countryName}`,
     label: `${item.countryName}`,
   }));
+
+  const [api, contextHolder] = notification.useNotification();
+  const openNotification = () => {
+    const guest = JSON.parse(localStorage.getItem("people"));
+    const guestId = JSON.parse(localStorage.getItem("guestId"));
+    console.log(guestId);
+
+    if (guestId === null || !(guestId instanceof Array)) {
+      api.info({
+        message: `Hello there...`,
+        description: "You haven't filled all the data",
+        placement: "topRight",
+      });
+    } else if (guestId.length < guest) {
+      api.info({
+        message: `Hello there...`,
+        description: `You haven't filled all the data, you just filled ${guestId.length} data`,
+        placement: "topRight",
+      });
+    } else if (guestId.length === guest) {
+      navigate("/setSeat");
+      window.scroll(0, 0);
+    }
+  };
 
   return (
     <>
@@ -215,7 +245,7 @@ function GuestDetails() {
                         key: id,
                         children: (
                           <>
-                            <div className="lg:ml-8  mt-6 mb-10">
+                            <div className="lg:ml-8  mt-6">
                               <Form
                                 name="basic"
                                 initialValues={{
@@ -275,7 +305,7 @@ function GuestDetails() {
                                       },
                                     ]}
                                   >
-                                    <DatePicker />
+                                    <DatePicker size="large"/>
                                   </Form.Item>
                                 </div>
 
@@ -295,6 +325,7 @@ function GuestDetails() {
                                     placeholder="Select Country"
                                     style={{ width: 180 }}
                                     options={option}
+                                    size="large"
                                   />
                                 </Form.Item>
 
@@ -314,6 +345,7 @@ function GuestDetails() {
                                     placeholder="Select Country"
                                     style={{ width: 180 }}
                                     options={option}
+                                    size="large"
                                   />
                                 </Form.Item>
 
@@ -333,6 +365,7 @@ function GuestDetails() {
                                     showCount
                                     maxLength={6}
                                     style={{ width: 180 }}
+                                    size="large"
                                   />
                                 </Form.Item>
 
@@ -349,7 +382,7 @@ function GuestDetails() {
                                       },
                                     ]}
                                   >
-                                    <DatePicker />
+                                    <DatePicker size="large"/>
                                   </Form.Item>
                                 </div>
 
@@ -424,9 +457,11 @@ function GuestDetails() {
                                         "Please input your phone number!",
                                     },
                                   ]}
+                                  className="pb-6"
                                 >
                                   <Input
-                                    className="border-gray-200 rounded-lg mb-6 lg:w-full w-[85%]"
+                                    type="number"
+                                    className="border-gray-200 rounded-lg lg:w-full w-[85%]"
                                     placeholder="Phone Number"
                                   />
                                 </Form.Item>
@@ -447,31 +482,16 @@ function GuestDetails() {
                     })}
                   />
                 </div>
-              </div>
-            </div>
-            <div className="lg:flex lg:justify-end lg:items-center mt-2 mb-12">
-              <div className="flex justify-center lg:mr-10 mb-10 lg:mb-0">
-                <Checkbox
-                  checked={componentDisabled}
-                  onChange={(e) => setComponentDisabled(e.target.checked)}
-                  className="text-lg lg:text-sm"
-                >
-                  Checklist if you're done !
-                </Checkbox>
-              </div>
-              <div className="flex justify-center lg:justify-end lg:mr-10 mb-10 lg:mb-0">
-                <button
-                  onClick={() => navigate("/setSeat")}
-                  disabled={!componentDisabled}
-                  className={
-                    !componentDisabled
-                      ? "flex items-center p-5 lg:px-4 lg:py-2 bg-gradient-to-l from-gray-500 to-gray-300 text-white font-semibold rounded-lg duration-500 lg:mr-24 cursor-not-allowed"
-                      : "flex items-center p-5 lg:px-4 lg:py-2 bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl lg:mr-24 cursor-pointer"
-                  }
-                >
-                  Next to Choose Seat
-                  <HiArrowSmRight className="ml-2 mt-1" />
-                </button>
+                <div className="flex justify-center lg:justify-end lg:pr-16 py-16">
+                  {contextHolder}
+                  <button
+                    onClick={() => openNotification()}
+                    className="flex items-center p-3 lg:p-5 lg:px-4 lg:py-2 bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl cursor-pointer"
+                  >
+                    Continue
+                    <HiArrowSmRight className="ml-2 mt-1" />
+                  </button>
+                </div>
               </div>
             </div>
           </div>
