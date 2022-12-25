@@ -168,11 +168,11 @@ function Profile() {
     getProfile();
   }, []);
   return (
-    <div className="h-screen">
+    <div className="h-full">
       <Navbar />
 
       <div className="flex justify-center items-center lg:h-full h-[100%] flex-col">
-        <div className="bg-white lg:w-[40vw] w-[80vw]  rounded-lg border shadow-md mt-20 mb-12">
+        <div className="bg-white lg:w-[40vw] w-[80vw]  rounded-lg border shadow-md mt-36 mb-12">
           {edit ? (
             <div>
               <div className="head flex  items-start border-l-4 border-primary-100">
@@ -217,7 +217,7 @@ function Profile() {
                   <input
                     type="date"
                     name="birthDate"
-                    className="rounded-lg w-[60vw]"
+                    className="rounded-lg w-[60vw] lg:w-[10vw]"
                     value={birthDate}
                     max="2020-12-31"
                     onChange={handleChange}
@@ -278,20 +278,20 @@ function Profile() {
                 </div>
                 <div className="user pl-3 col-span-1">
                   <div className="username">
-                    <h1>Username</h1>
+                    <h1 className="text-lg">Username</h1>
                     <h1 className="text-gray-700 font-light lg:text-xl ">
                       {" "}
                       {data && data.length !== 0 && data.user.username}
                     </h1>
                   </div>
                   <div className="email">
-                    <h1>Email</h1>
+                    <h1 className="text-lg">Email</h1>
                     <h1 className="text-gray-700 font-light lg:text-xl">
                       {data && data.length !== 0 && data.user.email}
                     </h1>
                   </div>
                   <div className="name">
-                    <h1>Name</h1>
+                    <h1 className="text-lg">Name</h1>
                     {data.displayName === null ? (
                       <h1 className="text-gray-700 font-light lg:text-xl">
                         Not Set
@@ -304,7 +304,7 @@ function Profile() {
                   </div>
 
                   <div className="birthDate">
-                    <h1>Birth Date</h1>
+                    <h1 className="text-lg">Birth Date</h1>
                     {data.birthDate === null ? (
                       <h1 className="text-gray-700 font-light lg:text-xl">
                         Not Set
@@ -316,7 +316,7 @@ function Profile() {
                     )}
                   </div>
                   <div className="addres">
-                    <h1>Addres</h1>
+                    <h1 className="text-lg">Addres</h1>
                     {data.address === null ? (
                       <h1 className="text-gray-700 font-light lg:text-xl">
                         Not Set
