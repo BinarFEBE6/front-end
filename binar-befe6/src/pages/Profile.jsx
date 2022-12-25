@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
-
 import Footer from "../components/footer";
 import { DatePicker, Form, Input, Select } from "antd";
-
+import { Avatar } from "flowbite-react";
 import axios from "axios";
-
 const { TextArea } = Input;
-
 function Profile() {
+  const options = [
+    { value: "Mr. ", text: "Mr ." },
+    { value: "Mrs. ", text: "Mrs ." },
+  ];
   const [displayName, setdisplayName] = useState("");
   const [address, setAddress] = useState("");
   const [birthDate, setbirthDate] = useState("");
   const [picture, setPicture] = useState(null);
-  const [gender, setgender] = useState();
+  const [gender, setgender] = useState(options[0].value);
+  const [foto, setfoto] = useState([]);
 
   const handleChange = (event) => {
     if (event.target.name === "displayName") {
@@ -29,32 +31,37 @@ function Profile() {
     }
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = async (event) => {
+    try {
+      event.preventDefault();
 
-    const formData = new FormData();
-    formData.append("displayName", displayName);
-    formData.append("address", address);
-    formData.append("birthDate", birthDate);
-    formData.append("picture", picture);
-    formData.append("gender", gender);
+      const formData = new FormData();
+      formData.append("displayName", displayName);
+      formData.append("address", address);
+      formData.append("birthDate", birthDate);
+      formData.append("picture", picture);
+      formData.append("gender", gender);
 
-    axios
-      .put(
-        "https://binar-academy-terbangin.herokuapp.com/api/user/edit_profile/update",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${JSON.parse(
-              localStorage.getItem("token")
-            )}`,
-          },
-        }
-      )
-      .then((response) => {
-        console.log(response.data);
-      });
+      await axios
+        .put(
+          "https://binar-academy-terbangin.herokuapp.com/api/user/edit_profile/update",
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              Authorization: `Bearer ${JSON.parse(
+                localStorage.getItem("token")
+              )}`,
+            },
+          }
+        )
+        .then((response) => {
+          console.log(response.data);
+        });
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const [data, setData] = useState([]);
@@ -134,6 +141,7 @@ function Profile() {
         }
       );
       setData(res.data.data);
+      setfoto(res.data.data.user.profile);
       console.log(res.data.data);
     } catch (error) {}
   };
@@ -164,162 +172,83 @@ function Profile() {
       <Navbar />
 
       <div className="flex justify-center items-center lg:h-full h-[100%] flex-col">
-        {/* <div className=" bg-white drop-shadow-xl w-full h-[15vh] rounded-b-[50px] lg:rounded-b-[180px] flex items-center justify-center mb-6 mt-11">
-          <h1 className="text-3xl font-medium  text-sky-700">
-            User Information
-          </h1>
-        </div> */}
-        <div className="bg-white lg:w-[40vw] w-[80vw]  rounded-lg border shadow-md mt-20 mb-12 ">
+        <div className="bg-white lg:w-[40vw] w-[80vw]  rounded-lg border shadow-md mt-20 mb-12">
           {edit ? (
-            <div className="slicing flex justify-center lg:py-7 flex-col items-center">
-              {/* <div className=" ">
-                <Form
-                  name="basic"
-                  initialValues={{
-                    remember: true,
-                  }}
-                  layout="vertical"
-                  onFinish={onFinish}
-                  onFinishFailed={onFinishFailed}
-                  autoComplete="off"
-                >
-                  <h1 className="text-md font-bold text-lg mt-3 text-gray-500">
-                    Gender / Name
-                  </h1>
-                  <div className="flex lg:flex-row flex-col lg:gap-2 ">
-                    <Form.Item
-                      name="gender"
-                      rules={[
-                        {
-                          required: true,
-                        },
-                      ]}
-                    >
-                      <Select
-                        placeholder="Mr/Mrs"
-              
-                        size="middle"
-                        options={[
-                          {
-                            label: "Mr.",
-                            value: "Mr.",
-                          },
-                          {
-                            label: "Mrs.",
-                            value: "Mrs.",
-                          },
-                        ]}
-                      />
-                    </Form.Item>
-                    <Form.Item
-                      name="displayName"
-                      rules={[
-                        {
-                          required: true,
-                          message: "Please input your name!",
-                        },
-                      ]}
-                    >
-                      <Input
-                        size="middle"
-                        className="border-gray-200 rounded-lg"
-                        placeholder="Input your name !"
-                      />
-                    </Form.Item>
-                  </div>
-
-                  <h1 className="text-md font-bold text-lg  text-gray-500">
-                    Date of Birth
-                  </h1>
-      
-                  <Form.Item
-                    name="dateOfBirth"
-                    rules={[
-                      {
-                        required: true,
-                      },
-                    ]}
-                  >
-                    <DatePicker className="w-full " />
-                  </Form.Item>
-
-                  <h1 className="text-md font-bold text-lg mb-2 text-gray-500">
-                    Address
-                  </h1>
-                  <Form.Item
-                    name="address"
-                    rules={[
-                      {
-                        required: true,
-                      },
-                    ]}
-                  >
-                    <TextArea rows={4} className="" />
-                  </Form.Item>
-                  <div className="save flex flex-row justify-center gap-1">
-                    <div className="cancel">
-                      <button
-                        onClick={() => setEdit()}
-                        className="lg:w-32 px-6 lg:px-4 h-9 lg:h-12 lg:my-auto bg-gradient-to-l from-red-600 to-red-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl"
-                      >
-                        Cancel
-                      </button>
-                    </div>
-                    <Form.Item>
-                      <div className="flex">
-                        <button
-                          htmlType="submit"
-                          className="lg:w-32 px-6 lg:px-4 h-9 lg:h-12 lg:my-auto bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl"
-                        >
-                          Save
-                        </button>
-                      </div>
-                    </Form.Item>
-                  </div>
-                </Form>
-              </div> */}
-              <div className="head">
-                <h1>Update Profile</h1>
+            <div>
+              <div className="head flex  items-start border-l-4 border-primary-100">
+                <h1 className=" text-gray-700 font-semibold text-xl pl-2">
+                  Update Profile
+                </h1>
               </div>
-              <form onSubmit={handleSubmit}>
-                <div className="picture">
+              <div className="slicing flex  lg:py-7 py-4 space-y-6 justify-center w-fit pl-3 flex-col items-center">
+                <form onSubmit={handleSubmit}>
                   <h1>Select Pictures</h1>
-                  <input type="file" name="picture" onChange={handleChange} />
-                </div>
-                <div className="displayName">
-                  <h1>Name</h1>
-                  <select name="gender" onChange={handleChange}>
-                    <option value="Mr. ">Mr. </option>
-                    <option value="Mrs. ">Mrs. </option>
-                  </select>
                   <input
-                    type="text"
-                    name="displayName"
-                    value={displayName}
+                    type="file"
+                    name="picture"
                     onChange={handleChange}
+                    className="rounded-xl lg:w-[36vw] w-[60vw]"
                   />
-                </div>
-                <div className="birthDate">
-                  <h1>BirthDate</h1>
+
+                  <h1 className="mt-3">Name</h1>
+                  <div className="flex flex-row space-x-3">
+                    <select
+                      name="gender"
+                      className="rounded-l-lg"
+                      value={gender}
+                      onChange={handleChange}
+                    >
+                      {options.map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.text}
+                        </option>
+                      ))}
+                    </select>
+                    <input
+                      type="text"
+                      name="displayName"
+                      className="w-32 rounded-r-lg lg:w-[20vw]"
+                      value={displayName}
+                      onChange={handleChange}
+                    />
+                  </div>
+
+                  <h1 className="mt-3">Birth Date</h1>
                   <input
                     type="date"
                     name="birthDate"
+                    className="rounded-lg w-fit"
                     value={birthDate}
                     max="2020-12-31"
                     onChange={handleChange}
                   />
-                </div>
-                <div className="addres">
-                  <h1>Address</h1>
-                  <input
-                    type="text"
-                    value={address}
-                    name="address"
-                    onChange={handleChange}
-                  />
-                </div>
-                <button type="submit">Kirim</button>
-              </form>
+
+                  <h1 className="mt-3">Address</h1>
+                  <div className="flex flex-col">
+                    <textarea
+                      type="text"
+                      value={address}
+                      className="rounded-lg w-56 lg:w-[36vw] h-24"
+                      name="address"
+                      onChange={handleChange}
+                    />
+                    <div className="flex row w-full mt-3 justify-center space-x-3">
+                      <button
+                        onClick={() => setEdit()}
+                        className="lg:w-1/4 px-6 mt-3 lg:px-4 h-9 lg:h-12 lg:my-auto bg-gradient-to-l from-red-600 to-red-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        type="submit"
+                        className="lg:w-1/4 px-6 mt-3 lg:px-4 h-9 lg:h-12 lg:my-auto bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl"
+                      >
+                        Save
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
             </div>
           ) : (
             <>
@@ -328,8 +257,25 @@ function Profile() {
                   User Information
                 </h1>
               </div>
-              <div className="profile pl-4 pb-4 ">
-                <div className="user pl-3">
+              <div className="profile pl-4 pb-4 lg:grid lg:grid-cols-2">
+                <div className="foto lg:hidden">
+                  {foto == null ? (
+                    <Avatar
+                      alt="User settings"
+                      rounded={true}
+                      className="pr-4"
+                    />
+                  ) : (
+                    <Avatar
+                      alt="User settings"
+                      rounded={true}
+                      className="pr-4 mb-3"
+                      size="xl"
+                      img={`${foto && foto.length !== null && foto}`}
+                    />
+                  )}
+                </div>
+                <div className="user pl-3 col-span-1">
                   <div className="username">
                     <h1>Username</h1>
                     <h1 className="text-gray-700 font-light lg:text-xl ">
@@ -381,10 +327,27 @@ function Profile() {
                     )}
                   </div>
                 </div>
-                <div className="edit flex justify-end lg:mr-20 mr-7">
+                <div className="foto hidden lg:flex lg:items-start">
+                  {foto == null ? (
+                    <Avatar
+                      alt="User settings"
+                      rounded={true}
+                      className="pr-4"
+                    />
+                  ) : (
+                    <Avatar
+                      alt="User settings"
+                      rounded={true}
+                      className="pr-4 mb-3"
+                      size="xl"
+                      img={`${foto && foto.length !== null && foto}`}
+                    />
+                  )}
+                </div>
+                <div className="edit flex justify-start lg:mr-20 mr-7">
                   <button
                     onClick={() => setEdit(true)}
-                    className="lg:w-1/4 px-6 lg:px-4 h-9 lg:h-12 lg:my-auto bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl"
+                    className="lg:w-1/2 px-6 lg:px-4 h-9 lg:h-12 lg:my-auto bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl"
                   >
                     Edit
                   </button>
