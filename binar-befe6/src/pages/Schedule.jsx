@@ -27,6 +27,7 @@ function Schedule() {
   const jadwal = (value) => {
     localStorage.setItem("scheduleId", value);
     navigate("/guestDetails");
+    window.scroll(0, 0);
   };
 
   const navigate = useNavigate();
