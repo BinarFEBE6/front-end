@@ -17,6 +17,25 @@ function Navbar({ withcroll }) {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const { scrollY } = useScroll();
   const [notif, setNotif] = useState([]);
+  const [profile, setprofile] = useState([]);
+  const [read, setRead] = useState(false);
+
+  const getProfile = async () => {
+    try {
+      const res = await axios.get(
+        "https://binar-academy-terbangin.herokuapp.com/api/get/user/edit_profile",
+        {
+          headers: {
+            Authorization: `Bearer ${JSON.parse(
+              localStorage.getItem("token")
+            )}`,
+          },
+        }
+      );
+      setprofile(res.data.data.user.profile);
+      console.log(res.data.data.user.profile);
+    } catch (error) {}
+  };
 
   const getNotif = async () => {
     try {
@@ -32,10 +51,14 @@ function Navbar({ withcroll }) {
       );
 
       setNotif(respone.data.data);
+      if (notif.length + 1) {
+        setRead(true);
+      }
     } catch (error) {
       console.log(error);
     }
   };
+
   const navigate = useNavigate();
 
   const [sidebar, setsidebar] = useState(false);
@@ -48,6 +71,7 @@ function Navbar({ withcroll }) {
   };
   useEffect(() => {
     getNotif();
+    getProfile();
   }, []);
 
   const content = (
@@ -202,8 +226,14 @@ function Navbar({ withcroll }) {
                   animation="duration-500"
                 >
                   <button className="relative bg-whitw">
-                    <div className="h-3 w-3 rounded-full bg-red-500 absolute top-2 left-2"></div>
+                    {read ? (
+                      <div className=""></div>
+                    ) : (
+                      <div className="h-3 w-3 rounded-full bg-red-500 absolute top-2 left-2"></div>
+                    )}
+
                     <IoIosNotifications
+                      onClick={() => setRead(true)}
                       size={37}
                       className={`
                           text-yellow-300 font-bold duration-300 mt-1 lg:mr-2`}
@@ -215,7 +245,12 @@ function Navbar({ withcroll }) {
                   arrowIcon={false}
                   inline={true}
                   label={
-                    <Avatar alt="User settings" rounded={true} className="" />
+                    <Avatar
+                      alt="User settings"
+                      rounded={true}
+                      className=""
+                      img={`${profile}`}
+                    />
                   }
                 >
                   <Dropdown.Header>
@@ -266,6 +301,11 @@ function Navbar({ withcroll }) {
                     animation="duration-500"
                     className="w-40 "
                   >
+                    {read ? (
+                      <div className=""></div>
+                    ) : (
+                      <div className="h-3 w-3 rounded-full bg-red-500 absolute top-2 left-2"></div>
+                    )}
                     <IoIosNotifications
                       size={38}
                       className={` text-yellow-300 font-bold duration-300 mt-1 `}
@@ -279,6 +319,7 @@ function Navbar({ withcroll }) {
                       <Avatar
                         alt="User settings"
                         rounded={true}
+                        img={`${profile}`}
                         size="sm"
                         className="mt-[0.4rem]"
                       />
