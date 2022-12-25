@@ -17,9 +17,30 @@ function Navbar({ withcroll }) {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const { scrollY } = useScroll();
   const [notif, setNotif] = useState([]);
+  const [user, setuser] = useState([]);
 
   const notification = localStorage.getItem("notif");
 
+  const getProfile = async () => {
+    try {
+      const res = await axios.get(
+        "https://binar-academy-terbangin.herokuapp.com/api/get/user/edit_profile",
+        {
+          headers: {
+            Authorization: `Bearer ${JSON.parse(
+              localStorage.getItem("token")
+            )}`,
+          },
+        }
+      );
+      setuser(res.data.data.user.profile);
+      console.log(res.data.data.user.profile);
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    getProfile();
+  }, []);
   const getNotif = async () => {
     try {
       const respone = await axios.get(
@@ -227,7 +248,16 @@ function Navbar({ withcroll }) {
                   arrowIcon={false}
                   inline={true}
                   label={
-                    <Avatar alt="User settings" rounded={true} className="" />
+                    user == null ? (
+                      <Avatar alt="User settings" rounded={true} className="" />
+                    ) : (
+                      <Avatar
+                        alt="User settings"
+                        rounded={true}
+                        className=""
+                        img={`${user}`}
+                      />
+                    )
                   }
                 >
                   <Dropdown.Header>
@@ -295,12 +325,20 @@ function Navbar({ withcroll }) {
                     arrowIcon={false}
                     inline={true}
                     label={
-                      <Avatar
-                        alt="User settings"
-                        rounded={true}
-                        size="sm"
-                        className="mt-[0.4rem]"
-                      />
+                      user == null ? (
+                        <Avatar
+                          alt="User settings"
+                          rounded={true}
+                          className="mt-[0.4rem]"
+                        />
+                      ) : (
+                        <Avatar
+                          alt="User settings"
+                          rounded={true}
+                          className="mt-[0.4rem]"
+                          img={`${user}`}
+                        />
+                      )
                     }
                   >
                     <Dropdown.Header>
