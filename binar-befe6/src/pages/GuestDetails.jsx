@@ -305,7 +305,7 @@ function GuestDetails() {
                                       },
                                     ]}
                                   >
-                                    <DatePicker size="large"/>
+                                    <DatePicker size="large" />
                                   </Form.Item>
                                 </div>
 
@@ -382,7 +382,7 @@ function GuestDetails() {
                                       },
                                     ]}
                                   >
-                                    <DatePicker size="large"/>
+                                    <DatePicker size="large" />
                                   </Form.Item>
                                 </div>
 
