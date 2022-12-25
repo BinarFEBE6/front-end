@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const initialState = {
   guest: {},
@@ -25,7 +26,7 @@ export const guestDetails = createAsyncThunk(
       );
       userId.push(res.data.data.id);
       localStorage.setItem("guestId", JSON.stringify(userId));
-      alert("Succes Submit !");
+      Swal.fire({ icon: "success", title: "Submit Guest Succes", text: "Add some Guest Confirm !" });
       return res.data.data;
     } catch (error) {
       console.error(error);
