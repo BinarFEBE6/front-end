@@ -207,7 +207,7 @@ function Profile() {
                     <input
                       type="text"
                       name="displayName"
-                      className="w-32 rounded-r-lg lg:w-[20vw]"
+                      className="w-[40vw] rounded-r-lg lg:w-[20vw]"
                       value={displayName}
                       onChange={handleChange}
                     />
@@ -217,7 +217,7 @@ function Profile() {
                   <input
                     type="date"
                     name="birthDate"
-                    className="rounded-lg w-fit"
+                    className="rounded-lg w-[60vw]"
                     value={birthDate}
                     max="2020-12-31"
                     onChange={handleChange}
@@ -228,7 +228,7 @@ function Profile() {
                     <textarea
                       type="text"
                       value={address}
-                      className="rounded-lg w-56 lg:w-[36vw] h-24"
+                      className="rounded-lg w-[70vw] lg:w-[36vw] h-24"
                       name="address"
                       onChange={handleChange}
                     />
@@ -263,6 +263,7 @@ function Profile() {
                     <Avatar
                       alt="User settings"
                       rounded={true}
+                      size="xl"
                       className="pr-4"
                     />
                   ) : (
@@ -327,27 +328,39 @@ function Profile() {
                     )}
                   </div>
                 </div>
-                <div className="foto hidden lg:flex lg:items-start">
-                  {foto == null ? (
-                    <Avatar
-                      alt="User settings"
-                      rounded={true}
-                      className="pr-4"
-                    />
-                  ) : (
-                    <Avatar
-                      alt="User settings"
-                      rounded={true}
-                      className="pr-4 mb-3"
-                      size="xl"
-                      img={`${foto && foto.length !== null && foto}`}
-                    />
-                  )}
+                <div className="foto hidden lg:flex  lg:flex-col">
+                  <div className="lg:justify-start lg:flex">
+                    {foto == null ? (
+                      <Avatar
+                        alt="User settings"
+                        rounded={true}
+                        size="xl"
+                        className="pr-4"
+                      />
+                    ) : (
+                      <Avatar
+                        alt="User settings"
+                        rounded={true}
+                        className="pr-4 mb-3"
+                        size="xl"
+                        img={`${foto && foto.length !== null && foto}`}
+                      />
+                    )}
+                  </div>
+
+                  <div className="edit flex justify-start mt-9">
+                    <button
+                      onClick={() => setEdit(true)}
+                      className="lg:w-1/2 px-6 lg:px-4 h-9 lg:h-12 lg:my-auto bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl"
+                    >
+                      Edit
+                    </button>
+                  </div>
                 </div>
-                <div className="edit flex justify-start lg:mr-20 mr-7">
+                <div className="edit flex justify-center lg:hidden mr-4">
                   <button
                     onClick={() => setEdit(true)}
-                    className="lg:w-1/2 px-6 lg:px-4 h-9 lg:h-12 lg:my-auto bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl"
+                    className="lg:w-1/2 w-full px-6 lg:px-4 h-9 lg:h-12 lg:my-auto bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl"
                   >
                     Edit
                   </button>
