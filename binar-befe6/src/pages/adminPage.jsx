@@ -105,7 +105,7 @@ const AdminPage = () => {
     }
   };
 
-  const getPlanes = async () => {
+  const getPlanes = async (token) => {
     try {
       const res = await axios.get(
         `https://binar-academy-terbangin.herokuapp.com/api/getAllPesawat`,
@@ -125,7 +125,7 @@ const AdminPage = () => {
     getCountry();
     getScheduleTime();
     getCategories();
-    getPlanes();
+    getPlanes(token);
   }, []);
 
   const option = country.map((item) => ({

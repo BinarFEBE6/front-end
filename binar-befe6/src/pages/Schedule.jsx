@@ -8,14 +8,13 @@ import "swiper/css/pagination";
 
 import {
   MdDateRange,
-  MdAttachMoney,
   MdAirlineSeatReclineExtra,
 } from "react-icons/md";
 import { AiFillSchedule, AiFillCheckCircle } from "react-icons/ai";
 import { TbPlaneInflight } from "react-icons/tb";
 import { BsPersonPlusFill } from "react-icons/bs";
 import { IoIosAirplane } from "react-icons/io";
-import { FaPlaneSlash, FaPlaneArrival, FaPlaneDeparture } from "react-icons/fa";
+import { FaPlaneSlash, FaPlaneArrival, FaPlaneDeparture, FaMoneyBillWave } from "react-icons/fa";
 
 import axios from "axios";
 
@@ -28,6 +27,7 @@ function Schedule() {
   const jadwal = (value) => {
     localStorage.setItem("scheduleId", value);
     navigate("/guestDetails");
+    window.scroll(0, 0);
   };
 
   const navigate = useNavigate();
@@ -167,7 +167,7 @@ function Schedule() {
                               </div>
 
                               <h2 className="text-sm text-gray-600 lg:flex hidden flex-row items-center gap-1 mr-3">
-                                <MdAttachMoney
+                                <FaMoneyBillWave
                                   size={20}
                                   className="text-emerald-700"
                                 />
@@ -199,7 +199,7 @@ function Schedule() {
 
                           <div className="price flex flex-row justify-between items-center">
                             <h2 className="text-sm text-gray-600 lg:hidden flex flex-row items-center gap-1 mr-3">
-                              <MdAttachMoney
+                              <FaMoneyBillWave
                                 size={20}
                                 className="text-emerald-700"
                               />

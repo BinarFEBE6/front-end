@@ -17,25 +17,8 @@ function Navbar({ withcroll }) {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const { scrollY } = useScroll();
   const [notif, setNotif] = useState([]);
-  const [profile, setprofile] = useState([]);
-  const [read, setRead] = useState(false);
 
-  const getProfile = async () => {
-    try {
-      const res = await axios.get(
-        "https://binar-academy-terbangin.herokuapp.com/api/get/user/edit_profile",
-        {
-          headers: {
-            Authorization: `Bearer ${JSON.parse(
-              localStorage.getItem("token")
-            )}`,
-          },
-        }
-      );
-      setprofile(res.data.data.user.profile);
-      console.log(res.data.data.user.profile);
-    } catch (error) {}
-  };
+  const notification = localStorage.getItem("notif");
 
   const getNotif = async () => {
     try {
@@ -51,9 +34,6 @@ function Navbar({ withcroll }) {
       );
 
       setNotif(respone.data.data);
-      if (notif.length + 1) {
-        setRead(true);
-      }
     } catch (error) {
       console.log(error);
     }
@@ -69,13 +49,13 @@ function Navbar({ withcroll }) {
 
     navigate("/");
   };
+
   useEffect(() => {
     getNotif();
-    getProfile();
   }, []);
 
   const content = (
-    <div>
+    <div className="max-h-[300px] overflow-auto px-2">
       <div className="header flex justify-center flex-row">
         <h1>Notification</h1>
       </div>
@@ -95,8 +75,13 @@ function Navbar({ withcroll }) {
         </>
       ) : (
         <div className="none flex flex-col justify-center items-center">
-          <IoNotificationsOffOutline className="mt-3" size={15} />
-          <p className="mt-3">No Notification yet</p>
+          <IoNotificationsOffOutline
+            className="mt-3 text-gray-700/50"
+            size={15}
+          />
+          <p className="mt-3 text-gray-700/50 text-xs lg:text-md">
+            No Notification yet
+          </p>
         </div>
       )}
     </div>
@@ -145,7 +130,7 @@ function Navbar({ withcroll }) {
               ? "bg-transparen"
               : "bg-white"
             : "bg-white"
-        }  flex justify-between items-center h-11 fixed  w-full z-20 mt-8 duration-300 lg:px-10`}
+        }  flex justify-between items-center h-14 fixed  w-full z-20 mt-8 duration-300 lg:px-10`}
       >
         <div className="logo flex items-center">
           <div className="image mr-3">
@@ -225,18 +210,15 @@ function Navbar({ withcroll }) {
                   className="w-56"
                   animation="duration-500"
                 >
-                  <button className="relative bg-whitw">
-                    {read ? (
-                      <div className=""></div>
-                    ) : (
+                  <button className="relative">
+                    {notification ? (
                       <div className="h-3 w-3 rounded-full bg-red-500 absolute top-2 left-2"></div>
-                    )}
-
+                    ) : null}
                     <IoIosNotifications
-                      onClick={() => setRead(true)}
                       size={37}
                       className={`
                           text-yellow-300 font-bold duration-300 mt-1 lg:mr-2`}
+                      onClick={() => window.localStorage.removeItem("notif")}
                     />
                   </button>
                 </Tooltip>
@@ -245,12 +227,7 @@ function Navbar({ withcroll }) {
                   arrowIcon={false}
                   inline={true}
                   label={
-                    <Avatar
-                      alt="User settings"
-                      rounded={true}
-                      className=""
-                      img={`${profile}`}
-                    />
+                    <Avatar alt="User settings" rounded={true} className="" />
                   }
                 >
                   <Dropdown.Header>
@@ -301,15 +278,17 @@ function Navbar({ withcroll }) {
                     animation="duration-500"
                     className="w-40 "
                   >
-                    {read ? (
-                      <div className=""></div>
-                    ) : (
-                      <div className="h-3 w-3 rounded-full bg-red-500 absolute top-2 left-2"></div>
-                    )}
-                    <IoIosNotifications
-                      size={38}
-                      className={` text-yellow-300 font-bold duration-300 mt-1 `}
-                    />
+                    <button className="relative">
+                      {notification ? (
+                        <div className="h-3 w-3 rounded-full bg-red-500 absolute top-2 left-2"></div>
+                      ) : null}
+                      <IoIosNotifications
+                        size={37}
+                        className={`
+                          text-yellow-300 font-bold duration-300 mt-1 lg:mr-2`}
+                        onClick={() => window.localStorage.removeItem("notif")}
+                      />
+                    </button>
                   </Tooltip>
 
                   <Dropdown
@@ -319,7 +298,6 @@ function Navbar({ withcroll }) {
                       <Avatar
                         alt="User settings"
                         rounded={true}
-                        img={`${profile}`}
                         size="sm"
                         className="mt-[0.4rem]"
                       />

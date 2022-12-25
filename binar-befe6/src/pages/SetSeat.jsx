@@ -3,12 +3,13 @@ import axios from "axios";
 import Footer from "../components/footer";
 import Navbar from "../components/Navbar";
 
-import { Checkbox, Steps, Tabs } from "antd";
+import { notification, Steps, Tabs } from "antd";
 import { BsPersonFill, BsPersonPlusFill } from "react-icons/bs";
 import { AiFillCheckCircle, AiFillSchedule } from "react-icons/ai";
 import { MdAirlineSeatReclineExtra } from "react-icons/md";
 import { HiArrowSmRight } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const displayChoose = [];
 
@@ -19,19 +20,23 @@ function SetSeat() {
 
   const navigate = useNavigate();
 
-  const departure = JSON.parse(localStorage.getItem("departure"))
-  const arrival = JSON.parse(localStorage.getItem("arrival"))
+  const departure = JSON.parse(localStorage.getItem("departure"));
+  const arrival = JSON.parse(localStorage.getItem("arrival"));
+  const scheduleId = JSON.parse(localStorage.getItem("scheduleId"));
 
-  const [componentDisabled, setComponentDisabled] = useState(false);
+  const [click, setClick] = useState(null);
 
   const displayClick = (value1, value2) => {
     setSeatId(value1);
     setSeatValue(value2);
+    setClick(value1);
   };
 
   const getSeat = async () => {
     try {
-      const res = await axios.get(`https://binar-academy-terbangin.herokuapp.com/api/getSeats`);
+      const res = await axios.get(
+        `https://binar-academy-terbangin.herokuapp.com/api/getSeats/${scheduleId}`
+      );
       setSeat(res.data.data);
     } catch (error) {
       console.log(error);
@@ -49,7 +54,29 @@ function SetSeat() {
 
     localStorage.setItem("seatId", JSON.stringify(displayChoose));
 
-    alert(`Succes Choose seat ${seatValue} !`);
+    Swal.fire({
+      icon: "success",
+      title: "Submit Seat Succes",
+      text: `Choosen Seat ${seatValue}`,
+    });
+  };
+
+  const [api, contextHolder] = notification.useNotification();
+  const openNotification = () => {
+    const guest = JSON.parse(localStorage.getItem("people"));
+    const seatId = JSON.parse(localStorage.getItem("seatId"));
+    console.log(seatId);
+
+    if (seatId === null || seatId.length !== guest) {
+      api.info({
+        message: `Hello there...`,
+        description: "You haven't filled all the data",
+        placement: "topRight",
+      });
+    } else if (seatId.length === guest) {
+      navigate("/confirmation");
+      window.scroll(0, 0);
+    }
   };
 
   return (
@@ -69,7 +96,9 @@ function SetSeat() {
                 icon: (
                   <AiFillSchedule
                     className="text-3xl text-blue-500 cursor-pointer hover:scale-110 duration-300"
-                    onClick={() => navigate(`/schedule/${departure}/${arrival}`)}
+                    onClick={() =>
+                      navigate(`/schedule/${departure}/${arrival}`)
+                    }
                   />
                 ),
               },
@@ -111,7 +140,7 @@ function SetSeat() {
           <h1 className="text-3xl font-bold text-sky-700">Choose Seat</h1>
         </div>
         <div className="flex justify-center">
-          <div className="bg-white w-[90%] lg:w-[50%] h-full py-10 lg:py-12 my-12 rounded-3xl border shadow-md flex justify-center">
+          <div className="bg-white w-[90%] lg:w-[50%] h-full py-10 lg:py-12 my-12 rounded-3xl border shadow-md px-10">
             <Tabs
               centered
               items={new Array(people).fill(null).map((_, i) => {
@@ -126,14 +155,20 @@ function SetSeat() {
                   key: id,
                   children: (
                     <>
-                      <div className="flex justify-center my-10">
-                        <div className="inline-grid grid-cols-1 lg:gap-4 gap-3">
-                          {seat.slice(0, 25).map((item) => (
+                      <div className="flex justify-center my-14">
+                        <div className="inline-grid grid-cols-2 lg:gap-4 gap-3 mr-6 lg:mr-10">
+                          {seat.slice(0, 50).map((item) => (
                             <div
                               onClick={() =>
                                 displayClick(item.id, item.seatName)
                               }
-                              className="lg:w-20 w-10 lg:h-10 h-10 border-2 rounded-lg text-gray-500 drop-shadow-md flex justify-center items-center cursor-pointer hover:bg-sky-500 hover:text-white hover:border-none duration-75"
+                              key={item.id}
+                              id={item.id}
+                              className={` ${
+                                click === item.id
+                                  ? "bg-sky-500 text-white border-none"
+                                  : "bg-transparent border-2 text-gray-500"
+                              } lg:w-20 w-10 lg:h-10 h-10 rounded-lg lg:hover:bg-sky-500 lg:hover:text-white lg:hover:border-none drop-shadow-md flex justify-center items-center cursor-pointer duration-75`}
                             >
                               <h1 className="pt-2 font-light">
                                 {item.seatName}
@@ -141,41 +176,19 @@ function SetSeat() {
                             </div>
                           ))}
                         </div>
-                        <div className="inline-grid grid-cols-1 lg:gap-4 gap-3 ml-12 lg:ml-36 mr-1 lg:mr-4">
-                          {seat.slice(25, 50).map((item) => (
+                        <div className="inline-grid grid-cols-2 lg:gap-4 gap-3 ml-6 lg:ml-10">
+                          {seat.slice(50, 100).map((item) => (
                             <div
                               onClick={() =>
                                 displayClick(item.id, item.seatName)
                               }
-                              className="lg:w-20 w-10 lg:h-10 h-10 border-2 rounded-lg text-gray-500 drop-shadow-md flex justify-center items-center cursor-pointer hover:bg-sky-500 hover:text-white hover:border-none duration-75"
-                            >
-                              <h1 className="pt-2 font-light">
-                                {item.seatName}
-                              </h1>
-                            </div>
-                          ))}
-                        </div>
-                        <div className="inline-grid grid-cols-1 lg:gap-4 gap-3 mr-12 lg:mr-36 ml-1 lg:ml-4">
-                          {seat.slice(50, 75).map((item) => (
-                            <div
-                              onClick={() =>
-                                displayClick(item.id, item.seatName)
-                              }
-                              className="lg:w-20 w-10 lg:h-10 h-10 border-2 rounded-lg text-gray-500 drop-shadow-md flex justify-center items-center cursor-pointer hover:bg-sky-500 hover:text-white hover:border-none duration-75"
-                            >
-                              <h1 className="pt-2 font-light">
-                                {item.seatName}
-                              </h1>
-                            </div>
-                          ))}
-                        </div>
-                        <div className="inline-grid grid-cols-1 lg:gap-4 gap-3">
-                          {seat.slice(75, 100).map((item) => (
-                            <div
-                              onClick={() =>
-                                displayClick(item.id, item.seatName)
-                              }
-                              className="lg:w-20 w-10 lg:h-10 h-10 border-2 rounded-lg text-gray-500 drop-shadow-md flex justify-center items-center cursor-pointer hover:bg-sky-500 hover:text-white hover:border-none duration-75"
+                              key={item.id}
+                              id={item.id}
+                              className={` ${
+                                click === item.id
+                                  ? "bg-sky-500 text-white border-none"
+                                  : "bg-transparent border-2 text-gray-500"
+                              } lg:w-20 w-10 lg:h-10 h-10 rounded-lg lg:hover:bg-sky-500 lg:hover:text-white lg:hover:border-none drop-shadow-md flex justify-center items-center cursor-pointer duration-75`}
                             >
                               <h1 className="pt-2 font-light">
                                 {item.seatName}
@@ -198,31 +211,16 @@ function SetSeat() {
                 };
               })}
             />
-          </div>
-        </div>
-        <div className="lg:flex lg:justify-end lg:items-center mt-2 mb-12">
-          <div className="flex justify-center lg:mr-10 mb-10 lg:mb-0">
-            <Checkbox
-              checked={componentDisabled}
-              onChange={(e) => setComponentDisabled(e.target.checked)}
-              className="text-lg lg:text-sm"
-            >
-              Checklist if you're done !
-            </Checkbox>
-          </div>
-          <div className="flex justify-center lg:justify-end lg:mr-10 mb-10 lg:mb-0">
-            <button
-              onClick={() => navigate("/confirmation")}
-              disabled={!componentDisabled}
-              className={
-                !componentDisabled
-                  ? "flex items-center p-5 lg:px-4 lg:py-2 bg-gradient-to-l from-gray-500 to-gray-300 text-white font-semibold rounded-lg duration-500 lg:mr-24 cursor-not-allowed"
-                  : "flex items-center p-5 lg:px-4 lg:py-2 bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl lg:mr-24 cursor-pointer"
-              }
-            >
-              Confirm Order
-              <HiArrowSmRight className="ml-2 mt-1" />
-            </button>
+            <div className="flex justify-center lg:justify-end lg:pr-5 pt-20 pb-4">
+              {contextHolder}
+              <button
+                onClick={() => openNotification()}
+                className=" flex items-center py-3 px-5 lg:px-4 lg:py-2 bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl cursor-pointer"
+              >
+                Continue
+                <HiArrowSmRight className="ml-2 mt-1" />
+              </button>
+            </div>
           </div>
         </div>
       </div>

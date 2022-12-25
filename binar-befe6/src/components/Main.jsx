@@ -3,6 +3,10 @@ import axios from "axios";
 
 import "./Main.css";
 
+import bali from "../assets/bali.jpg"
+import sydney from "../assets/sydney.jpg"
+import dubai from "../assets/dubai.jpg"
+
 import { BsFacebook, BsLinkedin, BsTwitter, BsYoutube } from "react-icons/bs";
 import { CgArrowsExchange } from "react-icons/cg";
 import { MdAirplanemodeActive } from "react-icons/md";
@@ -26,10 +30,11 @@ function Main() {
   };
 
   const handleClick = () => {
-    localStorage.setItem("departure", JSON.stringify(departure))
-    localStorage.setItem("arrival", JSON.stringify(arrival))
-    navigate(`/schedule/${departure}/${arrival}`)
-  }
+    localStorage.setItem("departure", JSON.stringify(departure));
+    localStorage.setItem("arrival", JSON.stringify(arrival));
+    navigate(`/schedule/${departure}/${arrival}`);
+    window.scroll(0, 0);
+  };
 
   const getCountry = async () => {
     try {
@@ -63,37 +68,37 @@ function Main() {
         <Carousel autoplay effect="fade">
           <div>
             <img
-              src="https://fegatravel.com/images/bali.jpg"
+              src={bali}
               alt="hero"
               className="object-cover h-[95vh] lg:h-screen w-full"
             />
             <div className="absolute w-full top-[53%] text-center">
               <h1 className="text-6xl font-bold text-white drop-shadow-lg shadow-black tracking-[15px] uppercase">
-                Bali
+                bali
               </h1>
             </div>
           </div>
           <div>
             <img
-              src="https://digitalbisa.id/uploads/articles/konten-digital-alat-penunjang-pesona-indonesia-l1kZehcslL.jpg"
+              src={sydney}
               alt="hero"
               className="object-cover h-[95vh] lg:h-screen w-full"
             />
             <div className="absolute w-full top-[53%] text-center">
               <h1 className="text-6xl font-bold text-white drop-shadow-lg shadow-black tracking-[15px] uppercase">
-                Papua
+                sydney
               </h1>
             </div>
           </div>
           <div>
             <img
-              src="https://wallpapercave.com/wp/wp4190912.jpg"
+              src={dubai}
               alt="hero"
               className="object-cover h-[95vh] lg:h-screen w-full"
             />
             <div className="absolute w-full top-[53%] text-center">
               <h1 className="text-6xl font-bold text-white drop-shadow-lg shadow-black tracking-[15px] uppercase">
-                Jawa
+                dubai
               </h1>
             </div>
           </div>

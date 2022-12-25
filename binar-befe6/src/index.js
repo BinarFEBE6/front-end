@@ -16,6 +16,7 @@ import AdminPage from "./pages/adminPage";
 import Detail from "./pages/Detail";
 import Details from "./pages/Details";
 import Confirmation from "./pages/Confirmation";
+import NoMatch from "./pages/NoMatch";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -38,6 +39,7 @@ root.render(
             <Route path="/dashboard" element={<AdminPage />} />
             <Route path="/details/:guestId" element={<Details />} />
             <Route path="/confirmation" element={<Confirmation />} />
+            <Route path="*" element={<NoMatch />} />
           </Route>
         </Routes>
       </BrowserRouter>

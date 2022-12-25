@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const initialState = {
   schedule: {},
@@ -21,7 +22,13 @@ export const addSchedule = createAsyncThunk(
           },
         }
       );
-      alert("Succes Submit !");
+
+      Swal.fire({
+        icon: "success",
+        title: "Add Schedule Success",
+        text: `Add Schedule Destination Ready !`,
+      });
+
       return res.data.data;
     } catch (error) {
       console.error(error);
