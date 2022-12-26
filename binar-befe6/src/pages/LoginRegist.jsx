@@ -62,8 +62,8 @@ function LoginRegist() {
         </h1>
         <img src={logo2} alt="" className="w-40 mt-3" />
       </div>
-      <div className="wrapper-box bg-white w-[90vw] h-[70vh] lg:w-[30vw] lg:rounded-tr-xl rounded-xl lg:rounded-br-xl  drop-shadow-lg flex  justify-center">
-        <div className="content  flex flex-col items-center ">
+      <div className="wrapper-box bg-white w-[90vw] h-[70vh] lg:w-[30vw] rounded-r-xl rounded-l-xl lg:rounded-l-none  drop-shadow-lg flex  justify-center">
+        <div className="content  flex flex-col items-center mt-12 lg:mt-0">
           <div className="logo flex flex-row justify-center items-center lg:mt-4 ">
             <img src={logo} alt="" className="w-20 mt-3" />
           </div>
