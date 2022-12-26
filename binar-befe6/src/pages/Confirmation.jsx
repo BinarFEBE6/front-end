@@ -1,6 +1,5 @@
 import React from "react";
 
-import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 import { Steps } from "antd";
@@ -17,7 +16,6 @@ import axios from "axios";
 import { IoCloseSharp } from "react-icons/io5";
 
 const Confirmation = () => {
-  const navigate = useNavigate();
 
   const departure = JSON.parse(localStorage.getItem("departure"));
   const arrival = JSON.parse(localStorage.getItem("arrival"));
@@ -146,7 +144,7 @@ const Confirmation = () => {
             <div className="flex items-center justify-center gap-5 lg:gap-10 mb-16 lg:mb-20">
               <button
                 onClick={handleReset}
-                className="flex items-center p-2 lg:px-4 lg:py-2 bg-gradient-to-r from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl cursor-pointer"
+                className="flex items-center p-2 lg:px-4 lg:py-2 bg-gradient-to-r from-red-600 to-red-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl cursor-pointer"
               >
                 <IoCloseSharp className="mr-2 mt-1" />
                 Reset Order
