@@ -17,8 +17,8 @@ function Navbar({ withcroll }) {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const { scrollY } = useScroll();
   const [notif, setNotif] = useState([]);
+  const [foto, setfoto] = useState([]);
   const [user, setuser] = useState([]);
-
   const notification = localStorage.getItem("notif");
 
   const getProfile = async () => {
@@ -33,8 +33,8 @@ function Navbar({ withcroll }) {
           },
         }
       );
-      setuser(res.data.data.user.profile);
-      console.log(res.data.data.user.profile);
+      setfoto(res.data.data.user.profile);
+      setuser(res.data.data);
     } catch (error) {}
   };
 
@@ -55,9 +55,7 @@ function Navbar({ withcroll }) {
       );
 
       setNotif(respone.data.data);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   const navigate = useNavigate();
@@ -248,14 +246,14 @@ function Navbar({ withcroll }) {
                   arrowIcon={false}
                   inline={true}
                   label={
-                    user == null ? (
+                    foto == null ? (
                       <Avatar alt="User settings" rounded={true} className="" />
                     ) : (
                       <Avatar
                         alt="User settings"
                         rounded={true}
                         className=""
-                        img={`${user}`}
+                        img={`${foto}`}
                       />
                     )
                   }
@@ -266,7 +264,11 @@ function Navbar({ withcroll }) {
                     </span>
                   </Dropdown.Header>
 
-                  <Dropdown.Item onClick={() => navigate(`/Profile`)}>
+                  <Dropdown.Item
+                    onClick={() =>
+                      navigate(`/Profile/${user.displayName}/${user.address}`)
+                    }
+                  >
                     Profile
                   </Dropdown.Item>
 
@@ -325,7 +327,7 @@ function Navbar({ withcroll }) {
                     arrowIcon={false}
                     inline={true}
                     label={
-                      user == null ? (
+                      foto == null ? (
                         <Avatar
                           alt="User settings"
                           rounded={true}
@@ -336,7 +338,7 @@ function Navbar({ withcroll }) {
                           alt="User settings"
                           rounded={true}
                           className="mt-[0.4rem]"
-                          img={`${user}`}
+                          img={`${foto}`}
                         />
                       )
                     }
@@ -349,7 +351,11 @@ function Navbar({ withcroll }) {
                       </span>
                     </Dropdown.Header>
 
-                    <Dropdown.Item onClick={() => navigate(`/Profile`)}>
+                    <Dropdown.Item
+                      onClick={() =>
+                        navigate(`/Profile/${user.displayName}/${user.address}`)
+                      }
+                    >
                       Profile
                     </Dropdown.Item>
 
