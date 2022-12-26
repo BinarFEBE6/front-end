@@ -197,7 +197,7 @@ function GuestDetails() {
                   How many Guest to get Ticket's ?
                 </h1>
                 <Select
-                  placeholder="Select here"
+                  defaultValue="1 People"
                   style={{
                     width: 120,
                   }}
