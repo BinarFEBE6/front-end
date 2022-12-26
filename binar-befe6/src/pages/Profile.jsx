@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/footer";
-import { DatePicker, Form, Input, Select } from "antd";
+
 import { Avatar } from "flowbite-react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
-const { TextArea } = Input;
+
 function Profile() {
   const options = [
     { value: "Mr. ", text: "Mr ." },
