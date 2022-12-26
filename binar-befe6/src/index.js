@@ -31,7 +31,7 @@ root.render(
               path="/schedule/:departure/:arrival"
               element={<Schedule />}
             />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile/:name/:addr" element={<Profile />} />
             <Route path="/history" element={<History />} />
             <Route path="/guestDetails" element={<GuestDetails />} />
             <Route path="/login" element={<LoginRegist />} />
