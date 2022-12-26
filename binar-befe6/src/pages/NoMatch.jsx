@@ -7,7 +7,7 @@ const NoMatch = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex justify-center h-screen">
+    <div className="flex justify-center h-screen p-3">
       <div className="pt-28">
         <img src={plane} alt="plane" width={500} height={300} />
         <div className="mt-10 mb-6">

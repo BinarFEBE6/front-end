@@ -95,39 +95,6 @@ function Profile() {
 
   const [edit, setEdit] = useState(false);
 
-  // const fileInput = useRef(null);
-  // const handleChange = (e) => {
-  //   const file = fileInput.current.files[0];
-  //   const fileName = file.name;
-  //   const fileExtension = fileName.substr(fileName.lastIndexOf(".") + 1);
-  //   const fileSize = file.size;
-
-  //   if (fileExtension !== "png" && fileExtension !== "jpg") {
-  //     alert("Only PNG and JPG files are allowed");
-  //   }
-
-  //   if (fileSize > 1000000) {
-  //     alert("File size is too large");
-  //   }
-  // };
-
-  // const handleChange = (e) => {
-  //   const file = e.target.files[0];
-  //   if (file.size > 1000000) {
-  //     alert("File size must be less than 1MB!");
-  //   }
-  // };
-  // const beforUpload = (file) => {
-  //   const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
-  //   if (!isJpgOrPng) {
-  //     message.error("You can only upload JPG/PNG file!");
-  //   }
-  //   const isLt2M = file.size / 1024 / 1024 < 2;
-  //   if (!isLt2M) {
-  //     message.error("Image must smaller than 2MB!");
-  //   }
-  //   return isJpgOrPng && isLt2M && true;
-  // };
   const getProfile = async () => {
     try {
       const res = await axios.get(
@@ -204,7 +171,7 @@ function Profile() {
                       <input
                         type="date"
                         name="birthDate"
-                        className="rounded-lg w-[60vw] lg:w-[10vw]"
+                        className="rounded-lg w-[60vw] lg:w-[15vw]"
                         value={birthDate}
                         max="2020-12-31"
                         onChange={handleChange}
