@@ -26,6 +26,7 @@ function Schedule() {
 
   const jadwal = (value) => {
     localStorage.setItem("scheduleId", value);
+    localStorage.setItem("people", 1);
     navigate("/guestDetails");
     window.scroll(0, 0);
   };
@@ -185,7 +186,7 @@ function Schedule() {
                                 onClick={() => jadwal(item.id)}
                                 className="bg-primary-100 w-20 py-1 mb-2 hidden lg:flex text-white items-center justify-center rounded-lg text-sm"
                               >
-                                Pesan
+                                Choose
                               </button>
                             </div>
                           </div>
@@ -210,7 +211,7 @@ function Schedule() {
                               onClick={() => jadwal(item.id)}
                               className="bg-primary-100 w-20 py-1 mb-2 lg:hidden text-white rounded-lg text-sm"
                             >
-                              Pesan
+                              Choose
                             </button>
                           </div>
                         </div>
