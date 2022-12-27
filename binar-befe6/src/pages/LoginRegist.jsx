@@ -36,9 +36,9 @@ function LoginRegist() {
   // var decoded = jwt_decode(token);
 
   // console.log(decoded);
-  const onLoginGoogle = () => {
+  const onLoginGoogle = async () => {
     try {
-      fetch(
+      await fetch(
         "https://binar-academy-terbangin.herokuapp.com/oauth2/authorization/google"
       )
         .then((response) => response.json())
