@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import LoginRegist from "./LoginRegist";
+import LoginRegist from "../pages/LoginRegist";
 
 describe("LoginRegist component", () => {
   let wrapper;
