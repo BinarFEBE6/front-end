@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../assets/logo.png";
 import { GoogleLogin } from "@react-oauth/google";
 import logo2 from "../assets/logo2w.png";
@@ -43,14 +43,14 @@ function LoginRegist() {
   // console.log(decoded);
   const onLoginGoogle = async () => {
     try {
-      const google = await axios
-        .get(
-          "https://binar-academy-terbangin.herokuapp.com/oauth2/authorization/google"
-        )
-        .then((response) => response.json())
-        .then((data) =>
-          localStorage.setItem("token", JSON.stringify(data.data.token))
-        );
+      const google = await axios.get(
+        "https://binar-academy-terbangin.herokuapp.com/oauth2/authorization/google"
+      );
+      // .then((response) => response.json())
+      // .then((data) =>
+      // localStorage.setItem("token", JSON.stringify(data.data.token))
+      console.log(google.json());
+      // );
     } catch (error) {
       console.log(error);
     }
@@ -68,6 +68,24 @@ function LoginRegist() {
   const register = () => {
     setRegist(true);
   };
+  useEffect(() => {}, []);
+  window.addEventListener("message", handleMessage);
+  function handleMessage(event) {
+    if (event.origin === "https://binar-academy-terbangin.herokuapp.com") {
+      // Handle response from server here
+      const response = event.data;
+      if (response.success) {
+        // Login success, do something here
+        console.log(response);
+        // localStorage.setItem("token", JSON.stringify(response.data.token));
+        window.location.href("/");
+        console.log("Login success!");
+      } else {
+        // Login failed, do something here
+        console.log("Login failed!");
+      }
+    }
+  }
   return (
     <div className="login-section bg-gray-100 w-screen h-screen flex justify-center items-center">
       <div className="side bg-primary-100 w-[90vw] h-[70vh] lg:w-[30vw] rounded-tl-xl rounded-bl-xl shadow-xl lg:flex hidden justify-center flex-col items-center">
@@ -222,10 +240,7 @@ function LoginRegist() {
                       onClick={onLoginGoogle}
                       className=" bg-gray-600 w-full h-12 rounded-xl text-white flex flex-row  justify-center items-center text-sm"
                     >
-                      {/* <a
-                        href="https://binar-academy-terbangin.herokuapp.com/oauth2/authorization/google"
-                        target="_blank"
-                      > */}{" "}
+                      {/* <a href="https://binar-academy-terbangin.herokuapp.com/oauth2/authorization/google"> */}
                       <FcGoogle size={20} className="mr-2" /> Log in With Google
                       {/* </a> */}
                     </button>
