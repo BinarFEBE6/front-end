@@ -48,7 +48,9 @@ function LoginRegist() {
           "https://binar-academy-terbangin.herokuapp.com/oauth2/authorization/google"
         )
         .then((response) => response.json())
-        .then((data) => console.log(data));
+        .then((data) =>
+          localStorage.setItem("token", JSON.stringify(data.data.token))
+        );
     } catch (error) {
       console.log(error);
     }
@@ -217,7 +219,7 @@ function LoginRegist() {
                     </button>
                     <h1>Or</h1>
                     <button
-                      onClick={login}
+                      onClick={onLoginGoogle}
                       className=" bg-gray-600 w-full h-12 rounded-xl text-white flex flex-row  justify-center items-center text-sm"
                     >
                       {/* <a
