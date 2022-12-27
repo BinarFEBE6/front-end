@@ -38,9 +38,10 @@ function LoginRegist() {
   // console.log(decoded);
   const onLoginGoogle = async () => {
     try {
-      await fetch(
-        "https://binar-academy-terbangin.herokuapp.com/oauth2/authorization/google"
-      )
+      const google = await axios
+        .get(
+          "https://binar-academy-terbangin.herokuapp.com/oauth2/authorization/google"
+        )
         .then((response) => response.json())
         .then((data) => console.log(data));
     } catch (error) {
