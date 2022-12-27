@@ -17,32 +17,35 @@ import Detail from "./pages/Detail";
 import Details from "./pages/Details";
 import Confirmation from "./pages/Confirmation";
 import NoMatch from "./pages/NoMatch";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <Routes>
-          <Route>
-            <Route path="/" element={<App />} />
-            <Route path="/Detail/:id" element={<Detail />} />
-            <Route
-              path="/schedule/:departure/:arrival"
-              element={<Schedule />}
-            />
-            <Route path="/profile/:name/:addr" element={<Profile />} />
-            <Route path="/history" element={<History />} />
-            <Route path="/guestDetails" element={<GuestDetails />} />
-            <Route path="/login" element={<LoginRegist />} />
-            <Route path="/setSeat" element={<SetSeat />} />
-            <Route path="/dashboard" element={<AdminPage />} />
-            <Route path="/details/:guestId" element={<Details />} />
-            <Route path="/confirmation" element={<Confirmation />} />
-            <Route path="*" element={<NoMatch />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </Provider>
+    <GoogleOAuthProvider clientId="401367495879-elge7c4v2d6v6sc4p85rmpa79fugdo71.apps.googleusercontent.com">
+      <Provider store={store}>
+        <BrowserRouter>
+          <Routes>
+            <Route>
+              <Route path="/" element={<App />} />
+              <Route path="/Detail/:id" element={<Detail />} />
+              <Route
+                path="/schedule/:departure/:arrival"
+                element={<Schedule />}
+              />
+              <Route path="/profile/:name/:addr" element={<Profile />} />
+              <Route path="/history" element={<History />} />
+              <Route path="/guestDetails" element={<GuestDetails />} />
+              <Route path="/login" element={<LoginRegist />} />
+              <Route path="/setSeat" element={<SetSeat />} />
+              <Route path="/dashboard" element={<AdminPage />} />
+              <Route path="/details/:guestId" element={<Details />} />
+              <Route path="/confirmation" element={<Confirmation />} />
+              <Route path="*" element={<NoMatch />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </Provider>
+    </GoogleOAuthProvider>
   </React.StrictMode>
 );
