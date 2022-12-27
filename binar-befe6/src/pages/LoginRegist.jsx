@@ -30,6 +30,11 @@ function LoginRegist() {
   const login = useGoogleLogin({
     onSuccess: (credentialResponse) => {
       console.log(credentialResponse);
+      localStorage.setItem(
+        "token",
+        JSON.stringify(credentialResponse.access_token)
+      );
+      navigate("/");
     },
   });
   // var token = credentialResponse.access_token;
@@ -212,10 +217,15 @@ function LoginRegist() {
                     </button>
                     <h1>Or</h1>
                     <button
-                      onClick={onLoginGoogle}
+                      onClick={login}
                       className=" bg-gray-600 w-full h-12 rounded-xl text-white flex flex-row  justify-center items-center text-sm"
                     >
+                      {/* <a
+                        href="https://binar-academy-terbangin.herokuapp.com/oauth2/authorization/google"
+                        target="_blank"
+                      > */}{" "}
                       <FcGoogle size={20} className="mr-2" /> Log in With Google
+                      {/* </a> */}
                     </button>
                     {/* <GoogleLogin
                       onSuccess={(credentialResponse) => {
