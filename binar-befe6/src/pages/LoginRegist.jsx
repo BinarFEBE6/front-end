@@ -36,24 +36,18 @@ function LoginRegist() {
   // var decoded = jwt_decode(token);
 
   // console.log(decoded);
-  const onLoginGoogle = async () => {
+  const onLoginGoogle = () => {
     try {
-      // axios
-      //   .get("https://binar-academy-terbangin.herokuapp.com/oauth/token")
-      //   .then((google) => {
-      //     console.log(google);
-      //     localStorage.setItem("token", JSON.stringify(google.data.data.token));
-      //   });
-      const google = await axios
-        .get(
-          "https://binar-academy-terbangin.herokuapp.com/oauth2/authorization/google"
-        )
-        .then((response) => console.log(response.json()));
-      console.log(google);
+      fetch(
+        "https://binar-academy-terbangin.herokuapp.com/oauth2/authorization/google"
+      )
+        .then((response) => response.json())
+        .then((data) => console.log(data));
     } catch (error) {
       console.log(error);
     }
   };
+
   const onLogin = (values) => {
     try {
       dispatch(logIn(values)).then((data) => {
