@@ -26,7 +26,7 @@ function PriceList() {
               className="object-cover w-full lg:h-full h-60 rounded-lg"
             />
             <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center text-center duration-500 rounded-lg group-hover:translate-y-0 group-hover:bg-sky-500/75">
-              <div className="flex justify-center items-end h-3/6 lg:h-1/6">
+              <div className="flex justify-center items-end h-1/3">
                 <div>
                   <p className="text-white text-3xl font-bold">
                     {data[0].Country}
@@ -46,7 +46,7 @@ function PriceList() {
               className="object-cover w-full lg:h-full h-60 rounded-lg"
             />
             <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center text-center duration-500 rounded-lg group-hover:translate-y-0 group-hover:bg-sky-500/75">
-              <div className="flex justify-center items-end h-3/6">
+              <div className="flex justify-center items-end h-1/2">
                 <div>
                   <p className="text-white text-3xl font-bold">
                     {data[1].Country}
@@ -66,7 +66,7 @@ function PriceList() {
               className="object-cover w-full lg:h-full h-60 rounded-lg "
             />
             <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center text-center duration-500 rounded-lg group-hover:translate-y-0 group-hover:bg-sky-500/75">
-              <div className="flex justify-center items-end h-3/6 lg:h-1/6">
+              <div className="flex justify-center items-end h-1/3">
                 <div>
                   <p className="text-white text-3xl font-bold">
                     {data[2].Country}
@@ -82,11 +82,11 @@ function PriceList() {
           >
             <img
               src={data[4].image}
-              alt="Korea"
+              alt="Jepang"
               className="object-cover w-full lg:h-full h-60 rounded-lg "
             />
             <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center text-center duration-500 rounded-lg group-hover:translate-y-0 group-hover:bg-sky-500/75">
-              <div className="flex justify-center items-end h-3/6 lg:h-1/6">
+              <div className="flex justify-center items-end h-1/3">
                 <div>
                   <p className="text-white text-3xl font-bold">
                     {data[4].Country}
@@ -102,11 +102,11 @@ function PriceList() {
           >
             <img
               src={data[3].image}
-              alt="Jepang"
+              alt="Korea"
               className="object-cover w-full lg:h-full h-60 rounded-lg"
             />
             <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center text-center duration-500 rounded-lg group-hover:translate-y-0 group-hover:bg-sky-500/75">
-              <div className="flex justify-center items-end h-3/6">
+              <div className="flex justify-center items-end h-1/2">
                 <div>
                   <p className="text-white text-3xl font-bold">
                     {data[3].Country}
@@ -126,7 +126,7 @@ function PriceList() {
               className="object-cover w-full lg:h-full h-60 rounded-lg"
             />
             <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center text-center duration-500 rounded-lg group-hover:translate-y-0 group-hover:bg-sky-500/75">
-              <div className="flex justify-center items-end h-3/6">
+              <div className="flex justify-center items-end h-1/2">
                 <div>
                   <p className="text-white text-3xl font-bold">
                     {data[5].Country}
