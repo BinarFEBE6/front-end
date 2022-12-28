@@ -17,7 +17,7 @@ function PriceList() {
 
         <div className="grid lg:grid-cols-3 grid-cols-2 lg:grid-rows-2 gap-3 lg:gap-4 lg:mx-24 lg:mt-16">
           <div
-            onClick={() => navigate("/Detail/" + data[0].id)}
+            onClick={() => {navigate("/Detail/" + data[0].id); window.scroll(0, 0);}}
             className="group w-full inline-block cursor-pointer relative rounded-lg overflow-hidden lg:row-span-2"
           >
             <img
@@ -37,7 +37,7 @@ function PriceList() {
           </div>
 
           <div
-            onClick={() => navigate("/Detail/" + data[1].id)}
+            onClick={() => {navigate("/Detail/" + data[1].id); window.scroll(0, 0);}}
             className="group w-full inline-block cursor-pointer relative rounded-lg overflow-hidden"
           >
             <img
@@ -57,7 +57,7 @@ function PriceList() {
           </div>
 
           <div
-            onClick={() => navigate("/Detail/" + data[2].id)}
+            onClick={() => {navigate("/Detail/" + data[2].id); window.scroll(0, 0);}}
             className="group w-full inline-block cursor-pointer relative rounded-lg overflow-hidden lg:row-span-2"
           >
             <img
@@ -77,7 +77,7 @@ function PriceList() {
           </div>
 
           <div
-            onClick={() => navigate("/Detail/" + data[4].id)}
+            onClick={() => {navigate("/Detail/" + data[4].id); window.scroll(0, 0);}}
             className="group w-full inline-block cursor-pointer relative rounded-lg overflow-hidden lg:row-span-2"
           >
             <img
@@ -97,7 +97,7 @@ function PriceList() {
           </div>
 
           <div
-            onClick={() => navigate("/Detail/" + data[3].id)}
+            onClick={() => {navigate("/Detail/" + data[3].id); window.scroll(0, 0);}}
             className="group w-full inline-block cursor-pointer relative rounded-lg overflow-hidden"
           >
             <img
@@ -117,7 +117,7 @@ function PriceList() {
           </div>
 
           <div
-            onClick={() => navigate("/Detail/" + data[5].id)}
+            onClick={() => {navigate("/Detail/" + data[5].id); window.scroll(0, 0);}}
             className="group w-full inline-block cursor-pointer relative rounded-lg overflow-hidden"
           >
             <img
