@@ -119,9 +119,9 @@ function Navbar({ withcroll }) {
         <p
           className={`${
             withcroll ? (scrollY < 100 ? "text-white" : "text-white") : ""
-          } text-white  mt-2 duration-300 text-center`}
+          } text-white text-sm font-thin mt-2 duration-300 text-center`}
         >
-          Travel Gak Pakek Ribet
+          &#8226; Travel Everywhere Don't Worry Anywhere &#8226;
         </p>
       </div>
 
@@ -137,8 +137,12 @@ function Navbar({ withcroll }) {
           >
             Home
           </p>
-          <p className="font-bold text-sky-500">Booking</p>
-          <p className="font-bold text-primary-100">About</p>
+          <a href="#about">
+            <p className="font-bold text-sky-500">About</p>
+          </a>
+          <a href="#destination">
+            <p className="font-bold text-primary-100">Destination</p>
+          </a>
         </div>
       </div>
 
@@ -188,33 +192,37 @@ function Navbar({ withcroll }) {
                   ? "text-white"
                   : "text-primary-100"
                 : "text-primary-100"
-            }  font-bold mx-[30px] duration-300 cursor-pointer hover:text-sky-200`}
+            } font-semibold mx-[40px] duration-300 cursor-pointer hover:text-sky-200`}
             onClick={() => navigate("/")}
           >
             Home
           </button>
-          <button
-            className={`${
-              withcroll
-                ? scrollY < 100
-                  ? "text-white"
+          <a href="#about">
+            <button
+              className={`${
+                withcroll
+                  ? scrollY < 100
+                    ? "text-white"
+                    : "text-primary-100"
                   : "text-primary-100"
-                : "text-primary-100"
-            }  font-bold mx-[30px] duration-300`}
-          >
-            Booking
-          </button>
-          <button
-            className={`${
-              withcroll
-                ? scrollY < 100
-                  ? "text-white"
+              } font-semibold mx-[40px] duration-300 cursor-pointer hover:text-sky-200`}
+            >
+              About
+            </button>
+          </a>
+          <a href="#destination">
+            <button
+              className={`${
+                withcroll
+                  ? scrollY < 100
+                    ? "text-white"
+                    : "text-primary-100"
                   : "text-primary-100"
-                : "text-primary-100"
-            }  font-bold mx-[30px] duration-300`}
-          >
-            About
-          </button>
+              } font-semibold mx-[40px] duration-300 cursor-pointer hover:text-sky-200`}
+            >
+              Destination
+            </button>
+          </a>
         </div>
 
         <div className="flex items-center gap-2 lg:mr-12">
