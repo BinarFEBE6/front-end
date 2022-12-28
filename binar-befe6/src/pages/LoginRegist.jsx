@@ -1,18 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import logo from "../assets/logo.png";
 import { GoogleLogin } from "@react-oauth/google";
 import logo2 from "../assets/logo2w.png";
 import { Form } from "antd";
 import { Input } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import { FcGoogle } from "react-icons/fc";
+
 import { AiOutlineMail } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { postRegister } from "../features/LoginRegister/registerSlice";
 import { useNavigate } from "react-router-dom";
 import { logIn } from "../features/LoginRegister/loginSlice";
-import { logInGoogle } from "../features/LoginRegister/loginGoogle";
-import { useGoogleLogin } from "@react-oauth/google";
+
 import Swal from "sweetalert2";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
@@ -215,6 +214,10 @@ function LoginRegist() {
                           localStorage.setItem(
                             "token",
                             JSON.stringify(res.data.data.token)
+                          );
+                          localStorage.setItem(
+                            "userId",
+                            JSON.stringify(res.data.data.id)
                           );
                           navigate("/");
                         } catch (error) {
