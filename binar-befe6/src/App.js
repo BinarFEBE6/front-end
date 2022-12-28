@@ -2,8 +2,8 @@ import React from "react";
 import Footer from "./components/footer";
 import Main from "./components/Main";
 import Navbar from "./components/Navbar";
-import PriceList from "./components/PriceList";
 import Travel from "./components/Travel";
+import Destination from "./components/Destination"
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <Navbar withcroll={true} />
       <Main />
       <Travel />
-      <PriceList />
+      <Destination />
       <Footer />
     </div>
   );
