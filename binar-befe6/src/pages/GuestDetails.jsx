@@ -46,8 +46,6 @@ function GuestDetails() {
     delete values.dateOfBirth;
     delete values.dateEndPassport;
 
-    console.log("Success:", values);
-
     try {
       dispatch(guestDetails(values));
     } catch (error) {

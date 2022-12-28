@@ -58,7 +58,7 @@ function Details() {
       console.log(code.data);
     } catch (error) {}
   };
-  console.log("succes", details);
+
   useEffect(() => {
     getQr(order);
     getInfo(Id);

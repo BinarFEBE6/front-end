@@ -25,6 +25,7 @@ function History() {
         }
       );
       setHistory(respone.data.data);
+      console.log(respone.data.data);
     } catch (error) {
       console.log(error);
     }
