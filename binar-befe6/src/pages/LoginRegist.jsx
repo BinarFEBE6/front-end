@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import logo from "../assets/logo.png";
+import { GoogleLogin } from "@react-oauth/google";
 import logo2 from "../assets/logo2w.png";
 import { Form } from "antd";
 import { Input } from "antd";
@@ -11,7 +12,9 @@ import { postRegister } from "../features/LoginRegister/registerSlice";
 import { useNavigate } from "react-router-dom";
 import { logIn } from "../features/LoginRegister/loginSlice";
 import { logInGoogle } from "../features/LoginRegister/loginGoogle";
+import { useGoogleLogin } from "@react-oauth/google";
 import Swal from "sweetalert2";
+import jwt_decode from "jwt-decode";
 import axios from "axios";
 function LoginRegist() {
   const dispatch = useDispatch();
@@ -24,24 +27,35 @@ function LoginRegist() {
       setRegist(false);
     } catch (error) {}
   };
-  const onLoginGoogle = () => {
+  const login = useGoogleLogin({
+    onSuccess: (credentialResponse) => {
+      console.log(credentialResponse);
+      localStorage.setItem(
+        "token",
+        JSON.stringify(credentialResponse.access_token)
+      );
+      navigate("/");
+    },
+  });
+  // var token = credentialResponse.access_token;
+  // var decoded = jwt_decode(token);
+
+  // console.log(decoded);
+  const onLoginGoogle = async () => {
     try {
-      // axios
-      //   .get("https://binar-academy-terbangin.herokuapp.com/oauth/token")
-      //   .then((google) => {
-      //     console.log(google);
-      //     localStorage.setItem("token", JSON.stringify(google.data.data.token));
-      //   });
-      axios
-        .get("https://binar-academy-terbangin.herokuapp.com/oauth/token", {
-          followRedirect: true,
-        })
-        .then((response) => console.log(response.data))
-        .catch((error) => console.error(error));
+      const google = await axios
+        .get(
+          "https://binar-academy-terbangin.herokuapp.com/oauth2/authorization/google"
+        )
+        .then((response) => response.json())
+        .then((data) =>
+          localStorage.setItem("token", JSON.stringify(data.data.token))
+        );
     } catch (error) {
       console.log(error);
     }
   };
+
   const onLogin = (values) => {
     try {
       dispatch(logIn(values)).then((data) => {
@@ -62,8 +76,8 @@ function LoginRegist() {
         </h1>
         <img src={logo2} alt="" className="w-40 mt-3" />
       </div>
-      <div className="wrapper-box bg-white w-[90vw] h-[70vh] lg:w-[30vw] rounded-r-xl rounded-l-xl lg:rounded-l-none  drop-shadow-lg flex  justify-center">
-        <div className="content  flex flex-col items-center mt-12 lg:mt-0">
+      <div className="wrapper-box bg-white w-[90vw] lg:h-[70vh] h-fit lg:w-[30vw] rounded-r-xl rounded-l-xl lg:rounded-l-none  drop-shadow-lg flex  justify-center">
+        <div className="content  flex flex-col items-center py-4 lg:mt-0">
           <div className="logo flex flex-row justify-center items-center lg:mt-4 ">
             <img src={logo} alt="" className="w-20 mt-3" />
           </div>
@@ -148,7 +162,7 @@ function LoginRegist() {
                 </Form>
               </div>
             ) : (
-              <div className="lg:space-x">
+              <div className="">
                 <h1 className="text-center text-xl">Login</h1>
                 <Form
                   name="normal_login"
@@ -206,11 +220,48 @@ function LoginRegist() {
                     <h1>Or</h1>
                     <button
                       onClick={onLoginGoogle}
-                      href="https://binar-academy-terbangin.herokuapp.com/oauth/token"
                       className=" bg-gray-600 w-full h-12 rounded-xl text-white flex flex-row  justify-center items-center text-sm"
                     >
+                      {/* <a
+                        href="https://binar-academy-terbangin.herokuapp.com/oauth2/authorization/google"
+                        target="_blank"
+                      > */}{" "}
                       <FcGoogle size={20} className="mr-2" /> Log in With Google
+                      {/* </a> */}
                     </button>
+                    {/* <GoogleLogin
+                      onSuccess={(credentialResponse) => {
+                        console.log(credentialResponse);
+                      }}
+                      onError={() => {
+                        console.log("Login Failed");
+                      }}
+                    />
+                    <GoogleLogin
+                      onSuccess={(credentialResponse) => {
+                        console.log(credentialResponse);
+                        var decoded = jwt_decode(credentialResponse.credential);
+                        console.log(decoded);
+                        localStorage.setItem(
+                          "token",
+                          JSON.stringify(credentialResponse.credential)
+                        );
+                        localStorage.setItem(
+                          "image",
+                          JSON.stringify(decoded.picture)
+                        );
+                        localStorage.setItem(
+                          "user",
+                          JSON.stringify(decoded.name)
+                        );
+                        localStorage.setItem("log", JSON.stringify(decoded));
+
+                        Swal.fire("Horeee!", "Login Berhasil!", "success");
+                      }}
+                      onError={() => {
+                        console.log("Login Failed");
+                      }}
+                    /> */}
                   </div>
                 </Form>
               </div>
