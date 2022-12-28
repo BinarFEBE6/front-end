@@ -35,10 +35,8 @@ export const loginGoogleSlice = createSlice({
       state.loading = true;
     },
     [logInGoogle.fulfilled]: (state, { payload }) => {
-      console.log(payload);
       state.loading = false;
       state.logInGoogle = payload;
-      console.log(state.logInGoogle, "afterupdatea");
     },
     [logInGoogle.rejected]: (state) => {
       state.loading = false;
