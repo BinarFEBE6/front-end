@@ -43,7 +43,6 @@ function Details() {
           },
         }
       );
-      console.log(res);
     } catch (error) {}
   };
 
@@ -55,10 +54,9 @@ function Details() {
         )}`
       );
       setQr(code);
-      console.log(code.data);
     } catch (error) {}
   };
-  console.log("succes", details);
+
   useEffect(() => {
     getQr(order);
     getInfo(Id);

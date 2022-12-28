@@ -37,7 +37,6 @@ export const loginSlice = createSlice({
       state.loading = true;
     },
     [logIn.fulfilled]: (state, { payload }) => {
-      console.log(payload);
       state.loading = false;
       state.login = payload;
     },
