@@ -8,11 +8,11 @@ import sydney from "../assets/sydney.jpg"
 import dubai from "../assets/dubai.jpg"
 
 import { BsFacebook, BsLinkedin, BsTwitter, BsYoutube } from "react-icons/bs";
-import { CgArrowsExchange } from "react-icons/cg";
 import { MdAirplanemodeActive } from "react-icons/md";
 
 import { Carousel, Cascader } from "antd";
 import { useNavigate } from "react-router-dom";
+import { RiArrowRightCircleFill } from "react-icons/ri";
 
 function Main() {
   const [country, setCountry] = useState([]);
@@ -125,9 +125,9 @@ function Main() {
                     placement={"topLeft"}
                     options={option}
                   />
-                  <CgArrowsExchange
+                  <RiArrowRightCircleFill
                     size={20}
-                    className="bg-white rounded-full hidden lg:block"
+                    className="rounded-full hidden lg:block text-white"
                   />
                   <Cascader
                     placeholder="To"

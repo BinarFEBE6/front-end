@@ -149,25 +149,15 @@ function Footer() {
               <h6 class="uppercase font-semibold mb-4 flex justify-center md:justify-start">
                 Advantage
               </h6>
+              <p class="mb-4">Cheap Price</p>
               <p class="mb-4">
-                <a href="#!" class="text-gray-600">
-                  Cheap Price
-                </a>
-              </p>
-              <p class="mb-4">
-                <a href="#!" class="text-gray-600">
                   Fast Processing
-                </a>
               </p>
               <p class="mb-4">
-                <a href="#!" class="text-gray-600">
                   Many Promos
-                </a>
               </p>
               <p>
-                <a href="#!" class="text-gray-600">
                   Cashback 20 %
-                </a>
               </p>
             </div>
             <div class="">
@@ -175,18 +165,18 @@ function Footer() {
                 Useful links
               </h6>
               <p class="mb-4">
-                <a class="text-gray-600" onClick={() => navigate("/")}>
+                <a class="text-gray-600 cursor-pointer hover:text-gray-400" onClick={() => navigate("/")}>
                   Home
                 </a>
               </p>
               <p class="mb-4">
-                <a href="#!" class="text-gray-600">
-                  Booking
+                <a href="#about" class="text-gray-600 cursor-pointer hover:text-gray-400">
+                  About
                 </a>
               </p>
               <p class="mb-4">
-                <a href="#!" class="text-gray-600">
-                  About
+                <a href="#destination" class="text-gray-600 cursor-pointer hover:text-gray-400">
+                  Destination
                 </a>
               </p>
             </div>
