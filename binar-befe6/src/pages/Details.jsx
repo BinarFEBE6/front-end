@@ -43,7 +43,6 @@ function Details() {
           },
         }
       );
-      console.log(res);
     } catch (error) {}
   };
 
@@ -55,7 +54,6 @@ function Details() {
         )}`
       );
       setQr(code);
-      console.log(code.data);
     } catch (error) {}
   };
 

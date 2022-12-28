@@ -102,7 +102,6 @@ function GuestDetails() {
   const openNotification = () => {
     const guest = JSON.parse(localStorage.getItem("people"));
     const guestId = JSON.parse(localStorage.getItem("guestId"));
-    console.log(guestId);
 
     if (guestId === null || !(guestId instanceof Array)) {
       api.info({
