@@ -30,6 +30,11 @@ function LoginRegist() {
   const login = useGoogleLogin({
     onSuccess: (credentialResponse) => {
       console.log(credentialResponse);
+      localStorage.setItem(
+        "token",
+        JSON.stringify(credentialResponse.access_token)
+      );
+      navigate("/");
     },
   });
   // var token = credentialResponse.access_token;
@@ -38,22 +43,19 @@ function LoginRegist() {
   // console.log(decoded);
   const onLoginGoogle = async () => {
     try {
-      // axios
-      //   .get("https://binar-academy-terbangin.herokuapp.com/oauth/token")
-      //   .then((google) => {
-      //     console.log(google);
-      //     localStorage.setItem("token", JSON.stringify(google.data.data.token));
-      //   });
       const google = await axios
         .get(
           "https://binar-academy-terbangin.herokuapp.com/oauth2/authorization/google"
         )
-        .then((response) => console.log(response.json()));
-      console.log(google);
+        .then((response) => response.json())
+        .then((data) =>
+          localStorage.setItem("token", JSON.stringify(data.data.token))
+        );
     } catch (error) {
       console.log(error);
     }
   };
+
   const onLogin = (values) => {
     try {
       dispatch(logIn(values)).then((data) => {
@@ -220,7 +222,12 @@ function LoginRegist() {
                       onClick={onLoginGoogle}
                       className=" bg-gray-600 w-full h-12 rounded-xl text-white flex flex-row  justify-center items-center text-sm"
                     >
+                      {/* <a
+                        href="https://binar-academy-terbangin.herokuapp.com/oauth2/authorization/google"
+                        target="_blank"
+                      > */}{" "}
                       <FcGoogle size={20} className="mr-2" /> Log in With Google
+                      {/* </a> */}
                     </button>
                     {/* <GoogleLogin
                       onSuccess={(credentialResponse) => {
