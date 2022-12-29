@@ -165,7 +165,7 @@ function History() {
                     <div className=""></div>
                   )}
                 </>
-              ))}
+              )).reverse()}
             </>
           ) : (
             <div className="none flex justify-center items-center flex-col h-[20vh] lg:h-[50vh]">
