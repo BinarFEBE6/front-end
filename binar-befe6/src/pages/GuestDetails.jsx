@@ -46,7 +46,7 @@ function GuestDetails() {
     delete values.dateOfBirth;
     delete values.dateEndPassport;
 
-    console.log("Success:", values);
+    // setSubmit(true);
 
     try {
       dispatch(guestDetails(values));
@@ -59,7 +59,7 @@ function GuestDetails() {
     console.log("Failed:", errorInfo);
   };
 
-  const handleChange = (value) => {
+  const handlePeople = (value) => {
     setPeople(value);
     localStorage.setItem("people", JSON.stringify(value));
   };
@@ -104,7 +104,6 @@ function GuestDetails() {
   const openNotification = () => {
     const guest = JSON.parse(localStorage.getItem("people"));
     const guestId = JSON.parse(localStorage.getItem("guestId"));
-    console.log(guestId);
 
     if (guestId === null || !(guestId instanceof Array)) {
       api.info({
@@ -201,7 +200,7 @@ function GuestDetails() {
                   style={{
                     width: 120,
                   }}
-                  onChange={handleChange}
+                  onChange={handlePeople}
                   options={[
                     {
                       value: 1,
