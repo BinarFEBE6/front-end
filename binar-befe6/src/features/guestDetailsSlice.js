@@ -26,10 +26,19 @@ export const guestDetails = createAsyncThunk(
       );
       userId.push(res.data.data.id);
       localStorage.setItem("guestId", JSON.stringify(userId));
-      Swal.fire({ icon: "success", title: "Submit Guest Succes", text: "Add some Guest Confirm !" });
+      Swal.fire({
+        icon: "success",
+        title: "Success Submit Guest",
+        text: "Add some Guest Confirm !",
+      });
       return res.data.data;
     } catch (error) {
       console.error(error);
+      Swal.fire({
+        icon: "error",
+        title: "Failed Submit Guest",
+        text: "Something Wrong..!",
+      });
     }
   }
 );
