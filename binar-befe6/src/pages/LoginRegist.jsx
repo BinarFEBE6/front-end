@@ -33,7 +33,6 @@ function LoginRegist() {
           ? navigate("/dashboard")
           : navigate("/");
       });
-      Swal.fire("Horeee!", "Login Berhasil!", "success");
     } catch (error) {}
   };
   const register = () => {
@@ -207,6 +206,7 @@ function LoginRegist() {
                               picture: decoded.picture,
                             }
                           );
+                          console.log(decoded.picture);
                           localStorage.setItem(
                             "user",
                             JSON.stringify(res.data.data.username)
