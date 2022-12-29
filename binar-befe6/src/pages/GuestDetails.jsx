@@ -57,7 +57,7 @@ function GuestDetails() {
     console.log("Failed:", errorInfo);
   };
 
-  const handleChange = (value) => {
+  const handlePeople = (value) => {
     setPeople(value);
     localStorage.setItem("people", JSON.stringify(value));
   };
@@ -198,7 +198,7 @@ function GuestDetails() {
                   style={{
                     width: 120,
                   }}
-                  onChange={handleChange}
+                  onChange={handlePeople}
                   options={[
                     {
                       value: 1,
