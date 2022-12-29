@@ -54,7 +54,6 @@ const AdminPage = () => {
     delete values.from;
     delete values.to;
 
-    console.log("Success:", values);
 
     try {
       dispatch(addSchedule(values));

@@ -65,7 +65,6 @@ function SetSeat() {
   const openNotification = () => {
     const guest = JSON.parse(localStorage.getItem("people"));
     const seatId = JSON.parse(localStorage.getItem("seatId"));
-    console.log(seatId);
 
     if (seatId === null || seatId.length !== guest) {
       api.info({

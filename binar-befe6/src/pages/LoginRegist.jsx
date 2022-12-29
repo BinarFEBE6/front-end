@@ -5,14 +5,13 @@ import logo2 from "../assets/logo2w.png";
 import { Form } from "antd";
 import { Input } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import { FcGoogle } from "react-icons/fc";
+
 import { AiOutlineMail } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { postRegister } from "../features/LoginRegister/registerSlice";
 import { useNavigate } from "react-router-dom";
 import { logIn } from "../features/LoginRegister/loginSlice";
-import { logInGoogle } from "../features/LoginRegister/loginGoogle";
-import { useGoogleLogin } from "@react-oauth/google";
+
 import Swal from "sweetalert2";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
@@ -24,36 +23,7 @@ function LoginRegist() {
   const onRegist = async (values) => {
     try {
       dispatch(postRegister(values));
-      setRegist(false);
     } catch (error) {}
-  };
-  const login = useGoogleLogin({
-    onSuccess: (credentialResponse) => {
-      console.log(credentialResponse);
-      localStorage.setItem(
-        "token",
-        JSON.stringify(credentialResponse.access_token)
-      );
-      navigate("/");
-    },
-  });
-  // var token = credentialResponse.access_token;
-  // var decoded = jwt_decode(token);
-
-  // console.log(decoded);
-  const onLoginGoogle = async () => {
-    try {
-      const google = await axios
-        .get(
-          "https://binar-academy-terbangin.herokuapp.com/oauth2/authorization/google"
-        )
-        .then((response) => response.json())
-        .then((data) =>
-          localStorage.setItem("token", JSON.stringify(data.data.token))
-        );
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   const onLogin = (values) => {
@@ -68,6 +38,7 @@ function LoginRegist() {
   const register = () => {
     setRegist(true);
   };
+
   return (
     <div className="login-section bg-gray-100 w-screen h-screen flex justify-center items-center">
       <div className="side bg-primary-100 w-[90vw] h-[70vh] lg:w-[30vw] rounded-tl-xl rounded-bl-xl shadow-xl lg:flex hidden justify-center flex-col items-center">
@@ -218,50 +189,47 @@ function LoginRegist() {
                       Log in
                     </button>
                     <h1>Or</h1>
-                    <button
-                      onClick={onLoginGoogle}
-                      className=" bg-gray-600 w-full h-12 rounded-xl text-white flex flex-row  justify-center items-center text-sm"
-                    >
-                      {/* <a
-                        href="https://binar-academy-terbangin.herokuapp.com/oauth2/authorization/google"
-                        target="_blank"
-                      > */}{" "}
-                      <FcGoogle size={20} className="mr-2" /> Log in With Google
-                      {/* </a> */}
-                    </button>
-                    {/* <GoogleLogin
-                      onSuccess={(credentialResponse) => {
-                        console.log(credentialResponse);
-                      }}
-                      onError={() => {
-                        console.log("Login Failed");
-                      }}
-                    />
+
                     <GoogleLogin
-                      onSuccess={(credentialResponse) => {
-                        console.log(credentialResponse);
-                        var decoded = jwt_decode(credentialResponse.credential);
-                        console.log(decoded);
-                        localStorage.setItem(
-                          "token",
-                          JSON.stringify(credentialResponse.credential)
-                        );
-                        localStorage.setItem(
-                          "image",
-                          JSON.stringify(decoded.picture)
-                        );
-                        localStorage.setItem(
-                          "user",
-                          JSON.stringify(decoded.name)
-                        );
-                        localStorage.setItem("log", JSON.stringify(decoded));
+                      size="large"
+                      onSuccess={async (credentialResponse) => {
+                        try {
+                          var decoded = jwt_decode(
+                            credentialResponse.credential
+                          );
+                          const res = await axios.post(
+                            "https://binar-academy-terbangin.herokuapp.com/api/auth/getRedirect",
+                            {
+                              name: decoded.name,
+                              email: decoded.email,
+                              sub: decoded.sub,
+                              // picture: decoded.picture,
+                            }
+                          );
+                          console.log(decoded.picture);
+                          localStorage.setItem(
+                            "user",
+                            JSON.stringify(res.data.data.username)
+                          );
+                          localStorage.setItem(
+                            "token",
+                            JSON.stringify(res.data.data.token)
+                          );
+                          localStorage.setItem(
+                            "userId",
+                            JSON.stringify(res.data.data.id)
+                          );
+                          navigate("/");
+                        } catch (error) {
+                          console.log(error);
+                        }
 
                         Swal.fire("Horeee!", "Login Berhasil!", "success");
                       }}
                       onError={() => {
                         console.log("Login Failed");
                       }}
-                    /> */}
+                    />
                   </div>
                 </Form>
               </div>

@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-
+import Swal from "sweetalert2";
 const initialState = {
   regist: [],
   loading: false,
@@ -14,10 +14,31 @@ export const postRegister = createAsyncThunk(
         "https://binar-academy-terbangin.herokuapp.com/api/auth/signup",
         values
       );
-
+      Swal.fire({
+        icon: "success",
+        // title: "",
+        text: "Register Succes",
+        confirmButtonText: "Okee",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.reload();
+        }
+      });
       return res.data.data;
     } catch (error) {
-      console.error(error);
+      if (error.response.status === 400) {
+        return Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Username Or Email Already Used ",
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Please Fill In The Correct Data",
+        });
+      }
     }
   }
 );

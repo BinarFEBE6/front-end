@@ -17,7 +17,7 @@ export const logIn = createAsyncThunk("login/postLog", async (values) => {
     localStorage.setItem("user", JSON.stringify(res.data.data.username));
     localStorage.setItem("userId", JSON.stringify(res.data.data.id));
     localStorage.setItem("userEmail", JSON.stringify(res.data.data.email));
-
+    Swal.fire("Horeee!", "Login Berhasil!", "success");
     return res.data.data;
   } catch (error) {
     Swal.fire({
@@ -37,7 +37,6 @@ export const loginSlice = createSlice({
       state.loading = true;
     },
     [logIn.fulfilled]: (state, { payload }) => {
-      console.log(payload);
       state.loading = false;
       state.login = payload;
     },

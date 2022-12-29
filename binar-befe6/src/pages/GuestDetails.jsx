@@ -46,8 +46,6 @@ function GuestDetails() {
     delete values.dateOfBirth;
     delete values.dateEndPassport;
 
-    // setSubmit(true);
-
     try {
       dispatch(guestDetails(values));
     } catch (error) {
