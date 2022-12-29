@@ -73,14 +73,7 @@ function History() {
                               {item.schedule.categoryClass.name}
                             </p>
                             <div className="ml-5 flex-row flex space-x-3 ">
-                              Order ID :
-                              {item.ticket.map((order) => {
-                                return (
-                                  <p className="font-medium text-gray-700">
-                                    {order.orderId}
-                                  </p>
-                                );
-                              })}
+                              Order ID : {item.ticket[0].orderId}
                             </div>
                           </div>
                           {/* Right */}
@@ -157,9 +150,9 @@ function History() {
                                         id.guestId
                                       )
                                     }
-                                    className="w-16  p-3 bg-primary-100 rounded-xl text-white"
+                                    className="w-fit  p-3 bg-primary-100 rounded-xl text-white"
                                   >
-                                    view
+                                    {id.guest.firstName}
                                   </button>
                                 );
                               })}
