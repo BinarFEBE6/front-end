@@ -203,7 +203,7 @@ function LoginRegist() {
                               name: decoded.name,
                               email: decoded.email,
                               sub: decoded.sub,
-                              picture: decoded.picture,
+                              // picture: decoded.picture,
                             }
                           );
                           console.log(decoded.picture);
