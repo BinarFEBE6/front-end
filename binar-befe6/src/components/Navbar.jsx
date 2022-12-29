@@ -90,7 +90,7 @@ function Navbar({ withcroll }) {
                   </p>
                 </div>
               );
-            })}
+            }).reverse()}
         </>
       ) : (
         <div className="none flex flex-col justify-center items-center">

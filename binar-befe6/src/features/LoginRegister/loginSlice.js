@@ -17,7 +17,7 @@ export const logIn = createAsyncThunk("login/postLog", async (values) => {
     localStorage.setItem("user", JSON.stringify(res.data.data.username));
     localStorage.setItem("userId", JSON.stringify(res.data.data.id));
     localStorage.setItem("userEmail", JSON.stringify(res.data.data.email));
-    Swal.fire("Horeee!", "Login Berhasil!", "success");
+    Swal.fire("Yeaayy!", "Success to Login !", "success");
     return res.data.data;
   } catch (error) {
     Swal.fire({
