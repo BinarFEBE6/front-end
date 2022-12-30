@@ -1,9 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { addScheduleReducer } from "../features/addScheduleSlice";
-
 import { guestDetailsReducer } from "../features/guestDetailsSlice";
-import { loginGoogleReducer } from "../features/LoginRegister/loginGoogle";
-
 import { loginReducer } from "../features/LoginRegister/loginSlice";
 import { registReducer } from "../features/LoginRegister/registerSlice";
 
@@ -12,8 +9,6 @@ export const store = configureStore({
     login: loginReducer,
     regist: registReducer,
     guestDetails: guestDetailsReducer,
-
     addSchedule: addScheduleReducer,
-    loginGoogle: loginGoogleReducer,
   },
 });
