@@ -54,16 +54,15 @@ const AdminPage = () => {
     delete values.from;
     delete values.to;
 
-
-    try {
-      dispatch(addSchedule(values));
-    } catch (error) {
-      console.log(error);
-    }
+    dispatch(addSchedule(values));
   };
 
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+  const onFinishFailed = () => {
+    Swal.fire({
+      icon: "error",
+      title: "Failed Add Schedule !",
+      text: "You must filled all Data !",
+    });
   };
 
   const handleOutAdmin = () => {

@@ -138,7 +138,7 @@ function History() {
                             </div>
                             <div className="details grid grid-cols-3 lg:flex lg:flex-row space-x-2 ml-5 items-center mb-3">
                               <h1 className="text-gray-700 font-medium">
-                                Details :{" "}
+                                Details Passenger :
                               </h1>
                               {item.ticket.map((id) => {
                                 return (
@@ -165,7 +165,7 @@ function History() {
                     <div className=""></div>
                   )}
                 </>
-              ))}
+              )).reverse()}
             </>
           ) : (
             <div className="none flex justify-center items-center flex-col h-[20vh] lg:h-[50vh]">

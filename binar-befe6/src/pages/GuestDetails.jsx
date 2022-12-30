@@ -46,18 +46,18 @@ function GuestDetails() {
     delete values.dateOfBirth;
     delete values.dateEndPassport;
 
-    try {
-      dispatch(guestDetails(values));
-    } catch (error) {
-      console.log(error);
-    }
+    dispatch(guestDetails(values));
   };
 
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+  const onFinishFailed = () => {
+    Swal.fire({
+      icon: "error",
+      title: "Failed Submit Guest",
+      text: "You must filled all Data !",
+    });
   };
 
-  const handleChange = (value) => {
+  const handlePeople = (value) => {
     setPeople(value);
     localStorage.setItem("people", JSON.stringify(value));
   };
@@ -127,7 +127,7 @@ function GuestDetails() {
         <>
           <Navbar withcroll={false} />
 
-          <div className="bg-gray-100 pt-28 w-full">
+          <div className="bg-gray-100 pt-32 w-full">
             <div className="lg:px-48 px-5 pb-10">
               <Steps
                 responsive={false}
@@ -198,7 +198,7 @@ function GuestDetails() {
                   style={{
                     width: 120,
                   }}
-                  onChange={handleChange}
+                  onChange={handlePeople}
                   options={[
                     {
                       value: 1,
@@ -262,8 +262,7 @@ function GuestDetails() {
                                     rules={[
                                       {
                                         required: true,
-                                        message:
-                                          "Please input your first name!",
+                                        message: "Input your First Name !",
                                       },
                                     ]}
                                   >
@@ -278,7 +277,7 @@ function GuestDetails() {
                                     rules={[
                                       {
                                         required: true,
-                                        message: "Please input your last name!",
+                                        message: "Input your Last Name !",
                                       },
                                     ]}
                                   >
@@ -299,6 +298,7 @@ function GuestDetails() {
                                     rules={[
                                       {
                                         required: true,
+                                        message: "Choose your Date of Birth !",
                                       },
                                     ]}
                                   >
@@ -315,6 +315,7 @@ function GuestDetails() {
                                   rules={[
                                     {
                                       required: true,
+                                      message: "Choose your Nationality !",
                                     },
                                   ]}
                                 >
@@ -335,6 +336,7 @@ function GuestDetails() {
                                   rules={[
                                     {
                                       required: true,
+                                      message: "Choose your Country !",
                                     },
                                   ]}
                                 >
@@ -355,6 +357,7 @@ function GuestDetails() {
                                   rules={[
                                     {
                                       required: true,
+                                      message: "Input your Passport ID !",
                                     },
                                   ]}
                                 >
@@ -376,6 +379,8 @@ function GuestDetails() {
                                     rules={[
                                       {
                                         required: true,
+                                        message:
+                                          "Choose your Date of End Passport !",
                                       },
                                     ]}
                                   >
@@ -396,8 +401,7 @@ function GuestDetails() {
                                     rules={[
                                       {
                                         required: true,
-                                        message:
-                                          "Please input your first name!",
+                                        message: "Input your First Name !",
                                       },
                                     ]}
                                   >
@@ -412,7 +416,7 @@ function GuestDetails() {
                                     rules={[
                                       {
                                         required: true,
-                                        message: "Please input your last name!",
+                                        message: "Input your Last Name !",
                                       },
                                     ]}
                                   >
@@ -431,7 +435,7 @@ function GuestDetails() {
                                     {
                                       required: true,
                                       type: "email",
-                                      message: "Please input valid email !",
+                                      message: "Input your Valid Email !",
                                     },
                                   ]}
                                 >
@@ -450,14 +454,13 @@ function GuestDetails() {
                                   rules={[
                                     {
                                       required: true,
-                                      message:
-                                        "Please input your phone number!",
+                                      message: "Input your Phone Number !",
                                     },
                                   ]}
                                   className="pb-6"
                                 >
                                   <Input
-                                    type="number"
+                                    inputmode="numeric"
                                     className="border-gray-200 rounded-lg lg:w-full w-[85%]"
                                     placeholder="Phone Number"
                                   />
