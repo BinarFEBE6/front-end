@@ -158,7 +158,7 @@ function SetSeat() {
               <h1 className="text-3xl font-bold text-sky-700">Choose Seat</h1>
             </div>
             <div className="flex justify-center">
-              <div className="bg-white w-[90%] lg:w-[50%] h-full py-10 lg:py-12 my-12 rounded-3xl border shadow-md px-10">
+              <div className="bg-white w-[90%] lg:w-[70%] xl:w-[50%] h-full py-10 lg:py-12 my-12 rounded-3xl border shadow-md px-10">
                 <Tabs
                   centered
                   items={new Array(people).fill(null).map((_, i) => {

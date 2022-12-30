@@ -61,7 +61,7 @@ function Details() {
                   Guest Information
                 </h1>
                 <IoArrowBackCircleOutline
-                  className="cursor-pointer"
+                  className="cursor-pointer hover:scale-110 duration-300"
                   size={25}
                   onClick={() => navigate("/history")}
                 />
@@ -210,21 +210,26 @@ function Details() {
                       </div>
                     </div>
 
-                    <div className="pdf items-center justify-center flex lg:items-start lg:justify-start ">
+                    <div className="pdf items-center justify-center flex lg:items-start lg:justify-start pt-6 lg:pt-4 xl:pt-4 xl:ml-12">
                       <a
                         href={`https://binar-academy-terbangin.herokuapp.com/api/generateOrder/${details.orderId}`}
                       >
-                        <button className="p-3 bg-primary-100 text-white rounded-lg ">
+                        <button className="p-3 bg-primary-100 text-white rounded-lg hover:drop-shadow-lg">
                           Download Invoice
                         </button>
                       </a>
                     </div>
-                    <div className="pdf lg:row-span-2 lg:justify-start lg:items-start items-center justify-center flex mr-3">
-                      <img
-                        className="lg:w-[50%] w-[100%] md:w-[40%]"
-                        src={`https://binar-academy-terbangin.herokuapp.com/api/QRcode/${order}`}
-                        alt="barcode"
-                      />
+                    <div className="pdf lg:row-span-2 items-center justify-center xl:justify-center lg:justify-end flex mr-3 pt-6">
+                      <div className="lg:ml-24 xl:ml-0">
+                        <h1 className="lg:pl-3 xl:pl-16 hidden lg:block xl:block font-light">
+                          Booking QR Code :
+                        </h1>
+                        <img
+                          className="lg:w-[70%] xl:w-[90%] w-[100%] md:w-[40%]"
+                          src={`https://binar-academy-terbangin.herokuapp.com/api/QRcode/${order}`}
+                          alt="barcode"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>

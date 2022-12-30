@@ -185,7 +185,7 @@ function GuestDetails() {
           </div>
 
           <div className="pt-6">
-            <div className=" bg-white drop-shadow-xl w-full h-[10vh] lg:h-[15vh] rounded-b-[50px] lg:rounded-b-[180px] flex items-center justify-center">
+            <div className=" bg-white drop-shadow-xl w-full h-[10vh] lg:h-[15vh] rounded-b-[50px] lg:rounded-b-[180px] flex items-center justify-center pb-2">
               <h1 className="text-3xl font-bold text-sky-700">Guest Details</h1>
             </div>
             <div className="flex justify-center">
@@ -225,7 +225,7 @@ function GuestDetails() {
               </div>
             </div>
             <div className="flex justify-center">
-              <div className="bg-white w-[90%] lg:w-[60%] h-full mb-12 rounded-3xl border shadow-md overflow-y-auto">
+              <div className="bg-white w-[90%] lg:w-[70%] xl:w-[60%] h-full mb-12 rounded-3xl border shadow-md overflow-y-auto">
                 <div className="flex">
                   <Tabs
                     type="card"

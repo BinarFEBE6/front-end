@@ -24,26 +24,26 @@ function Travel() {
         </div>
       </div>
       <div className="bg-white shadow-xl border border-slate-200/50 lg:mx-36 xl:mx-48 mx-8 mt-12 mb-20 rounded-3xl">
-        <div className="lg:flex w-full lg:justify-between p-9 lg:px-24 grid grid-cols-2 gap-6">
-          <div className="hover:scale-125 duration-500 cursor-pointer">
+        <div className="lg:flex w-full lg:justify-between p-9 lg:px-12 xl:px-24 grid grid-cols-2 gap-6">
+          <div className="hover:scale-125 duration-500 cursor-auto">
             <RiMoneyDollarCircleFill className="w-full h-8 text-yellow-300" />
             <p className="text-md lg:text-lg font-semibold text-gray-500 mt-2 text-center">
               Cheap Price
             </p>
           </div>
-          <div className="hover:scale-125 duration-500 cursor-pointer">
+          <div className="hover:scale-125 duration-500 cursor-auto">
             <FaStopwatch className="w-full h-8 text-rose-600" />
             <p className="text-md lg:text-lg font-semibold text-gray-500 mt-2 text-center">
               Fast Processing
             </p>
           </div>
-          <div className="hover:scale-125 duration-500 cursor-pointer">
+          <div className="hover:scale-125 duration-500 cursor-auto">
             <FaGifts className="w-full h-8 text-orange-500" />
             <p className="text-md lg:text-lg font-semibold text-gray-500 mt-2 text-center">
               Many Promos
             </p>
           </div>
-          <div className="hover:scale-125 duration-500 cursor-pointer">
+          <div className="hover:scale-125 duration-500 cursor-auto">
             <RiRefund2Fill className="w-full h-8 text-green-500" />
             <p className="text-md lg:text-lg font-semibold text-gray-500 mt-2 text-center">
               Cashback 20 %
