@@ -203,10 +203,8 @@ function LoginRegist() {
                               name: decoded.name,
                               email: decoded.email,
                               sub: decoded.sub,
-                              // picture: decoded.picture,
                             }
                           );
-                          console.log(decoded.picture);
                           localStorage.setItem(
                             "user",
                             JSON.stringify(res.data.data.username)

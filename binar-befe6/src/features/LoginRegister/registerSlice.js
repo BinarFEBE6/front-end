@@ -16,7 +16,6 @@ export const postRegister = createAsyncThunk(
       );
       Swal.fire({
         icon: "success",
-        // title: "",
         text: "Register Succes",
         confirmButtonText: "Okee",
       }).then((result) => {
