@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import Footer from "../components/footer";
-
+import React, { useState, useEffect } from "react";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import Swal from "sweetalert2";
 
 function Details() {
   const [details, setdetails] = useState([]);
-
+  let token = JSON.parse(localStorage.getItem("token"));
   const [setQr] = useState([]);
   const token = localStorage.getItem("token");
   const Id = localStorage.getItem("guestId");
@@ -65,7 +64,11 @@ function Details() {
   }, []);
   const navigate = useNavigate();
   return (
+
+    <div className="">
+
     <>
+
       {token ? (
         <>
           <Navbar withcroll={false} />
@@ -77,7 +80,9 @@ function Details() {
                   Guest Information
                 </h1>
                 <IoArrowBackCircleOutline
+
                   className="cursor-pointer"
+
                   size={25}
                   onClick={() => navigate("/history")}
                 />
@@ -260,7 +265,11 @@ function Details() {
           }
         })
       )}
+
+    </div>
+
     </>
+
   );
 }
 
