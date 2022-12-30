@@ -33,21 +33,6 @@ function Details() {
     }
   };
 
-  const getPdf = async () => {
-    try {
-      await axios.get(
-        `https://binar-academy-terbangin.herokuapp.com/api/generateOrder/${details.orderId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${JSON.parse(
-              localStorage.getItem("token")
-            )}`,
-          },
-        }
-      );
-    } catch (error) {}
-  };
-
   const getQr = async () => {
     try {
       const code = await axios.get(
@@ -227,12 +212,15 @@ function Details() {
                     </div>
 
                     <div className="pdf items-center justify-center flex lg:items-start lg:justify-start ">
-                      <button
-                        onClick={getPdf}
-                        className="p-3 bg-primary-100 text-white rounded-lg "
+                      <a
+                        href={`https://binar-academy-terbangin.herokuapp.com/api/generateOrder/${details.orderId}`}
                       >
-                        Download Invoice
-                      </button>
+                        <button
+                          className="p-3 bg-primary-100 text-white rounded-lg "
+                        >
+                          Download Invoice
+                        </button>
+                      </a>
                     </div>
                     <div className="pdf lg:row-span-2 lg:justify-start lg:items-start items-center justify-center flex mr-3">
                       <img
