@@ -140,7 +140,7 @@ function Footer() {
                   TerbangIn.
                 </h1>
               </div>
-              <p className="xl:w-2/3 lg:text-justify text-center">
+              <p className="xl:w-2/3 lg:w-10/12 lg:text-justify text-center">
                 Traveling can be a great way to explore new places, experience
                 different cultures, and create lasting memories.
               </p>
