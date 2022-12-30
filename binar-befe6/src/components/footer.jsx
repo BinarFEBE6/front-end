@@ -133,14 +133,14 @@ function Footer() {
                   src={logo}
                   alt=""
                   onClick={() => navigate(`/`)}
-                  className={`  w-10 lg:w-10 lg:ml-12 ml-3 lg:mt-3 mt-1 `}
+                  className={`  w-10 lg:w-10 xl:ml-12 lg:ml-2 ml-3`}
                 />
 
-                <h1 className="logo text-sky-500 ml-2 lg:mt-4 text-2xl mt-2">
+                <h1 className="logo text-sky-500 ml-2 text-2xl">
                   TerbangIn.
                 </h1>
               </div>
-              <p className="lg:w-2/3 lg:text-justify text-center">
+              <p className="xl:w-2/3 lg:text-justify text-center">
                 Traveling can be a great way to explore new places, experience
                 different cultures, and create lasting memories.
               </p>

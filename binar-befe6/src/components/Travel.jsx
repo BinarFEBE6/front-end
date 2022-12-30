@@ -23,7 +23,7 @@ function Travel() {
           <img src={logo} alt="logo" className="w-56 lg:w-[40vw]" />
         </div>
       </div>
-      <div className="bg-white shadow-xl border border-slate-200/50 lg:mx-60 mx-8 mt-12 mb-20 rounded-3xl">
+      <div className="bg-white shadow-xl border border-slate-200/50 lg:mx-36 xl:mx-48 mx-8 mt-12 mb-20 rounded-3xl">
         <div className="lg:flex w-full lg:justify-between p-9 lg:px-24 grid grid-cols-2 gap-6">
           <div className="hover:scale-125 duration-500 cursor-pointer">
             <RiMoneyDollarCircleFill className="w-full h-8 text-yellow-300" />
