@@ -72,7 +72,6 @@ function Profile() {
         .then((response) => {
           Swal.fire({
             icon: "success",
-            // title: "",
             text: "Edit Profile Succes",
             confirmButtonText: "Okee",
           }).then((result) => {
