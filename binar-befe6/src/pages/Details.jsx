@@ -5,10 +5,12 @@ import Footer from "../components/footer";
 import React, { useState, useEffect } from "react";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import Swal from "sweetalert2";
+
 function Details() {
   const [details, setdetails] = useState([]);
   let token = JSON.parse(localStorage.getItem("token"));
   const [setQr] = useState([]);
+  const token = localStorage.getItem("token");
   const Id = localStorage.getItem("guestId");
   const order = localStorage.getItem("orderId");
   const getInfo = async (Id) => {
@@ -32,7 +34,7 @@ function Details() {
 
   const getPdf = async () => {
     try {
-      const res = await axios.get(
+      await axios.get(
         `https://binar-academy-terbangin.herokuapp.com/api/generateOrder/${details.orderId}`,
         {
           headers: {
@@ -62,7 +64,11 @@ function Details() {
   }, []);
   const navigate = useNavigate();
   return (
+
     <div className="">
+
+    <>
+
       {token ? (
         <>
           <Navbar withcroll={false} />
@@ -74,6 +80,9 @@ function Details() {
                   Guest Information
                 </h1>
                 <IoArrowBackCircleOutline
+
+                  className="cursor-pointer"
+
                   size={25}
                   onClick={() => navigate("/history")}
                 />
@@ -256,7 +265,11 @@ function Details() {
           }
         })
       )}
+
     </div>
+
+    </>
+
   );
 }
 

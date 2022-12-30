@@ -73,14 +73,7 @@ function History() {
                               {item.schedule.categoryClass.name}
                             </p>
                             <div className="ml-5 flex-row flex space-x-3 ">
-                              Order ID :
-                              {item.ticket.map((order) => {
-                                return (
-                                  <p className="font-medium text-gray-700">
-                                    {order.orderId}
-                                  </p>
-                                );
-                              })}
+                              Order ID : {item.ticket[0].orderId}
                             </div>
                           </div>
                           {/* Right */}
@@ -145,7 +138,7 @@ function History() {
                             </div>
                             <div className="details grid grid-cols-3 lg:flex lg:flex-row space-x-2 ml-5 items-center mb-3">
                               <h1 className="text-gray-700 font-medium">
-                                Details :{" "}
+                                Details Passenger :
                               </h1>
                               {item.ticket.map((id) => {
                                 return (
@@ -157,9 +150,9 @@ function History() {
                                         id.guestId
                                       )
                                     }
-                                    className="w-16  p-3 bg-primary-100 rounded-xl text-white"
+                                    className="w-fit  p-3 bg-primary-100 rounded-xl text-white"
                                   >
-                                    view
+                                    {id.guest.firstName}
                                   </button>
                                 );
                               })}
@@ -172,7 +165,7 @@ function History() {
                     <div className=""></div>
                   )}
                 </>
-              ))}
+              )).reverse()}
             </>
           ) : (
             <div className="none flex justify-center items-center flex-col h-[20vh] lg:h-[50vh]">

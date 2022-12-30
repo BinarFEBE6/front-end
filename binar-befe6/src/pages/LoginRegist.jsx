@@ -224,10 +224,10 @@ function LoginRegist() {
                           console.log(error);
                         }
 
-                        Swal.fire("Horeee!", "Login Berhasil!", "success");
+                        Swal.fire("Yeaayy!", "Success to Login !", "success");
                       }}
                       onError={() => {
-                        console.log("Login Failed");
+                        Swal.fire("Opss...", "Failed to Login !", "error");
                       }}
                     />
                   </div>

@@ -61,7 +61,7 @@ function Schedule() {
     <>
       <Navbar withcroll={false} />
 
-      <div className="bg-gray-100 pt-28 w-full">
+      <div className="bg-gray-100 pt-32 w-full">
         <div className="lg:px-48 px-5 pb-10">
           <Steps
             responsive={false}

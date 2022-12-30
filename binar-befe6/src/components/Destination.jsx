@@ -17,7 +17,7 @@ function PriceList() {
 
         <div className="grid lg:grid-cols-3 grid-cols-2 lg:grid-rows-2 gap-3 lg:gap-4 lg:mx-24 lg:mt-16">
           <div
-            onClick={() => navigate("/Detail/" + data[0].id)}
+            onClick={() => {navigate("/Detail/" + data[0].id); window.scroll(0, 0);}}
             className="group w-full inline-block cursor-pointer relative rounded-lg overflow-hidden lg:row-span-2"
           >
             <img
@@ -26,7 +26,7 @@ function PriceList() {
               className="object-cover w-full lg:h-full h-60 rounded-lg"
             />
             <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center text-center duration-500 rounded-lg group-hover:translate-y-0 group-hover:bg-sky-500/75">
-              <div className="flex justify-center items-end h-1/6">
+              <div className="flex justify-center items-end h-1/3">
                 <div>
                   <p className="text-white text-3xl font-bold">
                     {data[0].Country}
@@ -37,7 +37,7 @@ function PriceList() {
           </div>
 
           <div
-            onClick={() => navigate("/Detail/" + data[1].id)}
+            onClick={() => {navigate("/Detail/" + data[1].id); window.scroll(0, 0);}}
             className="group w-full inline-block cursor-pointer relative rounded-lg overflow-hidden"
           >
             <img
@@ -46,7 +46,7 @@ function PriceList() {
               className="object-cover w-full lg:h-full h-60 rounded-lg"
             />
             <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center text-center duration-500 rounded-lg group-hover:translate-y-0 group-hover:bg-sky-500/75">
-              <div className="flex justify-center items-end h-3/6">
+              <div className="flex justify-center items-end h-1/2">
                 <div>
                   <p className="text-white text-3xl font-bold">
                     {data[1].Country}
@@ -57,7 +57,7 @@ function PriceList() {
           </div>
 
           <div
-            onClick={() => navigate("/Detail/" + data[2].id)}
+            onClick={() => {navigate("/Detail/" + data[2].id); window.scroll(0, 0);}}
             className="group w-full inline-block cursor-pointer relative rounded-lg overflow-hidden lg:row-span-2"
           >
             <img
@@ -66,7 +66,7 @@ function PriceList() {
               className="object-cover w-full lg:h-full h-60 rounded-lg "
             />
             <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center text-center duration-500 rounded-lg group-hover:translate-y-0 group-hover:bg-sky-500/75">
-              <div className="flex justify-center items-end h-1/6">
+              <div className="flex justify-center items-end h-1/3">
                 <div>
                   <p className="text-white text-3xl font-bold">
                     {data[2].Country}
@@ -77,16 +77,16 @@ function PriceList() {
           </div>
 
           <div
-            onClick={() => navigate("/Detail/" + data[4].id)}
+            onClick={() => {navigate("/Detail/" + data[4].id); window.scroll(0, 0);}}
             className="group w-full inline-block cursor-pointer relative rounded-lg overflow-hidden lg:row-span-2"
           >
             <img
               src={data[4].image}
-              alt="Korea"
+              alt="Jepang"
               className="object-cover w-full lg:h-full h-60 rounded-lg "
             />
             <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center text-center duration-500 rounded-lg group-hover:translate-y-0 group-hover:bg-sky-500/75">
-              <div className="flex justify-center items-end h-1/6">
+              <div className="flex justify-center items-end h-1/3">
                 <div>
                   <p className="text-white text-3xl font-bold">
                     {data[4].Country}
@@ -97,16 +97,16 @@ function PriceList() {
           </div>
 
           <div
-            onClick={() => navigate("/Detail/" + data[3].id)}
+            onClick={() => {navigate("/Detail/" + data[3].id); window.scroll(0, 0);}}
             className="group w-full inline-block cursor-pointer relative rounded-lg overflow-hidden"
           >
             <img
               src={data[3].image}
-              alt="Jepang"
+              alt="Korea"
               className="object-cover w-full lg:h-full h-60 rounded-lg"
             />
             <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center text-center duration-500 rounded-lg group-hover:translate-y-0 group-hover:bg-sky-500/75">
-              <div className="flex justify-center items-end h-3/6">
+              <div className="flex justify-center items-end h-1/2">
                 <div>
                   <p className="text-white text-3xl font-bold">
                     {data[3].Country}
@@ -117,7 +117,7 @@ function PriceList() {
           </div>
 
           <div
-            onClick={() => navigate("/Detail/" + data[5].id)}
+            onClick={() => {navigate("/Detail/" + data[5].id); window.scroll(0, 0);}}
             className="group w-full inline-block cursor-pointer relative rounded-lg overflow-hidden"
           >
             <img
@@ -126,7 +126,7 @@ function PriceList() {
               className="object-cover w-full lg:h-full h-60 rounded-lg"
             />
             <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center text-center duration-500 rounded-lg group-hover:translate-y-0 group-hover:bg-sky-500/75">
-              <div className="flex justify-center items-end h-3/6">
+              <div className="flex justify-center items-end h-1/2">
                 <div>
                   <p className="text-white text-3xl font-bold">
                     {data[5].Country}
