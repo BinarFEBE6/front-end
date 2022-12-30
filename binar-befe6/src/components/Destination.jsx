@@ -10,7 +10,7 @@ function PriceList() {
     <div id="destination">
       <div className="priceList-section bg-gray-100 px-4 py-32 text-gray-700">
         <div className="flex justify-center">
-          <h1 className="lg:text-3xl text-2xl font-bold text-center mb-16 lg:mb-10 px-10 lg:px-[27rem]">
+          <h1 className="lg:text-3xl text-2xl font-bold text-center mb-16 lg:mb-10 px-10 lg:px-[20rem] xl:px-[27rem]">
             Find Awesome Destinations in Several Countries from
           </h1>
         </div>
