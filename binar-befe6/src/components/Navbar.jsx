@@ -74,23 +74,29 @@ function Navbar({ withcroll }) {
   }, []);
 
   const content = (
-    <div className="max-h-[300px] overflow-auto px-2">
+    <div className="max-h-[300px] overflow-auto">
       <div className="header flex justify-center flex-row">
         <h1>Notification</h1>
       </div>
       {notif.length ? (
         <>
           {notif &&
-            notif.map((item) => {
-              return (
-                <div className="notif border-b border-t flex flex-row">
-                  <p className="text-xs">{item.content}</p>
-                  <p className=" text-xs font-thin flex items-end">
-                    {item.date.slice(0, 10)}
-                  </p>
-                </div>
-              );
-            }).reverse()}
+            notif
+              .map((item) => {
+                return (
+                  <div className="notif border-b border-t">
+                    <div className="pt-2">
+                      <p className="text-xs">{item.content}</p>
+                    </div>
+                    <div className="flex justify-end">
+                      <p className=" text-xs font-thin">
+                        {item.date.slice(0, 10)}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })
+              .reverse()}
         </>
       ) : (
         <div className="none flex flex-col justify-center items-center">
@@ -325,7 +331,7 @@ function Navbar({ withcroll }) {
                       <IoIosNotifications
                         size={37}
                         className={`
-                          text-yellow-300 font-bold duration-300 mt-1 lg:mr-2`}
+                          text-yellow-300 font-bold duration-300 mt-2 lg:mr-2`}
                         onClick={() => window.localStorage.removeItem("notif")}
                       />
                     </button>

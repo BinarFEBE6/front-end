@@ -72,7 +72,7 @@ function Main() {
               alt="hero"
               className="object-cover h-[95vh] lg:h-screen w-full"
             />
-            <div className="absolute w-full top-[53%] text-center">
+            <div className="absolute w-full bottom-[38%] lg:top-[53%] text-center">
               <h1 className="text-6xl font-bold text-white drop-shadow-lg shadow-black tracking-[15px] uppercase">
                 bali
               </h1>
@@ -84,7 +84,7 @@ function Main() {
               alt="hero"
               className="object-cover h-[95vh] lg:h-screen w-full"
             />
-            <div className="absolute w-full top-[53%] text-center">
+            <div className="absolute w-full bottom-[38%] lg:top-[53%] text-center">
               <h1 className="text-6xl font-bold text-white drop-shadow-lg shadow-black tracking-[15px] uppercase">
                 sydney
               </h1>
@@ -96,7 +96,7 @@ function Main() {
               alt="hero"
               className="object-cover h-[95vh] lg:h-screen w-full"
             />
-            <div className="absolute w-full top-[53%] text-center">
+            <div className="absolute w-full bottom-[38%] lg:top-[53%] text-center">
               <h1 className="text-6xl font-bold text-white drop-shadow-lg shadow-black tracking-[15px] uppercase">
                 dubai
               </h1>
