@@ -1,8 +1,15 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, BrowserRouter } from "react-router-dom";
 
 import plane from "../assets/planeVector.png";
 
+function App() {
+  return (
+    <BrowserRouter>
+      <NoMatch />
+    </BrowserRouter>
+  );
+}
 const NoMatch = () => {
   const navigate = useNavigate();
 
@@ -20,10 +27,11 @@ const NoMatch = () => {
         </div>
         <div className="flex justify-center">
           <button
+            data-testid="navigate-test"
             onClick={() => navigate("/")}
             className="flex items-center p-5 lg:px-4 lg:py-2 bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl cursor-pointer"
           >
-            Back to Hompage
+            Back to Homepage
           </button>
         </div>
       </div>
