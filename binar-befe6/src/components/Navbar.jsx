@@ -144,10 +144,17 @@ function Navbar({ withcroll }) {
             Home
           </p>
           <a href="#about">
-            <p className="font-bold text-sky-500">About</p>
+            <p className="font-bold text-sky-500" onClick={() => navigate("/")}>
+              About
+            </p>
           </a>
           <a href="#destination">
-            <p className="font-bold text-primary-100">Destination</p>
+            <p
+              className="font-bold text-primary-100"
+              onClick={() => navigate("/")}
+            >
+              Destination
+            </p>
           </a>
         </div>
       </div>
@@ -212,6 +219,7 @@ function Navbar({ withcroll }) {
                     : "text-primary-100"
                   : "text-primary-100"
               } font-semibold mx-[40px] duration-300 cursor-pointer hover:text-sky-200`}
+              onClick={() => navigate("/")}
             >
               About
             </button>
@@ -225,6 +233,7 @@ function Navbar({ withcroll }) {
                     : "text-primary-100"
                   : "text-primary-100"
               } font-semibold mx-[40px] duration-300 cursor-pointer hover:text-sky-200`}
+              onClick={() => navigate("/")}
             >
               Destination
             </button>
@@ -280,13 +289,16 @@ function Navbar({ withcroll }) {
 
                   <Dropdown.Item
                     onClick={() =>
-                      navigate(`/Profile/${user.displayName}/${user.address}`)
+                      navigate(`/Profile/${user.displayName}/${user.address}`) +
+                      window.scroll(0, 0)
                     }
                   >
                     Profile
                   </Dropdown.Item>
 
-                  <Dropdown.Item onClick={() => navigate(`/History`)}>
+                  <Dropdown.Item
+                    onClick={() => navigate(`/History`) + window.scroll(0, 0)}
+                  >
                     History
                   </Dropdown.Item>
 
