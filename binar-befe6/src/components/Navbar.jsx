@@ -84,6 +84,7 @@ function Navbar({ withcroll }) {
             notif
               .map((item) => {
                 return (
+
                   <div className="notif border-b border-t">
                     <div className="pt-2">
                       <p className="text-xs">{item.content}</p>
@@ -93,6 +94,7 @@ function Navbar({ withcroll }) {
                         {item.date.slice(0, 10)}
                       </p>
                     </div>
+
                   </div>
                 );
               })
