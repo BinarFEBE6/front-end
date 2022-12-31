@@ -136,9 +136,7 @@ function Footer() {
                   className={`  w-10 lg:w-10 xl:ml-12 lg:ml-2 ml-3`}
                 />
 
-                <h1 className="logo text-sky-500 ml-2 text-2xl">
-                  TerbangIn.
-                </h1>
+                <h1 className="logo text-sky-500 ml-2 text-2xl">TerbangIn.</h1>
               </div>
               <p className="xl:w-2/3 lg:w-10/12 lg:text-justify text-center">
                 Traveling can be a great way to explore new places, experience
@@ -150,32 +148,37 @@ function Footer() {
                 Advantage
               </h6>
               <p class="mb-4">Cheap Price</p>
-              <p class="mb-4">
-                  Fast Processing
-              </p>
-              <p class="mb-4">
-                  Many Promos
-              </p>
-              <p>
-                  Cashback 20 %
-              </p>
+              <p class="mb-4">Fast Processing</p>
+              <p class="mb-4">Many Promos</p>
+              <p>Cashback 20 %</p>
             </div>
             <div class="">
               <h6 class="uppercase font-semibold mb-4 flex justify-center md:justify-start">
                 Useful links
               </h6>
               <p class="mb-4">
-                <a class="text-gray-600 cursor-pointer hover:text-gray-400" onClick={() => navigate("/")}>
+                <p
+                  class="text-gray-600 cursor-pointer hover:text-gray-400"
+                  onClick={() => navigate("/")}
+                >
                   Home
-                </a>
+                </p>
               </p>
               <p class="mb-4">
-                <a href="#about" class="text-gray-600 cursor-pointer hover:text-gray-400">
+                <a
+                  href="#about"
+                  class="text-gray-600 cursor-pointer hover:text-gray-400"
+                  onClick={() => navigate("/")}
+                >
                   About
                 </a>
               </p>
               <p class="mb-4">
-                <a href="#destination" class="text-gray-600 cursor-pointer hover:text-gray-400">
+                <a
+                  href="#destination"
+                  class="text-gray-600 cursor-pointer hover:text-gray-400"
+                  onClick={() => navigate("/")}
+                >
                   Destination
                 </a>
               </p>
