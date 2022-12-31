@@ -40,45 +40,57 @@ function History() {
         <div className="bg-gray-100 ">
           <Navbar withcroll={false} />
           <div className="pt-16"></div>
-          <div className="pt-3 bg-white drop-shadow-xl w-full h-[15vh] rounded-b-[50px] lg:rounded-b-[180px] flex items-center justify-center mb-6">
+          <div className="my-6 bg-white drop-shadow-xl w-full h-[15vh] rounded-b-[50px] lg:rounded-b-[180px] flex items-center justify-center mb-6">
             <h1 className="text-3xl font-bold text-sky-700">History Booking</h1>
           </div>
           {history.length ? (
             <>
-              {history
-                .map((item) => (
-                  <>
-                    {item.ticket.length ? (
-                      <div className="  justify-center  items-center flex w-full px-2  lg:grid gap-2 mb-5">
-                        <div className="bg-white w-[80vw] px-2   py-2 mt-2 lg:w-[70vw] rounded-lg drop-shadow-xl">
-                          <div className="flex px-4 mt-3 space-x-1">
-                            <div>
-                              <MdAirplanemodeActive className="text-sky-500 text-[20px]" />
-                            </div>
 
-                            <div className="lg:flex justify-between w-screen">
-                              <p className="font-medium text-gray-700">
-                                {item.schedule.pesawat.airport.name}
-                              </p>
+              {history.map((item) => (
+                <>
+                  {item.ticket.length ? (
+                    <>
+                      <div className="  justify-center  items-center flex w-full px-2  lg:grid gap-2 mb-5">
+                        <div className="bg-white w-[80vw] px-2 py-2 mt-2 xl:w-[70vw] rounded-lg drop-shadow-xl">
+                          <div className="lg:flex lg:justify-between px-4 mt-3 space-x-1">
+                            <div className="flex">
+                              <MdAirplanemodeActive className="text-sky-500 text-[20px] lg:mt-1 mt-[0.05rem]" />
+                              <div className="lg:flex justify-between ml-2">
+                                <p className="lg:text-lg text-sm font-bold text-gray-700">
+                                  {item.schedule.pesawat.airport.name}
+                                </p>
+                              </div>
+
                             </div>
+                            {item.ticket.map((create) => (
+                              <p className="text-sm font-light text-gray-700 flex mt-3 lg:mt-0">
+                                Booking On{" "}
+                                <p className="font-semibold ml-2">
+                                  {create.createAt.slice(0, 10)}
+                                </p>
+                              </p>
+                            ))}
                           </div>
 
-                          <div className="slicer lg:flex lg:flex-row lg:justify-between">
+
+                          <div className="slicer lg:flex lg:flex-row lg:justify-between lg:pt-3">
                             {/* Left */}
                             <div className="left">
-                              {" "}
-                              <p className="font-medium ml-5 text-gray-700 ">
+                              <p className="font-semibold ml-5 text-gray-700 ">
                                 {item.schedule.pesawat.name}
                               </p>
-                              <p className="font-medium ml-5 text-gray-700 ">
+                              <p className="font-semibold ml-5 text-gray-700 ">
                                 {item.schedule.categoryClass.name}
                               </p>
-                              <div className="ml-5 flex-row flex space-x-3 ">
+                              <div className="font-semibold ml-5 flex-row flex text-gray-700">
+
                                 Order ID : {item.ticket[0].orderId}
                               </div>
                             </div>
                             {/* Right */}
-                            <div className="right">
+
+                            <div className="right mt-6 lg:mt-0">
+
                               <div className="flex ml-5 gap-2">
                                 <p className="font-medium text-gray-700">
                                   {item.schedule.departureAiport}
@@ -137,7 +149,9 @@ function History() {
                                   {rupiah(item.totalPrice)}
                                 </h2>
                               </div>
-                              <div className="details grid grid-cols-3 lg:flex lg:flex-row space-x-2 ml-5 items-center mb-3">
+
+                              <div className="details grid grid-cols-3 lg:flex lg:flex-row space-x-2 ml-5 items-center mb-3 mt-5 lg:mt-0">
+
                                 <h1 className="text-gray-700 font-medium">
                                   Details Passenger :
                                 </h1>
@@ -149,9 +163,12 @@ function History() {
                                         localStorage.setItem(
                                           "guestId",
                                           id.guestId
-                                        )
+
+                                        ) +
+                                        window.scroll(0, 0)
                                       }
-                                      className="w-fit  p-3 bg-primary-100 rounded-xl text-white"
+                                      className="w-fit p-3 bg-primary-100 rounded-xl text-white hover:drop-shadow-lg"
+
                                     >
                                       {id.guest.firstName}
                                     </button>
@@ -162,12 +179,14 @@ function History() {
                           </div>
                         </div>
                       </div>
-                    ) : (
-                      <div className=""></div>
-                    )}
-                  </>
-                ))
-                .reverse()}
+
+                    </>
+                  ) : (
+                    <div className=""></div>
+                  )}
+                </>
+              ))}
+
             </>
           ) : (
             <div className="none flex justify-center items-center flex-col h-[20vh] lg:h-[50vh]">

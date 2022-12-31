@@ -74,7 +74,7 @@ function Navbar({ withcroll }) {
   }, []);
 
   const content = (
-    <div className="max-h-[300px] overflow-auto px-2">
+    <div className="max-h-[300px] overflow-auto">
       <div className="header flex justify-center flex-row">
         <h1>Notification</h1>
       </div>
@@ -84,13 +84,17 @@ function Navbar({ withcroll }) {
             notif
               .map((item) => {
                 return (
-                  <div className="notif border-b border-t flex flex-row">
-                    <p className="text-xs">
-                      {item.content}{" "}
-                      <span className="text-gray-500 text-[11px]">
+
+                  <div className="notif border-b border-t">
+                    <div className="pt-2">
+                      <p className="text-xs">{item.content}</p>
+                    </div>
+                    <div className="flex justify-end">
+                      <p className=" text-xs font-thin">
                         {item.date.slice(0, 10)}
-                      </span>
-                    </p>
+                      </p>
+                    </div>
+
                   </div>
                 );
               })
@@ -142,10 +146,17 @@ function Navbar({ withcroll }) {
             Home
           </p>
           <a href="#about">
-            <p className="font-bold text-sky-500">About</p>
+            <p className="font-bold text-sky-500" onClick={() => navigate("/")}>
+              About
+            </p>
           </a>
           <a href="#destination">
-            <p className="font-bold text-primary-100">Destination</p>
+            <p
+              className="font-bold text-primary-100"
+              onClick={() => navigate("/")}
+            >
+              Destination
+            </p>
           </a>
         </div>
       </div>
@@ -210,6 +221,7 @@ function Navbar({ withcroll }) {
                     : "text-primary-100"
                   : "text-primary-100"
               } font-semibold mx-[40px] duration-300 cursor-pointer hover:text-sky-200`}
+              onClick={() => navigate("/")}
             >
               About
             </button>
@@ -223,6 +235,7 @@ function Navbar({ withcroll }) {
                     : "text-primary-100"
                   : "text-primary-100"
               } font-semibold mx-[40px] duration-300 cursor-pointer hover:text-sky-200`}
+              onClick={() => navigate("/")}
             >
               Destination
             </button>
@@ -278,13 +291,16 @@ function Navbar({ withcroll }) {
 
                   <Dropdown.Item
                     onClick={() =>
-                      navigate(`/Profile/${user.displayName}/${user.address}`)
+                      navigate(`/Profile/${user.displayName}/${user.address}`) +
+                      window.scroll(0, 0)
                     }
                   >
                     Profile
                   </Dropdown.Item>
 
-                  <Dropdown.Item onClick={() => navigate(`/History`)}>
+                  <Dropdown.Item
+                    onClick={() => navigate(`/History`) + window.scroll(0, 0)}
+                  >
                     History
                   </Dropdown.Item>
 
@@ -329,7 +345,7 @@ function Navbar({ withcroll }) {
                       <IoIosNotifications
                         size={37}
                         className={`
-                          text-yellow-300 font-bold duration-300 mt-1 lg:mr-2`}
+                          text-yellow-300 font-bold duration-300 mt-2 lg:mr-2`}
                         onClick={() => window.localStorage.removeItem("notif")}
                       />
                     </button>

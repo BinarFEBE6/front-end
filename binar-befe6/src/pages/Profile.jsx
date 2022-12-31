@@ -72,7 +72,6 @@ function Profile() {
         .then((response) => {
           Swal.fire({
             icon: "success",
-            // title: "",
             text: "Edit Profile Succes",
             confirmButtonText: "Okee",
           }).then((result) => {
@@ -81,6 +80,8 @@ function Profile() {
             }
           });
         });
+        
+      window.scroll(0, 0);
     } catch (error) {
       Swal.fire({
         icon: "error",
@@ -122,15 +123,15 @@ function Profile() {
           <Navbar />
 
           <div className="flex justify-center items-center lg:h-full h-[100%] flex-col">
-            <div className="bg-white lg:w-[40vw] w-[80vw]  rounded-lg border shadow-md mt-36 mb-12">
+            <div className="bg-white lg:w-[50vw] xl:w-[39vw] w-[80vw] rounded-lg border shadow-md mt-28 mb-12">
               {edit ? (
-                <div>
+                <div clas>
                   <div className="head flex  items-start border-l-4 border-primary-100">
                     <h1 className=" text-gray-700 font-semibold text-xl pl-2">
                       Update Profile
                     </h1>
                   </div>
-                  <div className="slicing flex  lg:py-7 py-4 space-y-6 justify-center w-fit pl-3 flex-col items-center">
+                  <div className="slicing flex lg:py-7 py-4 space-y-6 justify-center w-full flex-col items-center">
                     <form onSubmit={handleSubmit}>
                       <h1>Select Pictures</h1>
                       <p className="text-xs">
@@ -186,16 +187,19 @@ function Profile() {
                           name="address"
                           onChange={handleChange}
                         />
-                        <div className="flex row w-full mt-3 justify-center space-x-3">
+                        <div className="flex row w-full mt-10 xl:mb-1 mb-4 justify-end items-center gap-3">
                           <button
-                            onClick={() => setEdit()}
-                            className="lg:w-1/4 px-6 mt-3 lg:px-4 h-9 lg:h-12 lg:my-auto bg-gradient-to-l from-red-600 to-red-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl"
+                            onClick={() => {
+                              setEdit();
+                              window.scroll(0, 0);
+                            }}
+                            className="lg:w-1/4 px-6 lg:px-4 h-9 lg:h-12 bg-gradient-to-l from-red-600 to-red-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl"
                           >
                             Cancel
                           </button>
                           <button
                             type="submit"
-                            className="lg:w-1/4 px-6 mt-3 lg:px-4 h-9 lg:h-12 lg:my-auto bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl"
+                            className="lg:w-1/4 px-6 lg:px-4 h-9 lg:h-12 bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl"
                           >
                             Save
                           </button>
@@ -218,13 +222,13 @@ function Profile() {
                           alt="User settings"
                           rounded={true}
                           size="xl"
-                          className="pr-4"
+                          className="pr-4 my-6"
                         />
                       ) : (
                         <Avatar
                           alt="User settings"
                           rounded={true}
-                          className="pr-4 mb-3"
+                          className="pr-4 my-6"
                           size="xl"
                           img={`${foto && foto.length !== null && foto}`}
                         />
@@ -283,38 +287,44 @@ function Profile() {
                       </div>
                     </div>
                     <div className="foto hidden lg:flex  lg:flex-col">
-                      <div className="lg:justify-start lg:flex">
+                      <div className="lg:justify-start lg:flex my-5">
                         {foto == null ? (
                           <Avatar
                             alt="User settings"
                             rounded={true}
                             size="xl"
-                            className="pr-4"
+                            className="px-4"
                           />
                         ) : (
                           <Avatar
                             alt="User settings"
                             rounded={true}
-                            className="pr-4 mb-3"
+                            className="px-4 mb-3"
                             size="xl"
                             img={`${foto && foto.length !== null && foto}`}
                           />
                         )}
                       </div>
 
-                      <div className="edit flex justify-start mt-9">
+                      <div className="edit flex justify-start lg:ml-9 xl:ml-7 mt-9">
                         <button
-                          onClick={() => setEdit(true)}
+                          onClick={() => {
+                            setEdit(true);
+                            window.scroll(0, 0);
+                          }}
                           className="lg:w-1/2 px-6 lg:px-4 h-9 lg:h-12 lg:my-auto bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl"
                         >
                           Edit
                         </button>
                       </div>
                     </div>
-                    <div className="edit flex justify-center lg:hidden mr-4">
+                    <div className="edit flex justify-center lg:hidden mr-4 mt-10 mb-6">
                       <button
-                        onClick={() => setEdit(true)}
-                        className="lg:w-1/2 w-full px-6 lg:px-4 h-9 lg:h-12 lg:my-auto bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl"
+                        onClick={() => {
+                          setEdit(true);
+                          window.scroll(0, 0);
+                        }}
+                        className="lg:w-1/2 w-full px-6 lg:px-4 h-12 lg:my-auto bg-gradient-to-l from-blue-600 to-blue-800 text-white font-semibold rounded-lg duration-500 hover:shadow-2xl"
                       >
                         Edit
                       </button>
