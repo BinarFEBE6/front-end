@@ -81,16 +81,20 @@ function Navbar({ withcroll }) {
       {notif.length ? (
         <>
           {notif &&
-            notif.map((item) => {
-              return (
-                <div className="notif border-b border-t flex flex-row">
-                  <p className="text-xs">{item.content}</p>
-                  <p className=" text-xs font-thin flex items-end">
-                    {item.date.slice(0, 10)}
-                  </p>
-                </div>
-              );
-            }).reverse()}
+            notif
+              .map((item) => {
+                return (
+                  <div className="notif border-b border-t flex flex-row">
+                    <p className="text-xs">
+                      {item.content}{" "}
+                      <span className="text-gray-500 text-[11px]">
+                        {item.date.slice(0, 10)}
+                      </span>
+                    </p>
+                  </div>
+                );
+              })
+              .reverse()}
         </>
       ) : (
         <div className="none flex flex-col justify-center items-center">

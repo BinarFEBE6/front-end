@@ -15,7 +15,7 @@ function Profile() {
   const { name } = useParams();
   const { addr } = useParams();
   const [displayName, setdisplayName] = useState(name);
-  const [address, setAddress] = useState(addr);
+  const [address, setAddress] = useState(addr != null ? addr : "Not Set");
   const [birthDate, setbirthDate] = useState("");
   const [picture, setPicture] = useState(null);
   const [gender, setgender] = useState(options[0].value);

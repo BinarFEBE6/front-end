@@ -45,127 +45,129 @@ function History() {
           </div>
           {history.length ? (
             <>
-              {history.map((item) => (
-                <>
-                  {item.ticket.length ? (
-                    <div className="  justify-center  items-center flex w-full px-2  lg:grid gap-2 mb-5">
-                      <div className="bg-white w-[80vw] px-2   py-2 mt-2 lg:w-[70vw] rounded-lg drop-shadow-xl">
-                        <div className="flex px-4 mt-3 space-x-1">
-                          <div>
-                            <MdAirplanemodeActive className="text-sky-500 text-[20px]" />
-                          </div>
-
-                          <div className="lg:flex justify-between w-screen">
-                            <p className="font-medium text-gray-700">
-                              {item.schedule.pesawat.airport.name}
-                            </p>
-                          </div>
-                        </div>
-
-                        <div className="slicer lg:flex lg:flex-row lg:justify-between">
-                          {/* Left */}
-                          <div className="left">
-                            {" "}
-                            <p className="font-medium ml-5 text-gray-700 ">
-                              {item.schedule.pesawat.name}
-                            </p>
-                            <p className="font-medium ml-5 text-gray-700 ">
-                              {item.schedule.categoryClass.name}
-                            </p>
-                            <div className="ml-5 flex-row flex space-x-3 ">
-                              Order ID : {item.ticket[0].orderId}
+              {history
+                .map((item) => (
+                  <>
+                    {item.ticket.length ? (
+                      <div className="  justify-center  items-center flex w-full px-2  lg:grid gap-2 mb-5">
+                        <div className="bg-white w-[80vw] px-2   py-2 mt-2 lg:w-[70vw] rounded-lg drop-shadow-xl">
+                          <div className="flex px-4 mt-3 space-x-1">
+                            <div>
+                              <MdAirplanemodeActive className="text-sky-500 text-[20px]" />
                             </div>
-                          </div>
-                          {/* Right */}
-                          <div className="right">
-                            <div className="flex ml-5 gap-2">
+
+                            <div className="lg:flex justify-between w-screen">
                               <p className="font-medium text-gray-700">
-                                {item.schedule.departureAiport}
-                              </p>
-                              <TbPlaneInflight className="text-yellow-300" />
-                              <p className="font-medium text-gray-700">
-                                {item.schedule.arrivalAirport}
+                                {item.schedule.pesawat.airport.name}
                               </p>
                             </div>
-                            <div className="gap-1 flex ml-5 ">
-                              <div className="flex gap-3">
-                                <div className="flex gap-1">
-                                  <FaPlaneDeparture
-                                    className="text-sky-500 mr-2"
-                                    size={15}
-                                  />
-                                  <h2 className=" text-sm text-gray-700">
-                                    {item.schedule.scheduleTime.depatureTime.slice(
-                                      0,
-                                      5
-                                    )}
-                                  </h2>
-                                </div>
+                          </div>
 
-                                <div className="flex gap-1">
-                                  <FaPlaneArrival
-                                    className="text-sky-500 mr-2"
-                                    size={15}
-                                  />
-                                  <h2 className=" text-sm text-gray-700">
-                                    {item.schedule.scheduleTime.arrivalTime.slice(
-                                      0,
-                                      5
-                                    )}
-                                  </h2>
-                                </div>
+                          <div className="slicer lg:flex lg:flex-row lg:justify-between">
+                            {/* Left */}
+                            <div className="left">
+                              {" "}
+                              <p className="font-medium ml-5 text-gray-700 ">
+                                {item.schedule.pesawat.name}
+                              </p>
+                              <p className="font-medium ml-5 text-gray-700 ">
+                                {item.schedule.categoryClass.name}
+                              </p>
+                              <div className="ml-5 flex-row flex space-x-3 ">
+                                Order ID : {item.ticket[0].orderId}
                               </div>
                             </div>
-                            <div className="mt-2 flex gap-2 ml-5">
-                              <MdDateRange
-                                size={20}
-                                className="text-gray-700"
-                              />
-                              <h2 className="text-sm  font-medium text-gray-700">
-                                {item.schedule.date}
-                              </h2>
+                            {/* Right */}
+                            <div className="right">
+                              <div className="flex ml-5 gap-2">
+                                <p className="font-medium text-gray-700">
+                                  {item.schedule.departureAiport}
+                                </p>
+                                <TbPlaneInflight className="text-yellow-300" />
+                                <p className="font-medium text-gray-700">
+                                  {item.schedule.arrivalAirport}
+                                </p>
+                              </div>
+                              <div className="gap-1 flex ml-5 ">
+                                <div className="flex gap-3">
+                                  <div className="flex gap-1">
+                                    <FaPlaneDeparture
+                                      className="text-sky-500 mr-2"
+                                      size={15}
+                                    />
+                                    <h2 className=" text-sm text-gray-700">
+                                      {item.schedule.scheduleTime.depatureTime.slice(
+                                        0,
+                                        5
+                                      )}
+                                    </h2>
+                                  </div>
+
+                                  <div className="flex gap-1">
+                                    <FaPlaneArrival
+                                      className="text-sky-500 mr-2"
+                                      size={15}
+                                    />
+                                    <h2 className=" text-sm text-gray-700">
+                                      {item.schedule.scheduleTime.arrivalTime.slice(
+                                        0,
+                                        5
+                                      )}
+                                    </h2>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="mt-2 flex gap-2 ml-5">
+                                <MdDateRange
+                                  size={20}
+                                  className="text-gray-700"
+                                />
+                                <h2 className="text-sm  font-medium text-gray-700">
+                                  {item.schedule.date}
+                                </h2>
+                              </div>
                             </div>
-                          </div>
-                          <div className="end lg:mr-5">
-                            <div className="mt-2 flex gap-2 ml-5">
-                              <FaMoneyBillWave
-                                size={20}
-                                className="mb-2 text-emerald-700"
-                              />
-                              <h2 className="text-sm font-medium text-gray-700">
-                                {rupiah(item.totalPrice)}
-                              </h2>
-                            </div>
-                            <div className="details grid grid-cols-3 lg:flex lg:flex-row space-x-2 ml-5 items-center mb-3">
-                              <h1 className="text-gray-700 font-medium">
-                                Details Passenger :
-                              </h1>
-                              {item.ticket.map((id) => {
-                                return (
-                                  <button
-                                    onClick={() =>
-                                      navigate(`/details/${id.guestId}`) +
-                                      localStorage.setItem(
-                                        "guestId",
-                                        id.guestId
-                                      )
-                                    }
-                                    className="w-fit  p-3 bg-primary-100 rounded-xl text-white"
-                                  >
-                                    {id.guest.firstName}
-                                  </button>
-                                );
-                              })}
+                            <div className="end lg:mr-5">
+                              <div className="mt-2 flex gap-2 ml-5">
+                                <FaMoneyBillWave
+                                  size={20}
+                                  className="mb-2 text-emerald-700"
+                                />
+                                <h2 className="text-sm font-medium text-gray-700">
+                                  {rupiah(item.totalPrice)}
+                                </h2>
+                              </div>
+                              <div className="details grid grid-cols-3 lg:flex lg:flex-row space-x-2 ml-5 items-center mb-3">
+                                <h1 className="text-gray-700 font-medium">
+                                  Details Passenger :
+                                </h1>
+                                {item.ticket.map((id) => {
+                                  return (
+                                    <button
+                                      onClick={() =>
+                                        navigate(`/details/${id.guestId}`) +
+                                        localStorage.setItem(
+                                          "guestId",
+                                          id.guestId
+                                        )
+                                      }
+                                      className="w-fit  p-3 bg-primary-100 rounded-xl text-white"
+                                    >
+                                      {id.guest.firstName}
+                                    </button>
+                                  );
+                                })}
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  ) : (
-                    <div className=""></div>
-                  )}
-                </>
-              )).reverse()}
+                    ) : (
+                      <div className=""></div>
+                    )}
+                  </>
+                ))
+                .reverse()}
             </>
           ) : (
             <div className="none flex justify-center items-center flex-col h-[20vh] lg:h-[50vh]">
