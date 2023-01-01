@@ -69,7 +69,7 @@ function History() {
                                   {create.createAt.slice(0, 10)}
                                 </p>
                               </p>
-                            ))}
+                            ))[0]}
                           </div>
 
 
