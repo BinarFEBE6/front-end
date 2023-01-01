@@ -45,6 +45,7 @@ function History() {
           </div>
           {history.length ? (
             <>
+
               {history.map((item) => (
                 <>
                   {item.ticket.length ? (
@@ -59,6 +60,7 @@ function History() {
                                   {item.schedule.pesawat.airport.name}
                                 </p>
                               </div>
+
                             </div>
                             {item.ticket.map((create) => (
                               <p className="text-sm font-light text-gray-700 flex mt-3 lg:mt-0">
@@ -70,6 +72,7 @@ function History() {
                             ))}
                           </div>
 
+
                           <div className="slicer lg:flex lg:flex-row lg:justify-between lg:pt-3">
                             {/* Left */}
                             <div className="left">
@@ -80,11 +83,14 @@ function History() {
                                 {item.schedule.categoryClass.name}
                               </p>
                               <div className="font-semibold ml-5 flex-row flex text-gray-700">
+
                                 Order ID : {item.ticket[0].orderId}
                               </div>
                             </div>
                             {/* Right */}
+
                             <div className="right mt-6 lg:mt-0">
+
                               <div className="flex ml-5 gap-2">
                                 <p className="font-medium text-gray-700">
                                   {item.schedule.departureAiport}
@@ -143,7 +149,9 @@ function History() {
                                   {rupiah(item.totalPrice)}
                                 </h2>
                               </div>
+
                               <div className="details grid grid-cols-3 lg:flex lg:flex-row space-x-2 ml-5 items-center mb-3 mt-5 lg:mt-0">
+
                                 <h1 className="text-gray-700 font-medium">
                                   Details Passenger :
                                 </h1>
@@ -155,10 +163,12 @@ function History() {
                                         localStorage.setItem(
                                           "guestId",
                                           id.guestId
+
                                         ) +
                                         window.scroll(0, 0)
                                       }
                                       className="w-fit p-3 bg-primary-100 rounded-xl text-white hover:drop-shadow-lg"
+
                                     >
                                       {id.guest.firstName}
                                     </button>
@@ -169,12 +179,14 @@ function History() {
                           </div>
                         </div>
                       </div>
+
                     </>
                   ) : (
                     <div className=""></div>
                   )}
                 </>
               ))}
+
             </>
           ) : (
             <div className="none flex justify-center items-center flex-col h-[20vh] lg:h-[50vh]">

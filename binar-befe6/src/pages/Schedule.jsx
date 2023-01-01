@@ -2,19 +2,21 @@ import React, { useState, useEffect } from "react";
 import Footer from "../components/footer";
 import Navbar from "../components/Navbar";
 import { useNavigate, useParams } from "react-router-dom";
-
+import slash from "../assets/planeVector.png";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import {
-  MdDateRange,
-  MdAirlineSeatReclineExtra,
-} from "react-icons/md";
+import { MdDateRange, MdAirlineSeatReclineExtra } from "react-icons/md";
 import { AiFillSchedule, AiFillCheckCircle } from "react-icons/ai";
 import { TbPlaneInflight } from "react-icons/tb";
 import { BsPersonPlusFill } from "react-icons/bs";
 import { IoIosAirplane } from "react-icons/io";
-import { FaPlaneSlash, FaPlaneArrival, FaPlaneDeparture, FaMoneyBillWave } from "react-icons/fa";
+import {
+  FaPlaneSlash,
+  FaPlaneArrival,
+  FaPlaneDeparture,
+  FaMoneyBillWave,
+} from "react-icons/fa";
 
 import axios from "axios";
 
@@ -126,12 +128,14 @@ function Schedule() {
                       <div className="maskapai flex flex-row justify-between lg:ml-4 mt-2">
                         <div className="p-3 lg:p-0 xl:p-0 2xl:p-0">
                           <div className="Kapal flex flex-row space-x-3">
-                            <IoIosAirplane className="mt-0.5"/>
+                            <IoIosAirplane className="mt-0.5" />
                             <h1 className="text-gray-600 font-bold">
                               {item.pesawat.name}
                             </h1>
                           </div>
-                          <h1 className="pt-4 pb-2">{item.categoryClass.name}</h1>
+                          <h1 className="pt-4 pb-2">
+                            {item.categoryClass.name}
+                          </h1>
                           <div className="wrapper flex justify-center  flex-col lg:flex-row lg:gap-10">
                             <div className="tujuan flex-row flex space-x-2 mt-2 ">
                               <h2 className="text-sm text-gray-600">
@@ -223,8 +227,10 @@ function Schedule() {
             </div>
           ) : (
             <div className="empty flex justify-center h-40 items-center flex-col w-[100%] lg:w-[95%] mt-5">
-              <FaPlaneSlash size={50} />
-              <h1 className="text-4xl">No Schedule</h1>
+              <img src={slash} alt="" className="lg:w-[30%] w-[60%]" />
+              <h1 className="text-center pt-2 text-lg font-normal text-gray-600">
+                There is no schedule for flights from {departure} to {arrival}
+              </h1>
             </div>
           )}
         </div>
