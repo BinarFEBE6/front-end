@@ -12,7 +12,6 @@ import { TbPlaneInflight } from "react-icons/tb";
 import { BsPersonPlusFill } from "react-icons/bs";
 import { IoIosAirplane } from "react-icons/io";
 import {
-  FaPlaneSlash,
   FaPlaneArrival,
   FaPlaneDeparture,
   FaMoneyBillWave,
@@ -211,10 +210,9 @@ function Schedule() {
                               {rupiah(item.price)}
                               <span className="text-xs">/org</span>
                             </h2>
-                            <div></div>
                             <button
                               onClick={() => jadwal(item.id)}
-                              className="bg-primary-100 w-20 py-1 mb-2 lg:hidden text-white rounded-lg text-sm ml-14"
+                              className="bg-primary-100 w-20 py-1 mb-2 lg:hidden text-white rounded-lg text-sm max-[380px]:ml-8 min-[380px]:ml-14"
                             >
                               Choose
                             </button>
