@@ -14,9 +14,10 @@ function Profile() {
   ];
   const { name } = useParams();
   const { addr } = useParams();
+  const { bd } = useParams();
   const [displayName, setdisplayName] = useState(name);
-  const [address, setAddress] = useState(addr != null ? addr : "Not Set");
-  const [birthDate, setbirthDate] = useState("");
+  const [address, setAddress] = useState(addr);
+  const [birthDate, setbirthDate] = useState(bd);
   const [picture, setPicture] = useState(null);
   const [gender, setgender] = useState(options[0].value);
   const [foto, setfoto] = useState([]);
@@ -80,7 +81,7 @@ function Profile() {
             }
           });
         });
-        
+
       window.scroll(0, 0);
     } catch (error) {
       Swal.fire({
