@@ -84,7 +84,6 @@ function Navbar({ withcroll }) {
             notif
               .map((item) => {
                 return (
-
                   <div className="notif border-b border-t">
                     <div className="pt-2">
                       <p className="text-xs">{item.content}</p>
@@ -94,7 +93,6 @@ function Navbar({ withcroll }) {
                         {item.date.slice(0, 10)}
                       </p>
                     </div>
-
                   </div>
                 );
               })
@@ -291,8 +289,11 @@ function Navbar({ withcroll }) {
 
                   <Dropdown.Item
                     onClick={() =>
-                      navigate(`/Profile/${user.displayName}/${user.address}`) +
-                      window.scroll(0, 0)
+                      navigate(
+                        `/Profile/${user.displayName}/${
+                          user.address != null ? user.address : "Not Set"
+                        }/${user.birthDate}`
+                      ) + window.scroll(0, 0)
                     }
                   >
                     Profile
@@ -381,7 +382,11 @@ function Navbar({ withcroll }) {
 
                     <Dropdown.Item
                       onClick={() =>
-                        navigate(`/Profile/${user.displayName}/${user.address}`)
+                        navigate(
+                          `/Profile/${user.displayName}/${
+                            user.address != null ? user.address : "Not Set"
+                          }/${user.birthDate}`
+                        )
                       }
                     >
                       Profile
